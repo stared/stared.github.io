@@ -5,7 +5,6 @@
         <ContentDoc path="/text-components/me" />
       </div>
       <div class="flex-column image">
-        <!-- Example image, replace with your own -->
         <img
           class="main-img"
           alt="A photo of Piotr Migdał"
