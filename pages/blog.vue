@@ -119,7 +119,7 @@ function selectTag(tag: string) {
     <div class="post-list">
       <div v-for="(post, index) in filteredPosts" :key="index" class="post">
         <span v-if="!post.isExternal" class="title">
-          <NuxtLink :to="post.path">{{ post.title }}</NuxtLink>
+          <NuxtLink :to="post._path">{{ post.title }}</NuxtLink>
         </span>
         <span v-else class="title">
           <a :href="post.href">{{ post.title }}</a>
@@ -195,3 +195,4 @@ function selectTag(tag: string) {
   font-size: 0.8em;
 }
 </style>
+
