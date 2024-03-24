@@ -1,75 +1,138 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { useHead } from '@vueuse/head';
-import VueSlider from 'vue-slider-component/dist-css/vue-slider-component.umd.min.js'
-import 'vue-slider-component/dist-css/vue-slider-component.css'
-import 'vue-slider-component/theme/default.css'
+import VueSlider from 'vue-slider-component/dist-css/vue-slider-component.umd.min.js';
+import 'vue-slider-component/dist-css/vue-slider-component.css';
+import 'vue-slider-component/theme/default.css';
 
 import externalPosts from '@/content/data/external-articles.json';
 
-const isHN = (mentions: any[]) => {
-  return !!mentions && mentions.some((mention) => mention.href.includes("news.ycombinator"));
-};
-
-const postScores = (post: any) => {
-  const popularity = post.views_k ? Math.log2(post.views_k) : 0;
-  const mentions = Math.sqrt(post.mentions ? post.mentions?.length : 0);
-  const now = new Date();
-  const postDate = new Date(post.date);
-  const yearsSince = (now.getTime() - postDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
-  const age = Math.log2(yearsSince);
-  const migdalBias = post.migdal_score ? post.migdal_score : 0;
-  return { popularity, mentions, age, migdalBias };
-};
-
-const tagSelected = ref('all');
-const weigthPopularity = ref(4);
-const weigthMentions = ref(2);
-const weigthAge = ref(-8);
-const migdalWeigth = ref(2);
-const sliderLine = (dotPos: number[]) => [[50, dotPos[0], { backgroundColor: dotPos[0] < 50 ? 'pink' : '' }]];
-
 const { data: blogPosts } = await useAsyncData('blogPosts', () => queryContent('/blog').find());
 
-const allPosts = computed(() => {
-  const localPosts = blogPosts.value.map((post: any) => {
-    const hn = isHN(post.mentions);
-    return { ...post, hn, isExternal: false };
-  });
-  const externalPostsProcessed = externalPosts.map((post: any) => {
-    const hn = isHN(post.mentions);
-    const dateDisplay = new Date(post.date).toLocaleDateString('en-us', { year: "numeric", month: "short" });
-    return { ...post, dateDisplay, hn, isExternal: true };
-  });
-  return [...localPosts, ...externalPostsProcessed];
-});
+interface Mention {
+  title: string;
+  href: string;
+}
 
-const filteredPosts = computed(() => {
-  const postValue = (post: any) => {
-    const { popularity, mentions, age, migdalBias } = postScores(post);
-    return weigthPopularity.value * popularity + weigthMentions.value * mentions + weigthAge.value * age + migdalWeigth.value * migdalBias;
-  };
+class BlogPostLabel {
+  title: string;
+  date: string;
+  tags: string[];
+  mentions: Mention[];
+  views_k?: number;
+  migdal_score?: number;
+  isExternal: boolean;
+  href?: string; // if external
+  source?: string; // if external
+  _path?: string; // if internal
+  hn: boolean;
+  displayDate: string;
 
-  const posts = [...allPosts.value].sort((a, b) => +(postValue(a) < postValue(b)) - 0.5);
-  if (tagSelected.value === 'all') {
-    return posts;
-  } else {
-    return posts.filter((post) => !!post.tags && post.tags.includes(tagSelected.value));
+  constructor(post: any, isExternal: boolean = false) {
+    this.title = post.title;
+    this.date = post.date;
+    this.tags = post.tags || [];
+    this.mentions = post.mentions || [];
+    this.views_k = post.views_k;
+    this.migdal_score = post.migdal_score;
+    this.isExternal = isExternal;
+    this.href = post.href;
+    this.source = post.source;
+    this._path = post._path;
+    this.hn = this.mentions.some((mention: Mention) => mention.href.includes("news.ycombinator"));
+    this.displayDate = new Date(post.date).toLocaleDateString('en-us', { year: "numeric", month: "short" });
   }
-});
 
-const allTagsCounted = computed(() => {
-  const counter: Record<string, number> = {};
-  allPosts.value.forEach((post) => post.tags.forEach((tag: string) => {
-    if (tag in counter) {
-      counter[tag] += 1;
-    } else {
-      counter[tag] = 1;
+  static fromQueryContent(post: any): BlogPostLabel {
+    return new BlogPostLabel(post);
+  }
+
+  static fromExternalPost(post: any): BlogPostLabel {
+    return new BlogPostLabel(post, true);
+  }
+
+  toScores(): { popularity: number; mentions: number; age: number; migdalBias: number } {
+    const popularity = this.views_k ? Math.log2(this.views_k) : 0;
+    const mentionsCount = Math.sqrt(this.mentions.length);
+    const now = new Date();
+    const postDate = new Date(this.date);
+    const yearsSince = (now.getTime() - postDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
+    const age = Math.log2(yearsSince);
+    const migdalBias = this.migdal_score ? this.migdal_score : 0;
+    return { popularity, mentions: mentionsCount, age, migdalBias };
+  }
+
+  toWeight(weightPopularity: number, weightMentions: number, weightAge: number, migdalweight: number): number {
+    const { popularity, mentions, age, migdalBias } = this.toScores();
+    return weightPopularity * popularity + weightMentions * mentions + weightAge * age + migdalweight * migdalBias;
+  }
+}
+
+
+class BlogPostLabels {
+    items: BlogPostLabel[]
+
+    constructor(items: BlogPostLabel[]) {
+        this.items = items;
     }
-  }));
-  counter['all'] = blogPosts.value.length;
-  return Object.entries(counter).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count);
-});
+
+    static new(): BlogPostLabels {
+        return new BlogPostLabels([]);
+    }
+
+    addExternal(posts: any[]): BlogPostLabels {
+        this.items.push(...posts.map(BlogPostLabel.fromExternalPost));
+        return this;
+    }
+
+    addInternal(posts: any[]): BlogPostLabels {
+        this.items.push(...posts.map(BlogPostLabel.fromQueryContent));
+        return this;
+    }
+
+    /** Filter as a copy, unless 'all' is selected */
+    filterByTag(tag: string): BlogPostLabels {
+        if (tag === 'all') {
+            return new BlogPostLabels([...this.items]);
+        }
+        return new BlogPostLabels(this.items.filter((post) => post.tags && post.tags.includes(tag)));
+    }
+
+    /** Sort as a copy */
+    sortByWeights(weightPopularity: number, weightMentions: number, weightAge: number, migdalWeight: number): BlogPostLabels {
+        const sortedItems = [...this.items].sort((a, b) => b.toWeight(weightPopularity, weightMentions, weightAge, migdalWeight) - a.toWeight(weightPopularity, weightMentions, weightAge, migdalWeight));
+        return new BlogPostLabels(sortedItems);
+    }
+
+    allTagsCounted(): { name: string, count: number }[] {
+        const counter: Record<string, number> = {};
+        this.items.forEach((post) => post.tags.forEach((tag: string) => {
+            if (tag in counter) {
+                counter[tag] += 1;
+            } else {
+                counter[tag] = 1;
+            }
+        }));
+        counter['all'] = this.items.length;
+        return Object.entries(counter).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count);
+    }
+}
+
+const blogPostLabels = BlogPostLabels.new().addInternal(blogPosts.value || []).addExternal(externalPosts);
+
+
+const tagSelected = ref('all');
+const weightPopularity = ref(4);
+const weightMentions = ref(2);
+const weightAge = ref(-8);
+const migdalweight = ref(2);
+const sliderLine = (dotPos: number[]) => [[50, dotPos[0], { backgroundColor: dotPos[0] < 50 ? 'pink' : '' }]];
+
+
+const filteredPosts = computed(() => blogPostLabels.filterByTag(tagSelected.value).sortByWeights(weightPopularity.value, weightMentions.value, weightAge.value, migdalweight.value).items);
+
+const allTagsCounted = blogPostLabels.allTagsCounted();
+
 
 useHead({
   title: 'Blog',
@@ -94,19 +157,19 @@ function selectTag(tag: string) {
       <div class="slider-flexbox">
         <div class="slider">
           <span class="slider-label">log(popularity)</span>
-          <VueSlider v-model="weigthPopularity" :min="-10" :max="10" width="150px" :process="sliderLine" />
+          <VueSlider v-model="weightPopularity" :min="-10" :max="10" width="150px" :process="sliderLine" />
         </div>
         <div class="slider">
           <span class="slider-label">sqrt(mentions)</span>
-          <VueSlider v-model="weigthMentions" :min="-5" :max="5" width="150px" :process="sliderLine" />
+          <VueSlider v-model="weightMentions" :min="-5" :max="5" width="150px" :process="sliderLine" />
         </div>
         <div class="slider">
           <span class="slider-label">log(age)</span>
-          <VueSlider v-model="weigthAge" :min="-20" :max="20" width="150px" :process="sliderLine" />
+          <VueSlider v-model="weightAge" :min="-20" :max="20" width="150px" :process="sliderLine" />
         </div>
         <div class="slider">
           <span class="slider-label">author's bias</span>
-          <VueSlider v-model="migdalWeigth" :min="-5" :max="5" width="150px" :process="sliderLine" />
+          <VueSlider v-model="migdalweight" :min="-5" :max="5" width="150px" :process="sliderLine" />
         </div>
       </div>
     </p>
@@ -127,7 +190,7 @@ function selectTag(tag: string) {
         <span v-for="tagName in post.tags" :key="tagName" @click="selectTag(tagName)" class="tag"
           :class="{ selected: tagName === tagSelected }">[{{ tagName }}]</span>
         <span v-if="post.hn" class="hn">[HN]</span>
-        <span class="date">{{ post.dateDisplay }}</span>
+        <span class="date">{{ post.displayDate }}</span>
         <span v-if="post.isExternal" class="source">@ {{ post.source }}</span>
       </div>
     </div>
@@ -195,4 +258,5 @@ function selectTag(tag: string) {
   font-size: 0.8em;
 }
 </style>
+
 
