@@ -30,7 +30,6 @@ const migdalWeigth = ref(2);
 const sliderLine = (dotPos: number[]) => [[50, dotPos[0], { backgroundColor: dotPos[0] < 50 ? 'pink' : '' }]];
 
 const { data: blogPosts } = await useAsyncData('blogPosts', () => queryContent('/blog').find());
-const { data: textComponent } = await useAsyncData('textComponent', () => queryContent('/text-components/blog').findOne());
 
 const allPosts = computed(() => {
   const localPosts = blogPosts.value.map((post: any) => {
@@ -89,7 +88,7 @@ function selectTag(tag: string) {
 
 <template>
   <div>
-    <div class="markdown" v-html="textComponent?.content"></div>
+    <ContentDoc path="/text-components/blog" />
 
     <p>
       <div class="slider-flexbox">
