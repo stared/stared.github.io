@@ -42,4 +42,18 @@ body {
 .nav__link {
   margin-left: 20px;
 }
+
+a {
+  text-decoration: none;
+  color: #2a7ae2;
+}
+
+a:visited {
+  color: #1756a9;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: black;
+}
 </style>
