@@ -37,6 +37,45 @@ const formatDate = (date: string) => {
     year: "numeric",
   });
 };
+
+const { path } = useRoute();
+const { data } = await useAsyncData(`content-${path}`, () =>
+  queryContent().where({ _path: path }).findOne()
+);
+
+useHead({
+  title: data.value?.title,
+  meta: [
+    {
+      name: "description",
+      content: data.value?.description,
+    },
+    {
+      property: "og:title",
+      content: data.value?.title,
+    },
+    {
+      property: "og:description",
+      content: data.value?.description,
+    },
+    {
+      property: "og:image",
+      content: data.value?.image,
+    },
+    {
+      name: "twitter:title",
+      content: data.value?.title,
+    },
+    {
+      name: "twitter:description",
+      content: data.value?.description,
+    },
+    {
+      name: "twitter:image",
+      content: data.value?.image,
+    },
+  ],
+});
 </script>
 
 <style>
