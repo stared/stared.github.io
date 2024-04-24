@@ -151,7 +151,7 @@ function selectTag(tag: string) {
 
 <template>
   <div>
-    <ContentDoc path="/text-components/blog" />
+    <ContentDoc path="/.text-components/blog" />
 
     <p>
       <div class="slider-flexbox">

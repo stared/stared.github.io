@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ContentDoc path="/text-components/publications" />
+    <ContentDoc path="/.text-components/publications" />
 
     <ul class="publications">
       <li

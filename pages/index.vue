@@ -2,7 +2,7 @@
   <div>
     <div class="flex">
       <div class="flex-column text">
-        <ContentDoc path="/text-components/me" />
+        <ContentDoc path="/.text-components/me" />
       </div>
       <div class="flex-column image">
         <img
