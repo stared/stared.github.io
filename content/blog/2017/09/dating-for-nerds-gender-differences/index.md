@@ -152,7 +152,7 @@ Many places in which we spend our time have an uneven gender ratio - be it workp
 
 You are likely to spend time in places with a gender imbalance in (questionable) favor of your gender. See [Most Female and Male Occupations Since 1950](http://flowingdata.com/2017/09/11/most-female-and-male-occupations-since-1950/) by Nathan Yay:
 
-[![](./gender_occupations_flowingdata.png)](<(http://flowingdata.com/2017/09/11/most-female-and-male-occupations-since-1950/)>)
+[![](./gender_occupations_flowingdata.png)](https://flowingdata.com/2017/09/11/most-female-and-male-occupations-since-1950/)
 
 It also happens the other way - many liberal arts and humanities departments lack men. One of my friends complained about a party she attended:
 

@@ -20,7 +20,7 @@ migdal_score: 4
 
 ![(meme) Welcome to dark side of science - data science](./2016-03-15-dark-side-of-science-meme.jpg)
 
-After posting [What I do or: science to data science]({{site.url}}/2015/12/14/sci-to-data-sci.html) I got a lot of emails on how to make this transition.
+After posting [What I do or: science to data science](https://p.migdal.pl/2015/12/14/sci-to-data-sci/) I got a lot of emails on how to make this transition.
 
 In this post I try to summarize my advice. I don't intend to write a complete _walkthrough_, but to provide a starting point, with links to further materials. I target it at people with academic, quantitative background (e.g. physics, mathematics, statistics), regardless if they are undergraduate students, PhDs or after a few postdocs. Some points may be valid for other backgrounds¹ (but then - use it at your own risk).
 
@@ -223,7 +223,7 @@ Often you will need to install something, collaborate with others and do other t
   - e.g. [The Google Maps Geocoding API](https://developers.google.com/maps/documentation/geocoding/intro)
 - HTML (and JavaScript may be a plus)
   - [Introduction to HTML - MDN ](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Introduction)
-  - my post: [D3.js workshop at ICM for KFnrD]({{site.url}}/2016/02/09/d3js-icm-kfnrd.html)
+  - my post: [D3.js workshop at ICM for KFnrD](https://p.migdal.pl/2016/02/d3js-icm-kfnrd)
 
 Don't be afraid of learning new technologies (e.g. _this data is in [MongoDB](https://docs.mongodb.org/getting-started/python/introduction/), a NoSQL database; can you fetch it?_) - often you can get the basics in a day.
 Most technologies, from the user's perspective, are easy (at least comparing to algebraic geometry or quantum field theory).
@@ -242,7 +242,7 @@ Personally, I enjoy the most working on data I care about and find genuinely int
 It drives my motivation much more than any competition could. Also, this way it is a complete data science - from asking questions and getting data to presenting the results in a meaningful form.
 
 Making results public, including code, is a great room for both feedback and building a showcase.
-It can be an IPython Notebook, or a website, or even a just a plot (but then be sure to sign it - if it goes viral you want to get due recognition!). E.g. some mine (see also [Projects]({{site.url}}/projects)):
+It can be an IPython Notebook, or a website, or even a just a plot (but then be sure to sign it - if it goes viral you want to get due recognition!). E.g. some mine (see also [Projects](https://p.migdal.pl/projects)):
 
 - [Polish Book Themes](http://p.migdal.pl/wizualizacja-wolnych-lektur/polish_books_themes.html)
 - [TagOverflow](http://p.migdal.pl/tagoverflow/) - graph of tags from Stack Exchange sites
@@ -250,7 +250,7 @@ It can be an IPython Notebook, or a website, or even a just a plot (but then be 
 
 So, once again, be sure to get a [GitHub](https://github.com) account (for hosting code, [notebooks](https://github.com/blog/1995-github-jupyter-notebooks-3) and [websites](https://pages.github.com/)). Mine looks like that: [github.com/stared](https://github.com/stared).
 And don’t be afraid to put premature code: if it is not good yet then no-one will notice (or care) anyway.
-Also, some people like writing about problems they have just learnt (e.g. [How gzip uses Huffman coding - Julia Evans](http://jvns.ca/blog/2015/02/22/how-gzip-uses-huffman-coding/)). If it is your thing - just do it (see [my post on Jekyll]({{site.url}}/2015/12/02/first-post.html))!
+Also, some people like writing about problems they have just learnt (e.g. [How gzip uses Huffman coding - Julia Evans](http://jvns.ca/blog/2015/02/22/how-gzip-uses-huffman-coding/)). If it is your thing - just do it (see [my post on Jekyll](https://p.migdal.pl/2015/12/first-post/))!
 
 EDIT (Feb 2018): If you want to play with data [Kaggle Datasets](http://kaggle.com/datasets) are a wonderful place to start.
 
