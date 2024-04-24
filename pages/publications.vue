@@ -1,10 +1,10 @@
 <template>
   <div>
-    <ContentDoc path="/.text-components/publications" />
+    <ContentDoc path="/text-components/publications" />
 
     <ul class="publications">
       <li
-        v-for="(publication, index) in publications"
+        v-for="(publication, index) in publications.items"
         :key="index"
         class="publication"
       >
@@ -36,7 +36,7 @@ useHead({
   meta: [
     {
       name: "description",
-      content: `Dr. Piotr Migdał wrote ${publications.length} publications.`,
+      content: `Dr. Piotr Migdał wrote ${publications.items.length} publications.`,
     },
   ],
 });

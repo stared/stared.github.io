@@ -1,8 +1,12 @@
 <template>
   <div>
-    <ContentDoc path="/.text-components/projects" />
+    <ContentDoc path="/text-components/projects" />
     <ul class="projects">
-      <li v-for="(project, index) in projects" :key="index" class="project">
+      <li
+        v-for="(project, index) in projects.items"
+        :key="index"
+        class="project"
+      >
         <a class="title" :href="project.href">{{ project.title }}</a
         >&nbsp;
         <span class="status"

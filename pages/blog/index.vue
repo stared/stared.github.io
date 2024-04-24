@@ -118,7 +118,7 @@ class BlogPostLabels {
     }
 }
 
-const blogPostLabels = BlogPostLabels.new().addInternal(blogPosts.value || []).addExternal(externalPosts);
+const blogPostLabels = BlogPostLabels.new().addInternal(blogPosts.value || []).addExternal(externalPosts.items);
 
 
 const tagSelected = ref('all');
@@ -151,7 +151,7 @@ function selectTag(tag: string) {
 
 <template>
   <div>
-    <ContentDoc path="/.text-components/blog" />
+    <ContentDoc path="/text-components/blog" />
 
     <p>
       <div class="slider-flexbox">
