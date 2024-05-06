@@ -14,7 +14,7 @@ deep learning consultant, data viz specialist, quantum physics PhD. More in [my 
 
 **Personally:**
 I dance balfolk and fusion. I do weekly sauna rituals, among trees, ponds and streams.
-A bit more in [this post](/blog/2021/09/embodiment-for-nerds/).
+A bit more in [this post](/blog/2021/09/embodiment-for-nerds).
 
 **Here:** I invite you to read
 [my stuff](/blog), take a look at
