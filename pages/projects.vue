@@ -12,6 +12,7 @@
         <span class="status"
           >{{ formatDate(project.dateStart) }}-{{ formatDate(project.dateEnd) }}
         </span>
+        &nbsp;
         <span class="status">({{ project.status }})</span>
         <br />
         <span class="description">{{ project.desc }}</span>
@@ -53,5 +54,22 @@ function formatDate(x: string | null): string {
 </script>
 
 <style scoped>
-/* Your styles here */
+li.project {
+  color: #828282;
+  font-size: 0.9rem;
+  list-style: none;
+  padding-bottom: 1rem;
+}
+
+.post-meta {
+  font-size: 14px;
+  color: #828282;
+}
+
+a.mention {
+  font-size: 0.8em;
+  color: #ff6600;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+}
 </style>
