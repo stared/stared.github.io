@@ -29,13 +29,9 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Static HTML export with Nuxt
-        run: |
-          if [ "${{ github.repository }}" = "stared/stared.github.io" ]; then
-            NUXT_APP_BASE_URL=/
-          else
-            NUXT_APP_BASE_URL="/${{ github.event.repository.name }}"
-          fi
-          yarn generate --no-cache
+        run: yarn generate --no-cache
+      - name: Add CNAME file
+        run: echo "p.migdal.pl" > .output/public/CNAME
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
