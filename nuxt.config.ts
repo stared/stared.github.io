@@ -2,6 +2,25 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["nuxt-content-assets", "@nuxt/content"],
+  content: {
+    markdown: {
+      remarkPlugins: ["remark-math"],
+      rehypePlugins: {
+        "rehype-mathjax": {
+          output: "html", // the default value is 'htmlAndMathml'
+        },
+      },
+    },
+  },
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => {
+        const isMathjax =
+          tag.startsWith("mjx-") || ["defs", "path", "G", "use"].includes(tag);
+        return isMathjax;
+      },
+    },
+  },
   hooks: {
     close: () => {
       // fixes `nuxi generate` hanging at the end "You can preview this build"
