@@ -29,7 +29,13 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Static HTML export with Nuxt
-        run: NUXT_APP_BASE_URL=/migdal-blog-nuxt/ yarn generate --no-cache
+        run: |
+          if [ "${{ github.repository }}" = "stared/stared.github.io" ]; then
+            NUXT_APP_BASE_URL=/
+          else
+            NUXT_APP_BASE_URL="/${{ github.event.repository.name }}"
+          fi
+          yarn generate --no-cache
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
