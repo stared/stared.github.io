@@ -26,23 +26,23 @@ jobs:
         with:
           node-version: '20'
           cache: 'yarn'
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        with:
-          static_site_generator: nuxt
-      - name: Restore cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            dist
-            .nuxt
-          key: ${{ runner.os }}-nuxt-build-${{ hashFiles('dist') }}
-          restore-keys: |
-            ${{ runner.os }}-nuxt-build-
+      # - name: Setup Pages
+      #   uses: actions/configure-pages@v5
+      #   with:
+      #     static_site_generator: nuxt
+      # - name: Restore cache
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: |
+      #       dist
+      #       .nuxt
+      #     key: ${{ runner.os }}-nuxt-build-${{ hashFiles('dist') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-nuxt-build-
       - name: Install dependencies
         run: yarn install
       - name: Static HTML export with Nuxt
-        run: yarn generate
+        run: yarn generate --no-cache
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
