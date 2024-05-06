@@ -29,9 +29,7 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Static HTML export with Nuxt
-        run: timeout 20 yarn generate --no-cache || true
-        # a very dirty hack, since after a few seconds it hangs at
-        # " You can now deploy .output/public to any static hosting!"
+        run: yarn generate --no-cache
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
