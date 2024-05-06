@@ -15,11 +15,11 @@
           <span v-for="mention in exp.mentions" :key="mention.href">
             • <a :href="mention.href">{{ mention.text }}</a>
           </span>
+          &nbsp;•
           <br />
         </span>
         <span class="stack">{{ exp.stack }}</span>
       </li>
-      •
     </ul>
 
     <ContentDoc path="/text-components/resume-highlights" />
