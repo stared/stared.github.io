@@ -4,9 +4,10 @@ const DEFAULT_AUTHOR = "Piotr Migdał";
 const DEFAULT_TITLE = "Piotr Migdał";
 const DEFAULT_DESCRIPTION = "Piotr Migdał - blog posts and stuff";
 const DEFAULT_BASE_URL = "https://p.migdal.pl";
-const DEFAULT_IMAGE =
-  DEFAULT_BASE_URL +
-  "~/assets/imgs/piotr-migdal-direct-smiling-2022-by-cytacka-thumbnail.jpg";
+const DEFAULT_IMAGE = new URL(
+  "~/assets/imgs/piotr-migdal-direct-smiling-2022-by-cytacka-thumbnail.jpg",
+  import.meta.url
+).href;
 
 /**
  * HeaderData for social media (Open Graph, Twitter aka X, etc.)
