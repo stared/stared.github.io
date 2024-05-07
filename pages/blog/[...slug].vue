@@ -45,13 +45,11 @@ const { data } = await useAsyncData(`content-${path}`, () =>
   queryContent().where({ _path: path }).findOne()
 );
 
-useHead(
-  HeaderData.default()
-    .setTitle(data.value?.title)
-    .setDescription(data.value?.description)
-    .setImage(data.value?.image)
-    .getHead()
-);
+HeaderData.default()
+  .setTitle(data.value?.title)
+  .setDescription(data.value?.description)
+  .setImage(data.value?.image)
+  .useHead();
 </script>
 
 <style>

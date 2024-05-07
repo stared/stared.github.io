@@ -30,18 +30,13 @@
 </template>
 
 <script setup lang="ts">
-import { useHead } from "@vueuse/head";
+import { HeaderData } from "@/pages/utils";
 import projects from "@/content/data/projects.json";
 
-useHead({
-  title: "Projects",
-  meta: [
-    {
-      name: "description",
-      content: "Numerous projects by Piotr Migdał.",
-    },
-  ],
-});
+HeaderData.default()
+  .setTitle("Projects")
+  .setDescription("Numerous projects by Piotr Migdał.")
+  .useHead();
 
 function formatDate(x: string | null): string {
   if (x) {

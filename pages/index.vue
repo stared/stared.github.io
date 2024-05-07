@@ -15,6 +15,12 @@
   </div>
 </template>
 
+<script setup lang="ts">
+import { HeaderData } from "@/pages/utils";
+
+HeaderData.default().setTitle("Homepage").useHead();
+</script>
+
 <style>
 .flex {
   display: flex;

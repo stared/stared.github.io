@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { useHead } from "@vueuse/head";
+import { HeaderData } from "@/pages/utils";
 import publications from "@/content/data/publications.json";
 
 useHead({
@@ -48,6 +48,13 @@ function publicationHref(publication: any) {
     return `https://arxiv.org/abs/${publication.arxiv}`;
   }
 }
+
+HeaderData.default()
+  .setTitle("Publications")
+  .setDescription(
+    `Dr. Piotr Migdał wrote ${publications.items.length} publications.`
+  )
+  .useHead();
 </script>
 
 <style scoped>

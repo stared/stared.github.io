@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { useHead } from "@vueuse/head";
+import { HeaderData } from "@/pages/utils";
 
 const experiences = [
   {
@@ -105,15 +105,10 @@ const experiences = [
   },
 ];
 
-useHead({
-  title: "Resume",
-  meta: [
-    {
-      name: "description",
-      content: "Piotr Migdał's career.",
-    },
-  ],
-});
+HeaderData.default()
+  .setTitle("Resume")
+  .setDescription("Piotr Migdał's career and availability.")
+  .useHead();
 </script>
 
 <style scoped>

@@ -1,11 +1,17 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { useHead } from '@vueuse/head';
+import { HeaderData } from "@/pages/utils";
 import VueSlider from 'vue-slider-component/dist-css/vue-slider-component.umd.min.js';
 import 'vue-slider-component/dist-css/vue-slider-component.css';
 import 'vue-slider-component/theme/default.css';
 
 import externalPosts from '@/content/data/external-articles.json';
+
+HeaderData.default()
+  .setTitle("Blog")
+  .setDescription("Read blog posts by Piotr Migdał.")
+  .useHead();
+
 
 const { data: blogPosts } = await useAsyncData('blogPosts', () => queryContent('/blog').find());
 
@@ -133,16 +139,6 @@ const filteredPosts = computed(() => blogPostLabels.filterByTag(tagSelected.valu
 
 const allTagsCounted = blogPostLabels.allTagsCounted();
 
-
-useHead({
-  title: 'Blog',
-  meta: [
-    {
-      name: 'description',
-      content: 'Read blog posts by Piotr Migdał.',
-    },
-  ],
-});
 
 function selectTag(tag: string) {
   tagSelected.value = tag;
