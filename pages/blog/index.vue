@@ -5,7 +5,31 @@ import VueSlider from 'vue-slider-component/dist-css/vue-slider-component.umd.mi
 import 'vue-slider-component/dist-css/vue-slider-component.css';
 import 'vue-slider-component/theme/default.css';
 
-import externalPosts from '@/content/data/external-articles.json';
+interface BasePost {
+  title: string;
+  date: string;
+  tags: string[];
+  mentions?: Mention[];
+  views_k?: number;
+  migdal_score?: number;
+}
+
+interface ExternalPost extends BasePost {
+  source: string;
+  href: string;
+  old_title?: string;
+}
+
+const externalPosts: ExternalPost[] = (await import('@/content/data/external-articles.json')).default.items;
+
+interface BlogPostMetadata extends BasePost {
+  slug?: string;
+  author?: string;
+  description?: string;
+  image?: string;
+  medium_url?: string;
+  layout?: string;
+}
 
 HeaderData.default()
   .setTitle("Blog")
@@ -49,11 +73,11 @@ class BlogPostLabel {
     this.displayDate = new Date(post.date).toLocaleDateString('en-us', { year: "numeric", month: "short" });
   }
 
-  static fromQueryContent(post: any): BlogPostLabel {
+  static fromQueryContent(post: BlogPostMetadata): BlogPostLabel {
     return new BlogPostLabel(post);
   }
 
-  static fromExternalPost(post: any): BlogPostLabel {
+  static fromExternalPost(post: ExternalPost): BlogPostLabel {
     return new BlogPostLabel(post, true);
   }
 
@@ -124,7 +148,7 @@ class BlogPostLabels {
     }
 }
 
-const blogPostLabels = BlogPostLabels.new().addInternal(blogPosts.value || []).addExternal(externalPosts.items);
+const blogPostLabels = BlogPostLabels.new().addInternal(blogPosts.value || []).addExternal(externalPosts);
 
 
 const tagSelected = ref('all');
