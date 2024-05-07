@@ -30,6 +30,8 @@
 </template>
 
 <script setup lang="ts">
+import { HeaderData } from "@/pages/utils";
+
 const formatDate = (date: string) => {
   return new Date(date).toLocaleDateString("en-UK", {
     month: "short",
@@ -43,39 +45,13 @@ const { data } = await useAsyncData(`content-${path}`, () =>
   queryContent().where({ _path: path }).findOne()
 );
 
-useHead({
-  title: data.value?.title,
-  meta: [
-    {
-      name: "description",
-      content: data.value?.description,
-    },
-    {
-      property: "og:title",
-      content: data.value?.title,
-    },
-    {
-      property: "og:description",
-      content: data.value?.description,
-    },
-    {
-      property: "og:image",
-      content: data.value?.image,
-    },
-    {
-      name: "twitter:title",
-      content: data.value?.title,
-    },
-    {
-      name: "twitter:description",
-      content: data.value?.description,
-    },
-    {
-      name: "twitter:image",
-      content: data.value?.image,
-    },
-  ],
-});
+useHead(
+  HeaderData.default()
+    .setTitle(data.value?.title)
+    .setDescription(data.value?.description)
+    .setImage(data.value?.image)
+    .getHead()
+);
 </script>
 
 <style>
