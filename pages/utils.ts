@@ -1,24 +1,43 @@
+const DEFAULT_AUTHOR = "Piotr Migdał";
+const DEFAULT_TITLE = "Piotr Migdał";
+const DEFAULT_DESCRIPTION = "Piotr Migdał - blog posts and stuff";
+const DEFAULT_BASE_URL = "https://p.migdal.pl";
+const DEFAULT_IMAGE =
+  DEFAULT_BASE_URL +
+  require("~/imgs/piotr-migdal-direct-smiling-2022-by-cytacka-thumbnail.jpg");
+
+/**
+ * HeaderData for social media (Open Graph, Twitter aka X, etc.)
+ */
 export class HeaderData {
   title: string;
   description: string;
   image: string;
+  author: string;
 
-  constructor(title: string, description: string, image: string) {
+  constructor(
+    title: string,
+    description: string,
+    image: string,
+    author: string
+  ) {
     this.title = title;
     this.description = description;
     this.image = image;
+    this.author = author;
   }
 
   static default() {
     return new HeaderData(
-      "Piotr Migdał",
-      "Homepage and blog of Piotr Migdał",
-      ""
+      DEFAULT_TITLE,
+      DEFAULT_DESCRIPTION,
+      DEFAULT_IMAGE,
+      DEFAULT_AUTHOR
     );
   }
 
   setTitle(title?: string) {
-    this.title = `{title} - Piotr Migdał` || this.title;
+    this.title = `${title} - ${DEFAULT_AUTHOR}` || this.title;
     return this;
   }
 
@@ -27,8 +46,8 @@ export class HeaderData {
     return this;
   }
 
-  setImage(image: string) {
-    this.image = image;
+  setImage(image?: string) {
+    this.image = image || this.image;
     return this;
   }
 
@@ -40,6 +59,7 @@ export class HeaderData {
           name: "description",
           content: this.description,
         },
+        { name: "author", content: this.author },
         {
           property: "og:title",
           content: this.title,
