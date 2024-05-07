@@ -1,5 +1,4 @@
 ---
-layout: post
 title: D3.js workshop at ICM for KFnrD
 slug: d3js-icm-kfnrd
 date: 2016-02-09

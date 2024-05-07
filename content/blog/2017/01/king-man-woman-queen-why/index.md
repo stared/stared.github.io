@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "king - man + woman is queen; but why?"
 slug: king-man-woman-queen-why
 date: 2017-01-06
@@ -85,7 +84,7 @@ Its direct interpretation is how much more likely we get a pair than if it were 
 The logarithm makes it easier to work with [words appearing at frequencies](https://en.wiktionary.org/wiki/Wiktionary:Frequency_lists/) of different orders of magnitude.
 We can approximate PMI as a scalar product:
 
-$$ PMI(a, b) = \vec{v}_a \cdot \vec{v}_b, $$
+$$ PMI(a, b) = \vec{v}\_a \cdot \vec{v}\_b, $$
 
 where $$\vec{v}_i$$ are vectors, typically of 50-300 dimensions.
 
@@ -106,13 +105,13 @@ $$ PMI(w, a) = PMI(w, b), $$
 by dividing both sides by _P(w)_ and taking their logarithms.
 After expressing PMI with vector products, we get
 
-$$ \vec{v}_w \cdot \vec{v}_a = \vec{v}_w \cdot \vec{v}_b $$
+$$ \vec{v}\_w \cdot \vec{v}\_a = \vec{v}\_w \cdot \vec{v}\_b $$
 
-$$ \vec{v}_w \cdot \left( \vec{v}_a - \vec{v}_b \right) = 0 $$
+$$ \vec{v}\_w \cdot \left( \vec{v}\_a - \vec{v}\_b \right) = 0 $$
 
-If it needs to work for every $$ \vec{v}_w $$, then
+If it needs to work for every $$ \vec{v}\_w $$, then
 
-$$ \vec{v}_a = \vec{v}_b. $$
+$$ \vec{v}\_a = \vec{v}\_b. $$
 
 Of course, in every practical case we won't get an exact equality, just words being close to each other. Words close in this space are often synonyms (e.g. _happy_ and _delighted_), antonyms (e.g. _good_ and _evil_) or other easily interchangeable words (e.g. _yellow_ and _blue_).
 In particular, most [opposing ideas](https://en.wikipedia.org/wiki/Horseshoe_theory) (e.g. _religion_ and _atheism_) will have similar contexts. If you want to play with that, look at this [word2sense phrase search](https://demos.explosion.ai/sense2vec/?word=machine%20learning&sense=auto).
@@ -121,7 +120,7 @@ What I find much more interesting is that words form a linear space. In particul
 
 It is one of the reasons why for vector similarity people often use cosine distance, i.e.
 
-$$ \frac{\vec{v}_a \cdot \vec{v}_b}{\vert \vec{v}_a \vert \vert \vec{v}_b \vert}. $$
+$$ \frac{\vec{v}\_a \cdot \vec{v}\_b}{\vert \vec{v}\_a \vert \vert \vec{v}\_b \vert}. $$
 
 That is, it puts emphasis on the direction in which a given word co-occurs with other words, rather than the strength of this effect.
 
@@ -150,11 +149,11 @@ $$ \frac{P(w|dog)}{P(w|puppy)} = \frac{f(w\vert age=adult)}{f(w\vert age=cub)} =
 How does the equality of conditional probability ratios translate to the word vectors?
 If we express it as mutual information (again, _P(w)_ and logarithms) we get
 
-$$ \vec{v}_w \cdot \vec{v}_a - \vec{v}_w \cdot \vec{v}_b = \vec{v}_w \cdot \vec{v}_A - \vec{v}_w \cdot \vec{v}_B, $$
+$$ \vec{v}\_w \cdot \vec{v}\_a - \vec{v}\_w \cdot \vec{v}\_b = \vec{v}\_w \cdot \vec{v}\_A - \vec{v}\_w \cdot \vec{v}\_B, $$
 
 which is the same as
 
-$$ \vec{v}_w \cdot \left( \vec{v}_a - \vec{v}_b - \vec{v}_A + \vec{v}_B \right) = 0.$$
+$$ \vec{v}\_w \cdot \left( \vec{v}\_a - \vec{v}\_b - \vec{v}\_A + \vec{v}\_B \right) = 0.$$
 
 Again, if we want it to hold for any word _w_, this vector difference needs to be zero.
 
@@ -178,7 +177,7 @@ are not word vectors by themselves.
 However, it is interesting to project a word on this axis.
 We can see that the projection
 
-$$ \vec{v}_w \cdot \left( \vec{v}_a - \vec{v}_b \right)= \log\left[ P(w|a) \right] - \log\left[ P(w|b) \right]$$
+$$ \vec{v}\_w \cdot \left( \vec{v}\_a - \vec{v}\_b \right)= \log\left[ P(w|a) \right] - \log\left[ P(w|b) \right]$$
 
 is exactly a relative occurrence of a word within different contexts.
 

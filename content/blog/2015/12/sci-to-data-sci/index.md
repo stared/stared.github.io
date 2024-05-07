@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "What I do or: science to data science"
 slug: sci-to-data-sci
 date: 2015-12-14

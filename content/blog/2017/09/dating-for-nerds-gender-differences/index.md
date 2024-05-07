@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Dating for nerds (part 2): gender differences"
 slug: dating-for-nerds-gender-differences
 date: 2017-09-30

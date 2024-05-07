@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "How I learned to stop worrying and love the types & tests"
 slug: types-test-typescript
 date: 2020-03-02

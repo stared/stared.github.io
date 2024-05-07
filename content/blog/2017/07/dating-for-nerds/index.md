@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Dating for nerds (part 1): problem diagnosis"
 slug: dating-for-nerds
 date: 2017-07-23

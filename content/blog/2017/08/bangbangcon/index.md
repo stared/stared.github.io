@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "!!con or doing inclusivity well"
 slug: bangbangcon
 date: 2017-08-14

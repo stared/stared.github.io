@@ -28,7 +28,6 @@ interface BlogPostMetadata extends BasePost {
   description?: string;
   image?: string;
   medium_url?: string;
-  layout?: string;
 }
 
 HeaderData.default()
