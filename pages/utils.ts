@@ -57,6 +57,7 @@ export class HeaderData {
   getHead() {
     return {
       title: this.title,
+      link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
       meta: [
         {
           name: "description",
