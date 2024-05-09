@@ -9,7 +9,7 @@ I migrated to Nuxt 3 Content for a few reasons
 
 - Gridsome is no longer maintained (and uses old Vue 2)
 - I wanted to use Vue 3 + TypeScript
-- Nuxt 3 Content makes using a combination of Vue and Markdown-based posts really easy (for my use case, much GraphML-based approach of Gridsome and React-based GatsbyJS)
+- Nuxt 3 Content makes using a combination of Vue and Markdown-based posts really easy (for my use case, much GraphMQ-based approach of Gridsome and React-based GatsbyJS)
 
 ## License
 
@@ -19,7 +19,7 @@ I share all content (blog posts, images, etc.) under the Creative Commons Attrib
 
 ## Setup
 
-Look at the [Content documentation](https://content.nuxt.com/) to learn more.
+Look at the [Nuxt 3 Content documentation](https://content.nuxt.com/) to learn more.
 
 If you want to run it locally:
 
