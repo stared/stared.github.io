@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { HeaderData } from "@/pages/utils";
+import { HeaderData } from "@/scripts/utils";
 import VueSlider from 'vue-slider-component/dist-css/vue-slider-component.umd.min.js';
 import 'vue-slider-component/dist-css/vue-slider-component.css';
 import 'vue-slider-component/theme/default.css';
-import type { ExternalPost } from './postData';
-import { BlogPostLabels } from './postData';
+import type { ExternalPost } from '@/scripts/postData';
+import { BlogPostLabels } from '@/scripts/postData';
 
 
 const externalPosts: ExternalPost[] = (await import('@/content/data/external-articles.json')).default.items;
@@ -150,3 +150,4 @@ function selectTag(tag: string) {
 </style>
 
 
+../../scripts/postData../../scripts/postData~/scripts/utils

@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { HeaderData } from "@/pages/utils";
+import { HeaderData } from "@/scripts/utils";
 import publications from "@/content/data/publications.json";
 
 useHead({
@@ -70,3 +70,4 @@ li.publication {
   margin-right: 0.3rem;
 }
 </style>
+~/scripts/utils

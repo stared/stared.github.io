@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import { HeaderData } from "@/pages/utils";
+import { HeaderData } from "@/scripts/utils";
 import projects from "@/content/data/projects.json";
 
 HeaderData.default()
@@ -68,3 +68,4 @@ a.mention {
   padding-right: 0.2em;
 }
 </style>
+~/scripts/utils

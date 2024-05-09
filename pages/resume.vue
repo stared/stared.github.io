@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { HeaderData } from "@/pages/utils";
+import { HeaderData } from "@/scripts/utils";
 import experiences from "@/content/data/experiences.json";
 
 HeaderData.default()
@@ -64,3 +64,4 @@ HeaderData.default()
   font-size: 0.8rem;
 }
 </style>
+~/scripts/utils

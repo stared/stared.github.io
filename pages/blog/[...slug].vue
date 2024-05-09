@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import { HeaderData } from "@/pages/utils";
+import { HeaderData } from "@/scripts/utils";
 
 const formatDate = (date: string) => {
   return new Date(date).toLocaleDateString("en-UK", {
@@ -81,3 +81,4 @@ footer {
   margin-bottom: 2em;
 }
 </style>
+~/scripts/utils

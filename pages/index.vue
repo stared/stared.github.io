@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { HeaderData } from "@/pages/utils";
+import { HeaderData } from "@/scripts/utils";
 
 HeaderData.default().setTitle("Homepage").useHead();
 </script>
@@ -38,3 +38,4 @@ HeaderData.default().setTitle("Homepage").useHead();
   max-width: 100%;
 }
 </style>
+~/scripts/utils
