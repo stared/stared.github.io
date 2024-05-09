@@ -1,42 +1,35 @@
-# Content v2 Minimal Starter
+# Piotr Migdał - blog and website
 
-Look at the [Content documentation](https://content.nuxt.com/) to learn more.
+For previous versions of the website, see:
+
+- [stared/jekyll-blog-pre-2022](https://github.com/stared/jekyll-blog-pre-2022)
+- [stared/old-blog-gridsome-pre-2024](https://github.com/stared/old-blog-gridsome-pre-2024)
+
+I migrated to Nuxt 3 Content for a few reasons
+
+- Gridsome is no longer maintained (and uses old Vue 2)
+- I wanted to use Vue 3 + TypeScript
+- Nuxt 3 Content makes using a combination of Vue and Markdown-based posts really easy (for my use case, much GraphML-based approach of Gridsome and React-based GatsbyJS)
+
+## License
+
+I share all code on this repository under the MIT license. Feel invited to use these pieces in your projects.
+
+I share all content (blog posts, images, etc.) under the Creative Commons Attribution-ShareAlike Non-Commercial 4.0 International license. If you want to use any material on a different license, please let me know - in most cases, I would be more than happy to be permissive.
 
 ## Setup
 
-Make sure to install the dependencies:
+Look at the [Content documentation](https://content.nuxt.com/) to learn more.
+
+If you want to run it locally:
 
 ```bash
-# yarn
 yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install
+yarn dev
 ```
 
-## Development Server
-
-Start the development server on http://localhost:3000
+To create a static version, see how I do it in GitHub Actions, `.github/workflows/build-and-deploy.yml`; in general, you need to run:
 
 ```bash
-npm run dev
+yarn generate
 ```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Checkout the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
