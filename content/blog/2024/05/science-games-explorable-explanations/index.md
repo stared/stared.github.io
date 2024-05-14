@@ -10,6 +10,8 @@ image: ./fourier-color-coded.png
 migdal_score: 0
 ---
 
+> Children learn Newtonian physics by interacting with their environment32,33 rather than starting with differential calculus.
+
 The traditional way of teaching includes textbooks, lectures, and projects. This teaching method is performed top-down, with clear instructions and expectations. Students are tested via grading of projects, homework assignments, and exams. Usually fun, or the ability to explore on one's own, is not the key focus. Often students' motivation is extrinsic — to pass a course with a good grade. These activities can be gamified, provided with supplementary goals, scores, and challenges to make them more engaging.
 
 In contrast, **science-based games**[^29] approach teaching from the opposite direction: to primarily focus on creating an experience sparking intrinsic motivation,[^89] that is, students play for fun, but learn in the process, as their gaming experience requires learning concepts to proceed or provides an explorative pathway through the game that promotes learning[^90] (even if it is not strictly necessary).
@@ -28,11 +30,15 @@ Although the interactive environment of Jupyter Notebooks is a standard way of p
 
 ## Notes
 
-This is an except (sections 3.2 Science-based games and 3.3 Explorable Explanations) from ["Quantum games and interactive tools for quantum technologies outreach and education,"](https://doi.org/10.1117/1.OE.61.8.081809)[^quantumedu] an open-access article I co-authored.
+This is an except (sections 3.2 Science-based games and 3.3 Explorable Explanations) from [Quantum games and interactive tools for quantum technologies outreach and education](https://doi.org/10.1117/1.OE.61.8.081809),[^quantumedu] an open-access article I co-authored.
 
 I shared it here (on the same Creative Commons CC BY license, obviosuly) as these sections are worth on their own, regardless if we talk about quantum mechanics and quantum computing, or any other piece of science and engineering. I deeply believe that we can change the fundamental approach of teaching and learning, making it more accessible and enjoyable.
 
 ## To do
+
+Preskill30 wrote that “perhaps kids who grow up playing quantum games will acquire a visceral understanding of quantum phenomena that our generation lacks”, and studies confirm that this type of open-ended experience promotes exploration.31
+
+\[...\] We designed Virtual Lab to be a highly composable environment (such as LEGO bricks or Minecraft) yet powerful enough to simulate major wave optics and quantum information phenomena. “Leave computing to computers” served as our motto.
 
 - Mention HyperRogue[^hyperrogue]
 - Mention Virtual Lab[^virtuallab]
