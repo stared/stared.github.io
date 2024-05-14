@@ -57,19 +57,14 @@ HeaderData.default()
   font-size: 0.8em;
 }
 
-.markdown blockquote {
+blockquote {
   font-style: italic;
 }
 
-.markdown img {
+img {
   max-width: 100%;
   margin: auto;
   display: block;
-}
-
-/* displaying only .katex-mathml */
-.markdown .katex .katex-html {
-  display: none;
 }
 
 p:has(> span.katex-display) {
@@ -81,4 +76,3 @@ footer {
   margin-bottom: 2em;
 }
 </style>
-~/scripts/utils
