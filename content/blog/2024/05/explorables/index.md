@@ -37,33 +37,33 @@ I shared it here (on the same Creative Commons CC BY license, obviosuly) as thes
 - Maybe quote something from the Virtual Lab paper
 - Webify links below (and add arXiv links whenever it is there)
 
-[^29]: P. Migdał, "Science-based games," (2017) https://github.com/stared/science-based-games-list
-[^89]: J. Schell, "Art of game design," https://www.schellgames.com/art-of-game-design
-[^90]: E. Bonawitz et al., "The double-edged sword of pedagogy: Instruction limits spontaneous exploration and discovery," Cognition, 120 (3), 322 –330 (2011). https://doi.org/10.1016/j.cognition.2010.10.001 CGTNAU 0010-0277
-[^91]: T. L. Taylor, "A slower speed of light," (2022). http://gamelab.mit.edu/games/a-slower-speed-of-light/
-[^92]: A. Hall, "The Electric Shocktopus," (2015) http://testtubegames.com/shocktopus.html
-[^93]: "Kerbal space program – create and manage your own space program," (2022). https://www.kerbalspaceprogram.com/
-[^94]: O. J. Kjær, "NandGame – build a computer from scratch," https://nandgame.com/about
-[^95]: "Games salesSteamSpy – all the data about steam games," https://steamspy.com
-[^96]: N. Case, "Explorable Explanations," (2022) https://github.com/explorableexplanations/explorableexplanations.github.io
-[^97]: B. Victor, "Explorable Explanations," http://worrydream.com/ExplorableExplanations
-[^98]: A. Matuschak and M. Nielsen, "How can we develop transformative tools for thought?," (2018). https://numinous.productions/ttft/
-[^99]: M. Adereth, "Colorful equations with MathJax," (2013) https://adereth.github.io/blog/2013/11/29/colorful-equations
-[^100]: S. Riffle, "Understanding the Fourier transform," (2011) https://web.archive.org/web/20130318211259/http://www.altdevblogaday.com/2011/05/17/understanding-the-fourier-transform
-[^101]: O. Byrne, The First Six Books of the Elements of Euclid, in Which Coloured Diagrams and Symbols are Used Instead of Letters for the Greater Ease of Learners, William Pickering, London (1847).
-[^102]: P. Migdał, B. Olechno and B. Podgórski, "Level generation and style enhancement -- deep learning for game development overview," (2021).
-[^103]: P. Migdał, "Interactive machine learning list," https://p.migdal.pl/interactive-machine-learning-list/
-[^104]: D. Kunin, "Seeing theory," http://seeingtheory.io
-[^105]: S. Yee and T. Chu, "A visual introduction to machine learning," (2022) http://www.r2d3.us/visual-intro-to-machine-learning-part-1/
-[^106]: D. Smilkov and S. Carter, "Tensorflow — neural network playground," http://playground.tensorflow.org
-[^107]: C. Olah, A. Mordvintsev and L. Schubert, "Feature visualization," Distill, 2 (11), (2017). https://doi.org/10.23915/distill.00007
-[^108]: C. Olah et al., "The building blocks of interpretability," Distill, 3 (3), e10 (2018). https://doi.org/10.23915/distill.00010
-[^109]: "Distill hiatus," Distill, 6 (7), e31 (2021). https://doi.org/10.23915/distill.00031
-[^110]: B. M. Randles et al., "Using the Jupyter notebook as a tool for open science: an empirical study," in ACM/IEEE Joint Conf. Digital Libr. (JCDL), 1 –2 (2017). https://doi.org/10.1109/JCDL.2017.7991618
-[^111]: J. M. Perkel, "Why Jupyter is data scientists' computational notebook of choice," Nature, 563 (7729), 145 –146 (2018). https://doi.org/10.1038/d41586-018-07196-1
-[^112]: A. Matuschak and M. Nielsen, "Quantum country," (2019) https://quantum.country
-[^113]: C. Gidney, "Building your own quantum Fourier transform," https://algassert.com/quantum/2014/03/07/Building-your-own-Quantum-Fourier-Transform.html
-[^114]: C. Zendejas-Morales and P. Migdał, "Quantum logic gates for a single qubit, interactively," https://quantumflytrap.com/blog/2021/qubit-interactively
-[^quantumedu]: Zeki C. Seskir, Piotr Migdał, Carrie Weidner, Aditya Anupam, Nicky Case, Noah Davis, Chiara Decaroli, İlke Ercan, Caterina Foti, Paweł Gora, Klementyna Jankiewicz, Brian R. La Cour, Jorge Yago Malo, Sabrina Maniscalco, Azad Naeemi, Laurentiu Nita, Nassim Parvin, Fabio Scafirimuto, Jacob F. Sherson, Elif Surer, James R. Wootton, Lia Yeh, Olga Zabello, and Marilù Chiofalo ["Quantum games and interactive tools for quantum technologies outreach and education,"](https://doi.org/10.1117/1.OE.61.8.081809) Optical Engineering 61(8), 081809 (2022). doi:10.1117/1.OE.61.8.081809,
-[^hyperrogue]: E. Kopczynski, D. Celinska, and M. Ctrnáct ["HyperRogue: Playing with Hyperbolic Geometry"](https://archive.bridgesmathart.org/2017/bridges2017-9.html#gsc.tab=0), Proceedings of Bridges, 9–16 (2017)
-[^virtuallab]: Piotr Migdał, Klementyna Jankiewicz, Paweł Grabarz, Chiara Decaroli, Philippe Cochin, "Visualizing quantum mechanics in an interactive simulation - Virtual Lab by Quantum Flytrap:, Optical Engineering 61(8), 081808(2022), arXiv:2203.13300
+[^29]: P. Migdał, [Science-based games](https://github.com/stared/science-based-games-list), (2017)
+[^89]: J. Schell, [Art of game design](https://www.schellgames.com/art-of-game-design)
+[^90]: E. Bonawitz et al., [The double-edged sword of pedagogy: Instruction limits spontaneous exploration and discovery](https://doi.org/10.1016/j.cognition.2010.10.001), Cognition, 120 (3), 322–330 (2011)
+[^91]: T. L. Taylor, [A slower speed of light](http://gamelab.mit.edu/games/a-slower-speed-of-light/), (2022)
+[^92]: A. Hall, [The Electric Shocktopus](http://testtubegames.com/shocktopus.html), (2015)
+[^93]: [Kerbal space program – create and manage your own space program](https://www.kerbalspaceprogram.com/), (2022)
+[^94]: O. J. Kjær, [NandGame – build a computer from scratch](https://nandgame.com/about)
+[^95]: [Games sales SteamSpy – all the data about steam games](https://steamspy.com)
+[^96]: N. Case, [Explorable Explanations](https://github.com/explorableexplanations/explorableexplanations.github.io), (2022)
+[^97]: B. Victor, [Explorable Explanations](http://worrydream.com/ExplorableExplanations)
+[^98]: A. Matuschak and M. Nielsen, [How can we develop transformative tools for thought?](https://numinous.productions/ttft/), (2018)
+[^99]: M. Adereth, [Colorful equations with MathJax](https://adereth.github.io/blog/2013/11/29/colorful-equations), (2013)
+[^100]: S. Riffle, [Understanding the Fourier transform](https://web.archive.org/web/20130318211259/http://www.altdevblogaday.com/2011/05/17/understanding-the-fourier-transform), (2011)
+[^101]: O. Byrne, [The First Six Books of the Elements of Euclid, in Which Coloured Diagrams and Symbols are Used Instead of Letters for the Greater Ease of Learners](https://www.c82.net/euclid/), William Pickering, London (1847)
+[^102]: P. Migdał, B. Olechno and B. Podgórski, [Level generation and style enhancement - deep learning for game development overview](https://arxiv.org/abs/2108.04908), arXiv:2108.04908 (2021)
+[^103]: P. Migdał, [Interactive machine learning list](https://p.migdal.pl/interactive-machine-learning-list/)
+[^104]: D. Kunin, [Seeing theory](http://seeingtheory.io)
+[^105]: S. Yee and T. Chu, [A visual introduction to machine learning](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/), (2022)
+[^106]: D. Smilkov and S. Carter, [Tensorflow — neural network playground](http://playground.tensorflow.org)
+[^107]: C. Olah, A. Mordvintsev and L. Schubert, [Feature visualization](https://doi.org/10.23915/distill.00007), Distill, 2 (11), (2017)
+[^108]: C. Olah et al., [The building blocks of interpretability](https://doi.org/10.23915/distill.00010), Distill, 3 (3), e10 (2018)
+[^109]: [Distill hiatus](https://doi.org/10.23915/distill.00031), Distill, 6 (7), e31 (2021)
+[^110]: B. M. Randles et al., [Using the Jupyter notebook as a tool for open science: an empirical study](https://doi.org/10.1109/JCDL.2017.7991618), in ACM/IEEE Joint Conf. Digital Libr. (JCDL), 1 –2 (2017)
+[^111]: J. M. Perkel, [Why Jupyter is data scientists' computational notebook of choice](https://doi.org/10.1038/d41586-018-07196-1), Nature, 563 (7729), 145–146 (2018)
+[^112]: A. Matuschak and M. Nielsen, [Quantum country](https://quantum.country), (2019)
+[^113]: C. Gidney, [Building your own quantum Fourier transform](https://algassert.com/quantum/2014/03/07/Building-your-own-Quantum-Fourier-Transform.html)
+[^114]: C. Zendejas-Morales and P. Migdał, [Quantum logic gates for a single qubit, interactively](https://quantumflytrap.com/blog/2021/qubit-interactively) (2021)
+[^quantumedu]: Zeki C. Seskir, Piotr Migdał, Carrie Weidner, Aditya Anupam, Nicky Case, Noah Davis, Chiara Decaroli, İlke Ercan, Caterina Foti, Paweł Gora, Klementyna Jankiewicz, Brian R. La Cour, Jorge Yago Malo, Sabrina Maniscalco, Azad Naeemi, Laurentiu Nita, Nassim Parvin, Fabio Scafirimuto, Jacob F. Sherson, Elif Surer, James R. Wootton, Lia Yeh, Olga Zabello, and Marilù Chiofalo [Quantum games and interactive tools for quantum technologies outreach and education](https://doi.org/10.1117/1.OE.61.8.081809), Optical Engineering 61(8), 081809 (2022)
+[^hyperrogue]: E. Kopczynski, D. Celinska, and M. Ctrnáct [HyperRogue: Playing with Hyperbolic Geometry](https://archive.bridgesmathart.org/2017/bridges2017-9.html#gsc.tab=0), Proceedings of Bridges, 9–16 (2017)
+[^virtuallab]: Piotr Migdał, Klementyna Jankiewicz, Paweł Grabarz, Chiara Decaroli, Philippe Cochin, [Visualizing quantum mechanics in an interactive simulation - Virtual Lab by Quantum Flytrap](https://doi.org/10.1117/1.OE.61.8.081808), Optical Engineering 61(8), 081808 (2022)
