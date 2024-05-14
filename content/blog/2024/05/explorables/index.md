@@ -6,7 +6,7 @@ date: "2024-05-12T18:00:00.030Z"
 tags:
   - data-viz
 slug: science-games-explorable-explanations
-image: ./genesis-a.jpg
+image: ./fourier-color-coded.png
 migdal_score: 0
 ---
 
@@ -17,6 +17,8 @@ In contrast, **science-based games**[^29] approach teaching from the opposite di
 There are several existing games showing different aspects of physics—special relativity theory,[^91] electromagnetism,[^92] classical physics, and orbital mechanics.[^93] There are games that teach computing—creating circuits from the simplest blocks—NAND gates[^94] and low-level programming in assembly. Although a lot of games are standalone one-off projects, some game developers specialize in science-based games, e.g., Zachtronics (algorithmics) and Test Tube Games (physics). Some science-based games go way beyond the niche – SpaceChem and Kerbal Space Program sold over 1 million and over 2 million copies on Steam,[^95] respectively.
 
 **Explorable explanations**[^96] (or "explorables") come at educational games from the opposite direction: instead of "games, but with science communication added," they are "science communication, but with interactivity added," although we should note that interactivity is a necessary but not sufficient condition for something to be considered a game. Most explorables are educational articles, with embedded simulations instead of static media such as images and videos. The term "explorable explanation" was coined in 2011 by interaction designer Bret Victor,[^97] with an ambitious goal of creating a two-way communication between the author and the reader. With an open-ended creative environment, readers can challenge the author's assumptions by going beyond what the author ever imagined. This ambition is explained more in the 2019 essay[^98] by former Khan Academy designer Andy Matuschak and quantum physicist Michael Nielsen. These approaches are tightly related to exploring new visual languages of communication.
+
+![](./fourier-color-coded.png)
 
 **Figure** A self-descriptive formula of the discrete Fourier transform: a web-based MathJax implementation[^99] of an equation color-coding scheme designed by Stuart Riffle from 2011.[^100] Earlier approaches of color-coding go back to the Byrne's Euclid from 1847[^101] subtitled "In which Coloured Diagrams and Symbols are Used Instead of Letters for the Greater Ease of Learners."
 
