@@ -1,8 +1,8 @@
 ---
-title: Science-based Games and Explorable Explanations
+title: Science-based games and explorable explanations
 description: >-
   Science-based games and interactive explorable explanations are revolutionizing education, making complex topics like physics and machine learning accessible and fun.
-date: "2024-05-12T18:00:00.030Z"
+date: "2024-05-20T14:29:00.030Z"
 tags:
   - data-viz
 slug: science-games-explorable-explanations
@@ -36,13 +36,13 @@ We designed Virtual Lab by Quantum Flytrap[^virtuallabsite] to be a highly compo
 
 This is an except from [Quantum games and interactive tools for quantum technologies outreach and education](https://doi.org/10.1117/1.OE.61.8.081809),[^quantumedu] (sections 3.2 Science-based games and 3.3 Explorable Explanations) and [Visualizing quantum mechanics in an interactive simulation - Virtual Lab by Quantum Flytrap](https://doi.org/10.1117/1.OE.61.8.081808),[^virtuallab] open-access articles I co-authored.
 
-The motivation to develop and share such media is remarkably similar among various creators. For example the authors of [HyperRogue](https://roguetemple.com/z/hyper/)[^hyperrogue] write
+The motivation to develop and share such media is remarkably similar among various creators. For example the authors of [HyperRogue](https://roguetemple.com/z/hyper/)[^hyperrogue] write:
 
 > In typical courses one would learn that, for example, the sum of angles of a hyperbolic triangle is less than 180◦, but it is not clear how this could be applicable, or what would be the effects for people living in the hyperbolic world; even in other existing hyperbolic games and VRs the world is periodic and sterile. In HyperRogue, players are led to gain intuitions about hyperbolic geometry, and to pose questions about how things known from our world would work there.
 
 If you want to see explorables, there is no better way that [Explorable Explanations](https://explorabl.es) and [Distill Journal](https://distill.pub/). I created (though, no longer maintain) list of [Science-based games](https://github.com/stared/science-based-games-list) and an [Interactive machine learning list](https://p.migdal.pl/interactive-machine-learning-list/).
 
-I shared it here (on the same Creative Commons CC BY license, obviosuly) as these sections are worth on their own, regardless if we talk about quantum mechanics and quantum computing, or any other piece of science and engineering. I deeply believe that we can change the fundamental approach of teaching and learning, making it more accessible and enjoyable.
+I shared it here (on the same Creative Commons CC BY license, obviously) because these sections are worth reading on their own, regardless of whether we talk about quantum mechanics and quantum computing or any other piece of science and engineering. I sincerely believe we can change the fundamental teaching and learning approach, making it more accessible and enjoyable.
 
 [^29]: P. Migdał, [Science-based games](https://github.com/stared/science-based-games-list), (2017)
 [^89]: J. Schell, [Art of game design](https://www.schellgames.com/art-of-game-design)
