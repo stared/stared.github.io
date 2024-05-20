@@ -2,9 +2,13 @@
 title: Science-based games and explorable explanations
 description: >-
   Science-based games and interactive explorable explanations are revolutionizing education, making complex topics like physics and machine learning accessible and fun.
-date: "2024-05-20T14:29:00.030Z"
+date: "2024-05-20T00:00:00.030Z"
 tags:
+  - education
   - data-viz
+  - games
+  - deep learning
+  - quantum
 slug: science-games-explorable-explanations
 image: ./fourier-color-coded.png
 migdal_score: 0
