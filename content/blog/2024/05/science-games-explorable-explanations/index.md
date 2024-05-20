@@ -10,8 +10,6 @@ image: ./fourier-color-coded.png
 migdal_score: 0
 ---
 
-> Children learn Newtonian physics by interacting with their environment32,33 rather than starting with differential calculus.
-
 The traditional way of teaching includes textbooks, lectures, and projects. This teaching method is performed top-down, with clear instructions and expectations. Students are tested via grading of projects, homework assignments, and exams. Usually fun, or the ability to explore on one's own, is not the key focus. Often students' motivation is extrinsic — to pass a course with a good grade. These activities can be gamified, provided with supplementary goals, scores, and challenges to make them more engaging.
 
 In contrast, **science-based games**[^29] approach teaching from the opposite direction: to primarily focus on creating an experience sparking intrinsic motivation,[^89] that is, students play for fun, but learn in the process, as their gaming experience requires learning concepts to proceed or provides an explorative pathway through the game that promotes learning[^90] (even if it is not strictly necessary).
@@ -28,22 +26,23 @@ Deep learning shares many similar concepts with quantum technologies - both hype
 
 Although the interactive environment of Jupyter Notebooks is a standard way of providing introductions to quantum software frameworks,[^110]<sup>,</sup>[^111] there is only a handful of other quantum explorable explanations, e.g., a spaced-repetition-based introduction to quantum computing,[^112] an introduction to quantum Fourier transform,[^113] and an exploration of single-qubit gates.[^114]
 
+John Preskill wrote that “perhaps kids who grow up playing quantum games will acquire a visceral understanding of quantum phenomena that our generation lacks”,[^vl30] and studies confirm that this type of open-ended experience promotes exploration.[^vl31]
+
+It shouldn't be surprising as children learn Newtonian physics by interacting with their environment[^vl32]<sup>,</sup>[^vl33] rather than starting with differential calculus.
+
+We designed Virtual Lab by Quantum Flytrap[^virtuallabsite] to be a highly composable environment (such as LEGO bricks or Minecraft) yet powerful enough to simulate major wave optics and quantum information phenomena. “Leave computing to computers” served as our motto.
+
 ## Notes
 
-This is an except (sections 3.2 Science-based games and 3.3 Explorable Explanations) from [Quantum games and interactive tools for quantum technologies outreach and education](https://doi.org/10.1117/1.OE.61.8.081809),[^quantumedu] an open-access article I co-authored.
+This is an except from [Quantum games and interactive tools for quantum technologies outreach and education](https://doi.org/10.1117/1.OE.61.8.081809),[^quantumedu] (sections 3.2 Science-based games and 3.3 Explorable Explanations) and [Visualizing quantum mechanics in an interactive simulation - Virtual Lab by Quantum Flytrap](https://doi.org/10.1117/1.OE.61.8.081808),[^virtuallab] open-access articles I co-authored.
+
+The motivation to develop and share such media is remarkably similar among various creators. For example the authors of [HyperRogue](https://roguetemple.com/z/hyper/)[^hyperrogue] write
+
+> In typical courses one would learn that, for example, the sum of angles of a hyperbolic triangle is less than 180◦, but it is not clear how this could be applicable, or what would be the effects for people living in the hyperbolic world; even in other existing hyperbolic games and VRs the world is periodic and sterile. In HyperRogue, players are led to gain intuitions about hyperbolic geometry, and to pose questions about how things known from our world would work there.
+
+If you want to see explorables, there is no better way that [Explorable Explanations](https://explorabl.es) and [Distill Journal](https://distill.pub/). I created (though, no longer maintain) list of [Science-based games](https://github.com/stared/science-based-games-list) and an [Interactive machine learning list](https://p.migdal.pl/interactive-machine-learning-list/).
 
 I shared it here (on the same Creative Commons CC BY license, obviosuly) as these sections are worth on their own, regardless if we talk about quantum mechanics and quantum computing, or any other piece of science and engineering. I deeply believe that we can change the fundamental approach of teaching and learning, making it more accessible and enjoyable.
-
-## To do
-
-Preskill30 wrote that “perhaps kids who grow up playing quantum games will acquire a visceral understanding of quantum phenomena that our generation lacks”, and studies confirm that this type of open-ended experience promotes exploration.31
-
-\[...\] We designed Virtual Lab to be a highly composable environment (such as LEGO bricks or Minecraft) yet powerful enough to simulate major wave optics and quantum information phenomena. “Leave computing to computers” served as our motto.
-
-- Mention HyperRogue[^hyperrogue]
-- Mention Virtual Lab[^virtuallab]
-- Maybe quote something from the Virtual Lab paper
-- Webify links below (and add arXiv links whenever it is there)
 
 [^29]: P. Migdał, [Science-based games](https://github.com/stared/science-based-games-list), (2017)
 [^89]: J. Schell, [Art of game design](https://www.schellgames.com/art-of-game-design)
@@ -73,5 +72,10 @@ Preskill30 wrote that “perhaps kids who grow up playing quantum games will acq
 [^113]: C. Gidney, [Building your own quantum Fourier transform](https://algassert.com/quantum/2014/03/07/Building-your-own-Quantum-Fourier-Transform.html)
 [^114]: C. Zendejas-Morales and P. Migdał, [Quantum logic gates for a single qubit, interactively](https://quantumflytrap.com/blog/2021/qubit-interactively) (2021)
 [^quantumedu]: Zeki C. Seskir, Piotr Migdał, Carrie Weidner, Aditya Anupam, Nicky Case, Noah Davis, Chiara Decaroli, İlke Ercan, Caterina Foti, Paweł Gora, Klementyna Jankiewicz, Brian R. La Cour, Jorge Yago Malo, Sabrina Maniscalco, Azad Naeemi, Laurentiu Nita, Nassim Parvin, Fabio Scafirimuto, Jacob F. Sherson, Elif Surer, James R. Wootton, Lia Yeh, Olga Zabello, and Marilù Chiofalo [Quantum games and interactive tools for quantum technologies outreach and education](https://doi.org/10.1117/1.OE.61.8.081809), Optical Engineering 61(8), 081809 (2022)
-[^hyperrogue]: E. Kopczynski, D. Celinska, and M. Ctrnáct [HyperRogue: Playing with Hyperbolic Geometry](https://archive.bridgesmathart.org/2017/bridges2017-9.html#gsc.tab=0), Proceedings of Bridges, 9–16 (2017)
+[^vl30]: J. Preskill, [Quantum computing in the NISQ era and beyond](https://doi.org/10.22331/q-2018-08-06-79), Quantum, 2, 79 (2018)
+[^vl31]: E. Bonawitz et al., [The double-edged sword of pedagogy: Instruction limits spontaneous exploration and discovery](https://doi.org/10.1016/j.cognition.2010.10.001), Cognition, 120 (3), 322–330 (2011)
+[^vl32]: J. E. Fox, [Swinging: What young children begin to learn about physics during outdoor play](https://doi.org/10.1007/BF03173764), J. Elementary Sci. Educ., 9, 1 (1997)
+[^vl33]: S. L. Solis, K. N. Curtis and A. Hayes-Messinger, [Children's exploration of physical phenomena during object play](https://doi.org/10.1080/02568543.2016.1244583), J. Res. Childhood Educ., 31 (1), 122–140 (2017)
+[^virtuallabsite]: [Virtual Lab by Quantum Flytrap](https://lab.quantumflytrap.com)
 [^virtuallab]: Piotr Migdał, Klementyna Jankiewicz, Paweł Grabarz, Chiara Decaroli, Philippe Cochin, [Visualizing quantum mechanics in an interactive simulation - Virtual Lab by Quantum Flytrap](https://doi.org/10.1117/1.OE.61.8.081808), Optical Engineering 61(8), 081808 (2022)
+[^hyperrogue]: E. Kopczynski, D. Celinska, and M. Ctrnáct [HyperRogue: Playing with Hyperbolic Geometry](https://archive.bridgesmathart.org/2017/bridges2017-9.html#gsc.tab=0), Proceedings of Bridges, 9–16 (2017)
