@@ -1,5 +1,5 @@
 ---
-title: Science Games and Explorable Explanations
+title: Science-based Games and Explorable Explanations
 description: >-
   Science-based games and interactive explorable explanations are revolutionizing education, making complex topics like physics and machine learning accessible and fun.
 date: "2024-05-12T18:00:00.030Z"
