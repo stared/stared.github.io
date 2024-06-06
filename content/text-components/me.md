@@ -28,6 +28,5 @@ GitHub is my favorite social network, and here are [my repos](https://github.com
 See also my other accounts:
 personal [Facebook](https://www.facebook.com/piotr.migdal.9/),
 professional [LinkedIn](https://www.linkedin.com/in/piotrmigdal/),
-semi-used [Twitter](https://twitter.com/pmigdal),
-freshly-created [Mastodon](https://mathstodon.xyz/@pmigdal),
-and link-hoarding [Pinboard](https://pinboard.in/u:pmigdal/).
+sporadically-used [Instagram](https://www.instagram.com/quantumalmond/), [Twitter](https://twitter.com/pmigdal) and [Mastodon](https://mathstodon.xyz/@pmigdal),
+and my vast link hoard at [Pinboard](https://pinboard.in/u:pmigdal/).
