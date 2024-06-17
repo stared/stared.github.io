@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ContentDoc path="/text-components/resume-intro" />
+    <ContentDoc path="/text-components/resume-intro" :head="false" />
 
     <h2>Recent experience</h2>
     <ul class="experiences">
@@ -22,7 +22,7 @@
       </li>
     </ul>
 
-    <ContentDoc path="/text-components/resume-highlights" />
+    <ContentDoc path="/text-components/resume-highlights" :head="false" />
   </div>
 </template>
 

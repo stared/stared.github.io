@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ContentDoc path="/text-components/projects" />
+    <ContentDoc path="/text-components/projects" :head="false" />
     <ul class="projects">
       <li
         v-for="(project, index) in projects.items"
