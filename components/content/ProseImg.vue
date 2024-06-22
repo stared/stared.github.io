@@ -1,14 +1,19 @@
 <template>
-  <component
-    :is="imgComponent"
-    :src="refinedSrc"
-    :alt="alt"
-    :width="width"
-    :height="height"
-  />
+  <figure>
+    <component
+      :is="imgComponent"
+      :src="refinedSrc"
+      :alt="alt"
+      :width="width"
+      :height="height"
+    />
+    <figcaption>{{ alt }}</figcaption>
+  </figure>
 </template>
 
 <script setup lang="ts">
+// approach from https://github.com/nuxt/image/issues/813
+
 import { withTrailingSlash, withLeadingSlash, joinURL } from "ufo";
 import { useRuntimeConfig, computed, resolveComponent } from "#imports";
 
