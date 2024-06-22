@@ -29,7 +29,7 @@ But a void on the plinth is what world cannot bear
 For statues are all made of one ancient matter  
 That somewhere deep inside we all share
 
-![Revolution by Paweł Kuczyński ([Facebook](https://www.facebook.com/pawelkuczynskiart/) / [Instagram](https://www.instagram.com/pawelkuczynskiart/)). See also [78 More Brutally Honest Illustrations By Pawel Kuczynski Show What’s Wrong With Today’s Society](https://www.boredpanda.com/satirical-illustrations-polish-pawel-kuczynski/).](./00.jpeg)
+![Revolution by Paweł Kuczyński (`[Facebook](https://www.facebook.com/pawelkuczynskiart/) / [Instagram](https://www.instagram.com/pawelkuczynskiart/)). See also [78 More Brutally Honest Illustrations By Pawel Kuczynski Show What’s Wrong With Today’s Society](https://www.boredpanda.com/satirical-illustrations-polish-pawel-kuczynski/).`](./00.jpeg)
 
 - [Original lyrics](https://www.kaczmarski.art.pl/tworczosc/wiersze/posagi/)
 - [Foreword + song by Jacek Kaczmarski](https://www.youtube.com/watch?v=etJDP6GBt_Q)

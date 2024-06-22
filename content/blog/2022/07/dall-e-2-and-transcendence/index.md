@@ -38,7 +38,7 @@ There is a lot of room to start a new AI cult. Fortunately, DALL·E 2 started gi
 
 In AI baseline keeps constantly changing. In most fields, progress is slower than advertised. In deep learning, things move rapidly from “the Holy Grail” to “you can run in a Jupyter Notebook tutorial”-level. So, here goes my personal benchmark for symbolism, a Polish poster for a play Stalker (from 2012, NOT AI-generated)
 
-![[“Stalker”, Polish Theater Poster by Lex Drewinski](https://polishposter.com/4935-stalker-polish-theater-poster.html)](./03.jpeg){ class=width-max-half }
+![`[“Stalker”, Polish Theater Poster by Lex Drewinski](https://polishposter.com/4935-stalker-polish-theater-poster.html)`](./03.jpeg){ class=width-max-half }
 
 While neither the book “Roadside Picnic” by Strugatsky brother nor the cinematic poetry [“Stalker” by Tarkovsky](https://www.youtube.com/watch?v=Q3hBLv-HLEc) are about God or radiation, in my opinion, a combination of these symbols works perfectly. I wouldn’t create it by myself, yet after seeing that I would guess the movie.
 

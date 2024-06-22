@@ -1,5 +1,5 @@
 <template>
-  <figure>
+  <figure v-if="caption">
     <component
       :is="imgComponent"
       :src="refinedSrc"
@@ -7,8 +7,16 @@
       :width="width"
       :height="height"
     />
-    <figcaption>{{ alt }}</figcaption>
+    <figcaption v-html="caption" />
   </figure>
+  <component
+    v-else
+    :is="imgComponent"
+    :src="refinedSrc"
+    :alt="alt"
+    :width="width"
+    :height="height"
+  />
 </template>
 
 <script setup lang="ts">
@@ -50,5 +58,9 @@ const refinedSrc = computed(() => {
     }
   }
   return props.src;
+});
+
+const caption = computed(() => {
+  return props.alt.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
 });
 </script>
