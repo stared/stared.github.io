@@ -55,7 +55,7 @@ What are you afraid more of — loneliness or being in chains? Do you under-
 - FLIGHT: needing space, avoiding difficult subjects, ghosting (avoidant-dismissive attachment style)
 - FREEZE: learned helplessness, hopelessness, or depression
 
-![From [Attachment Theory — How Your Childhood Affects Your Love Style](https://www.youtube.com/watch?v=QP-nPJbTgTs&ab_channel=CharismaonCommand) by Charisma on Command](./02.jpg)
+![From `[Attachment Theory — How Your Childhood Affects Your Love Style](https://www.youtube.com/watch?v=QP-nPJbTgTs&ab_channel=CharismaonCommand)` by Charisma on Command](./02.jpg)
 
 As we all know, there is the Fountain of (Relationship) Life, secure attachment style. Feeling secure enough that we are fine with the ups and downs of relationships — reacting, but not overreacting. It is not easy, as a combination of our wiring, upbringing, and the current situation is likely to head us in one (or more) unhealthy directions. Sure, we have our inclinations — but the secure attachment style is a direction for growth.
 
@@ -98,7 +98,7 @@ It took me a lot of time that my intellectualism and objectivity were a flight r
 
 Processing hard emotions is often about accepting them, integrating them. It might happen gradually, and you fail to notice it. Other times it is a moment of insight, impossible to miss. This intense, somewhat strange, calming feeling of reconnection — of once-a-horror, now something seen in detail, with full awareness, but not causing you an emotional cascade. It feels as if you were again one, reassembled from splinters.
 
-![Now I read one of my favorite childhood games more metaphorically - [watch this scene on YouTube](https://www.youtube.com/watch?v=b36eDbvRGE0).](./prince_of_persia_mirror_shadow.jpg)
+![Now I read one of my favorite childhood games more metaphorically - `[watch this scene on YouTube](https://www.youtube.com/watch?v=b36eDbvRGE0)`.](./prince_of_persia_mirror_shadow.jpg)
 
 It does not mean that you suddenly start enjoying your pain (as with the hammer and the finger), or turning suffering into some mystical masochism. It’s about accepting that you are who you are. One example of such integration is the [5 Stages of Grief](https://en.wikipedia.org/wiki/Five_stages_of_grief) model. While it might be not a universal one, it turns out that these stages map beautifully into fear responses:
 
@@ -131,7 +131,7 @@ Being aware of one’s reactions is the first step. Whenever you feel distressed
 
 Reintegrating parts of yourself takes time. Self-compassion is crucial, as well as kindness, warmth, and acceptance towards oneself. The environment in which we feel secure makes a day-and-night difference. Think of your broken parts as of a wounded kitten. They need time and care to recover. Pushing it to recover right now, or to walk despite wounds, would be cruel. Don’t do to yourself what you wouldn’t do to a cute kitten.
 
-![“Don’t be afraid Mithrandir, you are not alone” — [one of the most beautiful scenes from the Hobbit (movie)](https://www.youtube.com/watch?v=MU5_-lLjhQw).](./04.jpg)
+![`“Don’t be afraid Mithrandir, you are not alone” — `[one of the most beautiful scenes from the Hobbit (movie)](https://www.youtube.com/watch?v=MU5_-lLjhQw)`.`](./04.jpg)
 
 I would like to thank Joanna Jasińska, Marcin Kotowski, Kasia Kańska, and Sarah Martin for valuable feedback on the draft. While it benefited from many inspirations, it was prompted by recent discussions with Agata Klinger, Meggy Peplanova, Krzysztof “Stefan” Stefanek, Anna Kubasiak, Agata Strojnowska, Ernesta Malina, and Pola Gościńska.
 

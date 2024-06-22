@@ -29,17 +29,17 @@ Data comes from two sources:
 
 I got inspired by a map by [Jakub Marian](https://jakubmarian.com):
 
-![[Number of metal bands per capita in Europe by Jakub Marian](https://jakubmarian.com/number-of-metal-bands-per-capita-in-europe/)](./metal-bands-map-europe-jakubmarian.jpg)
+![`[Number of metal bands per capita in Europe by Jakub Marian](https://jakubmarian.com/number-of-metal-bands-per-capita-in-europe/)`](./metal-bands-map-europe-jakubmarian.jpg)
 
 and this meme:
 
-![[Scandinavian music vs Scandinavian society](https://knowyourmeme.com/photos/1749443), compared to Polish music & society](./scandinavian-music-society-meme.jpg)
+![`[Scandinavian music vs Scandinavian society](https://knowyourmeme.com/photos/1749443)`, compared to Polish music & society](./scandinavian-music-society-meme.jpg)
 
 If you want to explore the density of metal bands, see an [Interactive Map of Heavy Metal Bands By Country Per 100,000 People](https://www.gislounge.com/map-of-heavy-metal-bands-by-country-per-capita/).
 
 _"Chocolate brings Nobel Prizes"_ is a reference to [There's A Shocking Connection Between Eating More Chocolate And Winning The Nobel Prize](https://www.businessinsider.com/chocolate-consumption-vs-nobel-prizes-2014-4?IR=T). Ironically, this research article takes this correlation non-ironically. While not entirely implausible (chocolate contains a lot of healthy ingredients that improve cognitive functions), most likely this relationship diminishes a lot after controlling for GDP per capita. Sure, the Swiss have lovely chocolate and they eat a lot of it. But also live in one of the richest countries.
 
-![A figure from [F.H. Messerli, *"Chocolate Consumption, Cognitive Function, and Nobel Laureates"*, N Engl J Med (2012)](https://www.nejm.org/doi/full/10.1056/nejmon1211064)](./chocolate-consumption-nobel-laureates.png)
+![A figure from `[F.H. Messerli, *"Chocolate Consumption, Cognitive Function, and Nobel Laureates"*, N Engl J Med (2012)](https://www.nejm.org/doi/full/10.1056/nejmon1211064)`](./chocolate-consumption-nobel-laureates.png)
 
 ## Disclaimer
 
@@ -53,7 +53,7 @@ I guess that it is about conditions that are favorable for creative activities. 
 
 Also, **all** surveys measuring happiness have their shortcomings. The answer might depend on the meanings of words in a given language or culture. Especially as Finland, a country with the highest density of metal bands [is the happiest country in the world](https://www.theguardian.com/world/2022/mar/19/finland-named-worlds-happiest-country-for-fifth-year-running) but also [has relatively high suicide rates](https://jakubmarian.com/suicide-rates-by-country-in-europe/). If anything, results **may** make more sense within a given country:
 
-![[Money can buy happiness - The Economist](https://www.economist.com/graphic-detail/2013/05/02/money-can-buy-happiness)](./money-can-buy-happiness-the-economist-2013.png)
+![`[Money can buy happiness - The Economist](https://www.economist.com/graphic-detail/2013/05/02/money-can-buy-happiness)`](./money-can-buy-happiness-the-economist-2013.png)
 
 ## Source code
 

@@ -184,7 +184,7 @@ But, if you want to gamify adding tests, there is a way to go!
 
 A typical issue with academic code is that it runs on a single computer, during a full moon. So how about testing it externally, with every single commit?
 
-![[https://travis-ci.com/Quantum-Game/quantum-tensors](https://travis-ci.com/Quantum-Game/quantum-tensors)](./travis_ci_checks_pull_request.png)
+![`[https://travis-ci.com/Quantum-Game/quantum-tensors](https://travis-ci.com/Quantum-Game/quantum-tensors)`](./travis_ci_checks_pull_request.png)
 
 Continuous integration makes it easy to check against cases when the code:
 
@@ -218,7 +218,7 @@ Conversely, if the code works passes, but does not work locally, there is a fair
 
 And the gamification part! Writing tests for all functions is boring… unless I get some score for that, as visible feedback. With [Codecov](https://codecov.io/gh/Quantum-Game/quantum-tensors/) it is easy to make jest & Travis CI generate one more thing:
 
-![[https://codecov.io/gh/Quantum-Game/quantum-tensors/](https://codecov.io/gh/Quantum-Game/quantum-tensors/)](./codecov.png)
+![`[https://codecov.io/gh/Quantum-Game/quantum-tensors/](https://codecov.io/gh/Quantum-Game/quantum-tensors/)`](./codecov.png)
 
 ### Further reading:
 

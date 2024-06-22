@@ -110,7 +110,7 @@ I started dancing. To some extent, dancing was much harder mentally than BDSM wo
 
 However, the Balfolk community of [Chata Numinosum in Warsaw](https://www.facebook.com/ChataNuminosum/) turned out to be particularly warm and inviting. There are always a few people dancing for the first time, joining a group from the spectrum of beginners to seasoned dancers. Balfolk is a modern version of dances from Brittany, along with other regions of France and Europe in general. These are mostly danced in circles and chains, the setting is casual (usually t-shirts) and the focus is on moving together rather than a performance.
 
-![Lovembal in Poznań — credits go to [Marianna Łakomy](https://www.facebook.com/mikromomenty/).](./05.jpeg)
+![Lovembal in Poznań — credits go to `[Marianna Łakomy](https://www.facebook.com/mikromomenty/)`.](./05.jpeg)
 
 A much higher bar was for blues dance. It is very soft, cuddly & improvised, focused on non-verbal communication, and relaxed body. Not my main skills, so that’s what makes it an interesting challenge & exploration. However, during the first classes, it turned out that all participants (some visibly nerdy) worked in IT. It seems that I am not the only one going that route.
 
