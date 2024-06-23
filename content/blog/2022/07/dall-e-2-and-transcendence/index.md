@@ -19,10 +19,12 @@ There is a common misconception that machines are good with dry facts and logic,
 
 Hopefully, symbolism and spirituality are our last human frontiers, right?
 
-![](./00.jpg){ class=width-max-half }
-![](./01.jpg){ class=width-max-half }
-
-> [“The few human beings chosen by AI, religious art”](https://labs.openai.com/s/LHeLlBqPpJqFc2RsdHotQS2P) (and [that](https://labs.openai.com/s/QjLyuMb5bxrna1mWiorwLxhb))
+::gallery{ width=2 }
+![](./00.jpg)
+![](./01.jpg)
+#caption
+[“The few human beings chosen by AI, religious art”](https://labs.openai.com/s/LHeLlBqPpJqFc2RsdHotQS2P) (and [that](https://labs.openai.com/s/QjLyuMb5bxrna1mWiorwLxhb))
+::
 
 This prompt was inspired by [a tweet by hardmaru](https://twitter.com/hardmaru/status/1531974184578207746) (1 June 2022):
 
