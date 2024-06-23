@@ -58,11 +58,12 @@ ADHD to nie choroba, to pewien rodzaj neuroróżnorodności. Można skontrastowa
 
 ADHD ma swoje plusy i minusy, nie jest czymś gorszym (ani lepszym). Bardzo zależy od i sytuacji, w której się ktoś znajduje, i od natężenia ADHD. Często głównym problemem jest to (jak przy każdej neuroróżnorodności), że społeczeństwo jest skonstruowane pod inne ramy, i wszystko wystające chce wbić niczym gwoździa w deskę, by było równo. Stąd młynki — typu przestarzały system szkolnictwa — rzadko są dobre dla osób z ADHD. Opierają się na twardym systemie wywodzącym się z pruskiej szkoły wojskowej — dyscyplina, podział na kohorty wiekowe, bezwzględna hierarchia, z góry ustalone bloki czasowe i plany. Życie dorosłe jest inne, o ile ma nowe wyzwania (np. płacenie rachunków i składanie zeznań podatkowych na czas), to jest też pole do szukania branż i stanowisk (a także ogólnego stylu życia) bardziej pasujących do naszej osobowości.
 
-![](./05.jpg){ class=width-max-half }
-
-![](./06.jpg){ class=width-max-half }
-
-- [19 Illustrations That Sum Up Being In A Relationship When You Have ADHD](https://www.buzzfeed.com/carolinekee/netflix-and-50-different-activities-at-once) by Caroline Kee
+::gallery{ width=2 }
+![](./05.jpg)
+![](./06.jpg)
+#caption
+[19 Illustrations That Sum Up Being In A Relationship When You Have ADHD](https://www.buzzfeed.com/carolinekee/netflix-and-50-different-activities-at-once) by Caroline Kee
+::
 
 I jeszcze — kwestia “moralnych wad”. Zmarnowanie godziny na bezużyteczny wykład czy bezsensowne spotkanie firmowe jest uważane za OK (a to często dziesiątki lub setki osobogodzin!). Za to spóźnienie się na jakieś spotkanie nawet 5–15 min jest brane za “brak szacunku”, złą wolę, czy inną moralną winę. To nie fair. Coś jakby oskarżać neurotypowych, że brak 10 pomysłów na minutę to “nawet nie próbują używać mózgu” i obwiniać ich każdego dnia. To byłoby równie nie fair. Wg mnie szanowanie innych polega m.in. na zrozumieniu i braniu pod uwagę, że każdy ma inne możliwości.
 
