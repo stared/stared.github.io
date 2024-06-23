@@ -66,3 +66,9 @@ const caption = computed(() => {
     .replace(/(?<!['"(])(https?:\/\/[^\s)]+)(?!\))/g, '<a href="$1">$1</a>');
 });
 </script>
+
+<style scoped>
+figure {
+  aspect-ratio: auto !important;
+}
+</style>

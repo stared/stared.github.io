@@ -327,7 +327,7 @@ Personally, I am far from any kind of spiritual male/female essentialism. When i
 
 So, what set me on the path of generating such images? I got curious about how DALL·E 2 melds ideas and asked to generate “A spirit in a waterfall of hearts”, specifying that it should be “digital art”. I got something I really liked:
 
-![[“A spirit in a waterfall of hearts, digital art”](https://labs.openai.com/s/7XOFHB6MRPonvS4nZgx0ldnx)](./69.jpg)
+![[“A spirit in a waterfall of hearts, digital art”](https://labs.openai.com/s/7XOFHB6MRPonvS4nZgx0ldnx)](./69.jpg){ class=width-max-half }
 
 Moreover, all other creations were both on point and interesting. I was both impressed and mesmerized.
 
