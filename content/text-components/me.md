@@ -24,7 +24,8 @@ I massage to release emotional tensions, see more at [Kwantowy Dotyk](https://ww
 
 **Socially:**
 I love emails, and it is the preferred way to approach me, `pmigdal@gmail.com`.
-GitHub is my favorite social network, and here are [my repos](https://github.com/stared/).
+GitHub is my favorite social network, and here are [my repos](https://github.com/stared/), including the source code of [this website](https://github.com/stared/stared.github.io).
+
 See also my other accounts:
 personal [Facebook](https://www.facebook.com/piotr.migdal.9/),
 professional [LinkedIn](https://www.linkedin.com/in/piotrmigdal/),
