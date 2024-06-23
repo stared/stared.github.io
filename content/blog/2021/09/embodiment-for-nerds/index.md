@@ -42,9 +42,10 @@ I had been a stereotypical “cave nerd” — preferring to spend time indo
 
 It does not mean that I avoided all physical activities. I did a lot of walking and a bit of swimming, running, lake sailing, and rock climbing. But above all — I enjoyed mountain hiking. However, the experience was centered around fighting with oneself — resisting temporary discomfort to reach a peak. I looked down at idle activities such as sunbathing — as they neither provided a clear goal, nor a challenge, nor a dopamine kick.
 
-![](./02.jpeg){ class=width-max-half }
-
-![](./03.jpeg){ class=width-max-half }
+::gallery{ width=2 }
+![](./02.jpeg)
+![](./03.jpeg)
+::
 
 #### The fountain
 

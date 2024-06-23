@@ -61,6 +61,14 @@ const refinedSrc = computed(() => {
 });
 
 const caption = computed(() => {
-  return props.alt.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+  return props.alt
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+    .replace(/(?<!['"(])(https?:\/\/[^\s)]+)(?!\))/g, '<a href="$1">$1</a>');
 });
 </script>
+
+<style scoped>
+figure {
+  aspect-ratio: auto !important;
+}
+</style>

@@ -67,6 +67,14 @@ img {
   display: block;
 }
 
+img.width-max-half {
+  max-width: 380px;
+}
+
+figure.width-max-half img {
+  max-width: 380px;
+}
+
 p:has(> span.katex-display) {
   text-align: center;
 }

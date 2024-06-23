@@ -36,9 +36,10 @@ To be clear, while I do like the challenge, I care even more about immersion. [I
 
 Since at its core, most of the mechanics are the same, we can literally compare equivalent features. The most striking is the difference between the so-called HUDs (Heads Up Display — indicators of health, armor, ammunition, etc):
 
-![](./00.jpeg){ class=width-max-half }
-
-![](./01.jpeg){ class=width-max-half }
+::gallery{ width=2 }
+![](./00.jpeg)
+![](./01.jpeg)
+::
 
 From now on, Doom 2016 is on the left, while Doom Eternal is on the right. But I am sure you won’t mistake any.
 
@@ -46,37 +47,42 @@ From now on, Doom 2016 is on the left, while Doom Eternal is on the right. But I
 
 The intro screens are an underappreciated part — usually devoted to seizure warnings or publisher’s commercials. Yet, sometimes they manage to set the mood.
 
-![](./02.jpeg){ class=width-max-half }
-
-![](./03.jpeg){ class=width-max-half }
+::gallery{ width=2 }
+![](./02.jpeg)
+![](./03.jpeg)
+::
 
 And then the main menu. In my opinion, Doom 2016 can make adverts more stylish than Doom Eternal anything else.
 
-![](./04.jpeg){ class=width-max-half }
-
-![](./05.jpeg){ class=width-max-half }
+::gallery{ width=2 }
+![](./04.jpeg)
+![](./05.jpeg)
+::
 
 #### Level selection & loading
 
 While the difference is not huge, you can see the style — toned vs arcade-like.
 
-![](./06.jpeg){ class=width-max-half }
-
-![](./07.jpeg){ class=width-max-half }
+::gallery{ width=2 }
+![](./06.jpeg)
+![](./07.jpeg)
+::
 
 But once we load a level, the difference is profound: immersing us into the lore, or teaching keyboard shortcuts: mood vs mechanics.
 
-![](./08.jpeg){ class=width-max-half }
-
-![](./09.jpeg){ class=width-max-half }
+::gallery{ width=2 }
+![](./08.jpeg)
+![](./09.jpeg)
+::
 
 #### Map & challenges
 
 Look at the color and items. Which one is more stylish?
 
-![](./10.jpeg){ class=width-max-half }
-
-![](./11.jpeg){ class=width-max-half }
+::gallery{ width=2 }
+![](./10.jpeg)
+![](./11.jpeg)
+::
 
 In Doom 2016 we have challenges on the same screen. Let’s see how do they look in Doom Eternal:
 
@@ -86,17 +92,14 @@ In Doom 2016 we have challenges on the same screen. Let’s see how do they look
 
 Here are the other screens, more for the sake of completeness than anything else. Since many screens have their direct counterparts, this job is easier than ever.
 
-![](./13.jpeg){ class=width-max-half }
-
-![](./14.jpeg){ class=width-max-half }
-
-![](./15.jpeg){ class=width-max-half }
-
-![](./16.jpeg){ class=width-max-half }
-
-![](./17.jpeg){ class=width-max-half }
-
-![](./18.jpeg){ class=width-max-half }
+::gallery{ width=2 }
+![](./13.jpeg)
+![](./14.jpeg)
+![](./15.jpeg)
+![](./16.jpeg)
+![](./17.jpeg)
+![](./18.jpeg)
+::
 
 Though I must admit: I do like animations showing items in use (I don’t like non-game graphics, though). I know this approach from StarCtaft 2 (see [Zergling upgrade options](https://youtu.be/5mfxhctDD7c?t=404)).
 
@@ -104,37 +107,39 @@ Though I must admit: I do like animations showing items in use (I don’t like n
 
 UI is one thing, but even graphics went cartoony. What I do like though, is that enemies do have weak spots. It was explored to some minimal extent in Doom 2016, but in Doom Eternal, it makes fights much more interesting.
 
-![](./19.jpeg){ class=width-max-half }
-
-![](./20.jpeg){ class=width-max-half }
+::gallery{ width=2 }
+![](./19.jpeg)
+![](./20.jpeg)
+::
 
 #### Pickups
 
 In Doom 2016 you acquire weapons by prying it from cold bodies of fallen defenders. Or at least, when they rest in cases, from which you pick it with due solemnity.
 
-![](./21.jpeg){ class=width-max-half }
-
-![](./22.jpeg){ class=width-max-half }
+::gallery{ width=2 }
+![](./21.jpeg)
+![](./22.jpeg)
+::
 
 I DID think that in Doom 2016 life, armor and ammo dropped by enemies was… well, not realistic (do enemies have some ammunition sacks in their bellies?), but after getting used to the convention — immersive nonetheless.
 
 Now, by comparison, I consider the faded yellow and blue to be a masterpiece of style, compared to, as previously advertised, _demon piñata_.
 
-![](./23.jpeg){ class=width-max-half }
-
-![](./24.jpeg){ class=width-max-half }
+::gallery{ width=2 }
+![](./23.jpeg)
+![](./24.jpeg)
+::
 
 #### Secrets and collectible dolls
 
 Doom 2016 did have easter eggs and cute moments. You can find action figures of Doom characters. At first, there were in-game graphics, and even the character’s interactions added nostalgic touch. In Doom Eternal, well, it is closer to the Mario Bros style.
 
-![](./25.jpg){ class=width-max-half }
-
-![](./26.jpeg){ class=width-max-half }
-
-![](./27.jpg){ class=width-max-half }
-
-![](./28.jpeg){ class=width-max-half }
+::gallery{ width=2 }
+![](./25.jpg)
+![](./26.jpeg)
+![](./27.jpg)
+![](./28.jpeg)
+::
 
 ### Conclusion
 

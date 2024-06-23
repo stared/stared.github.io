@@ -32,11 +32,12 @@ From a distance, procrastination looks like a time management problem. There is 
 - FLIGHT: procrastination (“let’s keep it at a temporal distance!”)
 - FREEZE: staring at the “chapter 1” of an unwritten report, piece of code, or email
 
-![](./00.jpg){ class=width-max-half }
-
-![](./01.jpg){ class=width-max-half }
-
-> Flight and freeze at their best. From [PhD Comics](http://phdcomics.com/comics/archive.php?comicid=1350) and BoJack Horseman.
+::gallery{ width=2 }
+![](./00.jpg)
+![](./01.jpg)
+#caption
+Flight and freeze at their best. From [PhD Comics](http://phdcomics.com/comics/archive.php?comicid=1350) and BoJack Horseman.
+::
 
 If procrastination is a fear response, guilt-tripping is not helpful. Self-flagellation intensifies the problem. Fighting with procrastination, if works, will bring you to the fight or freeze zone (as the underlying fear is still there). Self-compassion may help, as it reduces the root cause.
 
