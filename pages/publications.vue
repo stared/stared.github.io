@@ -70,4 +70,3 @@ li.publication {
   margin-right: 0.3rem;
 }
 </style>
-~/scripts/utils

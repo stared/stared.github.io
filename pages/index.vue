@@ -38,4 +38,3 @@ HeaderData.default().setTitle("Homepage").useHead();
   max-width: 100%;
 }
 </style>
-~/scripts/utils

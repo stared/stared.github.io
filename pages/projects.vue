@@ -68,4 +68,3 @@ a.mention {
   padding-right: 0.2em;
 }
 </style>
-~/scripts/utils
