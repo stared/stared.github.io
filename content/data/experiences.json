@@ -1,6 +1,20 @@
 {
   "items": [
     {
+      "period": "2023-now",
+      "position": "AI consultant",
+      "company": "self-employed",
+      "href": "https://p.migdal.pl",
+      "description": "Bridging the gap between AI and user experience. Recent projects include AI in medical diagnosis, creating wellness assistants, designing data flow for game asset generation, and serving as tech lead for a conversational AI startup.",
+      "stack": "Python, PyTorch, TypeScript, OpenAI",
+      "mentions": [
+        {
+          "text": "Can AI diagnose mental conditions within a single conversation?",
+          "href": "https://brainhackwarsaw.fuw.edu.pl/"
+        }
+      ]
+    },
+    {
       "period": "2019-2022",
       "position": "co-founder & CTO",
       "company": "Quantum Flytrap",
