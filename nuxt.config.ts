@@ -79,4 +79,10 @@ export default defineNuxtConfig({
       process.exit(0);
     },
   },
+  app: {
+    baseURL: "/", // Ensure this matches your deployment URL
+  },
+  vite: {
+    assetsInclude: ["**/*.jpg", "**/*.png"],
+  },
 });
