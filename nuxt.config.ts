@@ -80,9 +80,7 @@ export default defineNuxtConfig({
     },
   },
   app: {
-    baseURL: "/", // Ensure this matches your deployment URL
-  },
-  vite: {
-    assetsInclude: ["**/*.jpg", "**/*.png"],
+    baseURL: "/",
+    cdnURL: "https://p.migdal.pl",
   },
 });
