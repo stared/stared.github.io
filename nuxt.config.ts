@@ -79,4 +79,8 @@ export default defineNuxtConfig({
       process.exit(0);
     },
   },
+  app: {
+    baseURL: "/",
+    cdnURL: "https://p.migdal.pl",
+  },
 });
