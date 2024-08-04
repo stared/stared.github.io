@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 import { HeaderData } from "@/scripts/utils";
 // @ts-ignore
 import VueSlider from 'vue-slider-component/dist-css/vue-slider-component.umd.min.js';
@@ -7,7 +7,7 @@ import 'vue-slider-component/dist-css/vue-slider-component.css';
 import 'vue-slider-component/theme/default.css';
 import type { ExternalPost } from '@/scripts/postData';
 import { BlogPostLabels } from '@/scripts/postData';
-
+import { useRoute, useRouter } from 'vue-router';
 
 const externalPosts: ExternalPost[] = (await import('@/content/data/external-articles.json')).default.items;
 
@@ -34,9 +34,34 @@ const filteredPosts = computed(() => blogPostLabels.filterByTag(tagSelected.valu
 
 const allTagsCounted = blogPostLabels.allTagsCounted();
 
+const route = useRoute();
+onMounted(() => {
+  const tagParam = route.query.tag as string;
+  if (tagParam) {
+    tagSelected.value = tagParam;
+  }
+});
+
+watch(
+  () => route.query.tag,
+  (newTag) => {
+    if (newTag) {
+      tagSelected.value = newTag as string;
+    } else {
+      tagSelected.value = 'all';
+    }
+  }
+);
+
+const router = useRouter();
 
 function selectTag(tag: string) {
   tagSelected.value = tag;
+  if ( tag === 'all' ) {
+    router.push({ query: { tag: undefined } });
+  } else {
+    router.push({ query: { tag: tag } });
+  }
 }
 </script>
 
