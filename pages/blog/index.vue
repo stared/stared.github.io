@@ -68,7 +68,7 @@ function selectTag(tag: string) {
 <template>
   <div>
     <ContentDoc path="/text-components/blog" :head="false" />
-
+    
     <p>
       <div class="slider-flexbox">
         <div class="slider">

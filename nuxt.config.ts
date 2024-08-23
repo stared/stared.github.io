@@ -36,6 +36,7 @@ export default defineNuxtConfig({
         "/2017/07/23/dating-for-nerds.html",
         "/2018/09/15/simple-diagrams-deep-learning.html",
         "/2017/08/14/bangbangcon.html",
+        "/feed.xml",
       ],
     },
   },
