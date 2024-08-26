@@ -1,6 +1,7 @@
 import { Feed } from "feed";
 import { serverQueryContent } from "#content/server";
 import { BlogPostLabel } from "~/scripts/postData";
+import type { BlogPostMetadata } from "~/scripts/postData";
 
 export default defineEventHandler(async (event) => {
   const feed = new Feed({
@@ -26,7 +27,9 @@ export default defineEventHandler(async (event) => {
     .default.items;
 
   const allPosts = [
-    ...posts.map((post) => BlogPostLabel.fromQueryContent(post)),
+    ...posts.map((post) =>
+      BlogPostLabel.fromQueryContent(post as unknown as BlogPostMetadata)
+    ),
     ...externalPosts.map((post) => BlogPostLabel.fromExternalPost(post)),
   ];
 
@@ -37,8 +40,12 @@ export default defineEventHandler(async (event) => {
   for (const post of allPosts) {
     feed.addItem({
       title: post.title,
-      id: post.isExternal ? post.href : `https://p.migdal.pl${post._path}`,
-      link: post.isExternal ? post.href : `https://p.migdal.pl${post._path}`,
+      id: post.postSource.isExternal
+        ? post.postSource.href
+        : `https://p.migdal.pl${post.postSource._path}`,
+      link: post.postSource.isExternal
+        ? post.postSource.href
+        : `https://p.migdal.pl${post.postSource._path}`,
       description: post.description || "",
       content: post.description || "",
       author: [
@@ -49,7 +56,8 @@ export default defineEventHandler(async (event) => {
         },
       ],
       date: new Date(post.date),
-      image: post.image,
+      image:
+        post.image && post.image.startsWith("http") ? post.image : undefined,
     });
   }
 

@@ -25,6 +25,19 @@ export interface BlogPostMetadata extends BasePost {
   medium_url?: string;
 }
 
+type ExternalPostSource = {
+  isExternal: true;
+  href: string;
+  source: string;
+};
+
+type InternalPostSource = {
+  isExternal: false;
+  _path: string;
+};
+
+type PostSource = ExternalPostSource | InternalPostSource;
+
 export class BlogPostLabel {
   title: string;
   date: string;
@@ -32,12 +45,11 @@ export class BlogPostLabel {
   mentions: Mention[];
   views_k?: number;
   migdal_score?: number;
-  isExternal: boolean;
-  href?: string; // if external
-  source?: string; // if external
-  _path?: string; // if internal
+  description: string;
+  image: string;
   hn: boolean;
   displayDate: string;
+  postSource: PostSource;
 
   constructor(post: any, isExternal: boolean = false) {
     this.title = post.title;
@@ -46,10 +58,8 @@ export class BlogPostLabel {
     this.mentions = post.mentions || [];
     this.views_k = post.views_k;
     this.migdal_score = post.migdal_score;
-    this.isExternal = isExternal;
-    this.href = post.href;
-    this.source = post.source;
-    this._path = post._path;
+    this.description = post.description || "";
+    this.image = post.image || "";
     this.hn = this.mentions.some((mention: Mention) =>
       mention.href.includes("news.ycombinator")
     );
@@ -57,6 +67,19 @@ export class BlogPostLabel {
       year: "numeric",
       month: "short",
     });
+
+    if (isExternal) {
+      this.postSource = {
+        isExternal: true,
+        href: post.href,
+        source: post.source,
+      };
+    } else {
+      this.postSource = {
+        isExternal: false,
+        _path: post._path,
+      };
+    }
   }
 
   static fromQueryContent(post: BlogPostMetadata): BlogPostLabel {

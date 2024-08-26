@@ -97,17 +97,17 @@ function selectTag(tag: string) {
 
     <div class="post-list">
       <div v-for="(post, index) in filteredPosts" :key="index" class="post">
-        <span v-if="!post.isExternal" class="title">
-          <NuxtLink :to="post._path">{{ post.title }}</NuxtLink>
+        <span v-if="!post.postSource.isExternal" class="title">
+          <NuxtLink :to="post.postSource._path">{{ post.title }}</NuxtLink>
         </span>
         <span v-else class="title">
-          <a :href="post.href">{{ post.title }}</a>
+          <a :href="post.postSource.href">{{ post.title }}</a>
         </span>
         <span v-for="tagName in post.tags" :key="tagName" @click="selectTag(tagName)" class="tag"
           :class="{ selected: tagName === tagSelected }">[{{ tagName }}]</span>
         <span v-if="post.hn" class="hn">[HN]</span>
         <span class="date">{{ post.displayDate }}</span>
-        <span v-if="post.isExternal" class="source">@ {{ post.source }}</span>
+        <span v-if="post.postSource.isExternal" class="source">@ {{ post.postSource.source }}</span>
       </div>
     </div>
   </div>
