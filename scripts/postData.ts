@@ -44,11 +44,9 @@ export class BlogPostLabel {
   tags: string[];
   mentions: Mention[];
   views_k?: number;
-  migdal_score?: number;
+  migdal_score: number;
   description: string;
   image: string;
-  hn: boolean;
-  displayDate: string;
   postSource: PostSource;
 
   constructor(post: any, isExternal: boolean = false) {
@@ -57,29 +55,19 @@ export class BlogPostLabel {
     this.tags = post.tags || [];
     this.mentions = post.mentions || [];
     this.views_k = post.views_k;
-    this.migdal_score = post.migdal_score;
+    this.migdal_score = post.migdal_score ?? 0;
     this.description = post.description || "";
     this.image = post.image || "";
-    this.hn = this.mentions.some((mention: Mention) =>
-      mention.href.includes("news.ycombinator")
-    );
-    this.displayDate = new Date(post.date).toLocaleDateString("en-us", {
-      year: "numeric",
-      month: "short",
-    });
-
-    if (isExternal) {
-      this.postSource = {
-        isExternal: true,
-        href: post.href,
-        source: post.source,
-      };
-    } else {
-      this.postSource = {
-        isExternal: false,
-        _path: post._path,
-      };
-    }
+    this.postSource = isExternal
+      ? {
+          isExternal: true,
+          href: post.href,
+          source: post.source,
+        }
+      : {
+          isExternal: false,
+          _path: post._path,
+        };
   }
 
   static fromQueryContent(post: BlogPostMetadata): BlogPostLabel {
@@ -88,6 +76,19 @@ export class BlogPostLabel {
 
   static fromExternalPost(post: ExternalPost): BlogPostLabel {
     return new BlogPostLabel(post, true);
+  }
+
+  get hn(): boolean {
+    return this.mentions.some((mention: Mention) =>
+      mention.href.includes("news.ycombinator")
+    );
+  }
+
+  get displayDate(): string {
+    return new Date(this.date).toLocaleDateString("en-us", {
+      year: "numeric",
+      month: "short",
+    });
   }
 
   toScores(): {
@@ -103,8 +104,12 @@ export class BlogPostLabel {
     const yearsSince =
       (now.getTime() - postDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
     const age = Math.log2(yearsSince);
-    const migdalBias = this.migdal_score ? this.migdal_score : 0;
-    return { popularity, mentions: mentionsCount, age, migdalBias };
+    return {
+      popularity,
+      mentions: mentionsCount,
+      age,
+      migdalBias: this.migdal_score,
+    };
   }
 
   toWeight(
