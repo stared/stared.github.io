@@ -15,7 +15,6 @@ export interface BasePost {
 export interface ExternalPost extends BasePost {
   source: string;
   href: string;
-  old_title?: string;
 }
 
 export interface BlogPostMetadata extends BasePost {
