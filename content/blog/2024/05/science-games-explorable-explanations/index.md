@@ -46,7 +46,7 @@ It shouldn't be surprising as children learn Newtonian physics by interacting wi
 
 We designed Virtual Lab by Quantum Flytrap[^virtuallabsite] to be a highly composable environment (such as LEGO bricks or Minecraft) yet powerful enough to simulate major wave optics and quantum information phenomena. "Leave computing to computers" served as our motto.
 
-![[Quantum teleportation in Virtual Lab by Quantum Flytrap](https://lab.quantumflytrap.com/lab/quantum-teleportation)](./quantum-flytrap-virtual-lab-quantum-teleportation.png)
+[![](./quantum-flytrap-virtual-lab-quantum-teleportation.jpg)](https://lab.quantumflytrap.com/lab/quantum-teleportation)
 
 ## Notes
 
