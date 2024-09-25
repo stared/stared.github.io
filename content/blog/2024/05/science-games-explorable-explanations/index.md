@@ -12,6 +12,7 @@ tags:
 slug: science-games-explorable-explanations
 image: ./fourier-color-coded.png
 migdal_score: 0
+author: Piotr Migdał et al.
 ---
 
 The traditional way of teaching includes textbooks, lectures, and projects. This teaching method is performed top-down, with clear instructions and expectations. Students are tested via grading of projects, homework assignments, and exams. Usually fun, or the ability to explore on one's own, is not the key focus. Often students' motivation is extrinsic — to pass a course with a good grade. These activities can be gamified, provided with supplementary goals, scores, and challenges to make them more engaging.
@@ -30,11 +31,11 @@ Deep learning shares many similar concepts with quantum technologies - both hype
 
 Although the interactive environment of Jupyter Notebooks is a standard way of providing introductions to quantum software frameworks,[^110]<sup>,</sup>[^111] there is only a handful of other quantum explorable explanations, e.g., a spaced-repetition-based introduction to quantum computing,[^112] an introduction to quantum Fourier transform,[^113] and an exploration of single-qubit gates.[^114]
 
-John Preskill wrote that “perhaps kids who grow up playing quantum games will acquire a visceral understanding of quantum phenomena that our generation lacks”,[^vl30] and studies confirm that this type of open-ended experience promotes exploration.[^vl31]
+John Preskill wrote that "perhaps kids who grow up playing quantum games will acquire a visceral understanding of quantum phenomena that our generation lacks",[^vl30] and studies confirm that this type of open-ended experience promotes exploration.[^vl31]
 
 It shouldn't be surprising as children learn Newtonian physics by interacting with their environment[^vl32]<sup>,</sup>[^vl33] rather than starting with differential calculus.
 
-We designed Virtual Lab by Quantum Flytrap[^virtuallabsite] to be a highly composable environment (such as LEGO bricks or Minecraft) yet powerful enough to simulate major wave optics and quantum information phenomena. “Leave computing to computers” served as our motto.
+We designed Virtual Lab by Quantum Flytrap[^virtuallabsite] to be a highly composable environment (such as LEGO bricks or Minecraft) yet powerful enough to simulate major wave optics and quantum information phenomena. "Leave computing to computers" served as our motto.
 
 ## Notes
 

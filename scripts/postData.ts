@@ -48,6 +48,7 @@ export class BlogPostLabel {
   description: string;
   image: string;
   postSource: PostSource;
+  author: string;
 
   constructor(post: any, isExternal: boolean = false) {
     this.title = post.title;
@@ -68,6 +69,7 @@ export class BlogPostLabel {
           isExternal: false,
           _path: post._path,
         };
+    this.author = post.author || "Piotr Migdał";
   }
 
   static fromQueryContent(post: BlogPostMetadata): BlogPostLabel {

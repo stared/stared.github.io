@@ -5,7 +5,7 @@
         <div class="markdown-header">
           <h1>{{ doc.title }}</h1>
           <p class="header-information">
-            {{ formatDate(doc.date) }} | by Piotr Migdał
+            {{ formatDate(doc.date) }} | by {{ doc.author || "Piotr Migdał" }}
             <span v-if="doc.medium_url">
               &nbsp;| <a :href="doc.medium_url">originally posted at Medium</a>
             </span>
