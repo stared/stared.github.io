@@ -21,7 +21,7 @@ The traditional way of teaching includes textbooks, lectures, and projects. This
 ![](./velocity-raptor.jpg)
 ![](./hyper-rogue.jpg)
 #caption
-[Velocity Raptor](https://testtubegames.com/velocityraptor.html) by Test Tube Games and [HyperRogue](https://roguetemple.com/z/hyper/) Zeno Rogue.
+[Velocity Raptor](https://testtubegames.com/velocityraptor.html) by Test Tube Games and [HyperRogue](https://roguetemple.com/z/hyper/) by Zeno Rogue.
 ::
 
 In contrast, **science-based games**[^29] approach teaching from the opposite direction: to primarily focus on creating an experience sparking intrinsic motivation,[^89] that is, students play for fun, but learn in the process, as their gaming experience requires learning concepts to proceed or provides an explorative pathway through the game that promotes learning[^90] (even if it is not strictly necessary).
@@ -30,7 +30,7 @@ There are several existing games showing different aspects of physics—special 
 
 [![](./explorable-explanations.jpg)](https://explorabl.es/)
 
-**Explorable explanations**[^96] (or "explorables") come at educational games from the opposite direction: instead of "games, but with science communication added," they are "science communication, but with interactivity added," although we should note that interactivity is a necessary but not sufficient condition for something to be considered a game. Most explorables are educational articles, with embedded simulations instead of static media such as images and videos. The term "explorable explanation" was coined in 2011 by interaction designer Bret Victor,[^97] with an ambitious goal of creating a two-way communication between the author and the reader. With an open-ended creative environment, readers can challenge the author's assumptions by going beyond what the author ever imagined. This ambition is explained more in the 2019 essay[^98] by former Khan Academy designer Andy Matuschak and quantum physicist Michael Nielsen. These approaches are tightly related to exploring new visual languages of communication.
+**Explorable explanations**[^96] (or "explorables") come at educational games from the opposite direction: instead of "games, but with sc ience communication added," they are "science communication, but with interactivity added," although we should note that interactivity is a necessary but not sufficient condition for something to be considered a game. Most explorables are educational articles, with embedded simulations instead of static media such as images and videos. The term "explorable explanation" was coined in 2011 by interaction designer Bret Victor,[^97] with an ambitious goal of creating a two-way communication between the author and the reader. With an open-ended creative environment, readers can challenge the author's assumptions by going beyond what the author ever imagined. This ambition is explained more in the 2019 essay[^98] by former Khan Academy designer Andy Matuschak and quantum physicist Michael Nielsen. These approaches are tightly related to exploring new visual languages of communication.
 
 ![](./fourier-color-coded.png)
 
