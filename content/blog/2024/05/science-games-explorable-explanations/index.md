@@ -17,9 +17,18 @@ author: Piotr Migdał et al.
 
 The traditional way of teaching includes textbooks, lectures, and projects. This teaching method is performed top-down, with clear instructions and expectations. Students are tested via grading of projects, homework assignments, and exams. Usually fun, or the ability to explore on one's own, is not the key focus. Often students' motivation is extrinsic — to pass a course with a good grade. These activities can be gamified, provided with supplementary goals, scores, and challenges to make them more engaging.
 
+::gallery{ width=2 }
+![](./velocity-raptor.jpg)
+![](./hyper-rogue.jpg)
+#caption
+[Velocity Raptor](https://testtubegames.com/velocityraptor.html) by Test Tube Games and [HyperRogue](https://roguetemple.com/z/hyper/) Zeno Rogue.
+::
+
 In contrast, **science-based games**[^29] approach teaching from the opposite direction: to primarily focus on creating an experience sparking intrinsic motivation,[^89] that is, students play for fun, but learn in the process, as their gaming experience requires learning concepts to proceed or provides an explorative pathway through the game that promotes learning[^90] (even if it is not strictly necessary).
 
 There are several existing games showing different aspects of physics—special relativity theory,[^91] electromagnetism,[^92] classical physics, and orbital mechanics.[^93] There are games that teach computing—creating circuits from the simplest blocks—NAND gates[^94] and low-level programming in assembly. Although a lot of games are standalone one-off projects, some game developers specialize in science-based games, e.g., Zachtronics (algorithmics) and Test Tube Games (physics). Some science-based games go way beyond the niche – SpaceChem and Kerbal Space Program sold over 1 million and over 2 million copies on Steam,[^95] respectively.
+
+[![](./explorable-explanations.jpg)](https://explorabl.es/)
 
 **Explorable explanations**[^96] (or "explorables") come at educational games from the opposite direction: instead of "games, but with science communication added," they are "science communication, but with interactivity added," although we should note that interactivity is a necessary but not sufficient condition for something to be considered a game. Most explorables are educational articles, with embedded simulations instead of static media such as images and videos. The term "explorable explanation" was coined in 2011 by interaction designer Bret Victor,[^97] with an ambitious goal of creating a two-way communication between the author and the reader. With an open-ended creative environment, readers can challenge the author's assumptions by going beyond what the author ever imagined. This ambition is explained more in the 2019 essay[^98] by former Khan Academy designer Andy Matuschak and quantum physicist Michael Nielsen. These approaches are tightly related to exploring new visual languages of communication.
 
@@ -36,6 +45,8 @@ John Preskill wrote that "perhaps kids who grow up playing quantum games will ac
 It shouldn't be surprising as children learn Newtonian physics by interacting with their environment[^vl32]<sup>,</sup>[^vl33] rather than starting with differential calculus.
 
 We designed Virtual Lab by Quantum Flytrap[^virtuallabsite] to be a highly composable environment (such as LEGO bricks or Minecraft) yet powerful enough to simulate major wave optics and quantum information phenomena. "Leave computing to computers" served as our motto.
+
+![[Quantum teleportation in Virtual Lab by Quantum Flytrap](https://lab.quantumflytrap.com/lab/quantum-teleportation)](./quantum-flytrap-virtual-lab-quantum-teleportation.png)
 
 ## Notes
 
