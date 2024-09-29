@@ -12,6 +12,9 @@ tags:
 slug: science-games-explorable-explanations
 image: ./fourier-color-coded.png
 migdal_score: 0
+mentions:
+  - text: Hacker News
+    href: https://news.ycombinator.com/item?id=41648048
 author: Piotr Migdał et al.
 ---
 
