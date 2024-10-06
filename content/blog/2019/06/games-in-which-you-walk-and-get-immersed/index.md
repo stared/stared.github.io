@@ -33,6 +33,8 @@ Games below take from a few hours to 2–3 days, and won’t ruin your schedule.
 
 #### The Path
 
+:youtube{ videoId="WEPSeFDM0Kg" }
+
 An oniric (and occasionally nightmarish) game on a girl’s journey.
 
 As in the _Red Little Riding Hood_, you need to reach to your grandmother’s house. The path is straight. But… the dark forest is much more interesting. There is a wolf. Your wolf.
@@ -49,6 +51,8 @@ One of the first games in that genre (2009).
 
 #### Life is Strange
 
+:youtube{ videoId="/AURVxvIZrmU" }
+
 It covers various social issues of socializing in college with its all shady parts (including a very realistic depiction of bullying, which moved me the most), in a mildly supernatural setting (but characters and social interactions feel very real ).
 
 [Episode 1 is free](https://store.steampowered.com/app/319630/Life_is_Strange__Episode_1/) and takes ~3h. You can safely play it this Sunday, and yes, totally do so especially if you are not a gamer (many, many non-gamer friends of mine love it). No excuses! 4–5 aren’t free but are worth any price!
@@ -59,6 +63,8 @@ It covers various social issues of socializing in college with its all shady par
 - **It takes:** [14–18 h](https://howlongtobeat.com/game.php?id=21702). It took me 2 days (_“while playing episode one let’s just download others…”_); missed a deadline but don’t regret it any tiny bit!
 
 #### Vanishing of Ethan Carter
+
+:youtube{ videoId="-mpd211W6U0" }
 
 > “The Sleeper must not Sleep!”
 
@@ -71,6 +77,8 @@ It does not scare you, as **SOMA** or **Amnesia**. But… I liked the story unfo
 
 #### Dear Esther
 
+:youtube{ videoId="D7VJ4lP-05A" }
+
 > “I’ve begun my voyage in a paper boat without a bottom; I will fly to the moon in it. I have been folded along a crease in time, a weakness in the sheet of life. Now, you’ve settled on the opposite side of the paper to me; I can see your traces in the ink that soaks through the fibre, the pulped vegetation. When we become waterlogged, and the cage disintegrates, we will intermingle. When this paper aeroplane leaves the cliff edge, and carves parallel vapour trails in the dark, we will come together.”
 
 The least a game of a game. You walk, through a path, no crossroads. Short, sad, and visually stunning (and poetic).
@@ -79,6 +87,8 @@ The least a game of a game. You walk, through a path, no crossroads. Short, sad,
 - **It takes**: [1.5 h](https://howlongtobeat.com/game.php?id=43743).
 
 #### SOMA
+
+:youtube{ videoId="3WO2SxMum20" }
 
 > “I mean if we are able to save even a small piece of ourselves … why wouldn’t we do that?”
 
@@ -94,6 +104,8 @@ Oh, some people recommend playing it without monster: [SOMA Mod Stops Monsters F
 - **It takes**: [9–11 h](https://howlongtobeat.com/game.php?id=43743).
 
 #### Amnesia: The Dark Descent
+
+:youtube{ videoId="u1nY_5-UrY4" }
 
 > _Daniel:_ “It sure is dark in here.”  
 > _Alexander:_ “Yes, and there is a good reason for it. But you can light the lamp now if you wish.”  
@@ -113,12 +125,16 @@ There is [**Amnesia: A Machine for Pigs**](https://en.wikipedia.org/wiki/Amnesia
 
 #### Firewatch
 
+:youtube{ videoId="HdUYYnfRdl8" }
+
 Too grim? Take some time off in the wilderness. Maybe not as ambitious or deep, no primordial monsters or curses. And at least you are not alone — you can talk via radio with someone you can trust.
 
 - **Recommend if**: want something narrative, and be scared but just a bit.
 - **It takes**: [4–5 h](https://howlongtobeat.com/game.php?id=43743)
 
 #### The Stanley Parable
+
+:youtube{ videoId="fBtX0S2J32Y" }
 
 Or maybe the opposite — everything is too obvious, and if there are only two or three interpretations, it’s not enough. Maybe you want to challenge the narration?
 
