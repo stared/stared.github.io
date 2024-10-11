@@ -13,7 +13,7 @@ Have you ever chatted with someone who could talk for hours, only to watch them 
 
 Large Language Models (LLMs) like GPT-4 don't agonize over their next word. They generate text one token at a time, free from the chains of self-doubt and perfectionism. What if we could adopt a similar approach to our own writing? Imagine the possibilities: emails sent, novels written, grocery lists completed without existential dread.
 
-![](./shining-wirting.jpg)
+![All work and no play makes Jack a dull boy — but a few hints can make you write like crazy.](./shining-writing.jpg)
 
 ### The fear of writing
 
@@ -37,6 +37,8 @@ Taking inspiration from this, we can start by simply writing down our thoughts. 
 
 ### AI needs prompts, and so do we
 
+![Prompts against humanity. Use wisely.](./prompts-against-humanity.png)
+
 LLMs need prompts, and so do we. Even the most advanced models like GPT-4 require a starting point. In complex cases, [it's sometimes simpler to create the content directly than to write a prompt](/blog/2023/02/ai-artists-information-theory).
 
 My PhD co-advisor, [Javier Rodríguez-Laguna](http://mononoke.fisfun.uned.es/jrlaguna/), once recommended starting as if sharing a curiosity with a friend. This sets the right tone and focuses on simple explanations. Details and appropriate tone can always be added later in the editing process.
@@ -53,7 +55,7 @@ So whether you're planning, drafting, or revising for the nth time, you're still
 
 ### Let's write like AI
 
-![](./matrix-follow-the-white-rabbit.jpg)
+![Follow your calling.](./matrix-follow-the-white-rabbit.jpg)
 
 The next time you find yourself staring at a blank page, remember: you don't need to have it all figured out before you start. Begin with a simple statement, let your thoughts flow, and write as if you were AI — one token at a time.
 
@@ -63,6 +65,6 @@ Now, go forth and write like the beautiful, imperfect, token-generating human yo
 
 ---
 
-I would like to thank [Grzegorz Uriasz](https://gorbak25.eu/) for his fruitfulfeedback on the earliest draft.
+I would like to thank [Grzegorz Uriasz](https://gorbak25.eu/) for his insightful feedback on the initial draft.
 
-In the next blog post, I am happy to share a few tricks on how to use LLMs as editors.
+Stay tuned for the next post, where I'll reveal some nifty tricks for harnessing LLMs as your editorial sidekicks.
