@@ -1,17 +1,19 @@
 ---
 title: Overcoming writer's block — lessons from AI
 description: "Let's learn from AI and overcome writer's block one token at a time."
-date: "2024-10-10T00:00:00.030Z"
+date: "2024-10-11T00:00:00.030Z"
 tags:
   - deep learning
 slug: writing-like-ai
-image: ./fourier-color-coded.png
+image: ./dalle-ai-writing-zen-master.jpeg
 migdal_score: 0
 ---
 
 Have you ever chatted with someone who could talk for hours, only to watch them freeze up when asked to write a simple email? Writer's block doesn't discriminate — it plagues everyone from first-time bloggers to bestselling authors. But what if our AI companions could teach us a thing or two about breaking through that mental barrier?
 
-Large Language Models (LLMs) like GPT-4 don't agonize over their next word. They generate text one token at a time, free from the chains of self-doubt and perfectionism. What if we could adopt a similar approach to our own writing?
+Large Language Models (LLMs) like GPT-4 don't agonize over their next word. They generate text one token at a time, free from the chains of self-doubt and perfectionism. What if we could adopt a similar approach to our own writing? Imagine the possibilities: emails sent, novels written, grocery lists completed without existential dread.
+
+![](./shining-wirting.jpg)
 
 ### The fear of writing
 
@@ -23,13 +25,15 @@ We often treat written words as if we're carving them into stone tablets. In rea
 
 ChatGPT, Claude, and Llama write as if no-one was judging them. These LLMs are the ultimate "go with the flow" writers. They don't overthink — they write one token at a time, without planning ahead or obsessing over edits.
 
+![From [an explorable explanation](/blog/2024/05/science-games-explorable-explanations), [Transformer Explainer](https://poloclub.github.io/transformer-explainer/). It predicts all possibilities of the next token, picks one, never going back.](./transformer-explainer.png)
+
 It's mind-boggling that we, too, can create complex text without meticulous planning. During my first year of studies, [a professor](https://www.mimuw.edu.pl/~urzy/) called proofs a "literary form," akin to poetry with specific rules. His advice for starting a proof? Simply restate what you know and assign symbols to entities you need. Curiously, the proof often unfolded naturally from there. If a mathematical proof can be done this way, the sky's the limit for other forms of writing.
 
 ### Writing is thinking
 
-Writing isn't just translating thoughts into words — it's an act of thinking itself. With each token, we collapse all possible ideas into a single instance and roll with it. In LLMs, there's a concept called "[chain of thought](https://youtu.be/bZQun8Y4L2A?t=1464)" — breaking down complex tasks step by step.
+Writing isn't just translating thoughts into words — it's an act of thinking itself. With each token, we collapse all possible ideas into a single instance and roll with it. In LLMs, there's a concept called "[chain of thought](https://youtu.be/bZQun8Y4L2A?t=1464)" — breaking down complex tasks step by step. The currently most advanced model [OpenAI o1 has this chain of thought mechanism built-in](https://openai.com/index/learning-to-reason-with-llms/).
 
-Taking inspiration from this, we can start by simply writing down our thoughts. After all, planning is writing too. Here's a liberating truth I learned during my PhD: the first version is never the final version. There's no need to stress over perfection in your first draft — it won't be flawless no matter how hard you try.
+Taking inspiration from this, we can start by simply writing down our thoughts. After all, planning is writing too. Here's a liberating truth I learned during my PhD: the first version is never the final version. There's no need to stress over perfection in your first draft — it won't be flawless no matter how hard you try. Think of it as a rough sketch, not a masterpiece.
 
 ### AI needs prompts, and so do we
 
@@ -49,8 +53,16 @@ So whether you're planning, drafting, or revising for the nth time, you're still
 
 ### Let's write like AI
 
+![](./matrix-follow-the-white-rabbit.jpg)
+
 The next time you find yourself staring at a blank page, remember: you don't need to have it all figured out before you start. Begin with a simple statement, let your thoughts flow, and write as if you were AI — one token at a time.
 
 You might be surprised at how quickly your writer's block dissolves and your creativity blossoms. After all, if a bunch of ones and zeros can string together coherent sentences, surely we humans can too — with a little less overthinking and a lot more flow.
 
 Now, go forth and write like the beautiful, imperfect, token-generating human you are. Your blank page awaits!
+
+---
+
+I would like to thank [Grzegorz Uriasz](https://gorbak25.eu/) for his fruitfulfeedback on the earliest draft.
+
+In the next blog post, I am happy to share a few tricks on how to use LLMs as editors.
