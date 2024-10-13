@@ -785,7 +785,7 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@nuxt/content@^2.12.1":
+"@nuxt/content@^2.13.2":
   version "2.13.2"
   resolved "https://registry.yarnpkg.com/@nuxt/content/-/content-2.13.2.tgz#baf8f58a170c91afcf0e32400878862eb9a3212c"
   integrity sha512-9AmX7iG8+1MaWia8XLe1TyzoLrTaIhchas19w6VxqZI0dEoQCGslEcdOxy8xLrdGVFuy6MObBwU8SZgpQB9pyA==
@@ -1039,7 +1039,7 @@
     unist-util-visit "^5.0.0"
     unwasm "^0.3.9"
 
-"@nuxtjs/plausible@^1.0.0":
+"@nuxtjs/plausible@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@nuxtjs/plausible/-/plausible-1.0.3.tgz#11dd0b9dd2aa195fc12b0293d28af410e07e4fc3"
   integrity sha512-jf6W9+Q/VhfHk/jal1gp0OpYU2qwq7eOV4evNKvHWKVM0Qbps+LbKSxNcewgqN91tVx9sv4RbnOEJ8Uq0/FRkg==
@@ -4755,7 +4755,7 @@ nuxi@^3.13.2:
   resolved "https://registry.yarnpkg.com/nuxi/-/nuxi-3.14.0.tgz#697a1e8b4f0d92fb8b30aa355af9295fa8c2cb4e"
   integrity sha512-MhG4QR6D95jQxhnwKfdKXulZ8Yqy1nbpwbotbxY5IcabOzpEeTB8hYn2BFkmYdMUB0no81qpv2ldZmVCT9UsnQ==
 
-nuxt-content-assets@^1.3.3:
+nuxt-content-assets@^1.4.4:
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/nuxt-content-assets/-/nuxt-content-assets-1.4.4.tgz#4984fbeb23fdb6608d7ab57f29ab46279eb7e1c9"
   integrity sha512-JxnCmoQ++GUnT9qZopOzi1m7YgVo2eB3/czmv1P2xZtj57dLh0hVzYoybVfTArQYcatDq0Gb2OYukXNlKven6Q==
@@ -4770,7 +4770,7 @@ nuxt-content-assets@^1.3.3:
     unstorage "^1.4.1"
     ws "^8.13.0"
 
-nuxt@^3.11.0:
+nuxt@^3.13.2:
   version "3.13.2"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-3.13.2.tgz#af43a1fb5ccaaf98be0aaeca1bee504eeee24135"
   integrity sha512-Bjc2qRsipfBhjXsBEJCN+EUAukhdgFv/KoIR5HFB2hZOYRSqXBod3oWQs78k3ja1nlIhAEdBG533898KJxUtJw==
