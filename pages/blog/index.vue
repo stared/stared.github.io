@@ -68,27 +68,24 @@ function selectTag(tag: string) {
 <template>
   <div>
     <ContentDoc path="/text-components/blog" :head="false" />
-    
-    <p>
-      <div class="slider-flexbox">
-        <div class="slider">
-          <span class="slider-label">log(popularity)</span>
-          <VueSlider v-model="weightPopularity" :min="-10" :max="10" width="150px" :process="sliderLine" />
-        </div>
-        <div class="slider">
-          <span class="slider-label">sqrt(mentions)</span>
-          <VueSlider v-model="weightMentions" :min="-5" :max="5" width="150px" :process="sliderLine" />
-        </div>
-        <div class="slider">
-          <span class="slider-label">log(age)</span>
-          <VueSlider v-model="weightAge" :min="-20" :max="20" width="150px" :process="sliderLine" />
-        </div>
-        <div class="slider">
-          <span class="slider-label">author's bias</span>
-          <VueSlider v-model="migdalweight" :min="-5" :max="5" width="150px" :process="sliderLine" />
-        </div>
+    <div class="slider-flexbox">
+      <div class="slider">
+        <span class="slider-label">log(popularity)</span>
+        <VueSlider v-model="weightPopularity" :min="-10" :max="10" width="150px" :process="sliderLine" />
       </div>
-    </p>
+      <div class="slider">
+        <span class="slider-label">sqrt(mentions)</span>
+        <VueSlider v-model="weightMentions" :min="-5" :max="5" width="150px" :process="sliderLine" />
+      </div>
+      <div class="slider">
+        <span class="slider-label">log(age)</span>
+        <VueSlider v-model="weightAge" :min="-20" :max="20" width="150px" :process="sliderLine" />
+      </div>
+      <div class="slider">
+        <span class="slider-label">author's bias</span>
+        <VueSlider v-model="migdalweight" :min="-5" :max="5" width="150px" :process="sliderLine" />
+      </div>
+    </div>
 
     <p>
       <span v-for="tag in allTagsCounted" :key="tag.name" @click="selectTag(tag.name)" class="tag"
