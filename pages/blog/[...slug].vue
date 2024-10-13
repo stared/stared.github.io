@@ -25,6 +25,9 @@
     <footer>
       By <NuxtLink to="/">Piotr Migdał</NuxtLink>, a curious being, doctor of
       sorcery. See <NuxtLink to="/blog">my other blog posts</NuxtLink>.
+      <br />
+      Keep in the loop with the <NuxtLink to="/rss.xml">RSS feed</NuxtLink> or
+      join the <a href="http://eepurl.com/bVJlgL">newsletter</a>.
     </footer>
   </main>
 </template>

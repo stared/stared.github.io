@@ -5,4 +5,4 @@ id: blog
 # Blog posts and selected interviews
 
 Sort and filter posts according to your preferences.
-Track new posts with [RSS feed](/feed.xml).
+Track new posts with [RSS feed](/feed.xml) or [newsletter](http://eepurl.com/bVJlgL).
