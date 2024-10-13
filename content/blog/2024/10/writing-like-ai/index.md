@@ -17,7 +17,7 @@ Large Language Models (LLMs) like GPT-4 don't agonize over their next word. They
 
 ### The fear of writing
 
-Sometimes, silence is golden — like during a heated debate or when you're lost in deep thought. Other times, [we freeze — not because we choose silence, but because our minds blank out](/blog/2021/02/dont-fight-flight-or-freeze-your-body-and-emotions), like when we're unexpectedly asked to say a few words in front of a crowd.
+Sometimes, silence is golden — like during a heated debate or when you're lost in deep thought. Other times, [we freeze — not because we choose silence, but because our minds blank out](https://p.migdal.pl/blog/2021/02/dont-fight-flight-or-freeze-your-body-and-emotions), like when we're unexpectedly asked to say a few words in front of a crowd.
 
 We often treat written words as if we're carving them into stone tablets. In reality, we're just jotting notes. Paper is cheap, and keystrokes are even cheaper. Neither rushes nor judges us — there's a saying that "paper is patient." Even if you [have dangerous ideas you'd think twice before sharing](https://slatestarcodex.com/2017/10/23/kolmogorov-complicity-and-the-parable-of-lightning/), writing itself is safe.
 
@@ -25,7 +25,7 @@ We often treat written words as if we're carving them into stone tablets. In rea
 
 ChatGPT, Claude, and Llama write as if no-one was judging them. These LLMs are the ultimate "go with the flow" writers. They don't overthink — they write one token at a time, without planning ahead or obsessing over edits.
 
-![From [an explorable explanation](/blog/2024/05/science-games-explorable-explanations), [Transformer Explainer](https://poloclub.github.io/transformer-explainer/). It predicts all possibilities of the next token, picks one, never going back.](./transformer-explainer.png)
+![From [an explorable explanation](https://p.migdal.pl/blog/2024/05/science-games-explorable-explanations), [Transformer Explainer](https://poloclub.github.io/transformer-explainer/). It predicts all possibilities of the next token, picks one, never going back.](./transformer-explainer.png)
 
 It's mind-boggling that we, too, can create complex text without meticulous planning. During my first year of studies, [a professor](https://www.mimuw.edu.pl/~urzy/) called proofs a "literary form," akin to poetry with specific rules. His advice for starting a proof? Simply restate what you know and assign symbols to entities you need. Curiously, the proof often unfolded naturally from there. If a mathematical proof can be done this way, the sky's the limit for other forms of writing.
 
@@ -39,11 +39,11 @@ Taking inspiration from this, we can start by simply writing down our thoughts. 
 
 ![Prompts against humanity. Use wisely.](./prompts-against-humanity.png)
 
-LLMs need prompts, and so do we. Even the most advanced models like GPT-4 require a starting point. In complex cases, [it's sometimes simpler to create the content directly than to write a prompt](/blog/2023/02/ai-artists-information-theory).
+LLMs need prompts, and so do we. Even the most advanced models like GPT-4 require a starting point. In complex cases, [it's sometimes simpler to create the content directly than to write a prompt](https://p.migdal.pl/blog/2023/02/ai-artists-information-theory).
 
 My PhD co-advisor, [Javier Rodríguez-Laguna](http://mononoke.fisfun.uned.es/jrlaguna/), once recommended starting as if sharing a curiosity with a friend. This sets the right tone and focuses on simple explanations. Details and appropriate tone can always be added later in the editing process.
 
-I took this piece of advice to heart when writing academic articles and blog posts alike. In fact, some of my most popular posts began as emails I kept forwarding—like [this intro to data science](/blog/2016/03/data-science-intro-for-math-phys-background).
+I took this piece of advice to heart when writing academic articles and blog posts alike. In fact, some of my most popular posts began as emails I kept forwarding—like [this intro to data science](https://p.migdal.pl/blog/2016/03/data-science-intro-for-math-phys-background).
 
 ### Planning is writing, editing is writing
 
