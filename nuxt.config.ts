@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["nuxt-content-assets", "@nuxt/content", "@nuxtjs/plausible"],
+
   content: {
     markdown: {
       remarkPlugins: ["remark-math"],
@@ -12,9 +13,11 @@ export default defineNuxtConfig({
       },
     },
   },
+
   plausible: {
     ignoredHostnames: ["localhost"],
   },
+
   vue: {
     compilerOptions: {
       isCustomElement: (tag) => {
@@ -24,6 +27,7 @@ export default defineNuxtConfig({
       },
     },
   },
+
   nitro: {
     prerender: {
       routes: [
@@ -72,6 +76,7 @@ export default defineNuxtConfig({
       redirect: "/blog/2017/08/bangbangcon",
     },
   },
+
   hooks: {
     close: () => {
       // fixes `nuxi generate` hanging at the end "You can preview this build"
@@ -80,8 +85,11 @@ export default defineNuxtConfig({
       process.exit(0);
     },
   },
+
   app: {
     baseURL: "/",
     cdnURL: "https://p.migdal.pl",
   },
+
+  compatibilityDate: "2024-10-13",
 });
