@@ -25,7 +25,11 @@ We often treat written words as if we're carving them into stone tablets. In rea
 
 ChatGPT, Claude, and Llama write as if no-one was judging them. These LLMs are the ultimate "go with the flow" writers. They don't overthink — they write one token at a time, without planning ahead or obsessing over edits.
 
-![From [an explorable explanation](https://p.migdal.pl/blog/2024/05/science-games-explorable-explanations), [Transformer Explainer](https://poloclub.github.io/transformer-explainer/). It predicts all possibilities of the next token, picks one, never going back.](./transformer-explainer.png)
+::gallery{ width=1 }
+![](./transformer-explainer.png)
+#caption
+From [an explorable explanation](https://p.migdal.pl/blog/2024/05/science-games-explorable-explanations), [Transformer Explainer](https://poloclub.github.io/transformer-explainer/). It predicts all possibilities of the next token, picks one, never going back.
+::
 
 It's mind-boggling that we, too, can create complex text without meticulous planning. During my first year of studies, [a professor](https://www.mimuw.edu.pl/~urzy/) called proofs a "literary form," akin to poetry with specific rules. His advice for starting a proof? Simply restate what you know and assign symbols to entities you need. Curiously, the proof often unfolded naturally from there. If a mathematical proof can be done this way, the sky's the limit for other forms of writing.
 
