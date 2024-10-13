@@ -10,16 +10,23 @@
         <NuxtLink class="nav__link" to="/publications">Publications</NuxtLink>
         <NuxtLink class="nav__link" to="/resume">Resume</NuxtLink>
       </nav>
-      <link
-        rel="alternate"
-        type="application/rss+xml"
-        title="RSS Feed for Piotr Migdał's Blog"
-        href="/feed.xml"
-      />
     </header>
     <slot />
   </div>
 </template>
+
+<script setup lang="ts">
+useHead({
+  link: [
+    {
+      rel: "alternate",
+      type: "application/rss+xml",
+      title: "RSS Feed for Piotr Migdał's Blog",
+      href: "/feed.xml",
+    },
+  ],
+});
+</script>
 
 <style>
 body {
