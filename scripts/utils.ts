@@ -53,7 +53,6 @@ export class HeaderData {
     this.image = image || this.image;
     return this;
   }
-
   getHead() {
     return {
       title: this.title,
@@ -75,6 +74,10 @@ export class HeaderData {
         {
           property: "og:image",
           content: this.image,
+        },
+        {
+          name: "twitter:card",
+          content: "summary_large_image",
         },
         {
           name: "twitter:title",
