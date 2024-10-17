@@ -1,13 +1,11 @@
 import { useHead } from "@vueuse/head";
+import defaultImage from "~/assets/imgs/piotr-migdal-direct-smiling-2022-by-cytacka-thumbnail.jpg";
 
 const DEFAULT_AUTHOR = "Piotr Migdał";
 const DEFAULT_TITLE = "Piotr Migdał";
 const DEFAULT_DESCRIPTION = "Piotr Migdał - blog posts and stuff";
 const DEFAULT_BASE_URL = "https://p.migdal.pl";
-const DEFAULT_IMAGE = new URL(
-  "~/assets/imgs/piotr-migdal-direct-smiling-2022-by-cytacka-thumbnail.jpg",
-  import.meta.url
-).href;
+const DEFAULT_IMAGE = defaultImage;
 
 /**
  * HeaderData for social media (Open Graph, Twitter aka X, etc.)
@@ -53,44 +51,21 @@ export class HeaderData {
     this.image = image || this.image;
     return this;
   }
+
   getHead() {
     return {
       title: this.title,
       link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
       meta: [
-        {
-          name: "description",
-          content: this.description,
-        },
+        { name: "description", content: this.description },
         { name: "author", content: this.author },
-        {
-          property: "og:title",
-          content: this.title,
-        },
-        {
-          property: "og:description",
-          content: this.description,
-        },
-        {
-          property: "og:image",
-          content: this.image,
-        },
-        {
-          name: "twitter:card",
-          content: "summary_large_image",
-        },
-        {
-          name: "twitter:title",
-          content: this.title,
-        },
-        {
-          name: "twitter:description",
-          content: this.description,
-        },
-        {
-          name: "twitter:image",
-          content: this.image,
-        },
+        { property: "og:title", content: this.title },
+        { property: "og:description", content: this.description },
+        { property: "og:image", content: this.image },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: this.title },
+        { name: "twitter:description", content: this.description },
+        { name: "twitter:image", content: this.image },
       ],
     };
   }
