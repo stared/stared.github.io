@@ -1,7 +1,7 @@
 ---
 title: Don't use cosine similarity
 description: >-
-  Cosine similarity - the duck tape of AI.
+  Cosine similarity - the duct tape of AI. Convenient but often misused.
 date: "2024-11-12T00:00:00.030Z"
 tags:
   - deep learning
@@ -13,34 +13,35 @@ migdal_score: 0
 Midas turned everything he touched into gold. Data scientists turn everything into vectors.
 We do it for a reason - as gold is the language of merchants, vectors are the language of AI[^1].
 
-These vectors, called embeddings, are insanely useful. They allow us see similarities between objects we consider. There is word2vec, game2vec, node2vec, [food2vec](https://jaan.io/food2vec-augmented-cooking-machine-intelligence/) and countless others. If we have entities by ids, we know nothing about their relationship. Words `know` and `knows`. When using vectors, there is there is a notion not only of similarity but also various dimensions. If we speak about words, it may part of speach, tense, gender, and quite a few. For example, these mapping can be visualized using PCA or t-SNE.
+These vectors, called embeddings, are insanely useful. They allow us to see similarities between objects in ways that would make Pythagoras proud. We have word2vec, game2vec, node2vec, [food2vec](https://jaan.io/food2vec-augmented-cooking-machine-intelligence/), and if you can name it, someone has probably turned it into a vec.
+
+When we work with raw IDs, we're blind to relationships. Take the words "know" and "knows" - to a computer, they might as well be "xkcd42" and "banana". But with vectors, we unlock a multidimensional wonderland of relationships. For words, these dimensions might represent part of speech, tense, gender, and countless subtle semantic features. We can even visualize these magical mappings using techniques like PCA or t-SNE.
 
 **queen kind image**
 
-Not only embeddings are popular, most popular blog post is [king - man + woman = queen; but why?](https://p.migdal.pl/blog/2017/01/king-man-woman-queen-why).
+This isn't just theoretical - embeddings are so captivating that my most popular blog post remains [king - man + woman = queen; but why?](https://p.migdal.pl/blog/2017/01/king-man-woman-queen-why).
 
-Turning whole sentences into vectors goes back to bag-of-words techniques and early sequential networks like LSTMs. Now, with current Large Language Models, it shines, and can be used using general-purpose model, without any fine-tuning. It is so poweful that for sufficiently powerufl models it is enought to reverse engineer a seintence - see Morriss et al., [Text Embeddings Reveal (Almost) As Much As Text](https://arxiv.org/abs/2310.06816), (2023).
+The journey of turning sentences into vectors has come a long way, from humble bag-of-words beginnings through LSTM networks, to today's Large Language Models. Modern LLMs are so powerful at this that they can capture the essence of text without any fine-tuning. In fact, recent research shows these embeddings are almost as revealing as the original text - see Morris et al., [Text Embeddings Reveal (Almost) As Much As Text](https://arxiv.org/abs/2310.06816), (2023).
 
-For example, let's have three sentences:
+Let's look at three sentences:
 
-- A: _“Python can make you rich.”_
-- B: _“Python can make you itch.”_
-- C: _“Mastering Python can fill your pockets.”_
+- A: _"Python can make you rich."_
+- B: _"Python can make you itch."_
+- C: _"Mastering Python can fill your pockets."_
 
-If we look at these as IDs, they are all different, end of story.
-If we look as strings, we use [Levenstein's edit distance](https://en.wikipedia.org/wiki/Edit_distance), A-B is 2, A-C is 21. Yet, unless someone has money alergy, A is closer to B.
+As raw IDs, they're as different as chalk and cheese. Using string similarity (Levenshtein distance), A and B differ by 2 characters, while A and C are 21 characters apart. Yet semantically (unless you're allergic to money), A is closer to C than B.
 
-If we use embeddings, we can see that A and B are close, and C is far away. I use [OpenAI text-embedding-3-large](https://platform.openai.com/docs/guides/embeddings) capped at 1000 dimensions.
+Using embeddings from [OpenAI text-embedding-3-large](https://platform.openai.com/docs/guides/embeddings), we get:
 
 - A: `[-0.003738, -0.033263, -0.017596,  0.029024, -0.015251, ...]`
 - B: `[-0.066795, -0.052274, -0.015973,  0.077706,  0.044226, ...]`
 - C: `[-0.011167,  0.017812, -0.018655,  0.006625,  0.018506, ...]`
 
-Cosine similarity between A and B is 0.576, A and C is 0.750. It matches our intuition.
+The cosine similarity between A and C is 0.750, while A and B score 0.576. Finally, numbers that match our intuition!
 
-## Naive usage of cosine similarity
+## What is cosine similarity?
 
-How to compare vectors? There is a simple recipe - just use the cosine similarity.
+When comparing vectors, there's a temptingly simple solution - cosine similarity:
 
 $$ \text{cosine similarity} = \frac{\vec{a} \cdot \vec{b}}{\|\vec{a}\| \|\vec{b}\|} $$
 
