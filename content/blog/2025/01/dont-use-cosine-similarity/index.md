@@ -15,13 +15,17 @@ We do it for a reason - as gold is the language of merchants, vectors are the la
 
 We have [word2vec](https://p.migdal.pl/blog/2017/01/king-man-woman-queen-why), [node2vec](https://snap.stanford.edu/node2vec/), [food2vec](https://jaan.io/food2vec-augmented-cooking-machine-intelligence/), [game2vec](https://github.com/warchildmd/game2vec), and if you can name it, someone has probably turned it into a vec. If not yet, it's your turn!
 
-When we work with raw IDs, we're blind to relationships. Take the words "know" and "knows" - to a computer, they might as well be "xkcd42" and "banana". But with vectors, we can define a distance between them.
+When we work with raw IDs, we're blind to relationships. Take the words "brother" and "sister" - to a computer, they might as well be "xkcd42" and "banana". But with vectors, we can chart entities and relationships between them - both to provide as a structured input to a machine learning models, and on its own, to find similar items.
 
-**queen kind image**
+::gallery{ width=1 }
+![](./word2viz-queen.png)
+#caption
+Embeddings are so captivating that my most popular blog post remains [king - man + woman = queen; but why?](https://p.migdal.pl/blog/2017/01/king-man-woman-queen-why).
+::
 
-This isn't just theoretical - embeddings are so captivating that my most popular blog post remains [king - man + woman = queen; but why?](https://p.migdal.pl/blog/2017/01/king-man-woman-queen-why).
+Let's focus on sentence embeddings from Large Language Models (LLMs), as they are one of the most popular use cases for embeddings. Modern LLMs are so powerful at this that they can capture the essence of text without any fine-tuning. In fact, recent research shows these embeddings are almost as revealing as the original text - see Morris et al., [Text Embeddings Reveal (Almost) As Much As Text](https://arxiv.org/abs/2310.06816), (2023). Yet, with great power comes great responsibility.
 
-Modern Large Language Models (LLMs) are so powerful at this that they can capture the essence of text without any fine-tuning. In fact, recent research shows these embeddings are almost as revealing as the original text - see Morris et al., [Text Embeddings Reveal (Almost) As Much As Text](https://arxiv.org/abs/2310.06816), (2023).
+## Example
 
 Let's look at three sentences:
 
@@ -29,34 +33,58 @@ Let's look at three sentences:
 - B: _"Python can make you itch."_
 - C: _"Mastering Python can fill your pockets."_
 
-As raw IDs, they're as different as chalk and cheese. Using string similarity (Levenshtein distance), A and B differ by 2 characters, while A and C are 21 characters apart. Yet semantically (unless you're allergic to money), A is closer to C than B.
+If you threated them as raw IDs, there are different strings, with no notiuon of similarity. Using string similarity ([Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance)), A and B differ by 2 characters, while A and C are 21 characters apart. Yet semantically (unless you're allergic to money), A is closer to C than B.
 
-Using embeddings from [OpenAI text-embedding-3-large](https://platform.openai.com/docs/guides/embeddings), we get:
+We can use [OpenAI text-embedding-3-large](https://platform.openai.com/docs/guides/embeddings), to to get the following vectors:
 
 - A: `[-0.003738, -0.033263, -0.017596,  0.029024, -0.015251, ...]`
 - B: `[-0.066795, -0.052274, -0.015973,  0.077706,  0.044226, ...]`
 - C: `[-0.011167,  0.017812, -0.018655,  0.006625,  0.018506, ...]`
 
+These vectors are quite long - text-embedding-3-large has up 3072 dimensions. So long that [we can truncate them at a minimal loss of quality](https://openai.com/index/new-embedding-models-and-api-updates/).
 The cosine similarity between A and C is 0.750, while A and B score 0.576. Finally, numbers that match our intuition!
 
 ## What is cosine similarity?
 
 When comparing vectors, there's a temptingly simple solution that every data scientist reaches for — cosine similarity:
 
-$$ \text{cosine similarity} = \frac{\vec{a} \cdot \vec{b}}{\|\vec{a}\| \|\vec{b}\|} $$
+$$ \text{cosine similarity}(\vec{a}, \vec{b}) = \frac{\vec{a} \cdot \vec{b}}{\|\vec{a}\| \|\vec{b}\|} $$
 
-It has some appealing properties: identical vectors score a perfect 1, while random vectors hover around 0. And since most embeddings live in hundreds of dimensions, it gives us a single, manageable number to work with.
+Geometrically speaking, it is cosine of the angle between two vectors. I tend to not think about it in this way - we are speaking about spaces of dozens, hundreds or thousands of dimensions. Our intuition is not good enough to work with such high-dimensional spaces and we shouldn't pretend otherwise.
 
-Yet, this simplicity is misleading. Just because the values usually fall between 0 and 1 doesn't mean they represent probabilities or any other meaningful metric. The value 0.6 tells little if we have something really similar, or not so much. And while negative values are possible, they rarely indicate semantic opposites — more often, they're mathematical artifacts that even the model's creators might struggle to interpret.
+From a numerical perspective, it is a dot product with normalized vectors.
+It has some appealing properties:
+
+- Identical vectors score a perfect 1.
+- Random vectors hover around 0 (there are many dimensions, so it averages out).
+- The result is between -1 and 1.
+
+Yet, this simplicity is misleading. Just because the values usually fall between 0 and 1 doesn't mean they represent probabilities or any other meaningful metric. The value 0.6 tells little if we have something really similar, or not so much. And while negative values are possible, they rarely indicate semantic opposites — more often, the opposite of something is gibberish.
+
+::gallery{ width=1 }
+![](./glove-dog-cosine-similarity.png)
+#caption
+When using cosine similarity on [Glove vectors](https://nlp.stanford.edu/projects/glove/) (`glove.6B.300d`), the closest words to "dog" are predictable, the farthest - not. You can play with it [here](https://colab.research.google.com/github/stared/thinking-in-tensors-writing-in-pytorch/blob/master/rnns/Word%20vectors.ipynb).
+::
 
 In other words, cosine similarity is the duct tape of vector comparisons. Sure, you can use it anywhere — images, text, audio, code — but that universality is precisely what makes it suspect.
+Like a Greek tragedy, this blessing comes with a curse: when it works, it feels like effortless magic. But when it fails, we are clueless, and and we often run into importu fixes, each one bringing issues on its own.
 
-Like a Greek tragedy, this blessing comes with a curse: when it works, it feels like magic. But when it fails, debugging becomes an exercise in digital archaeology, with answers buried in layers of high-dimensional spaces we can barely comprehend.
+## Relation to correlation
 
-## Problems with cosine similarity
+[Pearson corelation](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient) can be seen as a sequence of three operations:
 
-Cosine similarity as an **objective function** is perfectly valid. It's a combination of two fundamental operations in deep learning: dot product and normalization.
+- Subtracting means to center the data.
+- Normalizing vectors to unit length.
+- Computing dot products between them.
 
+When we with vectors that are both centered ($\sum_i v_i = 0$) and normalized ($\sum_i v_i^2 = 1$), Pearson correlation, cosine similarity and dot product are the same.
+
+In practical cases, we don't want to center or normalize vectors during each pairwise comparison - we do it once, and **just use dot product**. In any case, when you are fine with using cosine similarity, you should be as fine with using Pearson correlation (and vice versa).
+
+## Problems with cosine similarity as a measure of similarity
+
+Cosine similarity as an **objective function** is perfectly valid. As we just seen, it's a combination of two fundamental operations in deep learning: dot product and normalization.
 The trouble begins when we venture beyond its comfort zone, specifically when:
 
 - The cost function used in model training isn't cosine similarity (usually it is the case!).
@@ -64,31 +92,29 @@ The trouble begins when we venture beyond its comfort zone, specifically when:
 
 ### Has the model ever seen cosine similarity?
 
-A common scenario involves training with normalized vectors, optimizing log loss on $\sigma(v_a \cdot v_b)$. The normalization gives us some nice mathematical properties (keeping results between -1 and +1, regardless of dimensions), but it's ultimately a hack. Sometimes it helps, sometimes it doesn't — see the aptly titled paper [Is Cosine-Similarity of Embeddings Really About Similarity?](https://arxiv.org/abs/2403.05440).
+A common scenario involves training with unnormalized vectors, when we are dealing with a function of dot product - for example, predicting probabilities with a signoid function $\sigma(v_a \cdot v_b)$ and applying log loss cost function. Other networks operate differently, e.g. they use Euclidean distance, minimized for members of the same class and maximized for members of different classes.
+
+The normalization gives us some nice mathematical properties (keeping results between -1 and +1, regardless of dimensions), but it's ultimately a hack. Sometimes it helps, sometimes it doesn't — see the aptly titled paper [Is Cosine-Similarity of Embeddings Really About Similarity?](https://arxiv.org/abs/2403.05440).
+
+Sure, back in the days of an image detection model VGG16 I was using logit vectors from the classification layer and Pearson correlation to find similar images. It kind of worked - bring fully aware it is a hack and just a hack.
+
+We are safe only if the model itself uses cosine similarity or a direct funciton of it - usually implemented as a dot product of vectors that are kept normalized. Otherwise, we use a quantity we have no control over. It may work in one instance, but not in another. If some things are extremely similar, sure, it is likely than many different measures of similarity will give similar results. But if they are not, we are in trouble.
+
+In general, it is a part of a broader subject of unsupervised machine vs self-supervised learning.
+In the first one, we take an arbitrary function and we get some notions or similarity. Yet, there is no way to evaluate it.
+The second one, self-supervised learning, is a predictive model, in which we can directly evaluate the quality of prediction.
 
 ### Is it the right kind of similarity?
 
-Here's where things get philosophically interesting. Even if [a model is explicitly trained on cosine similarity](https://cdn.openai.com/papers/Text_and_Code_Embeddings_by_Contrastive_Pre_Training.pdf), we run into a deeper question: whose definition of similarity are we using?
+And here is the second issue - even if [a model is explicitly trained on cosine similarity](https://cdn.openai.com/papers/Text_and_Code_Embeddings_by_Contrastive_Pre_Training.pdf), we run into a deeper question: whose definition of similarity are we using?
 
 Consider books. For a literary critic, similarity might mean sharing thematic elements. For a librarian, it's about genre classification. For a reader, it's about emotions it evokes. For a typesetter, it's page count and format. Each perspective is valid, yet cosine similarity smashes all these nuanced views into a single number — like trying to describe a wine using only its alcohol percentage.
 
-Take my Obsidian daily notes as an example. Should yesterday's todo list be considered similar to other daily notes or to notes about relevant projects? Cosine similarity gives us an answer, but not necessarily the right one.
+Take my Obsidian daily notes as an example. Should yesterday's todo list be considered similar to other daily notes or to notes about relevant projects? Cosine similarity gives us an answer, but not necessarily the one I am looking for.
 
 ![Cartoon by [Dmitry Malkov](https://www.kdnuggets.com/2017/04/cartoon-word2vec-espresso-cappuccino.html)](./cartoon-espresso-word2vec.jpg)
 
 In the US, word2vec might tell you espresso and cappuccino are practically identical. It is not a claim you would make in Italy.
-
-## Silver lining
-
-Despite its flaws, cosine similarity can still yield surprisingly useful results, even in scenarios it wasn't designed for. Let me share a personal anecdote from my early deep learning days, working with VGG16 — one of the pioneering models trained on ImageNet.
-
-We weren't even using proper embeddings, just grabbing activation vectors from inner layers (or logits from the classification layer). Yet, when we applied basic statistical operations:
-
-- Subtracting means to center the data
-- Normalizing vectors to unit length
-- Computing dot products between them
-
-The results were remarkably informative. Images that humans would consider similar tended to cluster together in this high-dimensional space, even though the model was never explicitly trained for this purpose.
 
 ## When it falls apart
 
@@ -106,55 +132,83 @@ And remember, this is just a toy example with five sentences. In real-world appl
 
 ## So, what can we use instead?
 
+### The most powerful approach
+
+The best approach is to directly use LLM query to compare two entries.
+
+```
+{question}
+
+# A
+
+{sentence_a}
+
+# B
+
+{sentence_b}
+```
+
+That way we use the full power of an LLM, and we extract.
+Usually we want to get our answer as structured output - going by names of "tools" or "function calls", which is a fancy way of saying "JSON".
+
+In most cases, it is infeasable - we don't want to run that costly operation for each single query. Unless our dataset is really small, it would be prohibitivele expensive. And even for a small dataset, the delays would be measurable - comparing to a simple numerical operation.
+
 ### Extracting the right features
 
-Instead of blindly trusting a black box, we can directly optimize for what we actually care about. It's like the difference between using a Swiss Army knife and crafting a specialized tool — sometimes you need that perfect fit.
+So, we can go back to using embeddings.
+But instead of blindly trusting a black box, we can directly optimize for what we actually care about.
+There are two main approaches:
 
-There are two main approaches: fine-tuning (teaching an old model new tricks by adjusting its weights) and transfer learning (using the model's knowledge to create new, more focused embeddings).
+- Fine-tuning (teaching an old model new tricks by adjusting its weights).
+- Transfer learning (using the model's knowledge to create new, more focused embeddings).
 
-Let's start with a simple case. Say we want to ask, "Is A similar to B?" We can write this as:
+Which one we use is ultimetaly a technical question - depending to the access to the model, costs, etc.
+Let's start with a symmetric case. Say we want to ask, **"Is A similar to B?"** We can write this as:
 
 $$\sigma(u_A \cdot u_B)$$
 
 where $u = M v$, and $M$ is a matrix that reduces the embedding space to dimensions we actually care about. Think of it as decluttering — we're keeping only the features relevant to our specific similarity definition.
 
-But often, similarity isn't what we're really after. Consider the question "Is document B a correct answer to question A?" (note the word "correct" — it's doing a lot of heavy lifting here). This looks more like:
+But often, similarity isn't what we're really after. Consider the question **"Is document B a correct answer to question A?"** (note the word "correct" — it's doing a lot of heavy lifting here). This looks more like:
 
 $$\sigma(q_A \cdot k_B)$$
 
 where $q = Q v$ and $k = K v$. The matrices $Q$ and $K$ transform our embeddings into specialized spaces for questions and answers. It's like having two different languages and learning to translate between them, rather than assuming they're the same thing.
 
-This approach works beautifully for retrieval augmented generation (RAG) too. But there's an elephant in the room: where do we get the training data?
+This approach works beautifully for retrieval augmented generation (RAG) too, as we usually care not only about similar documents, but about the relevant ones.
 
-Here's a neat trick — we can use the same AI models we're working with to generate training data. Yes, it's a bit meta, like asking a chef to teach you how to cook. In fact, putting all data in a single prompt typically gives far better results than any vector similarity method. It's just not always practical due to cost and time constraints.
+But where do we get the training data?
+We can use the same AI models we're working with to generate training data.
+Then feed it into PyTorch, TensorFlow, or your framework of choice.
 
-The good news? We can use this approach to create high-quality training data, then feed it into PyTorch, TensorFlow, or your framework of choice. It's like having the master chef write down their recipes so you can replicate them efficiently later.
+### Enriching embeddings with prompts
 
-### Prompts
+Sure, we can train model. Maybe even train on artifically generated data - but what if we want to avoid this step entirely? We got used to zero-shot learning, and it is not easy to go back.
 
-We got used to zero-shot learning, and it is not easy to go back. Sure, we can train model. Maybe even train on artifically generated data - but what if we want to avoid this step entirely?
-
-Yes, there are two simple solutions.
-One is to add prompt to the text, so to put more weight on what wre care about.
+One of the quickest fixes is to add prompt to the text, so to set the apparent context.
 
 A simple example - let's have a cities. If someone asked if a city is similar to another one, I would ask "in which sense?". If we use raw embeddings, AI has no room for asking such questions. So, instead, of using embeddings, we can create prompts, like:
 
 - `Cousine in {city}`
 - `Size of {city}`
-- `Climate of {city}`
+- `Language spoken in {city}`
 - `Latitude and longitude of {city}`
+
+To be clear - while I have found this approach useful, it is not a silver bullet. It is a quick fix, and makes thing better, just because two sentences carry the same knowledge, these are different sentences, and thus the embeddings will be different.
 
 **PLOTS**
 
-### Rewriting
+### Rewriting and context extraction
 
-Another approach is to rewrite the text before embedding it. Instead of using raw conversations with clients, distill them down to their essential needs. It's like having a translator who not only speaks both languages but also knows how to cut through the noise.
+Another approach is to preprocess the text before embedding it. Instead of using raw conversations with clients, distill them down to their essential needs. It's like having a translator who not only speaks both languages but also knows how to cut through the noise.
 
-Here's a trick I often use — I ask the model:
+Here's a generic trick I often use — I ask the model:
 
-"Rewrite the following text in standard English using Markdown. Focus on content, ignore style. Limit to 200 words."
+> "Rewrite the following text in standard English using Markdown. Focus on content, ignore style. Limit to 200 words."
 
 This simple prompt works wonders. It helps avoid false matches based on superficial similarities like formatting quirks, typos, or unnecessary verbosity. Even if someone writes their question as an epic poem (yes, it happens), they'll get a clear, prosaic answer that focuses on what they actually need to know.
+
+Often we want more - e.g.
 
 ## Recap
 
