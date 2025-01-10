@@ -13,15 +13,15 @@ migdal_score: 0
 Midas turned everything he touched into gold. Data scientists turn everything into vectors.
 We do it for a reason - as gold is the language of merchants, vectors are the language of AI[^1].
 
-These vectors, called embeddings, are insanely useful. They allow us to see similarities between objects in ways that would make Pythagoras proud. We have [word2vec](https://p.migdal.pl/blog/2017/01/king-man-woman-queen-why), [node2vec](https://snap.stanford.edu/node2vec/), [food2vec](https://jaan.io/food2vec-augmented-cooking-machine-intelligence/), [game2vec](https://github.com/warchildmd/game2vec), and if you can name it, someone has probably turned it into a vec. If not yet, it's your turn.
+We have [word2vec](https://p.migdal.pl/blog/2017/01/king-man-woman-queen-why), [node2vec](https://snap.stanford.edu/node2vec/), [food2vec](https://jaan.io/food2vec-augmented-cooking-machine-intelligence/), [game2vec](https://github.com/warchildmd/game2vec), and if you can name it, someone has probably turned it into a vec. If not yet, it's your turn!
 
-When we work with raw IDs, we're blind to relationships. Take the words "know" and "knows" - to a computer, they might as well be "xkcd42" and "banana". But with vectors, we unlock a multidimensional wonderland of relationships. For words, these dimensions might represent part of speech, tense, gender, and countless subtle semantic features. We can even visualize these magical mappings using techniques like PCA or t-SNE.
+When we work with raw IDs, we're blind to relationships. Take the words "know" and "knows" - to a computer, they might as well be "xkcd42" and "banana". But with vectors, we can define a distance between them.
 
 **queen kind image**
 
 This isn't just theoretical - embeddings are so captivating that my most popular blog post remains [king - man + woman = queen; but why?](https://p.migdal.pl/blog/2017/01/king-man-woman-queen-why).
 
-The journey of turning sentences into vectors has come a long way, from humble bag-of-words beginnings through LSTM networks, to today's Large Language Models. Modern LLMs are so powerful at this that they can capture the essence of text without any fine-tuning. In fact, recent research shows these embeddings are almost as revealing as the original text - see Morris et al., [Text Embeddings Reveal (Almost) As Much As Text](https://arxiv.org/abs/2310.06816), (2023).
+Modern Large Language Models (LLMs) are so powerful at this that they can capture the essence of text without any fine-tuning. In fact, recent research shows these embeddings are almost as revealing as the original text - see Morris et al., [Text Embeddings Reveal (Almost) As Much As Text](https://arxiv.org/abs/2310.06816), (2023).
 
 Let's look at three sentences:
 
@@ -53,18 +53,20 @@ In other words, cosine similarity is the duct tape of vector comparisons. Sure, 
 
 Like a Greek tragedy, this blessing comes with a curse: when it works, it feels like magic. But when it fails, debugging becomes an exercise in digital archaeology, with answers buried in layers of high-dimensional spaces we can barely comprehend.
 
-## Has the model ever seen cosine similarity?
+## Problems with cosine similarity
 
 Cosine similarity as an **objective function** is perfectly valid. It's a combination of two fundamental operations in deep learning: dot product and normalization.
 
 The trouble begins when we venture beyond its comfort zone, specifically when:
 
-- The cost function used in model training isn't cosine similarity.
+- The cost function used in model training isn't cosine similarity (usually it is the case!).
 - The training objective differs from what we actually care about.
+
+### Has the model ever seen cosine similarity?
 
 A common scenario involves training with normalized vectors, optimizing log loss on $\sigma(v_a \cdot v_b)$. The normalization gives us some nice mathematical properties (keeping results between -1 and +1, regardless of dimensions), but it's ultimately a hack. Sometimes it helps, sometimes it doesn't — see the aptly titled paper [Is Cosine-Similarity of Embeddings Really About Similarity?](https://arxiv.org/abs/2403.05440).
 
-## The relativity of similarity
+### Is it the right kind of similarity?
 
 Here's where things get philosophically interesting. Even if [a model is explicitly trained on cosine similarity](https://cdn.openai.com/papers/Text_and_Code_Embeddings_by_Contrastive_Pre_Training.pdf), we run into a deeper question: whose definition of similarity are we using?
 
@@ -104,6 +106,8 @@ And remember, this is just a toy example with five sentences. In real-world appl
 
 ## So, what can we use instead?
 
+### Extracting the right features
+
 Instead of blindly trusting a black box, we can directly optimize for what we actually care about. It's like the difference between using a Swiss Army knife and crafting a specialized tool — sometimes you need that perfect fit.
 
 There are two main approaches: fine-tuning (teaching an old model new tricks by adjusting its weights) and transfer learning (using the model's knowledge to create new, more focused embeddings).
@@ -126,7 +130,7 @@ Here's a neat trick — we can use the same AI models we're working with to gene
 
 The good news? We can use this approach to create high-quality training data, then feed it into PyTorch, TensorFlow, or your framework of choice. It's like having the master chef write down their recipes so you can replicate them efficiently later.
 
-## Anything simpler?
+### Prompts
 
 We got used to zero-shot learning, and it is not easy to go back. Sure, we can train model. Maybe even train on artifically generated data - but what if we want to avoid this step entirely?
 
@@ -141,6 +145,8 @@ A simple example - let's have a cities. If someone asked if a city is similar to
 - `Latitude and longitude of {city}`
 
 **PLOTS**
+
+### Rewriting
 
 Another approach is to rewrite the text before embedding it. Instead of using raw conversations with clients, distill them down to their essential needs. It's like having a translator who not only speaks both languages but also knows how to cut through the noise.
 
