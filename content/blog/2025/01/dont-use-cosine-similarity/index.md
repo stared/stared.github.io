@@ -2,7 +2,7 @@
 title: Don't use cosine similarity
 description: >-
   Cosine similarity - the duct tape of AI. Convenient but often misused.
-date: "2024-11-12T00:00:00.030Z"
+date: "2025-01-10T00:00:00.030Z"
 tags:
   - deep learning
 slug: dont-use-cosine-similarity
