@@ -10,18 +10,17 @@ image: ./cartoon-espresso-word2vec.jpg
 migdal_score: 0
 ---
 
+![](./python-summit-2024-warsaw-migdal-cosine-talking.jpg)
+
 Midas turned everything he touched into gold. Data scientists turn everything into vectors.
 We do it for a reason - as gold is the language of merchants, vectors are the language of AI[^1].
 
+## Embeddings
+
+Embeddings are so captivating that my most popular blog post remains [king - man + woman = queen; but why?](https://p.migdal.pl/blog/2017/01/king-man-woman-queen-why).
 We have [word2vec](https://p.migdal.pl/blog/2017/01/king-man-woman-queen-why), [node2vec](https://snap.stanford.edu/node2vec/), [food2vec](https://jaan.io/food2vec-augmented-cooking-machine-intelligence/), [game2vec](https://github.com/warchildmd/game2vec), and if you can name it, someone has probably turned it into a vec. If not yet, it's your turn!
 
 When we work with raw IDs, we're blind to relationships. Take the words "brother" and "sister" - to a computer, they might as well be "xkcd42" and "banana". But with vectors, we can chart entities and relationships between them - both to provide as a structured input to a machine learning models, and on its own, to find similar items.
-
-::gallery{ width=1 }
-![](./word2viz-queen.png)
-#caption
-Embeddings are so captivating that my most popular blog post remains [king - man + woman = queen; but why?](https://p.migdal.pl/blog/2017/01/king-man-woman-queen-why).
-::
 
 Let's focus on sentence embeddings from Large Language Models (LLMs), as they are one of the most popular use cases for embeddings. Modern LLMs are so powerful at this that they can capture the essence of text without any fine-tuning. In fact, recent research shows these embeddings are almost as revealing as the original text - see Morris et al., [Text Embeddings Reveal (Almost) As Much As Text](https://arxiv.org/abs/2310.06816), (2023). Yet, with great power comes great responsibility.
 
@@ -41,8 +40,8 @@ We can use [OpenAI text-embedding-3-large](https://platform.openai.com/docs/guid
 - B: `[-0.066795, -0.052274, -0.015973,  0.077706,  0.044226, ...]`
 - C: `[-0.011167,  0.017812, -0.018655,  0.006625,  0.018506, ...]`
 
-These vectors are quite long - text-embedding-3-large has up 3072 dimensions. So long that [we can truncate them at a minimal loss of quality](https://openai.com/index/new-embedding-models-and-api-updates/).
-The cosine similarity between A and C is 0.750, while A and B score 0.576. Finally, numbers that match our intuition!
+These vectors are quite long - text-embedding-3-large has up 3072 dimensions - to the point that [we can truncate them at a minimal loss of quality](https://openai.com/index/new-embedding-models-and-api-updates/).
+When we calculate cosine similarity, we get 0.750 between A and C (the semantically similar sentences), and 0.576 between A and B (the lexically similar ones). These numbers align with what we'd expect - the meaning matters more than spelling!
 
 ## What is cosine similarity?
 
@@ -50,7 +49,7 @@ When comparing vectors, there's a temptingly simple solution that every data sci
 
 $$ \text{cosine similarity}(\vec{a}, \vec{b}) = \frac{\vec{a} \cdot \vec{b}}{\|\vec{a}\| \|\vec{b}\|} $$
 
-Geometrically speaking, it is cosine of the angle between two vectors. I tend to not think about it in this way - we are speaking about spaces of dozens, hundreds or thousands of dimensions. Our intuition is not good enough to work with such high-dimensional spaces and we shouldn't pretend otherwise.
+Geometrically speaking, it is the cosine of the angle between two vectors. However, I avoid thinking about it this way - we're dealing with spaces of dozens, hundreds, or thousands of dimensions. Our geometric intuition fails us in such high-dimensional spaces, and we shouldn't pretend otherwise.
 
 From a numerical perspective, it is a dot product with normalized vectors.
 It has some appealing properties:
@@ -67,7 +66,8 @@ Yet, this simplicity is misleading. Just because the values usually fall between
 When using cosine similarity on [Glove vectors](https://nlp.stanford.edu/projects/glove/) (`glove.6B.300d`), the closest words to "dog" are predictable, the farthest - not. You can play with it [here](https://colab.research.google.com/github/stared/thinking-in-tensors-writing-in-pytorch/blob/master/rnns/Word%20vectors.ipynb).
 ::
 
-In other words, cosine similarity is the duct tape of vector comparisons. Sure, you can use it anywhere — images, text, audio, code — but that universality is precisely what makes it suspect.
+In other words, cosine similarity is the duct tape of vector comparisons. Sure, it sticks everything together — images, text, audio, code — but like real duct tape, it's a quick fix that often masks deeper problems rather than solving them. And just as you wouldn't use duct tape to permanently repair a water pipe, you shouldn't blindly trust cosine similarity for all your vector comparison needs.
+
 Like a Greek tragedy, this blessing comes with a curse: when it works, it feels like effortless magic. But when it fails, we are clueless, and and we often run into importu fixes, each one bringing issues on its own.
 
 ## Relation to correlation
@@ -84,7 +84,8 @@ In practical cases, we don't want to center or normalize vectors during each pai
 
 ## Problems with cosine similarity as a measure of similarity
 
-Cosine similarity as an **objective function** is perfectly valid. As we just seen, it's a combination of two fundamental operations in deep learning: dot product and normalization.
+Using cosine similarity as a **training objective** for machine learning models is perfectly valid and mathematically sound.
+As we just seen, it's a combination of two fundamental operations in deep learning: dot product and normalization.
 The trouble begins when we venture beyond its comfort zone, specifically when:
 
 - The cost function used in model training isn't cosine similarity (usually it is the case!).
@@ -118,45 +119,42 @@ In the US, word2vec might tell you espresso and cappuccino are practically ident
 
 ## When it falls apart
 
-Let's dive into a deceptively simple example that exposes the limitations of cosine similarity in text analysis. Consider these five short sentences:
+Let's have a task that looks simple, a simple quest from our everyday life:
 
-- "What did I do with my keys?"
-- "In left them my pocket"
-- "There are on the table"
-- "What did I put my wallet?"
-- "What I did to my life"
+- _"What did I do with my keys?"_
+
+Now, using cosine similarity, we can compare it to other notes:
+
+- _"In left them my pocket"_
+- _"There are on the table"_
+- _"What did I put my wallet?"_
+- _"What I did to my life?"_
+
+::gallery{ width=1 }
+![](./the-quest-for-keys.png)
+#caption
+The closest match is not an plausible answer to our question - instead, it is another question. With sentence embedding cosine similarity, we are more likely to question our own life than to solve our mundane task.
+Fortunatelly, sentences about Python are close to zero - as they are not related.
+::
 
 And remember, this is just a toy example with five sentences. In real-world applications, we're often dealing with thousands of documents — far more than could fit in a single context window. As your dataset grows, so does the noise sensitivity, turning your similarity scores into a game of high-dimensional roulette.
-
-**WILL SHOW PLOTS OF PCA**
 
 ## So, what can we use instead?
 
 ### The most powerful approach
 
-The best approach is to directly use LLM query to compare two entries.
+The best approach is to directly use LLM query to compare two entries. So, first, start with [a powerful model of you choice](https://lmarena.ai/?leaderboard). Then, we can write somethinh in the line of:
 
-```
-{question}
+> "Is {sentence_a} similar to {sentence_b}?"
 
-# A
+This way we harness the full power of an LLM to extract meaningful comparisons. We typically want our answers in structured output - what the field calls "tools" or "function calls" (which is really just a fancy way of saying "JSON").
 
-{sentence_a}
-
-# B
-
-{sentence_b}
-```
-
-That way we use the full power of an LLM, and we extract.
-Usually we want to get our answer as structured output - going by names of "tools" or "function calls", which is a fancy way of saying "JSON".
-
-In most cases, it is infeasable - we don't want to run that costly operation for each single query. Unless our dataset is really small, it would be prohibitivele expensive. And even for a small dataset, the delays would be measurable - comparing to a simple numerical operation.
+However, in most cases this approach is impractical - we don't want to run such a costly operation for each query. Unless our dataset is very small, it would be prohibitively expensive. Even with a small dataset, the delays would be noticeable compared to a simple numerical operation.
 
 ### Extracting the right features
 
 So, we can go back to using embeddings.
-But instead of blindly trusting a black box, we can directly optimize for what we actually care about.
+But instead of blindly trusting a black box, we can directly optimize for what we actually care about by creating task-specific embeddings.
 There are two main approaches:
 
 - Fine-tuning (teaching an old model new tricks by adjusting its weights).
@@ -169,7 +167,7 @@ $$\sigma(u_A \cdot u_B)$$
 
 where $u = M v$, and $M$ is a matrix that reduces the embedding space to dimensions we actually care about. Think of it as decluttering — we're keeping only the features relevant to our specific similarity definition.
 
-But often, similarity isn't what we're really after. Consider the question **"Is document B a correct answer to question A?"** (note the word "correct" — it's doing a lot of heavy lifting here). This looks more like:
+But often, similarity isn't what we're really after. Consider the question **"Is document B a correct answer to question A?"** (note the word "correct") and the relevant probability:
 
 $$\sigma(q_A \cdot k_B)$$
 
@@ -181,22 +179,28 @@ But where do we get the training data?
 We can use the same AI models we're working with to generate training data.
 Then feed it into PyTorch, TensorFlow, or your framework of choice.
 
-### Enriching embeddings with prompts
+### Pre-prompt engineering
 
 Sure, we can train model. Maybe even train on artifically generated data - but what if we want to avoid this step entirely? We got used to zero-shot learning, and it is not easy to go back.
 
 One of the quickest fixes is to add prompt to the text, so to set the apparent context.
+A simple example - let's have the list of [Time's 100 Most Significant Figures in History](https://ideas.time.com/2013/12/10/whos-biggest-the-100-most-significant-figures-in-history/). Let's say we want to see who is the most similar to Isaac Newton.
 
-A simple example - let's have a cities. If someone asked if a city is similar to another one, I would ask "in which sense?". If we use raw embeddings, AI has no room for asking such questions. So, instead, of using embeddings, we can create prompts, like:
+![](./time-newton-sim1.png)
 
-- `Cousine in {city}`
-- `Size of {city}`
-- `Language spoken in {city}`
-- `Latitude and longitude of {city}`
+No surprise, it's other physicists and natural philosophers.
+Yet, let's say we want to focus on his nationality - so we add a prompt _"Nationality of {person}"_.
 
-To be clear - while I have found this approach useful, it is not a silver bullet. It is a quick fix, and makes thing better, just because two sentences carry the same knowledge, these are different sentences, and thus the embeddings will be different.
+![](./time-newton-sim2.png)
 
-**PLOTS**
+Sadly, the results are underwhelming - sure, Galileo went a few places down, but Albert Einstein is listed as the most similar.
+So, let's try another approach, by making nationality the subject of the sentence - _""This is a country that has produced many influential historical figures, including {person}"_.
+
+![](./time-newton-sim3.png)
+
+Now we get much better answer!
+To be clear - while I have found this approach useful, it is not a silver bullet.
+Depending on how to formulate the prompt, we can get a slight bias towards our goal, or something actually solving our problem.
 
 ### Rewriting and context extraction
 
@@ -206,9 +210,14 @@ Here's a generic trick I often use — I ask the model:
 
 > "Rewrite the following text in standard English using Markdown. Focus on content, ignore style. Limit to 200 words."
 
-This simple prompt works wonders. It helps avoid false matches based on superficial similarities like formatting quirks, typos, or unnecessary verbosity. Even if someone writes their question as an epic poem (yes, it happens), they'll get a clear, prosaic answer that focuses on what they actually need to know.
+This simple prompt works wonders. It helps avoid false matches based on superficial similarities like formatting quirks, typos, or unnecessary verbosity.
 
-Often we want more - e.g.
+Often we want more - e.g. to extract information from a text, while ignoring the rest.
+For example, let's say with have a chat with the client and we want to suggest relevant page, be it of FAQ, or a product recommendation. A naive way would be to compare their discussion's embedding with the embeddings of our pages. A better one is first to fransform the conversation into possible products and then touse em
+
+> "You have a conversation with a client. Summarize their needs and pain points in up to 10 Markdown bullet points, up to 20 words each. Take into account both explicitly stated needs as well as ones based on the context, tone, "
+
+Even if someone writes their question as an epic poem (yes, it happens), they'll get a clear, prosaic answer that focuses on what they actually need to know.
 
 ## Recap
 
@@ -224,11 +233,15 @@ Let's wrap this up with some key takeaways:
 
 Remember: just because two vectors point in the same direction doesn't mean they're telling the same story. Sometimes you need to be the translator, not just the calculator.
 
-**PHOTO FROM Python Summit**
+To be clear if a solution is stupid but it works, it is not stupid.
 
-## From conf
+![Photo from Python Summit 2024 Warsaw - a laptop of Piotr Migdał showing "Don't use cosine similarity" talk front slide](./python-summit-2024-warsaw-migdal-cosine.jpg)
 
-- IDea: xkcd plot or excalidraw
+## Thanks
+
+I first presented this topic as a flash talk at [Warsaw AI Breakfast](https://lu.ma/warsaw-ai-breakfast) - I am grateful for feedback from Grzegorz Kossakowski and Max Salamonowicz.
+I thank Rafał Małanij for inviting me to speak at [Python Summit 2024 Warsaw](https://python-summit.pl/en/).
+This blog post stemmed from interest after these presentations, as well as [multiple questions on the LinkedIn post](https://www.linkedin.com/posts/piotrmigdal_llm-ai-activity-7271894516058509312-e489?utm_source=share&utm_medium=member_desktop).
 
 [^1]: To the point that my Jupyter Notebook intro to deep learning is called [Thinking in tensors, writing in PyTorch](https://github.com/stared/thinking-in-tensors-writing-in-pytorch)
 
@@ -350,3 +363,7 @@ Sudhanshu Mishra • 2nd
 Machine Learning Engineer | MLOps | IIT Kanpur
 16h
 Waiting for the video and blog. This seems really interesting
+
+```
+
+```
