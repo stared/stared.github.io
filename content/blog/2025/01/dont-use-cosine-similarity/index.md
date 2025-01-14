@@ -96,7 +96,7 @@ The trouble begins when we venture beyond its comfort zone, specifically when:
 
 ### Has the model ever seen cosine similarity?
 
-A common scenario involves training with unnormalized vectors, when we are dealing with a function of dot product - for example, predicting probabilities with a signoid function $\sigma(v_a \cdot v_b)$ and applying log loss cost function. Other networks operate differently, e.g. they use Euclidean distance, minimized for members of the same class and maximized for members of different classes.
+A common scenario involves training with unnormalized vectors, when we are dealing with a function of dot product - for example, predicting probabilities with a sigmoid function $\sigma(v_a \cdot v_b)$ and applying log loss cost function. Other networks operate differently, e.g. they use Euclidean distance, minimized for members of the same class and maximized for members of different classes.
 
 The normalization gives us some nice mathematical properties (keeping results between -1 and +1, regardless of dimensions), but it's ultimately a hack. Sometimes it helps, sometimes it doesn't — see the aptly titled paper [Is Cosine-Similarity of Embeddings Really About Similarity?](https://arxiv.org/abs/2403.05440).
 
