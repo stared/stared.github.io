@@ -9,6 +9,9 @@ tags:
 slug: dont-use-cosine-similarity
 image: ./cartoon-espresso-word2vec.jpg
 migdal_score: 0
+mentions:
+  - text: if you like this post, upvote on Hacker News
+    href: https://news.ycombinator.com/item?id=42704078
 ---
 
 ![](./python-summit-2024-warsaw-migdal-cosine-talking.jpg)
