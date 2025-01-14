@@ -247,3 +247,11 @@ I thank Rafał Małanij for inviting me to speak at [Python Summit 2024 Warsaw](
 This blog post stemmed from interest after these presentations, as well as [multiple questions on the LinkedIn post](https://www.linkedin.com/posts/piotrmigdal_llm-ai-activity-7271894516058509312-e489?utm_source=share&utm_medium=member_desktop).
 
 [^1]: To the point that my Jupyter Notebook intro to deep learning is called [Thinking in tensors, writing in PyTorch](https://github.com/stared/thinking-in-tensors-writing-in-pytorch)
+
+## Similar posts
+
+- `0.769` [king - man + woman is queen; but why?](/blog/2017/01/king-man-woman-queen-why/)
+- `0.713` [Exploring human vs machine learning](/blog/2019/07/human-machine-learning-motivation/)
+- `0.697` [AI won’t make artists redundant - thanks to information theory](/blog/2023/02/ai-artists-information-theory/)
+- `0.695` [Simple diagrams of convoluted neural networks](/blog/2018/09/simple-diagrams-deep-learning/)
+- `0.690` [Teaching deep learning with Keras](/blog/2017/04/teaching-deep-learning/)
