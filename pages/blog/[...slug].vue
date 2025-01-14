@@ -74,8 +74,19 @@ figure.width-max-half img {
   max-width: 380px;
 }
 
-p:has(> span.katex-display) {
+/* Center display equations */
+p:has(> mjx-container:only-child) {
   text-align: center;
+}
+
+mjx-container {
+  margin: 1em auto;
+}
+
+/* Keep inline equations as normal text */
+p:not(:has(> mjx-container:only-child)) mjx-container {
+  display: inline-block;
+  margin: 0;
 }
 
 footer {
