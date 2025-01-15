@@ -149,9 +149,24 @@ And remember, this is just a toy example with five sentences. In real-world appl
 
 The best approach is to directly use LLM query to compare two entries. So, first, start with [a powerful model of your choice](https://lmarena.ai/?leaderboard). Then, we can write something in the line of:
 
-> "Is {sentence_a} similar to {sentence_b}?"
+> "Is {sentence_a} a plausible answer to {sentence_b}?"
 
-This way we harness the full power of an LLM to extract meaningful comparisons. We typically want our answers in structured output - what the field calls "tools" or "function calls" (which is really just a fancy way of saying "JSON").
+This way we harness the full power of an LLM to extract meaningful comparisons - powerful enough to find our keys in pockets, and wise enough to understand the difference between questions and answers.
+We typically want our answers in structured output - what the field calls "tools" or "function calls" (which is really just a fancy way of saying "JSON").
+
+Since many models love Markdown (as they were trained on it), my default template looks like this:
+
+```markdown
+{question}
+
+## A
+
+{sentence_a}
+
+## B
+
+{sentence_b}
+```
 
 However, in most cases this approach is impractical - we don't want to run such a costly operation for each query. Unless our dataset is very small, it would be prohibitively expensive. Even with a small dataset, the delays would be noticeable compared to a simple numerical operation.
 
