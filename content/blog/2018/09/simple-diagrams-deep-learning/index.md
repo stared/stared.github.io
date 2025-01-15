@@ -19,7 +19,7 @@ migdal_score: 0
 
 Neural networks are complicated, multidimensional, nonlinear array operations. How can we present a deep learning model architecture in a way that shows key features, while avoiding being too complex or repetitive? How can we present them in a way that is clear, didactic and insightful? (Bonus points if it is beautiful as well!). Right now, there is no standard for plots — neither for research nor didactic projects. Let me take you through an overview of tools and techniques for visualizing whole networks and particular blocks!
 
-# The baseline
+## The baseline
 
 AlexNet was a breakthrough architecture, setting convolutional networks (CNNs) as the leading machine learning algorithm for large image classification. The paper introducing AlexNet presents an excellent diagram — but something is missing…
 
@@ -41,7 +41,7 @@ Cute, isn’t it? But it is not an artistic impression. It is a graphical repres
 
 I may be biased towards _“making things simpler”_ as I did with complex tensor operations in JavaScript, and visualized their results before it was cool (for[ Quantum Game with Photons](http://quantumgame.io/)). Yet, there is more to the Feynman diagrams analogy than using visual representations for formulae. In both quantum mechanics and deep learning, we do a lot of linear algebra with tensor structures. In fact, one may even use the[ Einstein summation convention in PyTorch](https://rockt.github.io/2018/04/30/einsum).
 
-# Explaining neural network layers
+## Explaining neural network layers
 
 Before we jump into network architectures, let’s focus on their building blocks — layers. For example, a[ Long Short-Term Memory](https://en.wikipedia.org/wiki/Long_short-term_memory) (LSTM) unit can be described with the following equation:
 
@@ -79,7 +79,7 @@ For example, in this Batch Normalization diagram, the emphasis is on the backwar
 
 ![Frederik Kratzert, `[Understanding the backward pass through Batch Normalization Layer](https://kratzert.github.io/2016/02/12/understanding-the-gradient-flow-through-the-batch-normalization-layer.html)` (2016)](https://cdn-images-1.medium.com/max/2400/0*eHSZzD8H9WBuR9Ve.png)
 
-# Data viz vs data art
+## Data viz vs data art
 
 You may get the impression that I argue for making deep learning papers more visually appealing. Well, it wouldn’t hurt to make charts nicer. When I work with data exploration, I often pick [nicer color schemes](http://bl.ocks.org/aaizemberg/78bd3dade9593896a59d) just to make a more pleasant experience. My main point is to turn visualizations into a more effective means of communication.
 
@@ -119,7 +119,7 @@ Some diagrams abstract a lot of information, giving only a very general idea of 
 
 ![Fjodor van Veen, `[Neural Network Zoo](http://www.asimovinstitute.org/neural-network-zoo/)` (2016), a fragment](https://cdn-images-1.medium.com/max/1222/1*dyuWUs3JfJihpbShcbHKzw.png)
 
-# Explanatory architecture diagrams
+## Explanatory architecture diagrams
 
 We saw a few examples of layer diagrams, and pieces of data art related to neural network architectures.
 
@@ -139,7 +139,7 @@ Such diagrams are not restricted to computer vision. Let’s see one for turning
 
 Such diagrams might be useful if the goal is to show the network architecture and at the same time — give some hints on its inner workings. They seem to be especially useful for tutorials, e.g. the seminal [The Unreasonable Effectiveness of Recurrent Neural Networks](http://karpathy.github.io/2015/05/21/rnn-effectiveness/).
 
-# Abstract architecture diagrams
+## Abstract architecture diagrams
 
 However, for larger models, explanatory diagrams may be unnecessarily complex or too specific to show all possible layers within a single diagram style. So, the way to go is to use abstract diagrams. Typically, nodes denote operations, while arrows represent the tensor flow. For example, let’s look at this VGG-19 vs ResNet-34 comparison:
 
@@ -177,13 +177,13 @@ Another interesting approach to the neural network module hierarchy:
 
 ![AdaptNet architecture from Abhinav Velda et al., `[DeepScene: Semantic Segmentation using Deep Upconvolutional Neural Networks](http://deepscene.cs.uni-freiburg.de/)` (2016)](https://cdn-images-1.medium.com/max/1802/1*v7Im24aAolKx_RhxpxYWCA.jpeg)
 
-# Automatic tools for neural network architecture visualization
+## Automatic tools for neural network architecture visualization
 
 You can draw your network manually. Use[ Inkscape](https://inkscape.org/en/) (as Chris Olah did),[ TikZ](http://www.texample.net/tikz/examples/) (if you are a fan of LaTeX) or any other tool. The other one is to generate them automatically.
 
 I hope that you are aware that you already interact with one visual representation — code (yes, a text is a visual representation!). For some projects, the code might suffice, especially if you work with a concise framework (such as[ Keras or PyTorch](https://deepsense.ai/keras-or-pytorch/)). For more convoluted (pun totally intended) architectures, diagrams add a lot of explanatory value.
 
-#### TensorBoard: Graph
+### TensorBoard: Graph
 
 [TensorBoard](https://www.tensorflow.org/guide/graph_viz) is arguably the most popular network visualization tool. A TensorFlow network graph looks like this:
 
@@ -199,7 +199,7 @@ While this diagram shows the structure of computations, some things are long-win
 
 This article provides insight into the many challenges of creating network diagrams bottom-up. Since we are allowed to use all TensorFlow operations, including auxiliary ones (such as initialization or logging), it is challenging to make a general, readable graph. If we don’t assume much about what is important to the reader(e.g. that convolution kernel size may vary, but all operations are expected to have a bias), it is hard to make a general tool for turning any TensorFlow computation diagram into a useful (think: publication-ready) diagram.
 
-#### Keras
+### Keras
 
 Keras is a high-level deep learning framework and therefore has huge potential for beautiful visualizations. (Side note: if you want to use an interactive train graph for Jupyter Notebook, I wrote one:[ livelossplot](https://github.com/stared/livelossplot).) Yet, in my opinion, [its default visualizing option](https://keras.io/visualization) (using GraphViz) is not stellar:
 
@@ -221,7 +221,7 @@ Though, I would say that the most aesthetically pleasing is one found in[ Keras.
 
 This project is no longer in active development, in favor of [TensorFlow.js](https://js.tensorflow.org/). Yet, as it is open-source and modular (using [Vue.js](https://vuejs.org/) framework), it may work as a starting ground for creating a standalone-viz. Ideally, one working in Jupyter Notebook or separate browser window, much alike[ displaCy for sentence decomposition](https://spacy.io/usage/visualizers#section-jupyter).
 
-#### Moniel
+### Moniel
 
 Instead of turning a functional neural network into a graph, we can define an abstract structure. In[ Moniel](https://github.com/mlajtos/moniel) by Milan Lajtoš the best part is that we can define a hierarchical structure:
 
@@ -229,7 +229,7 @@ Instead of turning a functional neural network into a graph, we can define an ab
 
 I like this hierarchical-structure approach. Moniel was an ambitious idea to create a specific language (rather than, say, to use YAML). Sadly, [the project lies abandoned](https://github.com/mlajtos/moniel/issues/13).
 
-#### Netscope
+### Netscope
 
 I got inspired by[ Netscope CNN Analyzer](https://dgschwend.github.io/netscope/quickstart.html) by[ dgschwend](https://github.com/dgschwend) (based on a project by[ ethereon](https://github.com/ethereon)). It is a project with many forks, so by now a different one may be more up-to-date:
 
@@ -237,7 +237,7 @@ I got inspired by[ Netscope CNN Analyzer](https://dgschwend.github.io/netscope/q
 
 It is based on Caffe’s `.prototxt`format. I love its color theme, the display of channel sizes and mouseover tooltip for exact parameters. The main problem, though, is the lack of a hierarchical structure. Networks get (too) big very soon.
 
-#### Netron
+### Netron
 
 Another ambitious project: [Netron](https://github.com/lutzroeder/netron) by Lutz Roeder:
 
@@ -249,7 +249,7 @@ It is a web app, with standalone versions. Ambitiously, it reads various formats
 
 It sounds awesome! Though, it is a bit more verbose than NetScope (with activation functions) and, most fundamentally, it lacks the hierarchical structure. But for a general visualization, it may be the best starting point.
 
-#### EDIT: Other tools
+### EDIT: Other tools
 
 A few other tools that may be useful or inspiring:
 
@@ -264,7 +264,7 @@ And a few threads:
 - [What tools are good for drawing neural network architecture diagrams? — Quora](https://www.quora.com/What-tools-are-good-for-drawing-neural-network-architecture-diagrams)
 - [How do you visualize neural network architectures? — Data Science Stack Exchange](https://datascience.stackexchange.com/questions/12851/how-do-you-visualize-neural-network-architectures)
 
-# Conclusion and call for action
+## Conclusion and call for action
 
 We saw quite a few examples of neural network visualization, shedding light on the following trade-offs:
 
@@ -289,7 +289,7 @@ Would you like to start a brand new package? Or contribute to an existing one?
 
 If you find any neural network particularly inspiring, or confusing, share it in the comments! :)
 
-# Afterwords
+## Afterwords
 
 This article is based on my talk “Simple diagrams of convoluted neural networks” ([abstract](https://pydata.org/berlin2018/schedule/presentation/30/),[ slides](https://www.dropbox.com/s/a7xako61ihuh82k/20180707_network_viz_pydata_berlin.pdf?dl=0)) from PyData Berlin 2018 (BTW: and I invite you to[ PyData Warsaw, 19–20 Nov 2018](https://pydata.org/warsaw2018/)). Typically I write on my blog[ p.migdal.pl](https://p.migdal.pl/). Now I give Medium a try, as it is easier to include images than with[ Jekyll](https://p.migdal.pl/2015/12/02/first-post.html).
 
