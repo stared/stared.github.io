@@ -10,7 +10,7 @@ slug: dont-use-cosine-similarity
 image: ./cartoon-espresso-word2vec.jpg
 migdal_score: 0
 mentions:
-  - text: if you like this post, upvote on Hacker News
+  - text: see Hacker News for the discussion
     href: https://news.ycombinator.com/item?id=42704078
 ---
 
@@ -84,7 +84,7 @@ Like a Greek tragedy, this blessing comes with a curse: when it works, it feels 
 - Normalizing vectors to unit length.
 - Computing dot products between them.
 
-When we with vectors that are both centered ($\sum_i v_i = 0$) and normalized ($\sum_i v_i^2 = 1$), Pearson correlation, cosine similarity and dot product are the same.
+When we work with vectors that are both centered ($\sum_i v_i = 0$) and normalized ($\sum_i v_i^2 = 1$), Pearson correlation, cosine similarity and dot product are the same.
 
 In practical cases, we don't want to center or normalize vectors during each pairwise comparison - we do it once, and **just use dot product**. In any case, when you are fine with using cosine similarity, you should be as fine with using Pearson correlation (and vice versa).
 
@@ -238,20 +238,26 @@ Let's recap the key points:
 
 Have you found other ways to make vector similarity work better for your use case? What approaches have you tried? What were the results?
 
-![Photo from Python Summit 2024 Warsaw - a laptop of Piotr Migdał showing "Don't use cosine similarity" talk front slide.](./python-summit-2024-warsaw-migdal-cosine.jpg)
+![](./python-summit-2024-warsaw-migdal-cosine.jpg)
 
 ## Thanks
 
-I first presented this topic as a flash talk at [Warsaw AI Breakfast](https://lu.ma/warsaw-ai-breakfast) - I am grateful for feedback from Grzegorz Kossakowski and Max Salamonowicz.
+I first presented this topic as a flash talk at [Warsaw AI Breakfast](https://lu.ma/warsaw-ai-breakfast) - I am grateful for feedback from Greg Kossakowski and Max Salamonowicz.
 I thank Rafał Małanij for inviting me to speak at [Python Summit 2024 Warsaw](https://python-summit.pl/en/).
 This blog post stemmed from interest after these presentations, as well as [multiple questions on the LinkedIn post](https://www.linkedin.com/posts/piotrmigdal_llm-ai-activity-7271894516058509312-e489?utm_source=share&utm_medium=member_desktop).
 
-[^1]: To the point that my Jupyter Notebook intro to deep learning is called [Thinking in tensors, writing in PyTorch](https://github.com/stared/thinking-in-tensors-writing-in-pytorch)
-
 ## Similar posts
 
-- `0.769` [king - man + woman is queen; but why?](/blog/2017/01/king-man-woman-queen-why/)
-- `0.713` [Exploring human vs machine learning](/blog/2019/07/human-machine-learning-motivation/)
-- `0.697` [AI won’t make artists redundant - thanks to information theory](/blog/2023/02/ai-artists-information-theory/)
-- `0.695` [Simple diagrams of convoluted neural networks](/blog/2018/09/simple-diagrams-deep-learning/)
-- `0.690` [Teaching deep learning with Keras](/blog/2017/04/teaching-deep-learning/)
+- `0.769` [king - man + woman is queen; but why?](https://p.migdal.pl/blog/2017/01/king-man-woman-queen-why/)
+- `0.713` [Exploring human vs machine learning](https://p.migdal.pl/blog/2019/07/human-machine-learning-motivation/)
+- `0.697` [AI won’t make artists redundant - thanks to information theory](https://p.migdal.pl/blog/2023/02/ai-artists-information-theory/)
+- `0.695` [Simple diagrams of convoluted neural networks](https://p.migdal.pl/blog/2018/09/simple-diagrams-deep-learning/)
+- `0.690` [Teaching deep learning with Keras](https://p.migdal.pl/blog/2017/04/teaching-deep-learning/)
+
+And for a bit of fun, here are my least similar posts:
+
+- `0.385` [Perspective: capsaicin is a psychoactive substance](https://p.migdal.pl/blog/2022/10/perspective-capsaicin-is-a-psychoactive-substance/)
+- `0.384` [There will be the next Quantum Game with Photons](https://p.migdal.pl/blog/2019/07/there-will-be-the-next-quantum-game-with-photons/)
+- `0.285` [The Statues by Jacek Kaczmarski](https://p.migdal.pl/blog/2019/10/the-statues-by-jacek-kaczmarski/)
+
+Yes, I see the irony in using cosine similarity after warning against it. But here I'm using it exactly as intended — with a model trained specifically for document similarity. Sometimes duck tape is all we need.
