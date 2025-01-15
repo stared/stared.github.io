@@ -246,6 +246,8 @@ I first presented this topic as a flash talk at [Warsaw AI Breakfast](https://lu
 I thank Rafał Małanij for inviting me to speak at [Python Summit 2024 Warsaw](https://python-summit.pl/en/).
 This blog post stemmed from interest after these presentations, as well as [multiple questions on the LinkedIn post](https://www.linkedin.com/posts/piotrmigdal_llm-ai-activity-7271894516058509312-e489?utm_source=share&utm_medium=member_desktop).
 
+[^1]: To the point that my Jupyter Notebook intro to deep learning is called [Thinking in tensors, writing in PyTorch](https://github.com/stared/thinking-in-tensors-writing-in-pytorch)
+
 ## Similar posts
 
 - `0.769` [king - man + woman is queen; but why?](https://p.migdal.pl/blog/2017/01/king-man-woman-queen-why/)
