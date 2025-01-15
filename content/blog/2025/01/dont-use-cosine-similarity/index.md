@@ -17,7 +17,7 @@ mentions:
 ![](./python-summit-2024-warsaw-migdal-cosine-talking.jpg)
 
 Midas turned everything he touched into gold. Data scientists turn everything into vectors.
-We do it for a reason — as gold is the language of merchants, vectors are the language of AI[^1].
+We do it for a reason — as gold is the language of merchants, vectors are the language of AI.
 
 Just as Midas discovered that turning everything to gold wasn't always helpful, we'll see that blindly applying cosine similarity to vectors can lead us astray. While embeddings do capture similarities, they often reflect the wrong kind - matching questions to questions rather than questions to answers, or getting distracted by superficial patterns like writing style and typos rather than meaning. This post shows you how to be more intentional about similarity and get better results.
 
@@ -28,7 +28,8 @@ We have [word2vec](https://p.migdal.pl/blog/2017/01/king-man-woman-queen-why), [
 
 When we work with raw IDs, we're blind to relationships. Take the words "brother" and "sister" — to a computer, they might as well be "xkcd42" and "banana". But with vectors, we can chart entities and relationships between them — both to provide as a structured input to a machine learning models, and on its own, to find similar items.
 
-Let's focus on sentence embeddings from Large Language Models (LLMs), as they are one of the most popular use cases for embeddings. Modern LLMs are so powerful at this that they can capture the essence of text without any fine-tuning. In fact, recent research shows these embeddings are almost as revealing as the original text - see Morris et al., [Text Embeddings Reveal (Almost) As Much As Text](https://arxiv.org/abs/2310.06816), (2023). Yet, with great power comes great responsibility.
+Let's focus on sentence embeddings from Large Language Models (LLMs), as they are one of the most popular use cases for embeddings. Modern LLMs are so powerful at this that they can capture the essence of text without any fine-tuning. In fact, recent research shows these embeddings are almost as revealing as the original text - see Morris et al., [Text Embeddings Reveal (Almost) As Much As Text](https://arxiv.org/abs/2310.06816), (2023).
+Yet, with great power comes great responsibility - both in terms of how we use these powerful models and how we protect the privacy of the data we store and process.
 
 ## Example
 
@@ -69,7 +70,8 @@ Yet, this simplicity is misleading. Just because the values usually fall between
 ::gallery{ width=1 }
 ![](./glove-dog-cosine-similarity.png)
 #caption
-When using cosine similarity on [Glove vectors](https://nlp.stanford.edu/projects/glove/) (`glove.6B.300d`), the closest words to "dog" are predictable, the farthest - not. You can play with it [here](https://colab.research.google.com/github/stared/thinking-in-tensors-writing-in-pytorch/blob/master/rnns/Word%20vectors.ipynb).
+When using cosine similarity on [Glove vectors](https://nlp.stanford.edu/projects/glove/) (`glove.6B.300d`), the closest words to "dog" are predictable, the farthest - not
+You can play with it [in Colab](https://colab.research.google.com/github/stared/thinking-in-tensors-writing-in-pytorch/blob/master/rnns/Word%20vectors.ipynb) from my [Thinking in tensors, writing in PyTorch](https://github.com/stared/thinking-in-tensors-writing-in-pytorch) series.
 ::
 
 In other words, cosine similarity is the duct tape of vector comparisons. Sure, it sticks everything together — images, text, audio, code — but like real duct tape, it's a quick fix that often masks deeper problems rather than solving them. And just as you wouldn't use duct tape to permanently repair a water pipe, you shouldn't blindly trust cosine similarity for all your vector comparison needs.
@@ -190,13 +192,14 @@ But often, similarity isn't what we're really after. Consider the question **"Is
 
 $$\sigma(q_A \cdot k_B)$$
 
-where $q = Q v$ and $k = K v$. The matrices $Q$ and $K$ transform our embeddings into specialized spaces for questions and answers. It's like having two different languages and learning to translate between them, rather than assuming they're the same thing.
+where $q = Q v$ and $k = K v$. The matrices $Q$ and $K$ transform our embeddings into specialized spaces for queries $q$ and keys $k$. It's like having two different languages and learning to translate between them, rather than assuming they're the same thing.
 
 This approach works beautifully for retrieval augmented generation (RAG) too, as we usually care not only about similar documents but about the relevant ones.
 
 But where do we get the training data?
 We can use the same AI models we're working with to generate training data.
 Then feed it into PyTorch, TensorFlow, or your framework of choice.
+If you need a primer, there is a [matrix decomposition exercise](https://colab.research.google.com/github/stared/thinking-in-tensors-writing-in-pytorch/blob/master/extra/Matrix%20exercise.ipynb) in my [Thinking in tensors, writing in PyTorch](https://github.com/stared/thinking-in-tensors-writing-in-pytorch) series.
 
 ### Pre-prompt engineering
 
@@ -260,8 +263,6 @@ Have you found other ways to make vector similarity work better for your use cas
 I first presented this topic as a flash talk at [Warsaw AI Breakfast](https://lu.ma/warsaw-ai-breakfast) - I am grateful for feedback from Greg Kossakowski and Max Salamonowicz.
 I thank Rafał Małanij for inviting me to speak at [Python Summit 2024 Warsaw](https://python-summit.pl/en/).
 This blog post stemmed from interest after these presentations, as well as [multiple questions on the LinkedIn post](https://www.linkedin.com/posts/piotrmigdal_llm-ai-activity-7271894516058509312-e489?utm_source=share&utm_medium=member_desktop).
-
-[^1]: To the point that my Jupyter Notebook intro to deep learning is called [Thinking in tensors, writing in PyTorch](https://github.com/stared/thinking-in-tensors-writing-in-pytorch)
 
 ## Similar posts
 
