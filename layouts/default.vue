@@ -22,7 +22,7 @@ useHead({
       rel: "alternate",
       type: "application/rss+xml",
       title: "RSS Feed for Piotr Migdał's Blog",
-      href: "/feed.xml",
+      href: "https://p.migdal.pl/feed.xml",
     },
   ],
 });
