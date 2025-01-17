@@ -26,7 +26,7 @@ Just as Midas discovered that turning everything to gold wasn't always helpful, 
 Embeddings are so captivating that my most popular blog post remains [king - man + woman = queen; but why?](https://p.migdal.pl/blog/2017/01/king-man-woman-queen-why).
 We have [word2vec](https://p.migdal.pl/blog/2017/01/king-man-woman-queen-why), [node2vec](https://snap.stanford.edu/node2vec/), [food2vec](https://jaan.io/food2vec-augmented-cooking-machine-intelligence/), [game2vec](https://github.com/warchildmd/game2vec), and if you can name it, someone has probably turned it into a vec. If not yet, it's your turn!
 
-When we work with raw IDs, we're blind to relationships. Take the words "brother" and "sister" — to a computer, they might as well be "xkcd42" and "banana". But with vectors, we can chart entities and relationships between them — both to provide as a structured input to a machine learning models, and on its own, to find similar items.
+When we work with raw IDs, we're blind to relationships. Take the words "brother" and "sister" — to a computer, they might as well be "xkcd42" and "banana". But with vectors, we can discover relationships between them — both to provide as a structured input to a machine learning models, and on its own, to find similar items.
 
 Let's focus on sentence embeddings from Large Language Models (LLMs), as they are one of the most popular use cases for embeddings. Modern LLMs are so powerful at this that they can capture the essence of text without any fine-tuning. In fact, recent research shows these embeddings are almost as revealing as the original text - see Morris et al., [Text Embeddings Reveal (Almost) As Much As Text](https://arxiv.org/abs/2310.06816), (2023).
 Yet, with great power comes great responsibility - both in terms of how we use these powerful models and how we protect the privacy of the data we store and process.
@@ -52,7 +52,7 @@ When we calculate cosine similarity, we get 0.750 between A and C (the semantica
 
 ## What is cosine similarity?
 
-When comparing vectors, there's a temptingly simple solution that every data scientist reaches for — cosine similarity:
+When comparing vectors, there's a temptingly simple solution that every data scientist reaches for, often without a second thought — cosine similarity:
 
 $$ \text{cosine similarity}(\vec{a}, \vec{b}) = \frac{\vec{a} \cdot \vec{b}}{\|\vec{a}\| \|\vec{b}\|} = \frac{\sum_i a_i b_i}{\sqrt{\sum_i a_i^2} \sqrt{\sum_i b_i^2}} $$
 
@@ -272,10 +272,10 @@ This blog post stemmed from interest after these presentations, as well as [mult
 - `0.695` [Simple diagrams of convoluted neural networks](https://p.migdal.pl/blog/2018/09/simple-diagrams-deep-learning/)
 - `0.690` [Teaching deep learning with Keras](https://p.migdal.pl/blog/2017/04/teaching-deep-learning/)
 
-And for a bit of fun, here are my least similar posts:
+And, as an experiment, here are my least similar posts:
 
 - `0.385` [Perspective: capsaicin is a psychoactive substance](https://p.migdal.pl/blog/2022/10/perspective-capsaicin-is-a-psychoactive-substance/)
 - `0.384` [There will be the next Quantum Game with Photons](https://p.migdal.pl/blog/2019/07/there-will-be-the-next-quantum-game-with-photons/)
 - `0.285` [The Statues by Jacek Kaczmarski](https://p.migdal.pl/blog/2019/10/the-statues-by-jacek-kaczmarski/)
 
-Yes, I see the irony in using cosine similarity after warning against it. But here I'm using it exactly as intended — with a model trained specifically for document similarity. Sometimes duck tape is all we need.
+Yes, I see the irony in using cosine similarity after warning against it. But here I'm using it exactly as intended — on a model trained on it and comparing apples to apples (various blog posts). Sometimes duck tape is all we need.
