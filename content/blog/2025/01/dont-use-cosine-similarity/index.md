@@ -8,7 +8,8 @@ tags:
   - machine learning
 slug: dont-use-cosine-similarity
 image: ./cartoon-espresso-word2vec.jpg
-migdal_score: 0
+migdal_score: 1
+views_k: 20
 mentions:
   - text: see Hacker News for the discussion
     href: https://news.ycombinator.com/item?id=42704078
