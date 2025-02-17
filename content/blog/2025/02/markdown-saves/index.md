@@ -7,13 +7,16 @@ tags:
   - tech
 slug: markdown-saves
 image: ./sauna-post-obsidian-archive.png
+mentions:
+  - text: see Hacker News for the discussion
+    href: https://news.ycombinator.com/item?id=43083301
 ---
 
 One of Stanisław Lem's stories, [The Memoirs Found in a Bathtub](https://en.wikipedia.org/wiki/Memoirs_Found_in_a_Bathtub), begins with a strange phenomenon that turns all written materials into dust. While this is science fiction, something similar happens in our digital world.
 
 ## Digital memento mori
 
-If you publish something online, sooner or later, it will vanish. I don't mean in some distant future - [the half-life of online content is around 5 years](https://perma.cc/63AP-6EHJ).
+If you publish something online, sooner or later, it will vanish.
 
 In the best-case scenario, a link changes during website restructuring. More commonly, the content is lost. The only hope is that someone saved it from oblivion in the [Internet Archive Wayback Machine](https://web.archive.org/).
 
@@ -90,7 +93,7 @@ I would love to have a comprehensive tool for exporting everything - especially 
 
 While Facebook offers limited data export capabilities, they're incomplete. Most notably, there's no way to preserve entire discussion threads - often the most valuable part of a post.
 
-And you - what content do you find yourself searching for? What have you archived, and what do you wish you had saved? Let me know in the comments or on social media.
+And you - what content do you find yourself searching for? What have you archived, and what do you wish you had saved?
 
 [^pinboard]: But for practical reasons, and hoarding for its own sake, I fathered over 14k links in [Pinboard](https://pinboard.in/). Yes, downloaded data in JSON.
 [^plaintext]: I don't claim Markdown is the only solution. There are valid reasons to use other formats. My focus is on plaintext in UTF-8. If you prefer other markup languages (like reStructuredText, AsciiDoc, Org-Mode) or just plain text without formatting - the principles still apply. In some cases original format works - e.g. if it is JSON or code.
