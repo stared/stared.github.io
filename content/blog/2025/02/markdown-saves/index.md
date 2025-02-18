@@ -48,6 +48,7 @@ For me, the key reasons are:
 
 - I want to keep and own things I wrote - they are parts of me, my history, my lived experience
 - I want to have everything in one place and easily searchable
+- I want to use it with AI tools (looking for similar notes, summarizing, using as context)
 - I want to be able to reuse or share things however I want (email, blog post, ebook, anything)
 
 ## Plaintext
