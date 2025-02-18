@@ -8,8 +8,12 @@ tags:
 slug: markdown-saves
 image: ./galadriel-lotr-much-that-once-was.jpg
 mentions:
-  - text: see Hacker News for the discussion
-    href: https://news.ycombinator.com/item?id=43083301
+  - text: r/DataHoarder thread
+    href: https://www.reddit.com/r/DataHoarder/comments/1is1wbn/if_it_is_worth_keeping_save_it_in_markdown/
+  - text: r/Obisdian thread
+    href: https://www.reddit.com/r/ObsidianMD/comments/1is1snu/if_it_is_worth_keeping_save_it_in_markdown/
+  - text: r/Markdown thread
+    href: https://www.reddit.com/r/Markdown/comments/1isa2fc/dont_let_your_online_content_die_if_it_is_worth/
 ---
 
 One of Stanisław Lem's stories, [The Memoirs Found in a Bathtub](https://en.wikipedia.org/wiki/Memoirs_Found_in_a_Bathtub), begins with a strange phenomenon that turns all written materials into dust. While this is science fiction, something similar happens in our digital world.
@@ -38,7 +42,7 @@ Galadriel in "the Lord of the Rings" opening scene ([video](https://www.youtube.
 
 ## Why things are worth saving
 
-There are many motivations for preserving content, ranging from a digital "non omnis moriar" through practical arguments, to archiving as a goal in itself[^pinboard].
+There are many motivations for preserving content, ranging from a digital _"non omnis moriar"_ through practical arguments, to archiving as a goal in itself[^pinboard].
 
 For me, the key reasons are:
 
@@ -48,7 +52,7 @@ For me, the key reasons are:
 
 ## Plaintext
 
-> As a data scientist, [I turn things into vectors](https://p.migdal.pl/blog/2025/01/dont-use-cosine-similarity).
+> As a data scientist, [I turn things into vectors](https://p.migdal.pl/blog/2025/01/dont-use-cosine-similarity).  
 > As an unabashed archivist, I turn things into Markdown.
 
 The most durable solution would be carving things in stone - it would last for millennia. But that's hardly practical, and it wouldn't make things easily searchable or shareable.
@@ -57,7 +61,7 @@ The second best option is plaintext files with UTF-8 encoding and Markdown forma
 
 Markdown files are essentially plaintext with some extra syntax for common elements like sections, bullet points, or links. It deliberately doesn't provide precise control over display details like font selection[^html]. Following [the rule of least power](https://en.wikipedia.org/wiki/Rule_of_least_power), I consider this limitation a feature. And as long as computers exist, we'll be able to read plaintext files.
 
-For personal notes, I use [Obsidian](https://obsidian.md/), a note-taking app I love and use daily.
+For personal notes, I use [Obsidian](https://obsidian.md/), a note-taking app I love and use daily. While it's a powerful tool with great plugins, what keeps me loyal is its simplicity - it stores everything in plain files. The lack of a proprietary format moat is precisely what makes it so compelling.
 
 For blogging, most [static site generators](https://jamstack.org/generators/) embrace Markdown. This very blog post is written in Markdown[^blog].
 
@@ -79,9 +83,13 @@ Worried about saving too much? Well, disk storage is cheap - and for text files,
 
 ## Tools that help
 
-Sometimes it is enough to copy things manually. In other cases, formatting is a pain - in this case, AI tools are immensely helpful. As there are trained on Markdown data, they are particularly good at processing and extracting content from these files.
+Sometimes manual copying suffices. For trickier formatting, AI tools are invaluable - being trained on Markdown, they excel at processing and extracting content. You can use them to convert online text or parse PDFs (like slides), as shown in [Ingesting Millions of PDFs and why Gemini 2.0 Changes Everything](https://www.sergey.fyi/articles/gemini-flash-2).
 
 For some sources, I've created semi-automated solutions. For instance, I wrote a [Python script](https://gist.github.com/stared/ce732ef27d97d559b34d7e294481f1b0) to convert my Kindle highlights and notes into Markdown.
+
+Many tools exist to help with format conversion. The most versatile is [pandoc](https://github.com/jgm/pandoc), which can convert between dozens of formats - from Word documents to LaTeX, and everything in between.
+
+The community has also created specialized tools for specific platforms. You can find tools for converting [Medium posts to Markdown](https://github.com/gautamdhameja/medium-2-md) (either from export or [directly by URL](https://medium2md.nabilmansour.com/)), [archiving Reddit threads](https://farnots.github.io/RedditToMarkdown/), and many other use cases.
 
 Since we're dealing with lightweight text files, there are many for backing it up. Git is particularly well-suited for version-controlling and syncing this content.
 
