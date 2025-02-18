@@ -6,7 +6,7 @@ date: "2025-02-17T00:00:00.030Z"
 tags:
   - tech
 slug: markdown-saves
-image: ./sauna-post-obsidian-archive.png
+image: ./galadriel-lotr-much-that-once-was.jpg
 mentions:
   - text: see Hacker News for the discussion
     href: https://news.ycombinator.com/item?id=43083301
@@ -93,7 +93,7 @@ I would love to have a comprehensive tool for exporting everything - especially 
 
 While Facebook offers limited data export capabilities, they're incomplete. Most notably, there's no way to preserve entire discussion threads - often the most valuable part of a post.
 
-And you - what content do you find yourself searching for? What have you archived, and what do you wish you had saved? Share your thoughts on social media or in the [the Hacker News discussion thread](https://news.ycombinator.com/item?id=43083301).
+And you - what content do you find yourself searching for? What have you archived, and what do you wish you had saved?
 
 [^link-rot]: [Link rot](https://en.wikipedia.org/wiki/Link_rot) can be addressed using services like [Perma.cc](https://perma.cc/) - though they too could eventually disappear. Studies show that for legal documents, half of links die within 5 years. My focus here is on preserving and searching personal content.
 [^pinboard]: But for practical reasons, and hoarding for its own sake, I fathered over 14k links in [Pinboard](https://pinboard.in/). Yes, downloaded data in JSON.
