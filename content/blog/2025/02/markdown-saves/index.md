@@ -10,10 +10,8 @@ image: ./galadriel-lotr-much-that-once-was.jpg
 mentions:
   - text: r/DataHoarder thread
     href: https://www.reddit.com/r/DataHoarder/comments/1is1wbn/if_it_is_worth_keeping_save_it_in_markdown/
-  - text: r/Obisdian thread
+  - text: r/ObisdianMD thread
     href: https://www.reddit.com/r/ObsidianMD/comments/1is1snu/if_it_is_worth_keeping_save_it_in_markdown/
-  - text: r/Markdown thread
-    href: https://www.reddit.com/r/Markdown/comments/1isa2fc/dont_let_your_online_content_die_if_it_is_worth/
 ---
 
 One of Stanisław Lem's stories, [The Memoirs Found in a Bathtub](https://en.wikipedia.org/wiki/Memoirs_Found_in_a_Bathtub), begins with a strange phenomenon that turns all written materials into dust. While this is science fiction, something similar happens in our digital world.
@@ -78,7 +76,7 @@ I particularly save things I post that might be useful later. Conference talk ab
 
 When I catch myself searching for old content (like a Facebook post I want to share or reread), I save it immediately. If I discover a blog post has vanished, I retrieve it from the Wayback Machine and preserve it. When forwarding an email with a detailed explanation - you guessed it, I save it.
 
-**If I needed to search for something once, it has proven its worth preserving.**
+**Content worth searching for once is content worth preserving forever.**
 
 Worried about saving too much? Well, disk storage is cheap - and for text files, it's practically free.
 
