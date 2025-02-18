@@ -17,7 +17,7 @@ mentions:
 
 ![](./python-summit-2024-warsaw-migdal-cosine-talking.jpg)
 
-Midas turned everything he touched into gold. Data scientists turn everything into vectors.
+Midas turned everything he touched into gold. Data scientists turn everything into vectors.  
 We do it for a reason — as gold is the language of merchants, vectors are the language of AI.
 
 Just as Midas discovered that turning everything to gold wasn't always helpful, we'll see that blindly applying cosine similarity to vectors can lead us astray. While embeddings do capture similarities, they often reflect the wrong kind - matching questions to questions rather than questions to answers, or getting distracted by superficial patterns like writing style and typos rather than meaning. This post shows you how to be more intentional about similarity and get better results.
@@ -83,10 +83,11 @@ Like a Greek tragedy, this blessing comes with a curse: when it works, it feels 
 
 [Pearson correlation](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient) can be seen as a sequence of three operations:
 
-- Subtracting means to center the data.
-- Normalizing vectors to unit length.
-- Computing dot products between them.
+1. Subtracting means to center the data.
+2. Normalizing vectors to unit length.
+3. Computing dot products between them.
 
+Cosine similarity uses only steps 2 and 3 of Pearson correlation, skipping the mean centering step.
 When we work with vectors that are both centered ($\sum_i v_i = 0$) and normalized ($\sum_i v_i^2 = 1$), Pearson correlation, cosine similarity and dot product are the same.
 
 In practical cases, we don't want to center or normalize vectors during each pairwise comparison - we do it once, and **just use dot product**. In any case, when you are fine with using cosine similarity, you should be as fine with using Pearson correlation (and vice versa).
@@ -102,7 +103,7 @@ The trouble begins when we venture beyond its comfort zone, specifically when:
 
 ### Has the model ever seen cosine similarity?
 
-A common scenario involves training with unnormalized vectors, when we are dealing with a function of dot product - for example, predicting probabilities with a sigmoid function $\sigma(v_a \cdot v_b)$ and applying log loss cost function. Other networks operate differently, e.g. they use Euclidean distance, minimized for members of the same class and maximized for members of different classes.
+A common scenario involves training with unnormalized vectors, when we are dealing with a function of dot product - for example, predicting probabilities with [a sigmoid function](https://en.wikipedia.org/wiki/Sigmoid_function) $\sigma(v_a \cdot v_b)$ and applying log loss cost function. Other networks operate differently, e.g. they use Euclidean distance $\left\|v_a - v_b\right\|_2$, minimized if items are similar and maximized otherwise.
 
 The normalization gives us some nice mathematical properties (keeping results between -1 and +1, regardless of dimensions), but it's ultimately a hack. Sometimes it helps, sometimes it doesn't — see the aptly titled paper [Is Cosine-Similarity of Embeddings Really About Similarity?](https://arxiv.org/abs/2403.05440).
 
@@ -187,7 +188,7 @@ Let's start with a symmetric case. Say we want to ask, **"Is A similar to B?"** 
 
 $$\sigma(u_A \cdot u_B)$$
 
-where $u = M v$, and $M$ is a matrix that reduces the embedding space to dimensions we actually care about. Think of it as decluttering — we're keeping only the features relevant to our specific similarity definition.
+where $u = M v$, and $M$ is a matrix that reduces the embedding space to dimensions we actually care about; and $\sigma(x)=1/(1+e^{-x})$ is the sigmoid function. Think of it as decluttering — we're keeping only the features relevant to our specific similarity definition.
 
 But often, similarity isn't what we're really after. Consider the question **"Is document B a correct answer to question A?"** (note the word "correct") and the relevant probability:
 
