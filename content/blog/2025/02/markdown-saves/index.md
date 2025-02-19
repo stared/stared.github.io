@@ -24,11 +24,7 @@ In the best-case scenario, a link changes during website restructuring. More com
 
 Walled gardens requiring login are even worse - when they go down, everything within them vanishes forever. If you haven't saved it yourself, it's gone. Moreover, any service (free or paid) may restrict access to content at any time - either completely or practically, by making it impossible to find what you're looking for. The same content you posted on Twitter a few years ago, now is on X, and in a few years might be available after login, paid subscription, or - not at all .
 
-Even self-hosting isn't foolproof. Your content can disappear when you forget to pay for hosting or domain - or after a server failure in your basement.
-
-Even if your data exists, accessing it can be tricky. Take WordPress blogs - while your posts are in a database, server updates can break everything. Sure, migration is possible, but it's a hassle.
-
-I learned this lesson with my old PHP photo gallery. When it went down, I was grateful that I had kept all photos as simple JPGs, organized by date. No fancy database needed.
+Even self-hosting isn't foolproof - your content can vanish when you forget to pay for hosting or after a server crash. And even if your data survives, accessing it can be tricky: WordPress blogs store posts in databases that server updates can break. I learned this lesson when my PHP photo gallery went down - thankfully, I had kept all photos as simple JPGs organized by date.
 
 The only reliable solution is to store content in formats that can be opened without specialized software - formats that will remain accessible for decades to come.
 
@@ -56,13 +52,13 @@ For me, the key reasons are:
 
 The most durable solution would be carving things in stone - it would last for millennia. But that's hardly practical, and it wouldn't make things easily searchable or shareable.
 
-The second best option is plaintext files with UTF-8 encoding and Markdown formatting[^plaintext].
+The second best option is plaintext files with UTF-8 encoding and Markdown formatting[^plaintext]. As long as computers exist, we'll be able to read plaintext files with ease.
 
-Markdown files are essentially plaintext with some extra syntax for common elements like sections, bullet points, or links. It deliberately doesn't provide precise control over display details like font selection[^html]. Following [the rule of least power](https://en.wikipedia.org/wiki/Rule_of_least_power), I consider this limitation a feature. And as long as computers exist, we'll be able to read plaintext files.
+Markdown files are essentially plaintext with some extra syntax for common elements like sections, bullet points, and links. The format deliberately avoids precise control over display details like font selection[^html]. Following [the rule of least power](https://en.wikipedia.org/wiki/Rule_of_least_power), I consider this limitation a feature. For contrast, consider PDF - a format so powerful that [it can run Doom](https://www.reddit.com/r/itrunsdoom/comments/1i02c6b/doom_in_a_pdf_file/).
 
 For personal notes, I use [Obsidian](https://obsidian.md/), a note-taking app I love and use daily. While it's a powerful tool with great plugins, what keeps me loyal is its simplicity - it stores everything in plain files. The lack of a proprietary format moat is precisely what makes it so compelling.
 
-For blogging, most [static site generators](https://jamstack.org/generators/) embrace Markdown. This very blog post is written in Markdown[^blog].
+For blogging, most [static site generators](https://jamstack.org/generators/) embrace Markdown. This very blog post is written in Markdown[^blog]. Using the same markup for note-taking and publishing makes sharing smooth.
 
 ## How I do it
 
