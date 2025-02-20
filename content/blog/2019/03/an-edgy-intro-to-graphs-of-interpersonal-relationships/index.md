@@ -24,7 +24,7 @@ migdal_score: 1
 
 Everyone chuckles and you are left out. And it is not the only xkcd strip on the intersection of sex and graph theory (some are even more niche, dedicated to heavy math users, e.g. [Hamiltonian](https://xkcd.com/230/)).
 
-So, what is a graph (also known as a network)? In short, it is a collection of dots (representing entities) with some of them being connected by lines. Or, as [a diagram is worth a thousand equations](https://medium.com/inbrowserai/simple-diagrams-of-convoluted-neural-networks-39c097d2925b):
+So, what is a graph (also known as a network)? In short, it is a collection of dots (representing entities) with some of them being connected by lines. Or, as [a diagram is worth a thousand equations](https://p.migdal.pl/blog/2018/09/simple-diagrams-deep-learning):
 
 ![](./01.png)
 
