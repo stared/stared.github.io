@@ -17,7 +17,7 @@ migdal_score: 1
 (CW: human sexuality, maths, LaTeX, spoilers for the Game of Thrones; based on a talk I gave with [Michał Kaftanowicz](https://kaftanowicz.com/))
 
 ::gallery{ width=1 }
-![](./00.png)
+![](./00.png){ class=width-max-half }
 #caption
 [xkcd 403: Convincing Pickup Lines](https://xkcd.com/403/) (CC BY-NC) from “a webcomic of romance, sarcasm, math, and language”.
 ::
@@ -26,14 +26,14 @@ Everyone chuckles and you are left out. And it is not the only xkcd strip on the
 
 So, what is a graph (also known as a network)? In short, it is a collection of dots (representing entities) with some of them being connected by lines. Or, as [a diagram is worth a thousand equations](https://p.migdal.pl/blog/2018/09/simple-diagrams-deep-learning):
 
-![](./01.png)
+![](./01.png){ class=width-max-half }
 
 For a longer introduction, there is a [beautiful introduction to graph theory in D3.js](https://mrpandey.github.io/d3graphTheory/index.html).
 
 OK, so how does it relate to social relationships? Well, we can turn to [the den of notworking, Facebook](http://phdcomics.com/comics/archive.php?comicid=877). Each node is a person, each link means that those people are Facebook friends. It excludes the main person, as they would be connected to everyone (giving no additional information, and a lot of clutter).
 
 ::gallery{ width=1 }
-![](./02.png)
+![](./02.png){ class=width-max-two-thirds }
 #caption
 A network of Facebook friends from [Data Science of the Facebook World by Stephen Wolfram](https://blog.stephenwolfram.com/2013/04/data-science-of-the-facebook-world/)
 ::
@@ -41,20 +41,20 @@ A network of Facebook friends from [Data Science of the Facebook World by Stephe
 We can notice that nodes tend to cluster. Two people who have mutual friends are more likely to be friends. Maybe they have similar interests, or they met each other through the same groups and events. And here is mine:
 
 ::gallery{ width=1 }
-![](./03.jpg)
+![](./03.jpg){ class=width-max-two-thirds }
 #caption
 A graph of my Facebook friends from 2014, in [Gephi](https://gephi.org/). On the left its raw form, with blue for male and pink for female friends. On the right — [automatic community detection](http://digitalinterface.blogspot.com/2013/05/community-detection-in-graphs.html) (based only on links), plus manual descriptions I added afterward.
 ::
 
-::gallery{ width=1 }
-![](./04.jpg)
-#caption
-From Bearman, Moody & Stovel, [Chains of affection: The structure of adolescent romantic and sexual networks](https://www.journals.uchicago.edu/doi/abs/10.1086/386272) (2004).
-::
+![](./04.jpg){ class=width-max-two-thirds }
 
 Various things start during high school (OK, [for brainy kids they often start later](https://www.gnxp.com/blog/2007/04/intercourse-and-intelligence.php); discussed and hopefully remedied in my [Dating for Nerds](https://p.migdal.pl/blog/2017/07/dating-for-nerds/)).
 
-![](./05.jpeg)
+::gallery{ width=1 }
+![](./05.jpeg){ class=width-max-two-thirds }
+#caption
+From Bearman, Moody & Stovel, [Chains of affection: The structure of adolescent romantic and sexual networks](https://www.journals.uchicago.edu/doi/abs/10.1086/386272) (2004).
+::
 
 Here is an opposite pattern — links are not clustered (in fact, they tend to avoid each other). The authors were surprised by the low number of cycles (lines in a circle). One may guess that a cultural trope of “don’t date your friend’s ex” plays a role (and other things related to jealousy and bad breakups).
 
@@ -63,7 +63,7 @@ In networking, we often talk about the six degrees of separation — i.e. th
 Instead of relationships, we can look at acts. To get into juicy topics, let’s look at pop culture — The Game of Thrones:
 
 ::gallery{ width=1 }
-![](./06.jpeg)
+![](./06.jpeg){ class=width-max-half }
 #caption
 [The Game of Thrones Sex Infographic](https://coolmaterial.com/feature/heres-all-the-sex-from-game-of-thrones-in-an-infographic/) by Tim Jacobsen from Cool Material; this chart is so old, that either you already know it all, or are not interested.
 ::
@@ -71,7 +71,7 @@ Instead of relationships, we can look at acts. To get into juicy topics, let’s
 Confused by a complex set of ties? So is [benzene](https://en.wikipedia.org/wiki/Benzene):
 
 ::gallery{ width=1 }
-![](./07.jpeg)
+![](./07.jpeg){ class=width-max-two-thirds }
 #caption
 “They say that for people 3 bonded together is already too much”. — [Benzene by Marta Cz-C](https://www.deviantart.com/martaczc/art/Benzen-3386137480) (posted with permission)
 ::
@@ -79,14 +79,14 @@ Confused by a complex set of ties? So is [benzene](https://en.wikipedia.org/wiki
 Yet, [polyamory](https://en.wikipedia.org/wiki/Polyamory) can be represented with a [multigraph](https://en.wikipedia.org/wiki/Multigraph) (pun totally indented):
 
 ::gallery{ width=1 }
-![](./08.jpeg)
+![](./08.jpeg){ class=width-max-two-thirds }
 #caption
 [Polycule from Kimchi Cuddles](http://kimchicuddles.com/post/134419208455/updated-polycule-and-character-descriptions) webcomic (see also [its previous versions](https://kimchicuddles.fandom.com/wiki/Category:Polycule_Diagrams))
 ::
 
 Do you think it is complicated? At least all these relationships are symmetric. Which may be not the general case of the “to love is to suffer” scene from [Love and Death (1975) by Woody Allen](https://en.wikipedia.org/wiki/Love_and_Death):
 
-:youtube{ videoId=BCxCRI2Qv6U}
+:youtube{ videoId=Yc4FFNTHIZ4}
 
 Lost? Well, not anymore, here is a (directed) (multi)graph:
 

@@ -70,6 +70,10 @@ img.width-max-half {
   max-width: 380px;
 }
 
+img.width-max-two-thirds {
+  max-width: 506px;
+}
+
 figure.width-max-half img {
   max-width: 380px;
 }
