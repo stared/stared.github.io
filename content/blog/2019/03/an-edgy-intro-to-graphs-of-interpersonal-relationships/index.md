@@ -9,7 +9,9 @@ tags:
   - tech
 slug: an-edgy-intro-to-graphs-of-interpersonal-relationships
 image: ./01.png
-medium_url: https://pmigdal.medium.com/an-edgy-intro-to-graphs-of-interpersonal-relationships-ba26fa415f29
+mentions:
+  - text: originally published on Medium
+    href: https://pmigdal.medium.com/an-edgy-intro-to-graphs-of-interpersonal-relationships-ba26fa415f29
 views_k: 7
 migdal_score: 1
 ---

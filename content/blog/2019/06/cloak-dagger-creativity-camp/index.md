@@ -10,7 +10,9 @@ tags:
   - soft skills
 slug: cloak-dagger-creativity-camp
 image: ./02.jpeg
-medium_url: https://pmigdal.medium.com/cloak-dagger-creativity-camp-ce4a24aa6528
+mentions:
+  - text: originally published on Medium
+    href: https://pmigdal.medium.com/cloak-dagger-creativity-camp-ce4a24aa6528
 migdal_score: 1
 ---
 

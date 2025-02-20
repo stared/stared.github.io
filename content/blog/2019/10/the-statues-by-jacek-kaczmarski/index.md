@@ -8,7 +8,9 @@ tags:
   - arts
 slug: the-statues-by-jacek-kaczmarski
 image: ./00.jpeg
-medium_url: https://pmigdal.medium.com/the-statues-by-jacek-kaczmarski-7f9bb212be28
+mentions:
+  - text: originally published on Medium
+    href: https://pmigdal.medium.com/the-statues-by-jacek-kaczmarski-7f9bb212be28
 migdal_score: 1
 ---
 

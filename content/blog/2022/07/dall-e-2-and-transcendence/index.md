@@ -8,7 +8,9 @@ tags:
   - cognition
 slug: dall-e-2-and-transcendence
 image: ./01.jpg
-medium_url: https://pmigdal.medium.com/dall-e-2-and-transcendence-3a3a404fb609
+mentions:
+  - text: originally published on Medium
+    href: https://pmigdal.medium.com/dall-e-2-and-transcendence-3a3a404fb609
 migdal_score: 3
 views_k: 2
 ---

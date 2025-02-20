@@ -22,7 +22,6 @@ export interface BlogPostMetadata extends BasePost {
   author?: string;
   description?: string;
   image?: string;
-  medium_url?: string;
 }
 
 type ExternalPostSource = {
@@ -93,6 +92,12 @@ export class BlogPostLabel {
     });
   }
 
+  get importantMentionCount(): number {
+    return this.mentions.filter(
+      (mention) => !mention.href.includes("medium.com")
+    ).length;
+  }
+
   toScores(): {
     popularity: number;
     mentions: number;
@@ -100,7 +105,7 @@ export class BlogPostLabel {
     migdalBias: number;
   } {
     const popularity = this.views_k ? Math.log2(this.views_k) : 0;
-    const mentionsCount = Math.sqrt(this.mentions.length);
+    const mentionsCount = Math.sqrt(this.importantMentionCount);
     const now = new Date();
     const postDate = new Date(this.date);
     const yearsSince =

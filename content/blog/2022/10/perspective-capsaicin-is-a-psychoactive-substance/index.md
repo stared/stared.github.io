@@ -8,8 +8,9 @@ tags:
   - cognition
 slug: perspective-capsaicin-is-a-psychoactive-substance
 image: ./01.jpg
-medium_url: https://pmigdal.medium.com/perspective-capsaicin-is-a-psychoactive-substance-fff5507b6b7c
 mentions:
+  - text: originally published on Medium
+    href: https://pmigdal.medium.com/perspective-capsaicin-is-a-psychoactive-substance-fff5507b6b7c
   - text: Hacker News front page
     href: https://news.ycombinator.com/item?id=33774386
 views_k: 10

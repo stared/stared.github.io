@@ -9,7 +9,9 @@ tags:
   - data viz
 slug: tinder-anecdata-and-sankey-diagrams
 image: ./01.png
-medium_url: https://pmigdal.medium.com/tinder-anecdata-and-sankey-diagrams-c1c0e5dfff18
+mentions:
+  - text: originally published on Medium
+    href: https://pmigdal.medium.com/tinder-anecdata-and-sankey-diagrams-c1c0e5dfff18
 views_k: 7
 migdal_score: 0
 ---

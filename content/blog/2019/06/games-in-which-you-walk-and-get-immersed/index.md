@@ -9,7 +9,9 @@ tags:
   - games
 slug: games-in-which-you-walk-and-get-immersed
 image: ./00.jpg
-medium_url: https://pmigdal.medium.com/games-in-which-you-walk-and-get-immersed-a80ad2bcfa7f
+mentions:
+  - text: originally published on Medium
+    href: https://pmigdal.medium.com/games-in-which-you-walk-and-get-immersed-a80ad2bcfa7f
 migdal_score: 1
 ---
 
