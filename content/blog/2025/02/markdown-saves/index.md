@@ -100,7 +100,7 @@ While Facebook offers limited data export capabilities, they're incomplete. Most
 
 And you - what content do you find yourself searching for? What have you archived, and what do you wish you had saved?
 
-Discuss this post on [Hacker News](https://news.ycombinator.com/item?id=43137616), [Mastodon](https://mathstodon.xyz/@pmigdal/114021315189570737) or [Reddit](https://www.reddit.com/r/DataHoarder/comments/1is1wbn/if_it_is_worth_keeping_save_it_in_markdown/).
+Discuss this post on [Hacker News](https://news.ycombinator.com/item?id=43137616), [Mastodon](https://mathstodon.xyz/@pmigdal/114021315189570737), [Reddit](https://www.reddit.com/r/DataHoarder/comments/1is1wbn/if_it_is_worth_keeping_save_it_in_markdown/), or [LinkedIn](https://www.linkedin.com/posts/piotrmigdal_if-it-is-worth-keeping-save-it-in-markdown-activity-7299139148634841089-_Xe3).
 
 [^link-rot]: [Link rot](https://en.wikipedia.org/wiki/Link_rot) can be addressed using services like [Perma.cc](https://perma.cc/) - though they too could eventually disappear. Studies show that for legal documents, half of links die within 5 years. My focus here is on preserving and searching personal content.
 [^pinboard]: But for practical reasons, and hoarding for its own sake, I fathered over 14k links in [Pinboard](https://pinboard.in/). Yes, downloaded data in JSON.
