@@ -12,6 +12,8 @@ mentions:
     href: https://www.reddit.com/r/DataHoarder/comments/1is1wbn/if_it_is_worth_keeping_save_it_in_markdown/
   - text: r/ObisdianMD thread
     href: https://www.reddit.com/r/ObsidianMD/comments/1is1snu/if_it_is_worth_keeping_save_it_in_markdown/
+  - text: Hacker News front page
+    href: https://news.ycombinator.com/item?id=43137616
 ---
 
 One of Stanisław Lem's stories, [The Memoirs Found in a Bathtub](https://en.wikipedia.org/wiki/Memoirs_Found_in_a_Bathtub), begins with a strange phenomenon that turns all written materials into dust. While this is science fiction, something similar happens in our digital world.
@@ -97,6 +99,8 @@ I would love to have a comprehensive tool for exporting everything - especially 
 While Facebook offers limited data export capabilities, they're incomplete. Most notably, there's no way to preserve entire discussion threads - often the most valuable part of a post.
 
 And you - what content do you find yourself searching for? What have you archived, and what do you wish you had saved?
+
+Discuss this post on [Hacker News](https://news.ycombinator.com/item?id=43137616), [Mastodon](https://mathstodon.xyz/@pmigdal/114021315189570737) or [Reddit](https://www.reddit.com/r/DataHoarder/comments/1is1wbn/if_it_is_worth_keeping_save_it_in_markdown/).
 
 [^link-rot]: [Link rot](https://en.wikipedia.org/wiki/Link_rot) can be addressed using services like [Perma.cc](https://perma.cc/) - though they too could eventually disappear. Studies show that for legal documents, half of links die within 5 years. My focus here is on preserving and searching personal content.
 [^pinboard]: But for practical reasons, and hoarding for its own sake, I fathered over 14k links in [Pinboard](https://pinboard.in/). Yes, downloaded data in JSON.
