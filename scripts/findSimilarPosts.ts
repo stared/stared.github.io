@@ -15,6 +15,15 @@ interface SimilarPost {
   metadata: Partial<BlogPostMetadata>;
 }
 
+// Interface for the JSON structure we'll save
+interface SimilarPostsJson {
+  posts: {
+    title: string;
+    path: string;
+    similarity: number;
+  }[];
+}
+
 // Function to load all embeddings
 async function loadAllEmbeddings(): Promise<EmbeddingData[]> {
   const embeddingsDir = path.join(process.cwd(), "content/data/embeddings");
@@ -37,21 +46,20 @@ async function loadAllEmbeddings(): Promise<EmbeddingData[]> {
         const embeddingData = JSON.parse(embeddingContent) as EmbeddingData;
         embeddings.push(embeddingData);
       } catch (error) {
-        console.error(`Error loading embedding for ${filePath}:`, error);
+        console.error(`Error loading embedding for ${filePath}`);
       }
     }
 
     return embeddings;
   } catch (error) {
-    console.error("Error loading embeddings:", error);
+    console.error("Error loading embeddings");
     return [];
   }
 }
 
-// Function to find similar posts for a given post
-export async function findSimilarPosts(
-  targetPath: string,
-  count: number = 5
+// Function to calculate similarities for a given post with all other posts
+export async function calculateAllSimilarities(
+  targetPath: string
 ): Promise<SimilarPost[]> {
   // Load all embeddings
   const allEmbeddings = await loadAllEmbeddings();
@@ -72,162 +80,106 @@ export async function findSimilarPosts(
       similarity: cosineSimilarity(targetEmbedding.embedding, e.embedding),
       metadata: e.metadata,
     }))
-    .sort((a, b) => b.similarity - a.similarity) // Sort by similarity (descending)
-    .slice(0, count); // Take the top N
+    .sort((a, b) => b.similarity - a.similarity); // Sort by similarity (descending)
 
   return similarities;
 }
 
-// Function to find the least similar posts
-export async function findLeastSimilarPosts(
-  targetPath: string,
-  count: number = 5
-): Promise<SimilarPost[]> {
-  // Load all embeddings
-  const allEmbeddings = await loadAllEmbeddings();
+// Helper function to extract title from a post
+async function extractTitle(post: SimilarPost): Promise<string> {
+  // If metadata is empty or title is missing, try to extract a title from the file path
+  let title = "Untitled";
 
-  // Find the target embedding
-  const targetEmbedding = allEmbeddings.find((e) => e.path === targetPath);
+  if (post.metadata && post.metadata.title) {
+    // Remove any quotation marks from the title
+    title = post.metadata.title.replace(/["']/g, "");
+  } else {
+    // Extract title from path as a fallback
+    const pathParts = post.path.split("/");
+    const slug = pathParts[pathParts.length - 2]; // Get the directory name before index.md
 
-  if (!targetEmbedding) {
-    console.error(`No embedding found for ${targetPath}`);
-    return [];
+    // Convert slug to title case
+    if (slug) {
+      title = slug
+        .split("-")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+    }
+
+    // Try to find the actual title by reading the file
+    try {
+      const content = await fs.readFile(post.path, "utf-8");
+      const titleMatch = content.match(/title:\s*["']?(.*?)["']?(\n|$)/);
+      if (titleMatch && titleMatch[1]) {
+        title = titleMatch[1].trim().replace(/["']/g, "");
+      }
+    } catch (error) {
+      // Silently continue with the fallback title
+    }
   }
 
-  // Calculate similarity with all other posts
-  const similarities: SimilarPost[] = allEmbeddings
-    .filter((e) => e.path !== targetPath) // Exclude the target post
-    .map((e) => ({
-      path: e.path,
-      similarity: cosineSimilarity(targetEmbedding.embedding, e.embedding),
-      metadata: e.metadata,
-    }))
-    .sort((a, b) => a.similarity - b.similarity) // Sort by similarity (ascending)
-    .slice(0, count); // Take the bottom N
-
-  return similarities;
+  return title;
 }
 
-// Function to generate similar posts markdown for a given post
-export async function generateSimilarPostsMarkdown(
-  targetPath: string,
-  mostSimilarCount: number = 5,
-  leastSimilarCount: number = 3
-): Promise<string> {
-  const similarPosts = await findSimilarPosts(targetPath, mostSimilarCount);
-  const leastSimilarPosts = await findLeastSimilarPosts(
-    targetPath,
-    leastSimilarCount
+// Helper function to create a blog path from a file path
+function createBlogPath(filePath: string): string {
+  return `/blog/${filePath
+    .split("/blog/")[1]
+    .replace("/index.md", "")
+    .replace(".md", "")}`;
+}
+
+// Function to ensure directory exists
+async function ensureDirectoryExists(dirPath: string): Promise<void> {
+  try {
+    await fs.access(dirPath);
+  } catch (error) {
+    // Directory doesn't exist, create it
+    await fs.mkdir(dirPath, { recursive: true });
+  }
+}
+
+// Function to generate similar posts JSON for a given post
+export async function generateSimilarPostsJson(
+  targetPath: string
+): Promise<SimilarPostsJson> {
+  const allSimilarities = await calculateAllSimilarities(targetPath);
+
+  // Format all posts with their similarities
+  const formattedPosts = await Promise.all(
+    allSimilarities.map(async (post) => ({
+      title: await extractTitle(post),
+      path: createBlogPath(post.path),
+      similarity: parseFloat(post.similarity.toFixed(3)),
+    }))
   );
 
-  let markdown = "## Similar posts\n\n";
-
-  // Add most similar posts
-  for (const post of similarPosts) {
-    // If metadata is empty or title is missing, try to extract a title from the file path
-    let title = "Untitled";
-
-    if (post.metadata && post.metadata.title) {
-      // Remove any quotation marks from the title
-      title = post.metadata.title.replace(/["']/g, "");
-    } else {
-      // Extract title from path as a fallback
-      // For example, from "content/blog/2020/03/types-tests-typescript/index.md"
-      // Extract "types-tests-typescript" and convert to title case
-      const pathParts = post.path.split("/");
-      const slug = pathParts[pathParts.length - 2]; // Get the directory name before index.md
-
-      // Convert slug to title case (e.g., "types-tests-typescript" -> "Types Tests Typescript")
-      if (slug) {
-        title = slug
-          .split("-")
-          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-          .join(" ");
-      }
-
-      // Try to find the actual title by reading the file
-      try {
-        const fs = require("fs");
-        const content = fs.readFileSync(post.path, "utf-8");
-        const titleMatch = content.match(/title:\s*["']?(.*?)["']?(\n|$)/);
-        if (titleMatch && titleMatch[1]) {
-          title = titleMatch[1].trim().replace(/["']/g, "");
-        }
-      } catch (error) {
-        console.error(`Error reading file ${post.path}:`, error);
-      }
-    }
-
-    const pathParts = post.path.split("/");
-    const slug = pathParts[pathParts.length - 1].replace(".md", "");
-
-    // Create absolute URL path without the /index part
-    const blogPath = `https://p.migdal.pl/blog/${post.path
-      .split("/blog/")[1]
-      .replace("/index.md", "")
-      .replace(".md", "")}`;
-
-    markdown += `- \`${post.similarity.toFixed(3)}\` [${title}](${blogPath})\n`;
-  }
-
-  // Add least similar posts if requested
-  if (leastSimilarCount > 0) {
-    markdown += "\nAnd, as an experiment, here are my least similar posts:\n\n";
-
-    for (const post of leastSimilarPosts) {
-      // If metadata is empty or title is missing, try to extract a title from the file path
-      let title = "Untitled";
-
-      if (post.metadata && post.metadata.title) {
-        // Remove any quotation marks from the title
-        title = post.metadata.title.replace(/["']/g, "");
-      } else {
-        // Extract title from path as a fallback
-        // For example, from "content/blog/2020/03/types-tests-typescript/index.md"
-        // Extract "types-tests-typescript" and convert to title case
-        const pathParts = post.path.split("/");
-        const slug = pathParts[pathParts.length - 2]; // Get the directory name before index.md
-
-        // Convert slug to title case (e.g., "types-tests-typescript" -> "Types Tests Typescript")
-        if (slug) {
-          title = slug
-            .split("-")
-            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(" ");
-        }
-
-        // Try to find the actual title by reading the file
-        try {
-          const fs = require("fs");
-          const content = fs.readFileSync(post.path, "utf-8");
-          const titleMatch = content.match(/title:\s*["']?(.*?)["']?(\n|$)/);
-          if (titleMatch && titleMatch[1]) {
-            title = titleMatch[1].trim().replace(/["']/g, "");
-          }
-        } catch (error) {
-          console.error(`Error reading file ${post.path}:`, error);
-        }
-      }
-
-      const pathParts = post.path.split("/");
-      const slug = pathParts[pathParts.length - 1].replace(".md", "");
-
-      // Create absolute URL path without the /index part
-      const blogPath = `https://p.migdal.pl/blog/${post.path
-        .split("/blog/")[1]
-        .replace("/index.md", "")
-        .replace(".md", "")}`;
-
-      markdown += `- \`${post.similarity.toFixed(
-        3
-      )}\` [${title}](${blogPath})\n`;
-    }
-  }
-
-  return markdown;
+  return {
+    posts: formattedPosts,
+  };
 }
 
-// Main function to update all blog posts with similar posts sections
+// Function to remove hardcoded similar posts sections from markdown files
+async function removeHardcodedSimilarPostsSections(
+  filePath: string
+): Promise<void> {
+  try {
+    const content = await fs.readFile(filePath, "utf-8");
+
+    // Check if the file contains a "## Similar posts" section
+    if (content.includes("## Similar posts")) {
+      // Remove the "## Similar posts" section and everything after it
+      const newContent = content.replace(/## Similar posts[\s\S]*$/, "");
+
+      // Write the updated content back to the file
+      await fs.writeFile(filePath, newContent);
+    }
+  } catch (error) {
+    console.error(`Error processing ${filePath}`);
+  }
+}
+
+// Main function to update all blog posts with similar posts JSON files
 export async function updateAllBlogPostsWithSimilarPosts(): Promise<void> {
   // Load all embeddings
   const allEmbeddings = await loadAllEmbeddings();
@@ -235,35 +187,41 @@ export async function updateAllBlogPostsWithSimilarPosts(): Promise<void> {
   for (const embedding of allEmbeddings) {
     try {
       const filePath = embedding.path;
-      console.log(`Updating similar posts for ${filePath}...`);
 
-      // Generate similar posts markdown
-      const similarPostsMarkdown = await generateSimilarPostsMarkdown(filePath);
+      // Generate similar posts JSON
+      const similarPostsJson = await generateSimilarPostsJson(filePath);
 
-      // Read the current file content
-      const content = await fs.readFile(filePath, "utf-8");
+      // Determine the directory of the blog post
+      const fileDir = path.dirname(filePath);
 
-      // Check if the file already has a similar posts section
-      const similarPostsSectionRegex = /## Similar posts[\s\S]*?(?=\n##|$)/;
+      // Create the similarPosts.json file path in the content directory
+      const jsonFilePath = path.join(fileDir, "similarPosts.json");
 
-      let updatedContent;
-      if (similarPostsSectionRegex.test(content)) {
-        // Replace the existing similar posts section
-        updatedContent = content.replace(
-          similarPostsSectionRegex,
-          similarPostsMarkdown
-        );
-      } else {
-        // Add the similar posts section at the end of the file
-        updatedContent = `${content}\n\n${similarPostsMarkdown}`;
-      }
+      // Write the JSON file to the content directory
+      await fs.writeFile(
+        jsonFilePath,
+        JSON.stringify(similarPostsJson, null, 2)
+      );
 
-      // Write the updated content back to the file
-      await fs.writeFile(filePath, updatedContent);
+      // Also copy the JSON file to the public directory for browser access
+      const publicPath = fileDir.replace(/^content/, "public");
 
-      console.log(`Updated ${filePath}`);
+      // Ensure the public directory exists
+      await ensureDirectoryExists(publicPath);
+
+      // Create the similarPosts.json file path in the public directory
+      const publicJsonFilePath = path.join(publicPath, "similarPosts.json");
+
+      // Copy the JSON file to the public directory
+      await fs.writeFile(
+        publicJsonFilePath,
+        JSON.stringify(similarPostsJson, null, 2)
+      );
+
+      // Remove hardcoded similar posts sections from the markdown file
+      await removeHardcodedSimilarPostsSections(filePath);
     } catch (error) {
-      console.error(`Error updating ${embedding.path}:`, error);
+      console.error(`Error updating ${embedding.path}`);
     }
   }
 }
