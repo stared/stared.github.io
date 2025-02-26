@@ -5,7 +5,8 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "similarity": "tsx scripts/similarity.ts"
   },
   "dependencies": {
     "@nuxt/content": "^2.13.2",
@@ -16,5 +17,10 @@
     "rehype-mathjax": "^6.0.0",
     "remark-math": "^6.0.0",
     "vue-slider-component": "^4.1.0-beta.7"
+  },
+  "devDependencies": {
+    "globby": "^13.2.2",
+    "openai": "^4.28.0",
+    "tsx": "^4.7.0"
   }
 }

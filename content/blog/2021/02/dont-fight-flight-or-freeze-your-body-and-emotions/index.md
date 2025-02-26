@@ -140,3 +140,5 @@ I would like to thank Joanna Jasińska, Marcin Kotowski, Kasia Kańska, and Sara
 I hope that it helps you, at least a tiny bit. :)
 
 A follow-up post: [**Embodiment for nerds** — or how you can learn to get in touch with your body and emotions](https://p.migdal.pl/blog/2021/09/embodiment-for-nerds/).
+
+

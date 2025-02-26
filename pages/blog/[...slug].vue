@@ -16,7 +16,32 @@
             </li>
           </ul>
         </div>
+
         <ContentRenderer :value="doc" />
+
+        <SimilarPosts
+          v-if="similarPosts.posts.length > 0"
+          :allPosts="similarPosts.posts"
+          :mostSimilarCount="5"
+          :leastSimilarCount="2"
+        />
+
+        <!-- Uncomment to enable the advanced visualizer
+        <div class="visualizer-toggle">
+          <button @click="showAdvancedVisualizer = !showAdvancedVisualizer" class="toggle-button">
+            {{ showAdvancedVisualizer ? 'Simple view' : 'Advanced view' }}
+          </button>
+        </div>
+        
+        <SimilarPostsVisualizer
+          v-if="showAdvancedVisualizer && similarPosts.posts.length > 0"
+          :allPosts="similarPosts.posts"
+          :defaultCount="5"
+          :minCount="3"
+          :maxCount="20"
+          title="Explore similar content"
+        />
+        -->
       </article>
     </ContentDoc>
     <footer>
@@ -27,6 +52,19 @@
 
 <script setup lang="ts">
 import { HeaderData } from "@/scripts/utils";
+import { ref, computed } from "vue";
+
+// Define the interface for the similar posts data
+interface SimilarPostsData {
+  posts: Array<{
+    title: string;
+    path: string;
+    similarity: number;
+  }>;
+}
+
+// Uncomment to enable the advanced visualizer
+// const showAdvancedVisualizer = ref(false);
 
 const formatDate = (date: string) => {
   return new Date(date).toLocaleDateString("en-UK", {
@@ -36,9 +74,15 @@ const formatDate = (date: string) => {
   });
 };
 
-const { path } = useRoute();
-const { data } = await useAsyncData(`content-${path}`, () =>
-  queryContent().where({ _path: path }).findOne()
+const route = useRoute();
+const path = computed(() => {
+  return Array.isArray(route.params.slug)
+    ? route.params.slug.join("/")
+    : route.params.slug;
+});
+
+const { data } = await useAsyncData(`content-${path.value}`, () =>
+  queryContent().where({ _path: path.value }).findOne()
 );
 
 HeaderData.default()
@@ -46,6 +90,24 @@ HeaderData.default()
   .setDescription(data.value?.description)
   .setImage(data.value?.image)
   .useHead();
+
+// Similar posts data
+const similarPosts = ref<SimilarPostsData>({ posts: [] });
+
+// Load similar posts data
+const jsonPath = `/blog/${path.value}/similarPosts.json`;
+fetch(jsonPath)
+  .then((response) => {
+    if (response.ok) return response.json();
+    return { posts: [] };
+  })
+  .then((data) => {
+    similarPosts.value = data;
+  })
+  .catch(() => {
+    // Silently fail - no error messages needed
+    similarPosts.value = { posts: [] };
+  });
 </script>
 
 <style>

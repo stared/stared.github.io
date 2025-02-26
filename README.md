@@ -17,6 +17,16 @@ I share all code on this repository under the MIT license. Feel invited to use t
 
 I share all content (blog posts, images, etc.) under the Creative Commons Attribution-ShareAlike Non-Commercial 4.0 International license. If you want to use any material on a different license, please let me know - in most cases, I would be more than happy to be permissive.
 
+## Similar Posts Feature
+
+The blog includes a "Similar Posts" feature that uses cosine similarity to recommend related content. For each blog post, the system:
+
+- Generates embeddings for all blog posts
+- Calculates cosine similarity between posts
+- Creates `similarPosts.json` files with ranked recommendations
+
+This feature was implemented with assistance from Claude 3.7 Sonnet, which helped develop the embedding and similarity calculation scripts.
+
 ## Setup
 
 Look at the [Nuxt 3 Content documentation](https://content.nuxt.com/) to learn more.

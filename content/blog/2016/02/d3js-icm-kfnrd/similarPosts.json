@@ -1,0 +1,189 @@
+{
+  "posts": [
+    {
+      "title": "My impressions from PyData Berlin 2016",
+      "path": "/blog/2016/05/my-impressions-from-pydata-berlin-2016",
+      "similarity": 0.587
+    },
+    {
+      "title": "After PyData Warsaw 2017",
+      "path": "/blog/2017/11/after-pydata-warsaw-2017",
+      "similarity": 0.583
+    },
+    {
+      "title": "Quantum mechanics for high-school students",
+      "path": "/blog/2016/08/quantum-mechanics-for-high-school-students",
+      "similarity": 0.543
+    },
+    {
+      "title": "Data science intro for math/phys background",
+      "path": "/blog/2016/03/data-science-intro-for-math-phys-background",
+      "similarity": 0.535
+    },
+    {
+      "title": "Cloak & dagger creativity camp",
+      "path": "/blog/2019/06/cloak-dagger-creativity-camp",
+      "similarity": 0.525
+    },
+    {
+      "title": "What I do or: science to data science",
+      "path": "/blog/2015/12/sci-to-data-sci",
+      "similarity": 0.518
+    },
+    {
+      "title": "king - man + woman is queen; but why?",
+      "path": "/blog/2017/01/king-man-woman-queen-why",
+      "similarity": 0.515
+    },
+    {
+      "title": "Science-based games and explorable explanations",
+      "path": "/blog/2024/05/science-games-explorable-explanations",
+      "similarity": 0.483
+    },
+    {
+      "title": "Simple Diagrams Deep Learning",
+      "path": "/blog/2018/09/simple-diagrams-deep-learning",
+      "similarity": 0.479
+    },
+    {
+      "title": "!!con or doing inclusivity well",
+      "path": "/blog/2017/08/bangbangcon",
+      "similarity": 0.472
+    },
+    {
+      "title": "Tinder anecdata and Sankey diagrams",
+      "path": "/blog/2019/04/tinder-anecdata-and-sankey-diagrams",
+      "similarity": 0.465
+    },
+    {
+      "title": "Types Tests Typescript",
+      "path": "/blog/2020/03/types-tests-typescript",
+      "similarity": 0.454
+    },
+    {
+      "title": "Learning Deep Learning with Keras",
+      "path": "/blog/2017/04/teaching-deep-learning",
+      "similarity": 0.45
+    },
+    {
+      "title": "An edgy intro to graphs of interpersonal relationships",
+      "path": "/blog/2019/03/an-edgy-intro-to-graphs-of-interpersonal-relationships",
+      "similarity": 0.443
+    },
+    {
+      "title": "Exploring human vs machine learning (one blogpost at a time)",
+      "path": "/blog/2019/07/human-machine-learning-motivation",
+      "similarity": 0.44
+    },
+    {
+      "title": "The first post: why Jekyll?",
+      "path": "/blog/2015/12/first-post",
+      "similarity": 0.425
+    },
+    {
+      "title": "Dont use cosine similarity carelessly",
+      "path": "/blog/2025/01/dont-use-cosine-similarity",
+      "similarity": 0.41
+    },
+    {
+      "title": "Dreams, Drugs & ConvNets",
+      "path": "/blog/2019/07/dreams-drugs-convnets",
+      "similarity": 0.408
+    },
+    {
+      "title": "ADHD tech stack: auto time tracking",
+      "path": "/blog/2020/05/adhd-tech-stack-auto-time-tracking",
+      "similarity": 0.403
+    },
+    {
+      "title": "Embodiment for nerds",
+      "path": "/blog/2021/09/embodiment-for-nerds",
+      "similarity": 0.391
+    },
+    {
+      "title": "Dating for nerds (part 1): problem diagnosis",
+      "path": "/blog/2017/07/dating-for-nerds",
+      "similarity": 0.377
+    },
+    {
+      "title": "Co chciałbym wiedzieć wcześniej o ADHD",
+      "path": "/blog/2022/09/co-chcialbym-wiedziec-wczesniej-o-adhd",
+      "similarity": 0.375
+    },
+    {
+      "title": "New blog - moving from Medium to Gridsome",
+      "path": "/blog/2022/12/medium-to-markdown",
+      "similarity": 0.369
+    },
+    {
+      "title": "Dating for nerds (part 2): gender differences",
+      "path": "/blog/2017/09/dating-for-nerds-gender-differences",
+      "similarity": 0.362
+    },
+    {
+      "title": "There will be the next Quantum Game with Photons",
+      "path": "/blog/2019/07/there-will-be-the-next-quantum-game-with-photons",
+      "similarity": 0.354
+    },
+    {
+      "title": "Don’t fight, flight (or freeze) your body and emotions",
+      "path": "/blog/2021/02/dont-fight-flight-or-freeze-your-body-and-emotions",
+      "similarity": 0.345
+    },
+    {
+      "title": "AI won’t make artists redundant - thanks to information theory",
+      "path": "/blog/2023/02/ai-artists-information-theory",
+      "similarity": 0.333
+    },
+    {
+      "title": "Metal bands bring happiness (as chocolate brings Nobel Prizes)",
+      "path": "/blog/2023/01/metal-bands-happiness-correlation",
+      "similarity": 0.327
+    },
+    {
+      "title": "If it is worth keeping, save it in Markdown",
+      "path": "/blog/2025/02/markdown-saves",
+      "similarity": 0.324
+    },
+    {
+      "title": "Genesis 1 but every word begins with A - with GPT4",
+      "path": "/blog/2023/05/genesis-az-by-gpt",
+      "similarity": 0.295
+    },
+    {
+      "title": "DALL·E 2 and transcendence - generating esoteric images with AI",
+      "path": "/blog/2022/07/dall-e-2-and-transcendence",
+      "similarity": 0.294
+    },
+    {
+      "title": "Doom 2016 vs Doom Eternal: UI side-by-side",
+      "path": "/blog/2020/03/doom-2016-vs-doom-eternal-ui-side-by-side",
+      "similarity": 0.29
+    },
+    {
+      "title": "Overcoming writers block — lessons from AI",
+      "path": "/blog/2024/10/writing-like-ai",
+      "similarity": 0.282
+    },
+    {
+      "title": "Games in which you walk (and get immersed)",
+      "path": "/blog/2019/06/games-in-which-you-walk-and-get-immersed",
+      "similarity": 0.274
+    },
+    {
+      "title": "“The Statues” by Jacek Kaczmarski",
+      "path": "/blog/2019/10/the-statues-by-jacek-kaczmarski",
+      "similarity": 0.264
+    },
+    {
+      "title": "From Customer Segmentation to Recommendation Systems",
+      "path": "/blog/2018/08/segmentation-to-recommendation",
+      "similarity": 0.246
+    },
+    {
+      "title": "Perspective: capsaicin is a psychoactive substance",
+      "path": "/blog/2022/10/perspective-capsaicin-is-a-psychoactive-substance",
+      "similarity": 0.154
+    }
+  ]
+}
