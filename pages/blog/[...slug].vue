@@ -16,14 +16,32 @@
             </li>
           </ul>
         </div>
+
         <ContentRenderer :value="doc" />
 
-        <!-- Parse similar posts from the content if available -->
         <SimilarPosts
-          v-if="parsedSimilarPosts.similar.length > 0"
-          :similarPosts="parsedSimilarPosts.similar"
-          :leastSimilarPosts="parsedSimilarPosts.leastSimilar"
+          v-if="similarPosts.posts.length > 0"
+          :allPosts="similarPosts.posts"
+          :mostSimilarCount="5"
+          :leastSimilarCount="2"
         />
+
+        <!-- Uncomment to enable the advanced visualizer
+        <div class="visualizer-toggle">
+          <button @click="showAdvancedVisualizer = !showAdvancedVisualizer" class="toggle-button">
+            {{ showAdvancedVisualizer ? 'Simple view' : 'Advanced view' }}
+          </button>
+        </div>
+        
+        <SimilarPostsVisualizer
+          v-if="showAdvancedVisualizer && similarPosts.posts.length > 0"
+          :allPosts="similarPosts.posts"
+          :defaultCount="5"
+          :minCount="3"
+          :maxCount="20"
+          title="Explore similar content"
+        />
+        -->
       </article>
     </ContentDoc>
     <footer>
@@ -34,6 +52,19 @@
 
 <script setup lang="ts">
 import { HeaderData } from "@/scripts/utils";
+import { ref, computed } from "vue";
+
+// Define the interface for the similar posts data
+interface SimilarPostsData {
+  posts: Array<{
+    title: string;
+    path: string;
+    similarity: number;
+  }>;
+}
+
+// Uncomment to enable the advanced visualizer
+// const showAdvancedVisualizer = ref(false);
 
 const formatDate = (date: string) => {
   return new Date(date).toLocaleDateString("en-UK", {
@@ -43,9 +74,15 @@ const formatDate = (date: string) => {
   });
 };
 
-const { path } = useRoute();
-const { data } = await useAsyncData(`content-${path}`, () =>
-  queryContent().where({ _path: path }).findOne()
+const route = useRoute();
+const path = computed(() => {
+  return Array.isArray(route.params.slug)
+    ? route.params.slug.join("/")
+    : route.params.slug;
+});
+
+const { data } = await useAsyncData(`content-${path.value}`, () =>
+  queryContent().where({ _path: path.value }).findOne()
 );
 
 HeaderData.default()
@@ -54,125 +91,23 @@ HeaderData.default()
   .setImage(data.value?.image)
   .useHead();
 
-// Parse similar posts from the content
-const parsedSimilarPosts = computed(() => {
-  if (!data.value?.body) return { similar: [], leastSimilar: [] };
+// Similar posts data
+const similarPosts = ref<SimilarPostsData>({ posts: [] });
 
-  // Convert the body to an array if it's not already
-  const content = Array.isArray(data.value.body) ? data.value.body : [];
-
-  // Find the similar posts section
-  let similarPostsSection = null;
-  let sectionIndex = -1;
-
-  for (let i = 0; i < content.length; i++) {
-    const section = content[i];
-    if (
-      section.type === "element" &&
-      section.tag === "h2" &&
-      section.children?.[0]?.value === "Similar posts"
-    ) {
-      similarPostsSection = section;
-      sectionIndex = i;
-      break;
-    }
-  }
-
-  if (!similarPostsSection || sectionIndex === -1) {
-    return { similar: [], leastSimilar: [] };
-  }
-
-  // Find the list that follows the heading
-  let listElement = null;
-  for (let i = sectionIndex + 1; i < content.length; i++) {
-    const element = content[i];
-    if (element.type === "element" && element.tag === "ul") {
-      listElement = element;
-      break;
-    }
-  }
-
-  if (!listElement) return { similar: [], leastSimilar: [] };
-
-  // Parse the similar posts
-  const similarPosts = listElement.children
-    .filter((item: any) => item.type === "element" && item.tag === "li")
-    .map((item: any) => {
-      // Extract the similarity score (inside code element)
-      const codeElement = item.children.find(
-        (child: any) => child.type === "element" && child.tag === "code"
-      );
-      const similarity = codeElement?.children?.[0]?.value || "";
-
-      // Extract the link
-      const linkElement = item.children.find(
-        (child: any) => child.type === "element" && child.tag === "a"
-      );
-      const title = linkElement?.children?.[0]?.value || "";
-      const path = linkElement?.props?.href || "";
-
-      return { similarity, title, path };
-    });
-
-  // Find the "least similar posts" paragraph
-  let leastSimilarParagraph = null;
-  let leastSimilarIndex = -1;
-
-  for (let i = sectionIndex + 1; i < content.length; i++) {
-    const element = content[i];
-    if (
-      element.type === "element" &&
-      element.tag === "p" &&
-      element.children?.[0]?.value?.includes("least similar")
-    ) {
-      leastSimilarParagraph = element;
-      leastSimilarIndex = i;
-      break;
-    }
-  }
-
-  let leastSimilarPosts: any[] = [];
-
-  if (leastSimilarParagraph && leastSimilarIndex !== -1) {
-    // Find the list that follows the paragraph
-    let leastSimilarList = null;
-
-    for (let i = leastSimilarIndex + 1; i < content.length; i++) {
-      const element = content[i];
-      if (element.type === "element" && element.tag === "ul") {
-        leastSimilarList = element;
-        break;
-      }
-    }
-
-    if (leastSimilarList) {
-      // Parse the least similar posts
-      leastSimilarPosts = leastSimilarList.children
-        .filter((item: any) => item.type === "element" && item.tag === "li")
-        .map((item: any) => {
-          // Extract the similarity score (inside code element)
-          const codeElement = item.children.find(
-            (child: any) => child.type === "element" && child.tag === "code"
-          );
-          const similarity = codeElement?.children?.[0]?.value || "";
-
-          // Extract the link
-          const linkElement = item.children.find(
-            (child: any) => child.type === "element" && child.tag === "a"
-          );
-          const title = linkElement?.children?.[0]?.value || "";
-          const path = linkElement?.props?.href || "";
-
-          return { similarity, title, path };
-        });
-    }
-  }
-
-  return {
-    similar: similarPosts,
-    leastSimilar: leastSimilarPosts,
-  };
-});
+// Load similar posts data
+const jsonPath = `/blog/${path.value}/similarPosts.json`;
+fetch(jsonPath)
+  .then((response) => {
+    if (response.ok) return response.json();
+    return { posts: [] };
+  })
+  .then((data) => {
+    similarPosts.value = data;
+  })
+  .catch(() => {
+    // Silently fail - no error messages needed
+    similarPosts.value = { posts: [] };
+  });
 </script>
 
 <style>

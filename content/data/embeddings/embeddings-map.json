@@ -1,0 +1,635 @@
+{
+  "content/blog/2015/12/first-post/index.md": {
+    "hash": "2792a63ae13d57f1f6a220ddd6edd25c",
+    "metadata": {
+      "title": "The first post: why Jekyll?",
+      "slug": "first-post",
+      "date": "2015-12-02",
+      "author": "Piotr Migdał",
+      "tags": [
+        ""
+      ],
+      "mathjax": "true",
+      "description": "Why Jekyll (and not Wordpress)? Markdown, GitHub, simplicity, LaTeX.",
+      "migdal_score": "0"
+    }
+  },
+  "content/blog/2015/12/sci-to-data-sci/index.md": {
+    "hash": "e066cd4ed2f32f11a90db1b517f4d90b",
+    "metadata": {
+      "title": "What I do or: science to data science",
+      "slug": "sci-to-data-sci",
+      "date": "2015-12-14",
+      "author": "Piotr Migdał",
+      "tags": [
+        ""
+      ],
+      "description": "Data science freelancing (vs academia): freedom, impact, meritocracy, fast pace, money.",
+      "image": "./2015-12-10-science-data-science-goofy.png",
+      "migdal_score": "1"
+    }
+  },
+  "content/blog/2016/02/d3js-icm-kfnrd/index.md": {
+    "hash": "fb185742a7228e62230c846f5df97875",
+    "metadata": {
+      "title": "D3.js workshop at ICM for KFnrD",
+      "slug": "d3js-icm-kfnrd",
+      "date": "2016-02-09",
+      "author": "Piotr Migdał",
+      "tags": [
+        ""
+      ],
+      "mathjax": "false",
+      "description": "Interactive data visualization for high-school students of KFnrD (24-29 Jan 2016) - materials, results.",
+      "image": "./2016-02-09-kfnrd_icm_work.jpg",
+      "views_k": "4",
+      "migdal_score": "1"
+    }
+  },
+  "content/blog/2016/03/data-science-intro-for-math-phys-background/index.md": {
+    "hash": "ad7e2b69f4b81fd673f3e2016cb64807",
+    "metadata": {
+      "title": "Data science intro for math/phys background",
+      "slug": "data-science-intro-for-math-phys-background",
+      "date": "2016-03-15",
+      "author": "Piotr Migdał",
+      "tags": [
+        ""
+      ],
+      "mathjax": "false",
+      "description": "Academia to data science? Learn Python (or R), machine learning and other stuff.",
+      "image": "./2016-03-15-dark-side-of-science-meme.jpg",
+      "mentions": "",
+      "- text": "reprinted to KDnuggets",
+      "href": "http://www.kdnuggets.com/2016/04/data-science-comprehensive-guide-transition.html",
+      "views_k": "31",
+      "migdal_score": "4"
+    }
+  },
+  "content/blog/2016/05/my-impressions-from-pydata-berlin-2016/index.md": {
+    "hash": "ff4e6c12f222500c942242f4b2330da7",
+    "metadata": {
+      "title": "My impressions from PyData Berlin 2016",
+      "layout": "post",
+      "slug": "my-impressions-from-pydata-berlin-2016",
+      "date": "2016-05-25",
+      "author": "Piotr Migdał",
+      "tags": [
+        ""
+      ],
+      "mathjax": "false",
+      "description": "Was it worth it? (Yes.) Links to the best talks.",
+      "migdal_score": "0"
+    }
+  },
+  "content/blog/2016/08/quantum-mechanics-for-high-school-students/index.md": {
+    "hash": "c1ce0636effaf247820c1916d60b46d9",
+    "metadata": {
+      "title": "Quantum mechanics for high-school students",
+      "layout": "post",
+      "slug": "quantum-mechanics-for-high-school-students",
+      "date": "2016-08-15",
+      "author": "Piotr Migdał",
+      "tags": [
+        ""
+      ],
+      "mathjax": "false",
+      "description": "Outlines and materials related to my basics courses, with light polarization as the quantum information carrier.",
+      "image": "./2016-08-15-quantum-whiteboard-julia.jpg",
+      "mentions": "",
+      "- text": "Cited in \"Quantum games and interactive tools for quantum technologies outreach and education",
+      "href": "https://www.spiedigitallibrary.org/journals/optical-engineering/volume-61/issue-08/081809/Quantum-games-and-interactive-tools-for-quantum-technologies-outreach-and/10.1117/1.OE.61.8.081809.full",
+      "views_k": "16",
+      "migdal_score": "2"
+    }
+  },
+  "content/blog/2017/01/king-man-woman-queen-why/index.md": {
+    "hash": "dd49cf62e5e5f4f8f590f33e5f53f706",
+    "metadata": {
+      "title": "king - man + woman is queen; but why?",
+      "slug": "king-man-woman-queen-why",
+      "date": "2017-01-06",
+      "author": "Piotr Migdał",
+      "tags": [
+        ""
+      ],
+      "mathjax": "true",
+      "description": ">-",
+      "Words, vectors, analogies and conceptual metaphors - the linear space of word2vec and GloVe. Or": "how to change gender with a vector.",
+      "image": "./queen-julia-vectors-facebook.jpg",
+      "mentions": "",
+      "- text": "good-evil unlawful-lawful and ADnD classes from a HN comment",
+      "href": "http://imgur.com/3FzX81i",
+      "views_k": "90",
+      "migdal_score": "2"
+    }
+  },
+  "content/blog/2017/07/dating-for-nerds/index.md": {
+    "hash": "a9d892c8370ff7c7301a1e3a7423c65e",
+    "metadata": {
+      "title": "Dating for nerds (part 1): problem diagnosis",
+      "slug": "dating-for-nerds",
+      "date": "2017-07-23",
+      "author": "Piotr Migdał",
+      "tags": [
+        ""
+      ],
+      "description": ">-",
+      "image": "./i_love_nerds_part.jpg",
+      "#mentions": "",
+      "#  - text": "Hacker News discussion thread\" # only 28 upvotes",
+      "#    href": "https://news.ycombinator.com/item?id=14834641",
+      "views_k": "20",
+      "migdal_score": "2"
+    }
+  },
+  "content/blog/2017/04/teaching-deep-learning/index.md": {
+    "hash": "af61fb0e45167adc898f7323b17a4136",
+    "metadata": {
+      "title": "Learning Deep Learning with Keras",
+      "slug": "teaching-deep-learning",
+      "date": "2017-04-30",
+      "author": "Piotr Migdał",
+      "tags": [
+        ""
+      ],
+      "description": ">-",
+      "image": "./deep_learning_meme_keras.png",
+      "mentions": "",
+      "- text": "reprinted to KDnuggets",
+      "href": "http://www.kdnuggets.com/2017/08/first-steps-learning-deep-learning-image-classification-keras.html",
+      "views_k": "63",
+      "migdal_score": "2"
+    }
+  },
+  "content/blog/2017/08/bangbangcon/index.md": {
+    "hash": "4e1117c841052fd21b2c19282dccabef",
+    "metadata": {
+      "title": "!!con or doing inclusivity well",
+      "slug": "bangbangcon",
+      "date": "2017-08-14",
+      "author": "Piotr Migdał",
+      "tags": [
+        ""
+      ],
+      "description": ">-",
+      "image": "./diy-badges.jpg",
+      "migdal_score": "2"
+    }
+  },
+  "content/blog/2017/09/dating-for-nerds-gender-differences/index.md": {
+    "hash": "f50799cc969e9721eff28d121d03edf8",
+    "metadata": {
+      "title": "Dating for nerds (part 2): gender differences",
+      "slug": "dating-for-nerds-gender-differences",
+      "date": "2017-09-30",
+      "author": "Piotr Migdał",
+      "tags": [
+        ""
+      ],
+      "description": ">-",
+      "This part of dating for nerds series is focused on the differences between genders that may affect dating": "social expectations, safety, choosiness, taking initiative.",
+      "image": "./dating_looks_poetry_patrizia_comino.jpg",
+      "mentions": "",
+      "- text": "was even on Hacker News (but got flagged)",
+      "href": "https://news.ycombinator.com/item?id=15372552",
+      "views_k": "19",
+      "migdal_score": "2"
+    }
+  },
+  "content/blog/2017/11/after-pydata-warsaw-2017/index.md": {
+    "hash": "3adc8fe7ceed57806800dd2925d2c7fb",
+    "metadata": {
+      "title": "After PyData Warsaw 2017",
+      "slug": "after-pydata-warsaw-2017",
+      "date": "2017-11-15",
+      "author": "Piotr Migdał",
+      "tags": [
+        ""
+      ],
+      "description": ">-",
+      "image": "./photo.jpg",
+      "views_k": "2",
+      "migdal_score": "1"
+    }
+  },
+  "content/blog/2018/09/simple-diagrams-deep-learning/index.md": {
+    "hash": "e37942f5841b56b392de90610304fadc",
+    "metadata": {}
+  },
+  "content/blog/2018/08/segmentation-to-recommendation/index.md": {
+    "hash": "962d5d1a7ce494bbdd0d575c6b55991d",
+    "metadata": {
+      "title": "From Customer Segmentation to Recommendation Systems",
+      "slug": "segmentation-to-recommendation",
+      "date": "2018-08-29",
+      "author": "Piotr Migdał",
+      "tags": [
+        ""
+      ],
+      "description": ">-",
+      "image": "3.png",
+      "mentions": "",
+      "- text": "AI Trends as in Internet Archive Wayback Machine",
+      "href": "https://web.archive.org/web/20211025015411/https://www.aitrends.com/machine-learning/ai-customer-targeting-levels/",
+      "migdal_score": "1"
+    }
+  },
+  "content/blog/2019/03/an-edgy-intro-to-graphs-of-interpersonal-relationships/index.md": {
+    "hash": "ece4a1325bb3390c51b40392350075e3",
+    "metadata": {
+      "title": "An edgy intro to graphs of interpersonal relationships",
+      "description": "CW: human sexuality, maths, LaTeX, spoilers for the Game of Thrones",
+      "date": "2019-03-02T01:35:33.790Z",
+      "tags": [
+        ""
+      ],
+      "slug": "an-edgy-intro-to-graphs-of-interpersonal-relationships",
+      "image": "./01.png",
+      "mentions": "",
+      "- text": "originally published on Medium",
+      "href": "https://pmigdal.medium.com/an-edgy-intro-to-graphs-of-interpersonal-relationships-ba26fa415f29",
+      "views_k": "7",
+      "migdal_score": "1"
+    }
+  },
+  "content/blog/2019/04/tinder-anecdata-and-sankey-diagrams/index.md": {
+    "hash": "0b65407d5d6273a04b54dd1afb2abd33",
+    "metadata": {
+      "title": "Tinder anecdata and Sankey diagrams",
+      "description": ">-",
+      "date": "2019-04-26T17:12:13.030Z",
+      "tags": [
+        ""
+      ],
+      "slug": "tinder-anecdata-and-sankey-diagrams",
+      "image": "./01.png",
+      "mentions": "",
+      "- text": "originally published on Medium",
+      "href": "https://pmigdal.medium.com/tinder-anecdata-and-sankey-diagrams-c1c0e5dfff18",
+      "views_k": "7",
+      "migdal_score": "0"
+    }
+  },
+  "content/blog/2019/06/cloak-dagger-creativity-camp/index.md": {
+    "hash": "3fc4535cc86e94345652bec2412fede3",
+    "metadata": {
+      "title": "Cloak & dagger creativity camp",
+      "description": ">-",
+      "date": "2019-06-19T23:31:52.811Z",
+      "tags": [
+        ""
+      ],
+      "slug": "cloak-dagger-creativity-camp",
+      "image": "./02.jpeg",
+      "mentions": "",
+      "- text": "originally published on Medium",
+      "href": "https://pmigdal.medium.com/cloak-dagger-creativity-camp-ce4a24aa6528",
+      "migdal_score": "1"
+    }
+  },
+  "content/blog/2019/06/games-in-which-you-walk-and-get-immersed/index.md": {
+    "hash": "e9feed95e9a82e809d3b4fd49c2e59df",
+    "metadata": {
+      "title": "Games in which you walk (and get immersed)",
+      "description": ">-",
+      "Carter, Amnesia": "The Dark Descent, Dear Esther, Firewatch",
+      "date": "2019-06-27T12:13:33.580Z",
+      "tags": [
+        ""
+      ],
+      "slug": "games-in-which-you-walk-and-get-immersed",
+      "image": "./00.jpg",
+      "mentions": "",
+      "- text": "originally published on Medium",
+      "href": "https://pmigdal.medium.com/games-in-which-you-walk-and-get-immersed-a80ad2bcfa7f",
+      "migdal_score": "1"
+    }
+  },
+  "content/blog/2019/07/dreams-drugs-convnets/index.md": {
+    "hash": "9f19ec6c6bd83fdc6f026b34bf264d94",
+    "metadata": {
+      "title": "Dreams, Drugs & ConvNets",
+      "description": ">-",
+      "date": "2019-07-20T15:46:18.244Z",
+      "tags": [
+        ""
+      ],
+      "slug": "dreams-drugs-convnets",
+      "image": "./01.jpg",
+      "mentions": "",
+      "- text": "originally published on Medium",
+      "href": "https://pmigdal.medium.com/dreams-drugs-convnets-ae7ed6ad50a5",
+      "views_k": "2",
+      "migdal_score": "0"
+    }
+  },
+  "content/blog/2019/07/human-machine-learning-motivation/index.md": {
+    "hash": "b097f9a2478dfecfaa3c1ed212d13850",
+    "metadata": {
+      "title": "Exploring human vs machine learning (one blogpost at a time)",
+      "slug": "human-machine-learning-motivation",
+      "date": "2019-07-15",
+      "author": "Piotr Migdał",
+      "tags": [
+        ""
+      ],
+      "description": ">-",
+      "image": "./pigeon_classifier_excelnet.jpg",
+      "migdal_score": "1"
+    }
+  },
+  "content/blog/2019/07/there-will-be-the-next-quantum-game-with-photons/index.md": {
+    "hash": "a5dbe16323856db42d632e0b0433bf73",
+    "metadata": {
+      "title": "There will be the next Quantum Game with Photons",
+      "description": ">-",
+      "date": "2019-07-20T12:03:03.627Z",
+      "tags": [
+        ""
+      ],
+      "slug": "there-will-be-the-next-quantum-game-with-photons",
+      "image": "./03.jpg",
+      "mentions": "",
+      "- text": "originally published on Medium",
+      "href": "https://pmigdal.medium.com/there-will-be-the-next-quantum-game-with-photons-276568d63613",
+      "migdal_score": "0"
+    }
+  },
+  "content/blog/2019/10/the-statues-by-jacek-kaczmarski/index.md": {
+    "hash": "de4f85f750dad63877d705b295dd702b",
+    "metadata": {
+      "title": "“The Statues” by Jacek Kaczmarski",
+      "description": ">-",
+      "Migdał": "“What bliss when a tyrant’s tall statues are shattered”",
+      "date": "2019-10-25T17:48:32.401Z",
+      "tags": [
+        ""
+      ],
+      "slug": "the-statues-by-jacek-kaczmarski",
+      "image": "./00.jpeg",
+      "mentions": "",
+      "- text": "originally published on Medium",
+      "href": "https://pmigdal.medium.com/the-statues-by-jacek-kaczmarski-7f9bb212be28",
+      "migdal_score": "1"
+    }
+  },
+  "content/blog/2021/02/dont-fight-flight-or-freeze-your-body-and-emotions/index.md": {
+    "hash": "6a802887d8ba27c292d7f701aca1f6b4",
+    "metadata": {
+      "title": "Don’t fight, flight (or freeze) your body and emotions",
+      "description": ">-",
+      "date": "2021-02-25T14:58:12.737Z",
+      "tags": [
+        ""
+      ],
+      "slug": "dont-fight-flight-or-freeze-your-body-and-emotions",
+      "image": "./03.jpeg",
+      "mentions": "",
+      "- text": "Hacker News front page as \"Procrastination is flight, deadline is fight, freeze is staring at the screen",
+      "href": "https://news.ycombinator.com/item?id=26371848",
+      "views_k": "42",
+      "migdal_score": "5"
+    }
+  },
+  "content/blog/2021/09/embodiment-for-nerds/index.md": {
+    "hash": "be6145ac90ae17a17084e303a1445e5f",
+    "metadata": {
+      "title": "Embodiment for nerds",
+      "description": "Or how you can learn to get in touch with your body and emotions.",
+      "date": "2021-09-18T12:18:58.110Z",
+      "tags": [
+        ""
+      ],
+      "slug": "embodiment-for-nerds",
+      "image": "./05.jpeg",
+      "mentions": "",
+      "- text": "Hacker News front page",
+      "href": "https://news.ycombinator.com/item?id=28895655",
+      "views_k": "4",
+      "migdal_score": "4"
+    }
+  },
+  "content/blog/2020/03/doom-2016-vs-doom-eternal-ui-side-by-side/index.md": {
+    "hash": "530cd2397e222041d172f527032c9349",
+    "metadata": {
+      "title": "Doom 2016 vs Doom Eternal: UI side-by-side",
+      "description": "A dark journey vs demon piñata. Demons invaded Earth and ruined HUD.",
+      "date": "2020-03-23T14:09:02.339Z",
+      "tags": [
+        ""
+      ],
+      "slug": "doom-2016-vs-doom-eternal-ui-side-by-side",
+      "image": "./24.jpeg",
+      "mentions": "",
+      "- text": "originally published on Medium",
+      "href": "https://pmigdal.medium.com/doom-2016-vs-doom-eternal-ui-side-by-side-8058e996baae",
+      "views_k": "5",
+      "migdal_score": "1"
+    }
+  },
+  "content/blog/2020/03/types-tests-typescript/index.md": {
+    "hash": "1fb424baecd46354ffca7cae45fdce6c",
+    "metadata": {}
+  },
+  "content/blog/2020/05/adhd-tech-stack-auto-time-tracking/index.md": {
+    "hash": "d4ec99ae5ede4b60dca8b5eb808212ef",
+    "metadata": {
+      "title": "ADHD tech stack: auto time tracking",
+      "description": ">-",
+      "ADHD": "how to get immediate feedback: for actions, not guilt.",
+      "date": "2020-05-19T20:17:50.240Z",
+      "tags": [
+        ""
+      ],
+      "slug": "adhd-tech-stack-auto-time-tracking",
+      "image": "./08.jpg",
+      "mentions": "",
+      "- text": "originally published on Medium",
+      "href": "https://pmigdal.medium.com/adhd-tech-stack-auto-time-tracking-b8ff5b6bc888",
+      "views_k": "9",
+      "migdal_score": "1"
+    }
+  },
+  "content/blog/2022/09/co-chcialbym-wiedziec-wczesniej-o-adhd/index.md": {
+    "hash": "0da592dbe4d475ffbd965d1cddfe5342",
+    "metadata": {
+      "title": "Co chciałbym wiedzieć wcześniej o ADHD",
+      "description": ">-",
+      "date": "2022-09-30T18:15:39.275Z",
+      "tags": [
+        ""
+      ],
+      "slug": "co-chcialbym-wiedziec-wczesniej-o-adhd",
+      "image": "./02.jpg",
+      "mentions": "",
+      "- text": "originally published on Medium",
+      "href": "https://pmigdal.medium.com/co-chcia%C5%82bym-wiedzie%C4%87-wcze%C5%9Bniej-o-adhd-927ef8b37de6",
+      "migdal_score": "2"
+    }
+  },
+  "content/blog/2022/10/perspective-capsaicin-is-a-psychoactive-substance/index.md": {
+    "hash": "325ab5e2a8baf2ca99811a0a00c7ed15",
+    "metadata": {
+      "title": "Perspective: capsaicin is a psychoactive substance",
+      "description": ">-",
+      "date": "2022-10-15T14:15:15.143Z",
+      "tags": [
+        ""
+      ],
+      "slug": "perspective-capsaicin-is-a-psychoactive-substance",
+      "image": "./01.jpg",
+      "mentions": "",
+      "- text": "Hacker News front page",
+      "href": "https://news.ycombinator.com/item?id=33774386",
+      "views_k": "10",
+      "migdal_score": "0"
+    }
+  },
+  "content/blog/2022/07/dall-e-2-and-transcendence/index.md": {
+    "hash": "8cfdaae75a87396eea0ac056bc79175f",
+    "metadata": {
+      "title": "DALL·E 2 and transcendence - generating esoteric images with AI",
+      "description": "Hint: end prompts with “religious art”, “stained glass”, “esoteric art”",
+      "date": "2022-07-17T20:26:10.039Z",
+      "tags": [
+        ""
+      ],
+      "slug": "dall-e-2-and-transcendence",
+      "image": "./01.jpg",
+      "mentions": "",
+      "- text": "originally published on Medium",
+      "href": "https://pmigdal.medium.com/dall-e-2-and-transcendence-3a3a404fb609",
+      "migdal_score": "3",
+      "views_k": "2"
+    }
+  },
+  "content/blog/2022/12/medium-to-markdown/index.md": {
+    "hash": "2c504a8d4f0e407a5319b50b2c6c0e54",
+    "metadata": {
+      "title": "New blog - moving from Medium to Gridsome",
+      "description": ">-",
+      "date": "2022-12-29T17:12:13.030Z",
+      "tags": [
+        ""
+      ],
+      "slug": "new-blog-from-medium-to-gridsome",
+      "migdal_score": "-1"
+    }
+  },
+  "content/blog/2023/01/metal-bands-happiness-correlation/index.md": {
+    "hash": "136a9c765406bc3c5936e84a5d497ebc",
+    "metadata": {
+      "title": "Metal bands bring happiness (as chocolate brings Nobel Prizes)",
+      "description": ">-",
+      "date": "2023-01-21T19:00:00.030Z",
+      "tags": [
+        ""
+      ],
+      "slug": "metal-bands-happiness-correlation",
+      "image": "./metal-bands-happiness-correlation.png",
+      "mentions": "",
+      "- text": "Popular on Twitter as well",
+      "href": "https://twitter.com/SteveStuWill/status/1611848077605994496",
+      "migdal_score": "0"
+    }
+  },
+  "content/blog/2023/02/ai-artists-information-theory/index.md": {
+    "hash": "dfbfa8d510786e7efc79686d154e339f",
+    "metadata": {
+      "title": "AI won’t make artists redundant - thanks to information theory",
+      "description": ">-",
+      "In short": "a lot!",
+      "date": "2023-02-05T18:00:00.030Z",
+      "tags": [
+        ""
+      ],
+      "slug": "ai-arts-information-theory",
+      "image": "./lizard-taxi-velociraptor-ceo.jpg",
+      "mentions": "",
+      "- text": "Hacker News front page",
+      "href": "https://news.ycombinator.com/item?id=34856326",
+      "migdal_score": "0"
+    }
+  },
+  "content/blog/2023/05/genesis-az-by-gpt/index.md": {
+    "hash": "8ceb228a15be9b3ffa5646648427cade",
+    "metadata": {
+      "title": "Genesis 1 but every word begins with 'A' - with GPT4",
+      "description": ">-",
+      "date": "2023-05-31T18:00:00.030Z",
+      "tags": [
+        ""
+      ],
+      "slug": "genesis-az-by-gpt",
+      "image": "./genesis-a.jpg",
+      "migdal_score": "0"
+    }
+  },
+  "content/blog/2024/05/science-games-explorable-explanations/index.md": {
+    "hash": "215bd9157923eb2a25211a4a1de161b9",
+    "metadata": {
+      "title": "Science-based games and explorable explanations",
+      "description": ">-",
+      "date": "2024-05-20T00:00:00.030Z",
+      "tags": [
+        ""
+      ],
+      "slug": "science-games-explorable-explanations",
+      "image": "./fourier-color-coded.png",
+      "migdal_score": "0",
+      "mentions": "",
+      "- text": "Hacker News",
+      "href": "https://news.ycombinator.com/item?id=41648048",
+      "author": "Piotr Migdał et al."
+    }
+  },
+  "content/blog/2024/10/writing-like-ai/index.md": {
+    "hash": "bec5072c145a9e8db1c0694d2e2e9a5a",
+    "metadata": {
+      "title": "Overcoming writer's block — lessons from AI",
+      "description": "Let's learn from AI and overcome writer's block one token at a time.",
+      "date": "2024-10-11T00:00:00.030Z",
+      "tags": [
+        ""
+      ],
+      "slug": "writing-like-ai",
+      "image": "./dalle-ai-writing-zen-master.jpeg",
+      "migdal_score": "0"
+    }
+  },
+  "content/blog/2025/01/dont-use-cosine-similarity/index.md": {
+    "hash": "433006984565b5668d78c88b699e9ef2",
+    "metadata": {
+      "title": "Don't use cosine similarity carelessly",
+      "description": ">-",
+      "date": "2025-01-14T00:00:00.030Z",
+      "tags": [
+        ""
+      ],
+      "slug": "dont-use-cosine-similarity",
+      "image": "./cartoon-espresso-word2vec.jpg",
+      "migdal_score": "1",
+      "views_k": "20",
+      "mentions": "",
+      "- text": "see Hacker News for the discussion",
+      "href": "https://news.ycombinator.com/item?id=42704078"
+    }
+  },
+  "content/blog/2025/02/markdown-saves/index.md": {
+    "hash": "923c3f8977f3fe07521eb46c70774a48",
+    "metadata": {
+      "title": "If it is worth keeping, save it in Markdown",
+      "description": ">-",
+      "date": "2025-02-17T00:00:00.030Z",
+      "tags": [
+        ""
+      ],
+      "slug": "markdown-saves",
+      "image": "./galadriel-lotr-much-that-once-was.jpg",
+      "mentions": "",
+      "- text": "Hacker News front page",
+      "href": "https://news.ycombinator.com/item?id=43137616"
+    }
+  }
+}

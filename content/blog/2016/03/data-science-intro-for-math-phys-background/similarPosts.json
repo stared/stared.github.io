@@ -1,0 +1,189 @@
+{
+  "posts": [
+    {
+      "title": "Learning Deep Learning with Keras",
+      "path": "/blog/2017/04/teaching-deep-learning",
+      "similarity": 0.735
+    },
+    {
+      "title": "king - man + woman is queen; but why?",
+      "path": "/blog/2017/01/king-man-woman-queen-why",
+      "similarity": 0.653
+    },
+    {
+      "title": "What I do or: science to data science",
+      "path": "/blog/2015/12/sci-to-data-sci",
+      "similarity": 0.65
+    },
+    {
+      "title": "Dont use cosine similarity carelessly",
+      "path": "/blog/2025/01/dont-use-cosine-similarity",
+      "similarity": 0.64
+    },
+    {
+      "title": "!!con or doing inclusivity well",
+      "path": "/blog/2017/08/bangbangcon",
+      "similarity": 0.634
+    },
+    {
+      "title": "Types Tests Typescript",
+      "path": "/blog/2020/03/types-tests-typescript",
+      "similarity": 0.629
+    },
+    {
+      "title": "Quantum mechanics for high-school students",
+      "path": "/blog/2016/08/quantum-mechanics-for-high-school-students",
+      "similarity": 0.624
+    },
+    {
+      "title": "Dating for nerds (part 1): problem diagnosis",
+      "path": "/blog/2017/07/dating-for-nerds",
+      "similarity": 0.622
+    },
+    {
+      "title": "Science-based games and explorable explanations",
+      "path": "/blog/2024/05/science-games-explorable-explanations",
+      "similarity": 0.595
+    },
+    {
+      "title": "Simple Diagrams Deep Learning",
+      "path": "/blog/2018/09/simple-diagrams-deep-learning",
+      "similarity": 0.59
+    },
+    {
+      "title": "Exploring human vs machine learning (one blogpost at a time)",
+      "path": "/blog/2019/07/human-machine-learning-motivation",
+      "similarity": 0.588
+    },
+    {
+      "title": "Dating for nerds (part 2): gender differences",
+      "path": "/blog/2017/09/dating-for-nerds-gender-differences",
+      "similarity": 0.58
+    },
+    {
+      "title": "My impressions from PyData Berlin 2016",
+      "path": "/blog/2016/05/my-impressions-from-pydata-berlin-2016",
+      "similarity": 0.555
+    },
+    {
+      "title": "D3.js workshop at ICM for KFnrD",
+      "path": "/blog/2016/02/d3js-icm-kfnrd",
+      "similarity": 0.535
+    },
+    {
+      "title": "Tinder anecdata and Sankey diagrams",
+      "path": "/blog/2019/04/tinder-anecdata-and-sankey-diagrams",
+      "similarity": 0.529
+    },
+    {
+      "title": "Dreams, Drugs & ConvNets",
+      "path": "/blog/2019/07/dreams-drugs-convnets",
+      "similarity": 0.523
+    },
+    {
+      "title": "After PyData Warsaw 2017",
+      "path": "/blog/2017/11/after-pydata-warsaw-2017",
+      "similarity": 0.511
+    },
+    {
+      "title": "The first post: why Jekyll?",
+      "path": "/blog/2015/12/first-post",
+      "similarity": 0.501
+    },
+    {
+      "title": "ADHD tech stack: auto time tracking",
+      "path": "/blog/2020/05/adhd-tech-stack-auto-time-tracking",
+      "similarity": 0.482
+    },
+    {
+      "title": "An edgy intro to graphs of interpersonal relationships",
+      "path": "/blog/2019/03/an-edgy-intro-to-graphs-of-interpersonal-relationships",
+      "similarity": 0.475
+    },
+    {
+      "title": "AI won’t make artists redundant - thanks to information theory",
+      "path": "/blog/2023/02/ai-artists-information-theory",
+      "similarity": 0.453
+    },
+    {
+      "title": "Embodiment for nerds",
+      "path": "/blog/2021/09/embodiment-for-nerds",
+      "similarity": 0.451
+    },
+    {
+      "title": "DALL·E 2 and transcendence - generating esoteric images with AI",
+      "path": "/blog/2022/07/dall-e-2-and-transcendence",
+      "similarity": 0.45
+    },
+    {
+      "title": "If it is worth keeping, save it in Markdown",
+      "path": "/blog/2025/02/markdown-saves",
+      "similarity": 0.448
+    },
+    {
+      "title": "New blog - moving from Medium to Gridsome",
+      "path": "/blog/2022/12/medium-to-markdown",
+      "similarity": 0.435
+    },
+    {
+      "title": "From Customer Segmentation to Recommendation Systems",
+      "path": "/blog/2018/08/segmentation-to-recommendation",
+      "similarity": 0.432
+    },
+    {
+      "title": "Overcoming writers block — lessons from AI",
+      "path": "/blog/2024/10/writing-like-ai",
+      "similarity": 0.431
+    },
+    {
+      "title": "Co chciałbym wiedzieć wcześniej o ADHD",
+      "path": "/blog/2022/09/co-chcialbym-wiedziec-wczesniej-o-adhd",
+      "similarity": 0.42
+    },
+    {
+      "title": "Cloak & dagger creativity camp",
+      "path": "/blog/2019/06/cloak-dagger-creativity-camp",
+      "similarity": 0.415
+    },
+    {
+      "title": "Don’t fight, flight (or freeze) your body and emotions",
+      "path": "/blog/2021/02/dont-fight-flight-or-freeze-your-body-and-emotions",
+      "similarity": 0.413
+    },
+    {
+      "title": "There will be the next Quantum Game with Photons",
+      "path": "/blog/2019/07/there-will-be-the-next-quantum-game-with-photons",
+      "similarity": 0.36
+    },
+    {
+      "title": "Games in which you walk (and get immersed)",
+      "path": "/blog/2019/06/games-in-which-you-walk-and-get-immersed",
+      "similarity": 0.344
+    },
+    {
+      "title": "Genesis 1 but every word begins with A - with GPT4",
+      "path": "/blog/2023/05/genesis-az-by-gpt",
+      "similarity": 0.329
+    },
+    {
+      "title": "Metal bands bring happiness (as chocolate brings Nobel Prizes)",
+      "path": "/blog/2023/01/metal-bands-happiness-correlation",
+      "similarity": 0.329
+    },
+    {
+      "title": "Doom 2016 vs Doom Eternal: UI side-by-side",
+      "path": "/blog/2020/03/doom-2016-vs-doom-eternal-ui-side-by-side",
+      "similarity": 0.311
+    },
+    {
+      "title": "Perspective: capsaicin is a psychoactive substance",
+      "path": "/blog/2022/10/perspective-capsaicin-is-a-psychoactive-substance",
+      "similarity": 0.243
+    },
+    {
+      "title": "“The Statues” by Jacek Kaczmarski",
+      "path": "/blog/2019/10/the-statues-by-jacek-kaczmarski",
+      "similarity": 0.169
+    }
+  ]
+}

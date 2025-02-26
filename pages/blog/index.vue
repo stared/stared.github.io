@@ -1,36 +1,53 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from 'vue';
+import { ref, computed, onMounted, watch } from "vue";
 import { HeaderData } from "@/scripts/utils";
 // @ts-ignore
-import VueSlider from 'vue-slider-component/dist-css/vue-slider-component.umd.min.js';
-import 'vue-slider-component/dist-css/vue-slider-component.css';
-import 'vue-slider-component/theme/default.css';
-import type { ExternalPost } from '@/scripts/postData';
-import { BlogPostLabels } from '@/scripts/postData';
-import { useRoute, useRouter } from 'vue-router';
+import VueSlider from "vue-slider-component/dist-css/vue-slider-component.umd.min.js";
+import "vue-slider-component/dist-css/vue-slider-component.css";
+import "vue-slider-component/theme/default.css";
+import type { ExternalPost } from "@/scripts/postData";
+import { BlogPostLabels } from "@/scripts/postData";
+import { useRoute, useRouter } from "vue-router";
 
-const externalPosts: ExternalPost[] = (await import('@/content/data/external-articles.json')).default.items;
+const externalPosts: ExternalPost[] = (
+  await import("@/content/data/external-articles.json")
+).default.items;
 
 HeaderData.default()
   .setTitle("Blog")
   .setDescription("Read blog posts by Piotr Migdał.")
   .useHead();
 
-const { data: blogPosts } = await useAsyncData('blogPosts', () => queryContent('/blog').find());
+const { data: blogPosts } = await useAsyncData("blogPosts", () =>
+  queryContent("/blog")
+    .where({ _file: { $not: { $contains: "similarPosts.json" } } })
+    .find()
+);
 
+const blogPostLabels = BlogPostLabels.new()
+  .addInternal(blogPosts.value || [])
+  .addExternal(externalPosts);
 
-const blogPostLabels = BlogPostLabels.new().addInternal(blogPosts.value || []).addExternal(externalPosts);
-
-
-const tagSelected = ref('all');
+const tagSelected = ref("all");
 const weightPopularity = ref(4);
 const weightMentions = ref(2);
 const weightAge = ref(-8);
 const migdalweight = ref(2);
-const sliderLine = (dotPos: number[]) => [[50, dotPos[0], { backgroundColor: dotPos[0] < 50 ? 'pink' : '' }]];
+const sliderLine = (dotPos: number[]) => [
+  [50, dotPos[0], { backgroundColor: dotPos[0] < 50 ? "pink" : "" }],
+];
 
-
-const filteredPosts = computed(() => blogPostLabels.filterByTag(tagSelected.value).sortByWeights(weightPopularity.value, weightMentions.value, weightAge.value, migdalweight.value).items);
+const filteredPosts = computed(
+  () =>
+    blogPostLabels
+      .filterByTag(tagSelected.value)
+      .sortByWeights(
+        weightPopularity.value,
+        weightMentions.value,
+        weightAge.value,
+        migdalweight.value
+      ).items
+);
 
 const allTagsCounted = blogPostLabels.allTagsCounted();
 
@@ -48,7 +65,7 @@ watch(
     if (newTag) {
       tagSelected.value = newTag as string;
     } else {
-      tagSelected.value = 'all';
+      tagSelected.value = "all";
     }
   }
 );
@@ -57,7 +74,7 @@ const router = useRouter();
 
 function selectTag(tag: string) {
   tagSelected.value = tag;
-  if ( tag === 'all' ) {
+  if (tag === "all") {
     router.push({ query: { tag: undefined } });
   } else {
     router.push({ query: { tag: tag } });
@@ -71,25 +88,55 @@ function selectTag(tag: string) {
     <div class="slider-flexbox">
       <div class="slider">
         <span class="slider-label">log(popularity)</span>
-        <VueSlider v-model="weightPopularity" :min="-10" :max="10" width="150px" :process="sliderLine" />
+        <VueSlider
+          v-model="weightPopularity"
+          :min="-10"
+          :max="10"
+          width="150px"
+          :process="sliderLine"
+        />
       </div>
       <div class="slider">
         <span class="slider-label">sqrt(mentions)</span>
-        <VueSlider v-model="weightMentions" :min="-5" :max="5" width="150px" :process="sliderLine" />
+        <VueSlider
+          v-model="weightMentions"
+          :min="-5"
+          :max="5"
+          width="150px"
+          :process="sliderLine"
+        />
       </div>
       <div class="slider">
         <span class="slider-label">log(age)</span>
-        <VueSlider v-model="weightAge" :min="-20" :max="20" width="150px" :process="sliderLine" />
+        <VueSlider
+          v-model="weightAge"
+          :min="-20"
+          :max="20"
+          width="150px"
+          :process="sliderLine"
+        />
       </div>
       <div class="slider">
         <span class="slider-label">author's bias</span>
-        <VueSlider v-model="migdalweight" :min="-5" :max="5" width="150px" :process="sliderLine" />
+        <VueSlider
+          v-model="migdalweight"
+          :min="-5"
+          :max="5"
+          width="150px"
+          :process="sliderLine"
+        />
       </div>
     </div>
 
     <p>
-      <span v-for="tag in allTagsCounted" :key="tag.name" @click="selectTag(tag.name)" class="tag"
-        :class="{ selected: tag.name === tagSelected }">[{{ tag.name }}]</span>
+      <span
+        v-for="tag in allTagsCounted"
+        :key="tag.name"
+        @click="selectTag(tag.name)"
+        class="tag"
+        :class="{ selected: tag.name === tagSelected }"
+        >[{{ tag.name }}]</span
+      >
     </p>
 
     <div class="post-list">
@@ -100,11 +147,19 @@ function selectTag(tag: string) {
         <span v-else class="title">
           <a :href="post.postSource.href">{{ post.title }}</a>
         </span>
-        <span v-for="tagName in post.tags" :key="tagName" @click="selectTag(tagName)" class="tag"
-          :class="{ selected: tagName === tagSelected }">[{{ tagName }}]</span>
+        <span
+          v-for="tagName in post.tags"
+          :key="tagName"
+          @click="selectTag(tagName)"
+          class="tag"
+          :class="{ selected: tagName === tagSelected }"
+          >[{{ tagName }}]</span
+        >
         <span v-if="post.hn" class="hn">[HN]</span>
         <span class="date">{{ post.displayDate }}</span>
-        <span v-if="post.postSource.isExternal" class="source">@ {{ post.postSource.source }}</span>
+        <span v-if="post.postSource.isExternal" class="source"
+          >@ {{ post.postSource.source }}</span
+        >
       </div>
     </div>
   </div>
@@ -136,7 +191,7 @@ function selectTag(tag: string) {
 }
 
 .post-list .source {
-    opacity: 0.5;
+  opacity: 0.5;
   font-size: 0.8rem;
   padding-left: 0.2em;
   padding-right: 0.2em;
