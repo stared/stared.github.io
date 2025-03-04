@@ -14,6 +14,7 @@ mentions:
     href: https://www.reddit.com/r/ObsidianMD/comments/1is1snu/if_it_is_worth_keeping_save_it_in_markdown/
   - text: Hacker News front page
     href: https://news.ycombinator.com/item?id=43137616
+views_k: 18
 ---
 
 One of Stanisław Lem's stories, [The Memoirs Found in a Bathtub](https://en.wikipedia.org/wiki/Memoirs_Found_in_a_Bathtub), begins with a strange phenomenon that turns all written materials into dust. While this is science fiction, something similar happens in our digital world.
