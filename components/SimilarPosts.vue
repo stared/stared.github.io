@@ -1,10 +1,10 @@
 <template>
   <section v-if="similarPosts?.length" class="similar-posts">
-    <h2>Similar posts</h2>
+    <h2>See also</h2>
     <ul>
       <li v-for="post in similarPosts" :key="post.slug">
         <code>{{ post.similarity.toFixed(3) }}</code>
-        <NuxtLink :to="`/blog/${post.slug}`">{{ post.title }}</NuxtLink>
+        <NuxtLink :to="`${post.path}`">{{ post.title }}</NuxtLink>
       </li>
     </ul>
   </section>
@@ -58,3 +58,19 @@ const { data: similarPosts } = await useAsyncData(
   { server: true }
 );
 </script>
+
+<style>
+.similar-posts {
+  margin-top: 2em;
+}
+
+.similar-posts ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.similar-posts code {
+  margin-right: 0.75em;
+  color: #666;
+}
+</style>
