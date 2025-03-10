@@ -1,0 +1,34 @@
+{
+  "most_similar": [
+    {
+      "slug": "2015_12_first-post",
+      "similarity": 0.7028594283676235,
+      "title": "The first post: why Jekyll?",
+      "path": "/blog/2015/12/first-post"
+    },
+    {
+      "slug": "2025_02_markdown-saves",
+      "similarity": 0.6168566315837627,
+      "title": "If it is worth keeping, save it in Markdown",
+      "path": "/blog/2025/02/markdown-saves"
+    },
+    {
+      "slug": "2015_12_sci-to-data-sci",
+      "similarity": 0.5068362501432367,
+      "title": "What I do or: science to data science",
+      "path": "/blog/2015/12/sci-to-data-sci"
+    },
+    {
+      "slug": "2019_07_human-machine-learning-motivation",
+      "similarity": 0.49465381332736535,
+      "title": "Exploring human vs machine learning (one blogpost at a time)",
+      "path": "/blog/2019/07/human-machine-learning-motivation"
+    },
+    {
+      "slug": "2020_03_types-tests-typescript",
+      "similarity": 0.4864155511720055,
+      "title": "How I learned to stop worrying and love the types & tests",
+      "path": "/blog/2020/03/types-tests-typescript"
+    }
+  ]
+}

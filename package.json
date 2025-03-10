@@ -5,16 +5,24 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "generate:embeddings": "tsx scripts/generateEmbeddings.ts && tsx scripts/generateSimilarities.ts",
+    "build:all": "yarn generate:embeddings && yarn generate"
   },
   "dependencies": {
     "@nuxt/content": "^2.13.2",
     "@nuxtjs/plausible": "^1.0.3",
     "feed": "^4.2.2",
+    "gray-matter": "^4.0.3",
     "nuxt": "^3.13.2",
     "nuxt-content-assets": "^1.4.4",
+    "openai": "^4.28.0",
     "rehype-mathjax": "^6.0.0",
     "remark-math": "^6.0.0",
     "vue-slider-component": "^4.1.0-beta.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "tsx": "^4.7.1"
   }
 }

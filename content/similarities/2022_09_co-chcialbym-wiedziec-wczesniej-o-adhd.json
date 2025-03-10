@@ -1,0 +1,34 @@
+{
+  "most_similar": [
+    {
+      "slug": "2020_05_adhd-tech-stack-auto-time-tracking",
+      "similarity": 0.6479147770306743,
+      "title": "ADHD tech stack: auto time tracking",
+      "path": "/blog/2020/05/adhd-tech-stack-auto-time-tracking"
+    },
+    {
+      "slug": "2021_02_dont-fight-flight-or-freeze-your-body-and-emotions",
+      "similarity": 0.5510328840839276,
+      "title": "Don’t fight, flight (or freeze) your body and emotions",
+      "path": "/blog/2021/02/dont-fight-flight-or-freeze-your-body-and-emotions"
+    },
+    {
+      "slug": "2021_09_embodiment-for-nerds",
+      "similarity": 0.4945412047922314,
+      "title": "Embodiment for nerds",
+      "path": "/blog/2021/09/embodiment-for-nerds"
+    },
+    {
+      "slug": "2019_07_human-machine-learning-motivation",
+      "similarity": 0.48364959102627614,
+      "title": "Exploring human vs machine learning (one blogpost at a time)",
+      "path": "/blog/2019/07/human-machine-learning-motivation"
+    },
+    {
+      "slug": "2025_02_markdown-saves",
+      "similarity": 0.4636741247857188,
+      "title": "If it is worth keeping, save it in Markdown",
+      "path": "/blog/2025/02/markdown-saves"
+    }
+  ]
+}

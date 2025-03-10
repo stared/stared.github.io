@@ -3,6 +3,13 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["nuxt-content-assets", "@nuxt/content", "@nuxtjs/plausible"],
 
+  runtimeConfig: {
+    public: {
+      assetsBase:
+        process.env.NODE_ENV === "production" ? "https://p.migdal.pl" : "",
+    },
+  },
+
   content: {
     markdown: {
       remarkPlugins: ["remark-math"],
