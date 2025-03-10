@@ -4,15 +4,14 @@
     <ul>
       <li v-for="post in similarPosts" :key="post.slug">
         <code>{{ post.similarity.toFixed(3) }}</code>
-        <NuxtLink :to="post.path">{{ post.title }}</NuxtLink>
+        <NuxtLink :to="`/blog/${post.slug}`">{{ post.title }}</NuxtLink>
       </li>
     </ul>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { queryContent, useRuntimeConfig, useAsyncData } from "#imports";
+import { queryContent, useAsyncData } from "#imports";
 
 interface SimilarityData {
   slug: string;
@@ -26,58 +25,73 @@ interface SimilarPost {
   similarity: number;
 }
 
-const props = defineProps<{ slug: string }>();
-const slugCleaned = props.slug.replace(/\_$/, "");
+// Update interface for the JSON structure
+interface SimilarityFile {
+  most_similar: SimilarityData[];
+  _path: string;
+  _id: string;
+}
 
-const runtimeConfig = useRuntimeConfig();
-const assetsBase = runtimeConfig.public.assetsBase;
+const props = defineProps<{ slug: string }>();
+
+const slugCleaned = props.slug.replace(/\//g, "_").replace(/_+$/, "");
 
 const { data: similarPosts } = await useAsyncData(
   `similar-posts-${slugCleaned}`,
   async () => {
-    const url = `${assetsBase}/similarities/${slugCleaned}.json`;
-    const response = await fetch(url);
-    if (!response.ok) {
-      console.warn(`No similarities found for ${slugCleaned} at ${url}`);
+    try {
+      const similarityData = await queryContent<SimilarityFile>(
+        `/similarities/${slugCleaned}`
+      )
+        .where({ _extension: "json" })
+        .findOne();
+
+      console.log("Similarity data loaded:", similarityData);
+
+      if (
+        !similarityData?.most_similar ||
+        !Array.isArray(similarityData.most_similar)
+      ) {
+        console.warn(`No valid similarities found for ${slugCleaned}`);
+        return [];
+      }
+
+      return Promise.all(
+        similarityData.most_similar.map(async ({ slug, similarity }) => {
+          const contentPath = `/blog/${slug.replace(/_/g, "/")}`;
+          try {
+            const post = await queryContent(contentPath).findOne();
+            if (!post) {
+              console.warn(`Post not found at ${contentPath}`);
+              return {
+                slug: slug.replace(/_/g, "/"),
+                path: `/blog/${slug.replace(/_/g, "/")}`,
+                title: slug.replace(/_/g, "/"),
+                similarity,
+              };
+            }
+            return {
+              slug: slug.replace(/_/g, "/"),
+              path: `/blog/${slug.replace(/_/g, "/")}`,
+              title: post.title || slug.replace(/_/g, "/"),
+              similarity,
+            };
+          } catch (error) {
+            console.warn(`Error fetching post at ${contentPath}:`, error);
+            return {
+              slug: slug.replace(/_/g, "/"),
+              path: `/blog/${slug.replace(/_/g, "/")}`,
+              title: slug.replace(/_/g, "/"),
+              similarity,
+            };
+          }
+        })
+      );
+    } catch (error) {
+      console.error(`Error loading similarities for ${slugCleaned}:`, error);
       return [];
     }
-
-    const similarities: SimilarityData[] = await response.json();
-
-    return await Promise.all(
-      similarities.map(async ({ slug, similarity }) => {
-        const path = `/blog/${slug.replace(/_/g, "/")}`;
-        const post = await queryContent(path).findOne();
-        return {
-          slug,
-          path,
-          title: post?.title || slug,
-          similarity,
-        };
-      })
-    );
-  }
+  },
+  { server: true }
 );
 </script>
-
-<style>
-.similar-posts {
-  margin-top: 2em;
-  padding-top: 1em;
-  border-top: 1px solid #eee;
-}
-
-.similar-posts ul {
-  list-style: none;
-  padding: 0;
-}
-
-.similar-posts li {
-  margin: 0.5em 0;
-}
-
-.similar-posts code {
-  margin-right: 0.5em;
-  color: #666;
-}
-</style>

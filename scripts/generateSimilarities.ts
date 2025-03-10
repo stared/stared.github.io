@@ -4,7 +4,7 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const EMBEDDINGS_DIR = path.join(__dirname, "../public/embeddings");
-const SIMILARITIES_DIR = path.join(__dirname, "../public/similarities");
+const SIMILARITIES_DIR = path.join(__dirname, "../content/similarities");
 
 interface EmbeddingData {
   slug: string;
@@ -14,6 +14,10 @@ interface EmbeddingData {
 interface SimilarityData {
   slug: string;
   similarity: number;
+}
+
+interface SimilarityOutput {
+  most_similar: SimilarityData[];
 }
 
 function cosineSimilarity(a: number[], b: number[]): number {
@@ -50,8 +54,12 @@ function generateSimilarities() {
       .sort((a, b) => b.similarity - a.similarity)
       .slice(0, 5); // top 5 similar posts
 
+    const output: SimilarityOutput = {
+      most_similar: similarities,
+    };
+
     const outputPath = path.join(SIMILARITIES_DIR, `${slug}.json`);
-    fs.writeFileSync(outputPath, JSON.stringify(similarities, null, 2));
+    fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
     console.log(`Generated similarities for ${slug}`);
   });
 }
