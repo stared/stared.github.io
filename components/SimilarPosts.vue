@@ -1,6 +1,6 @@
 <template>
   <section v-if="similarPosts?.length" class="similar-posts">
-    <h2>See also similar posts</h2>
+    <h2>See also cosine-similar posts</h2>
     <ul>
       <li v-for="post in similarPosts" :key="post.slug">
         <code>{{ post.similarity.toFixed(3) }}</code>
