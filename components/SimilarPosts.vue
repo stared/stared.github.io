@@ -61,16 +61,47 @@ const { data: similarPosts } = await useAsyncData(
 
 <style>
 .similar-posts {
-  margin-top: 2em;
+  margin-top: 2.5em;
+  padding: 1.25em 1.75em;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #eaecef;
+}
+
+.similar-posts h2 {
+  margin-top: 0;
+  margin-bottom: 0.75em;
+  font-size: 1.1em;
+  color: #444;
 }
 
 .similar-posts ul {
   list-style: none;
   padding-left: 0;
+  margin: 0;
+}
+
+.similar-posts li {
+  margin: 0.5em 0;
+  line-height: 1.3;
 }
 
 .similar-posts code {
   margin-right: 0.75em;
   color: #666;
+  font-size: 0.9em;
+  background-color: #fff;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  border: 1px solid #eaecef;
+}
+
+.similar-posts a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.similar-posts a:hover {
+  text-decoration: underline;
 }
 </style>
