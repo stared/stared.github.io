@@ -16,13 +16,8 @@ import { queryContent, useAsyncData } from "#imports";
 interface SimilarityData {
   slug: string;
   similarity: number;
-}
-
-interface SimilarPost {
-  slug: string;
-  path: string;
   title: string;
-  similarity: number;
+  path: string;
 }
 
 // Update interface for the JSON structure
@@ -46,8 +41,6 @@ const { data: similarPosts } = await useAsyncData(
         .where({ _extension: "json" })
         .findOne();
 
-      console.log("Similarity data loaded:", similarityData);
-
       if (
         !similarityData?.most_similar ||
         !Array.isArray(similarityData.most_similar)
@@ -56,37 +49,7 @@ const { data: similarPosts } = await useAsyncData(
         return [];
       }
 
-      return Promise.all(
-        similarityData.most_similar.map(async ({ slug, similarity }) => {
-          const contentPath = `/blog/${slug.replace(/_/g, "/")}`;
-          try {
-            const post = await queryContent(contentPath).findOne();
-            if (!post) {
-              console.warn(`Post not found at ${contentPath}`);
-              return {
-                slug: slug.replace(/_/g, "/"),
-                path: `/blog/${slug.replace(/_/g, "/")}`,
-                title: slug.replace(/_/g, "/"),
-                similarity,
-              };
-            }
-            return {
-              slug: slug.replace(/_/g, "/"),
-              path: `/blog/${slug.replace(/_/g, "/")}`,
-              title: post.title || slug.replace(/_/g, "/"),
-              similarity,
-            };
-          } catch (error) {
-            console.warn(`Error fetching post at ${contentPath}:`, error);
-            return {
-              slug: slug.replace(/_/g, "/"),
-              path: `/blog/${slug.replace(/_/g, "/")}`,
-              title: slug.replace(/_/g, "/"),
-              similarity,
-            };
-          }
-        })
-      );
+      return similarityData.most_similar;
     } catch (error) {
       console.error(`Error loading similarities for ${slugCleaned}:`, error);
       return [];

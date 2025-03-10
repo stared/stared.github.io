@@ -1,10 +1,12 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import matter from "gray-matter";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const EMBEDDINGS_DIR = path.join(__dirname, "../public/embeddings");
 const SIMILARITIES_DIR = path.join(__dirname, "../content/similarities");
+const CONTENT_DIR = path.join(__dirname, "../content");
 
 interface EmbeddingData {
   slug: string;
@@ -14,6 +16,8 @@ interface EmbeddingData {
 interface SimilarityData {
   slug: string;
   similarity: number;
+  title: string;
+  path: string;
 }
 
 interface SimilarityOutput {
@@ -25,6 +29,27 @@ function cosineSimilarity(a: number[], b: number[]): number {
   const normA = Math.sqrt(a.reduce((sum, ai) => sum + ai * ai, 0));
   const normB = Math.sqrt(b.reduce((sum, bi) => sum + bi * bi, 0));
   return dot / (normA * normB);
+}
+
+function getPostTitle(slug: string): string {
+  const parts = slug.split("_");
+  const year = parts[0];
+  const month = parts[1];
+  const rest = parts.slice(2).join("_");
+  const mdPath = path.join(CONTENT_DIR, "blog", year, month, rest, "index.md");
+
+  try {
+    const fileContent = fs.readFileSync(mdPath, "utf-8");
+    const { data } = matter(fileContent);
+    if (!data.title) {
+      console.warn(`No title found in frontmatter for ${slug}`);
+      return slug.replace(/_/g, "/");
+    }
+    return data.title;
+  } catch (error) {
+    console.warn(`Could not read title for ${slug}, using fallback`);
+    return slug.replace(/_/g, "/");
+  }
 }
 
 function generateSimilarities() {
@@ -50,9 +75,11 @@ function generateSimilarities() {
       .map((e) => ({
         slug: e.slug,
         similarity: cosineSimilarity(embedding, e.embedding),
+        title: getPostTitle(e.slug),
+        path: `/blog/${e.slug.replace(/_/g, "/")}`,
       }))
       .sort((a, b) => b.similarity - a.similarity)
-      .slice(0, 5); // top 5 similar posts
+      .slice(0, 5);
 
     const output: SimilarityOutput = {
       most_similar: similarities,
