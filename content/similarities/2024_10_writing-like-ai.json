@@ -1,0 +1,34 @@
+{
+  "most_similar": [
+    {
+      "slug": "2023_02_ai-artists-information-theory",
+      "similarity": 0.6972305020106058,
+      "title": "AI won’t make artists redundant - thanks to information theory",
+      "path": "/blog/2023/02/ai-artists-information-theory"
+    },
+    {
+      "slug": "2019_07_human-machine-learning-motivation",
+      "similarity": 0.6470055429688591,
+      "title": "Exploring human vs machine learning (one blogpost at a time)",
+      "path": "/blog/2019/07/human-machine-learning-motivation"
+    },
+    {
+      "slug": "2025_01_dont-use-cosine-similarity",
+      "similarity": 0.6183484546696196,
+      "title": "Don't use cosine similarity carelessly",
+      "path": "/blog/2025/01/dont-use-cosine-similarity"
+    },
+    {
+      "slug": "2023_05_genesis-az-by-gpt",
+      "similarity": 0.6097507885263646,
+      "title": "Genesis 1 but every word begins with 'A' - with GPT4",
+      "path": "/blog/2023/05/genesis-az-by-gpt"
+    },
+    {
+      "slug": "2022_07_dall-e-2-and-transcendence",
+      "similarity": 0.6057813514004488,
+      "title": "DALL·E 2 and transcendence - generating esoteric images with AI",
+      "path": "/blog/2022/07/dall-e-2-and-transcendence"
+    }
+  ]
+}

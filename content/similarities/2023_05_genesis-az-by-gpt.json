@@ -1,0 +1,34 @@
+{
+  "most_similar": [
+    {
+      "slug": "2023_02_ai-artists-information-theory",
+      "similarity": 0.6174327272286763,
+      "title": "AI won’t make artists redundant - thanks to information theory",
+      "path": "/blog/2023/02/ai-artists-information-theory"
+    },
+    {
+      "slug": "2024_10_writing-like-ai",
+      "similarity": 0.6097507885263646,
+      "title": "Overcoming writer's block — lessons from AI",
+      "path": "/blog/2024/10/writing-like-ai"
+    },
+    {
+      "slug": "2022_07_dall-e-2-and-transcendence",
+      "similarity": 0.5493000931626505,
+      "title": "DALL·E 2 and transcendence - generating esoteric images with AI",
+      "path": "/blog/2022/07/dall-e-2-and-transcendence"
+    },
+    {
+      "slug": "2019_07_human-machine-learning-motivation",
+      "similarity": 0.5195736084181358,
+      "title": "Exploring human vs machine learning (one blogpost at a time)",
+      "path": "/blog/2019/07/human-machine-learning-motivation"
+    },
+    {
+      "slug": "2019_07_dreams-drugs-convnets",
+      "similarity": 0.5030819688585723,
+      "title": "Dreams, Drugs & ConvNets",
+      "path": "/blog/2019/07/dreams-drugs-convnets"
+    }
+  ]
+}
