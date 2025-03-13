@@ -8,6 +8,7 @@ import "vue-slider-component/theme/default.css";
 import type { ExternalPost } from "@/scripts/postData";
 import { BlogPostLabels } from "@/scripts/postData";
 import { useRoute, useRouter } from "vue-router";
+import { queryCollection } from "#imports";
 
 const externalPosts: ExternalPost[] = (
   await import("@/content/data/external-articles.json")
@@ -19,14 +20,16 @@ HeaderData.default()
   .useHead();
 
 const { data: blogPosts } = await useAsyncData("blogPosts", async () => {
-  return await $fetch("/api/_content/query", {
-    method: "GET",
-    params: {
-      _path: "/blog",
-      first: false,
-    },
-  });
+  return await queryCollection("blog").all();
 });
+
+// Debugging - log the first blog post to see structure
+if (blogPosts.value && blogPosts.value.length > 0) {
+  console.log(
+    "First blog post data structure:",
+    JSON.stringify(blogPosts.value[0], null, 2)
+  );
+}
 
 const blogPostLabels = BlogPostLabels.new()
   .addInternal(blogPosts.value || [])
@@ -89,13 +92,9 @@ function selectTag(tag: string) {
 const { data: blogTextContent } = await useAsyncData(
   "blog-text-content",
   async () => {
-    return await $fetch("/api/_content/query", {
-      method: "GET",
-      params: {
-        _path: "/text-components/blog",
-        first: true,
-      },
-    });
+    return await queryCollection("textComponents")
+      .path("/text-components/blog")
+      .first();
   }
 );
 </script>

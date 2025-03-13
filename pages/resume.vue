@@ -31,34 +31,25 @@
 
 <script setup lang="ts">
 import { HeaderData } from "@/scripts/utils";
+import { queryCollection } from "#imports";
 import experiences from "@/content/data/experiences.json";
 
 // Fetch the resume intro content
 const { data: resumeIntroContent } = await useAsyncData(
   "resume-intro-content",
-  async () => {
-    return await $fetch("/api/_content/query", {
-      method: "GET",
-      params: {
-        _path: "/text-components/resume-intro",
-        first: true,
-      },
-    });
-  }
+  () =>
+    queryCollection("textComponents")
+      .path("/text-components/resume-intro")
+      .first()
 );
 
 // Fetch the resume highlights content
 const { data: resumeHighlightsContent } = await useAsyncData(
   "resume-highlights-content",
-  async () => {
-    return await $fetch("/api/_content/query", {
-      method: "GET",
-      params: {
-        _path: "/text-components/resume-highlights",
-        first: true,
-      },
-    });
-  }
+  () =>
+    queryCollection("textComponents")
+      .path("/text-components/resume-highlights")
+      .first()
 );
 
 HeaderData.default()

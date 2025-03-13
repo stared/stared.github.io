@@ -20,13 +20,9 @@ import { HeaderData } from "@/scripts/utils";
 
 // Fetch the about me content
 const { data: aboutContent } = await useAsyncData("about-content", async () => {
-  return await $fetch("/api/_content/query", {
-    method: "GET",
-    params: {
-      _path: "/text-components/me",
-      first: true,
-    },
-  });
+  return await queryCollection("textComponents")
+    .path("/text-components/me")
+    .first();
 });
 
 HeaderData.default().setTitle("Homepage").useHead();
