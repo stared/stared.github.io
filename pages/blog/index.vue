@@ -23,14 +23,6 @@ const { data: blogPosts } = await useAsyncData("blogPosts", async () => {
   return await queryCollection("blog").all();
 });
 
-// Debugging - log the first blog post to see structure
-if (blogPosts.value && blogPosts.value.length > 0) {
-  console.log(
-    "First blog post data structure:",
-    JSON.stringify(blogPosts.value[0], null, 2)
-  );
-}
-
 const blogPostLabels = BlogPostLabels.new()
   .addInternal(blogPosts.value || [])
   .addExternal(externalPosts);
