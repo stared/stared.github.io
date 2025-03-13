@@ -1,33 +1,47 @@
 <template>
   <main>
-    <ContentDoc v-slot="{ doc }">
-      <article>
-        <div class="markdown-header">
-          <h1>{{ doc.title }}</h1>
-          <p class="header-information">
-            {{ formatDate(doc.date) }} | by {{ doc.author || "Piotr Migdał" }}
-          </p>
-          <ul
-            v-if="doc.mentions && doc.mentions.length > 0"
-            class="header-mentions"
-          >
-            <li v-for="mention in doc.mentions" :key="mention.href">
-              <a :href="mention.href">{{ mention.text }}</a>
-            </li>
-          </ul>
-        </div>
-        <ContentRenderer :value="doc" />
-        <SimilarPosts :slug="path.split('/').slice(2).join('_')" />
-      </article>
-    </ContentDoc>
-    <footer>
-      <ContentDoc path="/text-components/footer" :head="false" />
+    <article v-if="blogPost">
+      <div class="markdown-header">
+        <h1>{{ blogPost.title }}</h1>
+        <p class="header-information">
+          {{ formatDate(blogPost.date) }} | by
+          {{ blogPost.author || "Piotr Migdał" }}
+        </p>
+        <ul
+          v-if="blogPost.mentions && blogPost.mentions.length > 0"
+          class="header-mentions"
+        >
+          <li v-for="mention in blogPost.mentions" :key="mention.href">
+            <a :href="mention.href">{{ mention.text }}</a>
+          </li>
+        </ul>
+      </div>
+      <ContentRenderer :value="blogPost" />
+      <SimilarPosts :slug="path.split('/').slice(2).join('_')" />
+    </article>
+    <footer v-if="footerContent">
+      <ContentRenderer :value="footerContent" />
     </footer>
   </main>
 </template>
 
 <script setup lang="ts">
 import { HeaderData } from "@/scripts/utils";
+
+// Define types for our content
+interface BlogPost {
+  title: string;
+  description?: string;
+  date: string;
+  author?: string;
+  mentions?: { href: string; text: string }[];
+  image?: string;
+  [key: string]: any;
+}
+
+interface FooterContent {
+  [key: string]: any;
+}
 
 const formatDate = (date: string) => {
   return new Date(date).toLocaleDateString("en-UK", {
@@ -38,15 +52,43 @@ const formatDate = (date: string) => {
 };
 
 const { path } = useRoute();
-const { data } = await useAsyncData(`content-${path}`, () =>
-  queryContent().where({ _path: path }).findOne()
+
+// Get blog post content using ContentAPI via fetch
+const { data: blogPost } = await useAsyncData<BlogPost>(
+  `content-${path}`,
+  async () => {
+    return (await $fetch(`/api/_content/query`, {
+      method: "GET",
+      params: {
+        _path: path,
+        first: true,
+      },
+    })) as BlogPost;
+  }
 );
 
-HeaderData.default()
-  .setTitle(data.value?.title)
-  .setDescription(data.value?.description)
-  .setImage(data.value?.image)
-  .useHead();
+// Get footer content
+const { data: footerContent } = await useAsyncData<FooterContent>(
+  "footer-content",
+  async () => {
+    return (await $fetch(`/api/_content/query`, {
+      method: "GET",
+      params: {
+        _path: "/text-components/footer",
+        first: true,
+      },
+    })) as FooterContent;
+  }
+);
+
+// Add type guard for null/undefined
+if (blogPost.value) {
+  HeaderData.default()
+    .setTitle(blogPost.value.title)
+    .setDescription(blogPost.value.description || "")
+    .setImage(blogPost.value.image || "")
+    .useHead();
+}
 </script>
 
 <style>
@@ -89,10 +131,5 @@ mjx-container {
 p:not(:has(> mjx-container:only-child)) mjx-container {
   display: inline-block;
   margin: 0;
-}
-
-footer {
-  margin-top: 2em;
-  margin-bottom: 2em;
 }
 </style>
