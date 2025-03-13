@@ -11,14 +11,20 @@ export default defineNuxtConfig({
   },
 
   content: {
-    markdown: {
-      remarkPlugins: ["remark-math"],
-      rehypePlugins: {
-        "rehype-mathjax": {
-          output: "html", // the default value is 'htmlAndMathml'
+    // Content v3 configuration
+    build: {
+      markdown: {
+        remarkPlugins: {
+          "remark-math": {},
+        },
+        rehypePlugins: {
+          "rehype-mathjax": {
+            output: "html", // the default value is 'htmlAndMathml'
+          },
         },
       },
     },
+    // Note: experimental.search is removed as it's not supported in the current version
   },
 
   plausible: {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ContentDoc path="/text-components/projects" :head="false" />
+    <ContentRenderer v-if="projectsContent" :value="projectsContent" />
     <ul class="projects">
       <li
         v-for="(project, index) in projects.items"
@@ -32,6 +32,20 @@
 <script setup lang="ts">
 import { HeaderData } from "@/scripts/utils";
 import projects from "@/content/data/projects.json";
+
+// Fetch the projects content
+const { data: projectsContent } = await useAsyncData(
+  "projects-content",
+  async () => {
+    return await $fetch("/api/_content/query", {
+      method: "GET",
+      params: {
+        _path: "/text-components/projects",
+        first: true,
+      },
+    });
+  }
+);
 
 HeaderData.default()
   .setTitle("Projects")
