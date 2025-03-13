@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { queryContent, useAsyncData } from "#imports";
+import { useAsyncData } from "#imports";
 
 interface SimilarityData {
   slug: string;
@@ -35,11 +35,18 @@ const { data: similarPosts } = await useAsyncData(
   `similar-posts-${slugCleaned}`,
   async () => {
     try {
-      const similarityData = await queryContent<SimilarityFile>(
-        `/similarities/${slugCleaned}`
-      )
-        .where({ _extension: "json" })
-        .findOne();
+      // Use direct fetch API for Content v3
+      const similarityData = await $fetch<SimilarityFile>(
+        "/api/_content/query",
+        {
+          method: "GET",
+          params: {
+            _path: `/similarities/${slugCleaned}`,
+            _extension: "json",
+            first: true,
+          },
+        }
+      );
 
       if (
         !similarityData?.most_similar ||

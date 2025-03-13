@@ -22,6 +22,8 @@ export interface BlogPostMetadata extends BasePost {
   author?: string;
   description?: string;
   image?: string;
+  _path?: string;
+  path?: string;
 }
 
 type ExternalPostSource = {
@@ -55,19 +57,24 @@ export class BlogPostLabel {
     this.tags = post.tags || [];
     this.mentions = post.mentions || [];
     this.views_k = post.views_k;
-    this.migdal_score = post.migdal_score ?? 0;
+    this.migdal_score = post.migdal_score || 0;
     this.description = post.description || "";
     this.image = post.image || "";
-    this.postSource = isExternal
-      ? {
-          isExternal: true,
-          href: post.href,
-          source: post.source,
-        }
-      : {
-          isExternal: false,
-          _path: post._path,
-        };
+
+    if (isExternal) {
+      this.postSource = {
+        isExternal: true,
+        href: post.href,
+        source: post.source,
+      };
+    } else {
+      // Handle Content v3 path property
+      const contentPath = post._path || post.path;
+      this.postSource = {
+        isExternal: false,
+        _path: contentPath,
+      };
+    }
     this.author = post.author || "Piotr Migdał";
   }
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ContentDoc path="/text-components/resume-intro" :head="false" />
+    <ContentRenderer v-if="resumeIntroContent" :value="resumeIntroContent" />
 
     <h2>Recent experience</h2>
     <ul class="experiences">
@@ -22,13 +22,44 @@
       </li>
     </ul>
 
-    <ContentDoc path="/text-components/resume-highlights" :head="false" />
+    <ContentRenderer
+      v-if="resumeHighlightsContent"
+      :value="resumeHighlightsContent"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { HeaderData } from "@/scripts/utils";
 import experiences from "@/content/data/experiences.json";
+
+// Fetch the resume intro content
+const { data: resumeIntroContent } = await useAsyncData(
+  "resume-intro-content",
+  async () => {
+    return await $fetch("/api/_content/query", {
+      method: "GET",
+      params: {
+        _path: "/text-components/resume-intro",
+        first: true,
+      },
+    });
+  }
+);
+
+// Fetch the resume highlights content
+const { data: resumeHighlightsContent } = await useAsyncData(
+  "resume-highlights-content",
+  async () => {
+    return await $fetch("/api/_content/query", {
+      method: "GET",
+      params: {
+        _path: "/text-components/resume-highlights",
+        first: true,
+      },
+    });
+  }
+);
 
 HeaderData.default()
   .setTitle("Resume")

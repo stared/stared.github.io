@@ -2,7 +2,7 @@
   <div>
     <div class="flex">
       <div class="flex-column text">
-        <ContentDoc path="/text-components/me" :head="false" />
+        <ContentRenderer v-if="aboutContent" :value="aboutContent" />
       </div>
       <div class="flex-column image">
         <img
@@ -17,6 +17,17 @@
 
 <script setup lang="ts">
 import { HeaderData } from "@/scripts/utils";
+
+// Fetch the about me content
+const { data: aboutContent } = await useAsyncData("about-content", async () => {
+  return await $fetch("/api/_content/query", {
+    method: "GET",
+    params: {
+      _path: "/text-components/me",
+      first: true,
+    },
+  });
+});
 
 HeaderData.default().setTitle("Homepage").useHead();
 </script>
