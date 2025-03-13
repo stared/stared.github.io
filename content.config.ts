@@ -9,7 +9,7 @@ export default defineContentConfig({
       type: "page",
     }),
     // Text components collection
-    "text-components": defineCollection({
+    textComponents: defineCollection({
       source: "text-components/**/*.md",
       type: "page",
     }),

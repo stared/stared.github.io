@@ -27,6 +27,7 @@
 
 <script setup lang="ts">
 import { HeaderData } from "@/scripts/utils";
+import { queryCollection } from "#imports";
 
 // Define types for our content
 interface BlogPost {
@@ -53,32 +54,16 @@ const formatDate = (date: string) => {
 
 const { path } = useRoute();
 
-// Get blog post content using ContentAPI via fetch
-const { data: blogPost } = await useAsyncData<BlogPost>(
-  `content-${path}`,
-  async () => {
-    return (await $fetch(`/api/_content/query`, {
-      method: "GET",
-      params: {
-        _path: path,
-        first: true,
-      },
-    })) as BlogPost;
-  }
+// Get blog post content using queryCollection
+const { data: blogPost } = await useAsyncData<BlogPost>(`content-${path}`, () =>
+  queryCollection("blog").path(path).first()
 );
 
 // Get footer content
 const { data: footerContent } = await useAsyncData<FooterContent>(
   "footer-content",
-  async () => {
-    return (await $fetch(`/api/_content/query`, {
-      method: "GET",
-      params: {
-        _path: "/text-components/footer",
-        first: true,
-      },
-    })) as FooterContent;
-  }
+  () =>
+    queryCollection("textComponents").path("/text-components/footer").first()
 );
 
 // Add type guard for null/undefined
