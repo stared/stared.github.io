@@ -29,20 +29,16 @@
 
 <script setup lang="ts">
 import { HeaderData } from "@/scripts/utils";
+import { queryCollection } from "#imports";
 import publications from "@/content/data/publications.json";
 
 // Fetch the publications content
 const { data: publicationsContent } = await useAsyncData(
   "publications-content",
-  async () => {
-    return await $fetch("/api/_content/query", {
-      method: "GET",
-      params: {
-        _path: "/text-components/publications",
-        first: true,
-      },
-    });
-  }
+  () =>
+    queryCollection("textComponents")
+      .path("/text-components/publications")
+      .first()
 );
 
 useHead({
