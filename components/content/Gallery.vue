@@ -1,10 +1,10 @@
 <template>
   <figure class="gallery">
     <div class="image-container" :style="containerStyle">
-      <ContentSlot :use="$slots.default" unwrap="p" />
+      <slot mdc-unwrap="p" />
     </div>
     <figcaption v-if="$slots.caption">
-      <ContentSlot :use="$slots.caption" unwrap="p" />
+      <slot name="caption" mdc-unwrap="p" />
     </figcaption>
   </figure>
 </template>

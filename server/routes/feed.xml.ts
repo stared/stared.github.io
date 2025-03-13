@@ -1,5 +1,4 @@
 import { Feed } from "feed";
-import { serverQueryContent } from "#content/server";
 import { BlogPostLabel } from "~/scripts/postData";
 import type { BlogPostMetadata } from "~/scripts/postData";
 
@@ -20,15 +19,21 @@ export default defineEventHandler(async (event) => {
     },
   });
 
-  const posts = await serverQueryContent(event)
-    .where({ _path: /^\/blog/ })
-    .find();
+  // Use direct fetch API for Content v3
+  const posts = await $fetch<BlogPostMetadata[]>("/api/_content/query", {
+    method: "GET",
+    params: {
+      _path: "/blog",
+      first: false,
+    },
+  });
+
   const externalPosts = (await import("~/content/data/external-articles.json"))
     .default.items;
 
   const allPosts = [
-    ...posts.map((post) =>
-      BlogPostLabel.fromQueryContent(post as unknown as BlogPostMetadata)
+    ...posts.map((post: BlogPostMetadata) =>
+      BlogPostLabel.fromQueryContent(post)
     ),
     ...externalPosts.map((post) => BlogPostLabel.fromExternalPost(post)),
   ];
