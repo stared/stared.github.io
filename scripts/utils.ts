@@ -1,4 +1,4 @@
-import { useHead } from "@vueuse/head";
+import { useHead } from "#imports";
 import defaultImage from "~/assets/imgs/piotr-migdal-direct-smiling-2022-by-cytacka-thumbnail.jpg";
 
 const DEFAULT_AUTHOR = "Piotr Migdał";

@@ -52,30 +52,40 @@ export class BlogPostLabel {
   author: string;
 
   constructor(post: any, isExternal: boolean = false) {
-    this.title = post.title;
-    this.date = post.date;
-    this.tags = post.tags || [];
-    this.mentions = post.mentions || [];
-    this.views_k = post.views_k;
-    this.migdal_score = post.migdal_score || 0;
-    this.description = post.description || "";
-    this.image = post.image || "";
-
     if (isExternal) {
+      // External posts have their own structure
+      this.title = post.title;
+      this.date = post.date;
+      this.tags = post.tags;
+      this.mentions = post.mentions || [];
+      this.views_k = post.views_k;
+      this.migdal_score = post.migdal_score || 0;
+      this.description = post.description || "";
+      this.image = post.image || "";
+      this.author = post.author || "Piotr Migdał";
       this.postSource = {
         isExternal: true,
         href: post.href,
         source: post.source,
       };
     } else {
-      // Handle Content v3 path property
-      const contentPath = post._path || post.path;
+      // Internal posts from Nuxt Content v3
+      this.title = post.title;
+
+      // Strict access to meta frontmatter data
+      this.date = post.meta.date;
+      this.tags = post.meta.tags;
+      this.mentions = post.meta.mentions || [];
+      this.views_k = post.meta.views_k;
+      this.migdal_score = post.meta.migdal_score || 0;
+      this.description = post.description || "";
+      this.image = post.meta.image || "";
+      this.author = post.meta.author || "Piotr Migdał";
       this.postSource = {
         isExternal: false,
-        _path: contentPath,
+        _path: post.path,
       };
     }
-    this.author = post.author || "Piotr Migdał";
   }
 
   static fromQueryContent(post: BlogPostMetadata): BlogPostLabel {
@@ -87,13 +97,21 @@ export class BlogPostLabel {
   }
 
   get hn(): boolean {
-    return this.mentions.some((mention: Mention) =>
-      mention.href.includes("news.ycombinator")
+    return (
+      this.mentions &&
+      Array.isArray(this.mentions) &&
+      this.mentions.some((mention: Mention) =>
+        mention.href.includes("news.ycombinator")
+      )
     );
   }
 
   get displayDate(): string {
-    return new Date(this.date).toLocaleDateString("en-us", {
+    const dateObj = new Date(this.date);
+    if (isNaN(dateObj.getTime())) {
+      throw new Error(`Invalid date format: ${this.date}`);
+    }
+    return dateObj.toLocaleDateString("en-us", {
       year: "numeric",
       month: "short",
     });
