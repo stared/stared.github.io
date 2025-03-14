@@ -1,6 +1,12 @@
 {
   "most_similar": [
     {
+      "slug": "2015_01_theres-no-projects-like-side-projects",
+      "similarity": 0.6718533003672715,
+      "title": "There are no projects like side projects",
+      "path": "/blog/2015/01/theres-no-projects-like-side-projects"
+    },
+    {
       "slug": "2016_03_data-science-intro-for-math-phys-background",
       "similarity": 0.6597930342907611,
       "title": "Data science intro for math/phys background",
@@ -23,12 +29,6 @@
       "similarity": 0.552548409305167,
       "title": "Quantum mechanics for high-school students",
       "path": "/blog/2016/08/quantum-mechanics-for-high-school-students"
-    },
-    {
-      "slug": "2019_07_human-machine-learning-motivation",
-      "similarity": 0.5503781340399793,
-      "title": "Exploring human vs machine learning (one blogpost at a time)",
-      "path": "/blog/2019/07/human-machine-learning-motivation"
     }
   ]
 }
