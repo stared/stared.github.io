@@ -2,23 +2,48 @@ import { defineContentConfig, defineCollection, z } from "@nuxt/content";
 
 export default defineContentConfig({
   collections: {
-    // Blog collection
+    // Blog posts collection
     blog: defineCollection({
+      // Types of content in collection
+      type: "page",
+      // Add explicit source path
       source: "blog/**/*.md",
-      // Use page type for regular content pages
-      type: "page",
+      // Schema for content fields
+      schema: z.object({
+        title: z.string(),
+        description: z.string().optional(),
+        date: z.string(),
+        author: z.string().optional(),
+        tags: z.array(z.string()).optional(),
+        image: z.string().optional(),
+        mentions: z
+          .array(
+            z.object({
+              text: z.string(),
+              href: z.string(),
+            })
+          )
+          .optional(),
+        views_k: z.number().optional(),
+        migdal_score: z.number().optional(),
+      }),
     }),
-    // Text components collection
+
+    // Text components collection (for footer, resume, etc.)
     textComponents: defineCollection({
-      source: "text-components/**/*.md",
       type: "page",
+      // Add explicit source path
+      source: "text-components/**/*.md",
+      schema: z.object({
+        // Text components have flexible schema
+      }),
     }),
-    // Similarities data collection
+
+    // Similarities collection (for similar posts feature)
     similarities: defineCollection({
-      source: "similarities/**/*.json",
-      // Use data type for non-page content
       type: "data",
-      // Define a basic schema
+      // Add explicit source path
+      source: "similarities/**/*.json",
       schema: z.object({
         most_similar: z
           .array(
@@ -32,6 +57,7 @@ export default defineContentConfig({
           .optional(),
       }),
     }),
+
     // Other data collection
     data: defineCollection({
       source: "data/**/*",
