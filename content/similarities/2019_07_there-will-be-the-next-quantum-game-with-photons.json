@@ -19,16 +19,16 @@
       "path": "/blog/2023/02/ai-artists-information-theory"
     },
     {
+      "slug": "2015_01_theres-no-projects-like-side-projects",
+      "similarity": 0.45622809452382657,
+      "title": "There are no projects like side projects",
+      "path": "/blog/2015/01/theres-no-projects-like-side-projects"
+    },
+    {
       "slug": "2019_06_cloak-dagger-creativity-camp",
       "similarity": 0.44326125083269663,
       "title": "Cloak & dagger creativity camp",
       "path": "/blog/2019/06/cloak-dagger-creativity-camp"
-    },
-    {
-      "slug": "2015_12_sci-to-data-sci",
-      "similarity": 0.44120598108505615,
-      "title": "What I do or: science to data science",
-      "path": "/blog/2015/12/sci-to-data-sci"
     }
   ]
 }
