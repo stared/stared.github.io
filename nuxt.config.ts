@@ -29,7 +29,11 @@ export default defineNuxtConfig({
         },
       },
     },
-    // Note: experimental.search is removed as it's not supported in the current version
+    // Use default database configuration
+    database: {
+      type: "sqlite",
+      filename: ":memory:",
+    },
   },
 
   plausible: {
