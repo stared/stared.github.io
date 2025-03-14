@@ -4,6 +4,7 @@ description: Or how you can learn to get in touch with your body and emotions.
 date: "2021-09-18T12:18:58.110Z"
 tags:
   - soft skills
+  - body
   - neurodiversity
   - personal
 slug: embodiment-for-nerds
