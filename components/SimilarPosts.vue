@@ -12,6 +12,7 @@
 
 <script setup lang="ts">
 import { useAsyncData } from "#imports";
+import { queryCollection } from "#imports";
 
 interface SimilarityData {
   slug: string;
@@ -23,8 +24,7 @@ interface SimilarityData {
 // Update interface for the JSON structure
 interface SimilarityFile {
   most_similar: SimilarityData[];
-  _path: string;
-  _id: string;
+  [key: string]: any;
 }
 
 const props = defineProps<{ slug: string }>();
@@ -35,34 +35,23 @@ const { data: similarPosts } = await useAsyncData(
   `similar-posts-${slugCleaned}`,
   async () => {
     try {
-      // Use direct fetch API for Content v3
-      const similarityData = await $fetch<SimilarityFile>(
-        "/api/_content/query",
-        {
-          method: "GET",
-          params: {
-            _path: `/similarities/${slugCleaned}`,
-            _extension: "json",
-            first: true,
-          },
-        }
-      );
+      // Use Content v3 API to fetch similarity data
+      const similarityData = (await queryCollection("similarities")
+        .where("_path", "LIKE", `/similarities/${slugCleaned}%`)
+        .first()) as SimilarityFile | null;
 
-      if (
-        !similarityData?.most_similar ||
-        !Array.isArray(similarityData.most_similar)
-      ) {
-        console.warn(`No valid similarities found for ${slugCleaned}`);
+      if (similarityData && similarityData.most_similar) {
+        console.log("Found similar posts:", similarityData.most_similar.length);
+        return similarityData.most_similar;
+      } else {
+        console.log(`No similarity data found for slug: ${slugCleaned}`);
         return [];
       }
-
-      return similarityData.most_similar;
     } catch (error) {
-      console.error(`Error loading similarities for ${slugCleaned}:`, error);
+      console.error("Error fetching similar posts:", error);
       return [];
     }
-  },
-  { server: true }
+  }
 );
 </script>
 
