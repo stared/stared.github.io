@@ -5,7 +5,7 @@ description: >-
 date: "2024-05-20T00:00:00.030Z"
 tags:
   - education
-  - data-viz
+  - data viz
   - games
   - deep learning
   - quantum

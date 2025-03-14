@@ -5,7 +5,7 @@ description: >-
 date: "2025-01-14T00:00:00.030Z"
 tags:
   - deep learning
-  - machine learning
+  - data science
 slug: dont-use-cosine-similarity
 image: ./cartoon-espresso-word2vec.jpg
 migdal_score: 1
