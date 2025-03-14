@@ -6,6 +6,7 @@ description: >-
 date: "2021-02-25T14:58:12.737Z"
 tags:
   - soft skills
+  - body
 slug: dont-fight-flight-or-freeze-your-body-and-emotions
 image: ./03.jpeg
 mentions:
