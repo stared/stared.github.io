@@ -1,33 +1,20 @@
 <template>
-  <figure v-if="caption">
-    <component
-      :is="imgComponent"
-      :src="refinedSrc"
-      :alt="alt"
-      :width="width"
-      :height="height"
-    />
-    <figcaption v-html="caption" />
-  </figure>
-  <component
-    v-else
-    :is="imgComponent"
-    :src="refinedSrc"
+  <img
+    v-if="resolvedSrc"
+    :src="resolvedSrc"
     :alt="alt"
     :width="width"
     :height="height"
+    :class="{
+      'width-max-half': modifiers.includes('width-max-half'),
+      'width-max-two-thirds': modifiers.includes('width-max-two-thirds'),
+    }"
   />
 </template>
 
 <script setup lang="ts">
-// approach from https://github.com/nuxt/image/issues/813
-
-import { withTrailingSlash, withLeadingSlash, joinURL } from "ufo";
-import { useRuntimeConfig, computed, resolveComponent } from "#imports";
-
-const imgComponent = useRuntimeConfig().public.mdc.useNuxtImage
-  ? resolveComponent("NuxtImg")
-  : "img";
+import { ref, onMounted, computed } from "vue";
+import { useRoute } from "vue-router";
 
 const props = defineProps({
   src: {
@@ -46,29 +33,63 @@ const props = defineProps({
     type: [String, Number],
     default: undefined,
   },
+  modifiers: {
+    type: Array,
+    default: () => [],
+  },
 });
 
-const refinedSrc = computed(() => {
-  if (props.src?.startsWith("/") && !props.src.startsWith("//")) {
-    const _base = withLeadingSlash(
-      withTrailingSlash(useRuntimeConfig().app.baseURL)
-    );
-    if (_base !== "/" && !props.src.startsWith(_base)) {
-      return joinURL(_base, props.src);
+const route = useRoute();
+const resolvedSrc = ref("");
+
+// Function to check if a path is relative
+const isRelativePath = (path: string) => {
+  return !(
+    path.startsWith("/") ||
+    path.startsWith("http") ||
+    path.startsWith("data:")
+  );
+};
+
+// Resolve the image path
+onMounted(() => {
+  if (isRelativePath(props.src)) {
+    // For relative paths like ./image.jpg or image.jpg
+    // Extract the current route path
+    const routePath = route.path;
+
+    // Clean up the path by removing any ./ and handling directory navigation
+    let imagePath = props.src.replace(/^\.\//, "");
+
+    // If the path is a blog post
+    if (routePath.startsWith("/blog/")) {
+      // Remove any filename part from the route
+      const pathParts = routePath.split("/");
+      // Remove the last part if it's not empty (likely the filename)
+      if (pathParts[pathParts.length - 1] !== "") {
+        pathParts.pop();
+      }
+      const basePath = pathParts.join("/");
+
+      // Now we have a clean base directory path, add the image
+      resolvedSrc.value = `/content${basePath}/${imagePath}`;
+    } else {
+      // Default for other content types
+      resolvedSrc.value = `/content${routePath}/${imagePath}`;
     }
+  } else {
+    // Absolute or external path
+    resolvedSrc.value = props.src;
   }
-  return props.src;
-});
-
-const caption = computed(() => {
-  return props.alt
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
-    .replace(/(?<!['"(])(https?:\/\/[^\s)]+)(?!\))/g, '<a href="$1">$1</a>');
 });
 </script>
 
 <style scoped>
-figure {
-  aspect-ratio: auto !important;
+img.width-max-half {
+  max-width: 380px;
+}
+
+img.width-max-two-thirds {
+  max-width: 506px;
 }
 </style>
