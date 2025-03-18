@@ -6,14 +6,14 @@ Piotr Migdał
 /[pjɔtr](https://en.wiktionary.org/wiki/Piotr) [ˈmig.daw](https://en.wiktionary.org/wiki/migda%C5%82)/ -
 a curious being, doctor of sorcery.
 
-**Professionally:** I provide consulting and contract services in AI (focusing on user-facing applications), quantum computing, data visualization, and related technologies.
+**Professionally:** I provide consulting and contract services in AI (focusing on user-facing applications), quantum computing, data visualization, and related technologies. Right now, I develop ggPrompt at [Quesma](https://quesma.com/) - upload your CSV, write a prompt, and get a journal-worthy chart.
 
 **Previously:**
 Co-founder & CTO of [Quantum Flytrap](https://quantumflytrap.com/),
 deep learning consultant, data viz specialist, quantum physics PhD. More in [my resume](/resume).
 
 **Personally:**
-I dance balfolk and fusion. I do weekly sauna rituals, among trees, ponds and streams.
+I dance balfolk, fusion and Zouk. I do sauna rituals, among trees, ponds and streams.
 A bit more on my journey in [this post](/blog/2021/09/embodiment-for-nerds).
 I massage to release emotional tensions, see more at [Kwantowy Dotyk](https://www.facebook.com/KwantowyDotyk/).
 
