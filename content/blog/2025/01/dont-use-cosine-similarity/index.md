@@ -135,7 +135,7 @@ Now, using cosine similarity, we can compare it to other notes:
 
 - _"I left them in my pocket"_
 - _"They are on the table"_
-- _"What did I put my wallet?"_
+- _"Where did I put my wallet?"_
 - _"What I did to my life?"_
 
 ::gallery{ width=1 }
