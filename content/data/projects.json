@@ -1,6 +1,15 @@
 {
   "items": [
     {
+      "title": "Quesma Charts",
+      "desc": "Like MidJourney for charts, but accurate. With six figures, not six fingers. ggPrompt engine.",
+      "href": "https://charts.quesma.com/",
+      "dateStart": "2024-02-20T00:00:00.000Z",
+      "tags": ["vue", "typescript", "ggplot", "wasm", "ai"],
+      "mentions": [],
+      "status": "in progress"
+    },
+    {
       "title": "Pulser Studio",
       "desc": "No-code user interface for quantum computing, developed by Quantum Flytrap for Pasqal neutral atoms hardware.",
       "href": "https://www.pasqal.com/solutions/pulser-studio",
