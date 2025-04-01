@@ -2,12 +2,13 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "copy:assets": "node scripts/copyContentAssets.mjs",
     "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "dev": "yarn copy:assets && nuxt dev",
+    "generate": "yarn copy:assets && nuxt generate",
     "preview": "nuxt preview",
     "generate:embeddings": "tsx scripts/generateEmbeddings.ts && tsx scripts/generateSimilarities.ts",
-    "build:all": "yarn generate:embeddings && yarn generate"
+    "build:all": "yarn copy:assets && yarn generate:embeddings && yarn generate"
   },
   "dependencies": {
     "@nuxt/content": "^3.4.0",
@@ -16,7 +17,6 @@
     "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
     "nuxt": "^3.16.2",
-    "nuxt-content-assets": "^1.4.4",
     "openai": "^4.91.1",
     "rehype-mathjax": "^7.1.0",
     "remark-math": "^6.0.0",
