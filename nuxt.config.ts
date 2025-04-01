@@ -1,12 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: [
-    // Temporarily disable nuxt-content-assets due to compatibility issues with Nuxt Content 3.3.0
-    // "nuxt-content-assets",
-    "@nuxt/content",
-    "@nuxtjs/plausible",
-  ],
+  modules: ["@nuxt/content", "@nuxtjs/plausible"],
 
   runtimeConfig: {
     public: {
