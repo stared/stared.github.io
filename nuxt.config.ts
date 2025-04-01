@@ -1,3 +1,5 @@
+import { fileURLToPath } from "node:url";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -11,20 +13,18 @@ export default defineNuxtConfig({
   },
 
   content: {
-    // Content v3 configuration
-    build: {
-      markdown: {
-        remarkPlugins: {
-          "remark-math": {},
-        },
-        rehypePlugins: {
-          "rehype-mathjax": {
-            output: "html", // the default value is 'htmlAndMathml'
-          },
+    // Reverted structure - keeping build/database nesting if that's expected
+    // Ensure plugin format is compatible
+    markdown: {
+      remarkPlugins: {
+        "remark-math": {},
+      },
+      rehypePlugins: {
+        "rehype-mathjax": {
+          output: "html",
         },
       },
     },
-    // Use default database configuration
     database: {
       type: "sqlite",
       filename: ":memory:",
