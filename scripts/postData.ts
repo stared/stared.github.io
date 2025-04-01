@@ -34,7 +34,7 @@ type ExternalPostSource = {
 
 type InternalPostSource = {
   isExternal: false;
-  _path: string;
+  path: string;
 };
 
 type PostSource = ExternalPostSource | InternalPostSource;
@@ -83,7 +83,7 @@ export class BlogPostLabel {
       this.author = post.author || "Piotr Migdał";
       this.postSource = {
         isExternal: false,
-        _path: post._path,
+        path: post.path,
       };
     }
   }
