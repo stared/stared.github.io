@@ -13,17 +13,16 @@ export default defineNuxtConfig({
   },
 
   content: {
-    // Reverted structure - keeping build/database nesting if that's expected
-    // Ensure plugin format is compatible
-    markdown: {
-      remarkPlugins: {
-        "remark-math": {},
-      },
-      rehypePlugins: {
-        "rehype-mathjax": {
-          output: "html",
+    build: {
+      markdown: {
+        remarkPlugins: {
+          "remark-math": {},
+        },
+        rehypePlugins: {
+          "rehype-katex": {},
         },
       },
+      pathMeta: {},
     },
     database: {
       type: "sqlite",
@@ -33,16 +32,6 @@ export default defineNuxtConfig({
 
   plausible: {
     ignoredHostnames: ["localhost"],
-  },
-
-  vue: {
-    compilerOptions: {
-      isCustomElement: (tag) => {
-        const isMathjax =
-          tag.startsWith("mjx-") || ["defs", "path", "G", "use"].includes(tag);
-        return isMathjax;
-      },
-    },
   },
 
   nitro: {
@@ -106,6 +95,14 @@ export default defineNuxtConfig({
   app: {
     baseURL: "/",
     cdnURL: "https://p.migdal.pl",
+    head: {
+      link: [
+        {
+          rel: "stylesheet",
+          href: "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css",
+        },
+      ],
+    },
   },
 
   compatibilityDate: "2024-10-13",
