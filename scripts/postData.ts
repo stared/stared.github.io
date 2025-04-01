@@ -72,18 +72,18 @@ export class BlogPostLabel {
       // Internal posts from Nuxt Content v3
       this.title = post.title;
 
-      // Strict access to meta frontmatter data
-      this.date = post.meta.date;
-      this.tags = post.meta.tags;
-      this.mentions = post.meta.mentions || [];
-      this.views_k = post.meta.views_k;
-      this.migdal_score = post.meta.migdal_score || 0;
+      // Access frontmatter directly (Nuxt Content v3)
+      this.date = post.date;
+      this.tags = post.tags || [];
+      this.mentions = post.mentions || [];
+      this.views_k = post.views_k;
+      this.migdal_score = post.migdal_score || 0;
       this.description = post.description || "";
-      this.image = post.meta.image || "";
-      this.author = post.meta.author || "Piotr Migdał";
+      this.image = post.image || "";
+      this.author = post.author || "Piotr Migdał";
       this.postSource = {
         isExternal: false,
-        _path: post.path,
+        _path: post._path,
       };
     }
   }
@@ -136,6 +136,7 @@ export class BlogPostLabel {
     const yearsSince =
       (now.getTime() - postDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
     const age = Math.log2(yearsSince);
+
     return {
       popularity,
       mentions: mentionsCount,
