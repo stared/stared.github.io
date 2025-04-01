@@ -151,7 +151,7 @@ const { data: blogTextContent } = await useAsyncData(
     <div class="post-list">
       <div v-for="(post, index) in filteredPosts" :key="index" class="post">
         <span v-if="!post.postSource.isExternal" class="title">
-          <NuxtLink :to="post.postSource._path">{{ post.title }}</NuxtLink>
+          <NuxtLink :to="post.postSource.path">{{ post.title }}</NuxtLink>
         </span>
         <span v-else class="title">
           <a :href="post.postSource.href">{{ post.title }}</a>
