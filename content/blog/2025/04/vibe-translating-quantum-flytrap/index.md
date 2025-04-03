@@ -10,6 +10,9 @@ tags:
   - translation
 slug: vibe-translating-quantum-flytrap
 image: ./spanish-quantum-flytrap.jpg
+mentions:
+  - text: "Hacker News post"
+    href: "https://news.ycombinator.com/item?id=43568455"
 ---
 
 Some people ask if Quantum Flytrap, a no-code quantum physics lab, is alive. Not only is it alive and well, but now it has started learning new languages.
@@ -106,6 +109,8 @@ Now, it's time to double down on that. You have "Smol Words" — [give it a try]
 Do you want to see Quantum Flytrap in your language?
 
 So, what's your excuse for not translating your app?
+
+Discuss on [Mathstodon](https://mathstodon.xyz/@pmigdal/114273871390495262), [Twitter / X](https://x.com/pmigdal/status/1907762364629323811), or [Hacker News](https://news.ycombinator.com/item?id=43568455).
 
 [^gajatri]: It's one thing to make a correct translation, another to maintain poetic quality. GPT-4.5 excels here — see [Gayatri Mantra translation into Polish](https://p.migdal.pl/2025/03/gajatri-wychwalamy); Gemini 2.5 wasn't even close.
 [^simpler]: Inspiration comes diverse places - [xkcd](https://xkcd.com/), [Hillel](https://en.wikipedia.org/wiki/Hillel_the_Elder), [a link baron's minimalistic investment scheme](https://static.pinboard.in/prosperity_cloud.htm), and a [short poem](https://www.fuw.edu.pl/~dobaczew/kwanty/wiersz.html) which was sent solution to QM101 assigment "explain quantum mechanics in 200 words"
