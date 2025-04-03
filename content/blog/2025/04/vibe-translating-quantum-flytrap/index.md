@@ -8,7 +8,7 @@ tags:
   - tech
   - ai
   - quantum
-slug: quantum-flytrap-polyglot
+slug: vibe-translating-quantum-flytrap
 image: ./spanish-quantum-flytrap.jpg
 ---
 
