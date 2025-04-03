@@ -8,7 +8,7 @@ tags:
   - translation
   - po polsku
 slug: gajatri-wychwalamy
-image: ./800px-Christ_et_Buddha_by_Paul_Ranson_1880.jpg
+image: ./christ-et-buddha-by-paul-ranson-1880.jpg
 mentions:
   - text: originally posted at Facebook
     href: https://www.facebook.com/piotr.migdal.9/posts/pfbid0yxvgJLHfq77arMRhgsM7C9xc5LvyK9UVvT73cGAsHo24pKofjuFJzZ4p4g16jVTAl
@@ -36,4 +36,4 @@ Jako, że urzeka mnie poetyka [polskiego tłumaczenia](https://pl.wikipedia.org/
 - [Gayatra Mantra - Deva Premal](https://open.spotify.com/track/1kYeYUOjvEX9Vg3Tb8VIHR?si=eb0f28ae612449ce)
 - [Ciebie Boga wysławiamy](https://www.youtube.com/watch?v=2UN35U5xFZM)
 
-![Christ et Buddha by Paul Ranson 1880](./800px-Christ_et_Buddha_by_Paul_Ranson_1880.JPG)
+![Christ et Buddha by Paul Ranson 1880](./christ-et-buddha-by-paul-ranson-1880.jpg)
