@@ -3,7 +3,7 @@ title: Making Quantum Flytrap a polyglot with AI vibe translating
 description: >-
   Making quantum physics more accessible, thanks to with the power of Claude, DeepSeek, Cursor, and i18n.
   Virtual Lab now speaks Spanish, Portuguese, Chinese, Polish, Ukrainian, French, and German.
-date: "2025-03-23T00:00:00.030Z"
+date: "2025-04-03T00:00:00.030Z"
 tags:
   - ai
   - quantum
