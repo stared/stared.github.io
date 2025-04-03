@@ -6,6 +6,7 @@ description: >-
 date: "2019-10-25T17:48:32.401Z"
 tags:
   - arts
+  - translation
 slug: the-statues-by-jacek-kaczmarski
 image: ./00.jpeg
 mentions:

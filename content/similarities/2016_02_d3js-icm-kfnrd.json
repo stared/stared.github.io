@@ -1,0 +1,34 @@
+{
+  "most_similar": [
+    {
+      "slug": "2016_03_data-science-intro-for-math-phys-background",
+      "similarity": 0.6367868886260752,
+      "title": "Data science intro for math/phys background",
+      "path": "/blog/2016/03/data-science-intro-for-math-phys-background"
+    },
+    {
+      "slug": "2016_08_quantum-mechanics-for-high-school-students",
+      "similarity": 0.6114070082840755,
+      "title": "Quantum mechanics for high-school students",
+      "path": "/blog/2016/08/quantum-mechanics-for-high-school-students"
+    },
+    {
+      "slug": "2016_05_my-impressions-from-pydata-berlin-2016",
+      "similarity": 0.6102357533674959,
+      "title": "My impressions from PyData Berlin 2016",
+      "path": "/blog/2016/05/my-impressions-from-pydata-berlin-2016"
+    },
+    {
+      "slug": "2017_01_king-man-woman-queen-why",
+      "similarity": 0.6079438644615782,
+      "title": "king - man + woman is queen; but why?",
+      "path": "/blog/2017/01/king-man-woman-queen-why"
+    },
+    {
+      "slug": "2018_09_simple-diagrams-deep-learning",
+      "similarity": 0.6009249905765318,
+      "title": "Simple diagrams of convoluted neural networks",
+      "path": "/blog/2018/09/simple-diagrams-deep-learning"
+    }
+  ]
+}

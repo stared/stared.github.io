@@ -17,6 +17,7 @@
           </ul>
         </div>
         <ContentRenderer :value="doc" />
+        <SimilarPosts :slug="path.split('/').slice(2).join('_')" />
       </article>
     </ContentDoc>
     <footer>

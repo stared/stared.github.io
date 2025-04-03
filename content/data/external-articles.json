@@ -5,7 +5,7 @@
       "source": "Nude Morning",
       "href": "https://nude-morning.blogspot.com/2024/09/m.html",
       "date": "2024-09-01T00:00:00.000Z",
-      "tags": ["personal", "po polsku"],
+      "tags": ["personal", "body", "po polsku"],
       "migdal_score": 0
     },
     {
@@ -21,7 +21,7 @@
       "source": "Kwantowy Dotyk @ Facebook",
       "href": "https://www.facebook.com/KwantowyDotyk/posts/pfbid02ESzhVobHBbDdV71uY6qEAs6ZqMyiHnbVtq5KktN2zkXS6TRipFQg5fkfQomwy32Xl",
       "date": "2024-04-24T00:00:00.000Z",
-      "tags": ["neurodiversity", "po polsku"],
+      "tags": ["neurodiversity", "body", "po polsku"],
       "migdal_score": 1
     },
     {
@@ -29,7 +29,7 @@
       "source": "Kwantowy Dotyk @ Facebook",
       "href": "https://www.facebook.com/KwantowyDotyk/posts/pfbid0utWdC7AnF8FWxux4NguqWxC1Cg8NLk4EMwXU6YfQ6DNvVGfnDpEfKed6DPtRSczWl",
       "date": "2024-04-01T00:00:00.000Z",
-      "tags": ["po polsku"],
+      "tags": ["body", "po polsku"],
       "migdal_score": 1
     },
     {
@@ -37,7 +37,7 @@
       "source": "Brainhack Warsaw",
       "href": "https://brainhackwarsaw.fuw.edu.pl/",
       "date": "2024-01-30T00:00:00.000Z",
-      "tags": ["hackathon", "deep learning", "cognition"],
+      "tags": ["event", "deep learning", "cognition"],
       "migdal_score": 1
     },
     {
@@ -45,7 +45,7 @@
       "source": "Kamila Tokarska Spotify",
       "href": "https://open.spotify.com/episode/0Xz20gnhpP06gWOmbZsbj0?si=d37cc81e280d4ed1",
       "date": "2023-04-28T00:00:00.000Z",
-      "tags": ["personal", "neurodiversity", "interview", "po polsku"],
+      "tags": ["personal", "neurodiversity", "body", "interview", "po polsku"],
       "migdal_score": 1
     },
     {
@@ -172,21 +172,6 @@
       "date": "2016-02-04T00:00:00.000Z",
       "tags": ["soft skills", "neurodiversity"],
       "migdal_score": 1
-    },
-    {
-      "title": "There are no projects like side projects",
-      "source": "Scientia Crastina",
-      "href": "http://crastina.se/theres-no-projects-like-side-projects/",
-      "date": "2015-01-02T00:00:00.000Z",
-      "tags": ["personal"],
-      "mentions": [
-        {
-          "title": "Hacker News front page",
-          "href": "https://news.ycombinator.com/item?id=8826890"
-        }
-      ],
-      "views_k": 30,
-      "migdal_score": 3
     },
     {
       "title": "An independent camp for high school geeks",
