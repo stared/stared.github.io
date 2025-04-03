@@ -5,9 +5,9 @@ description: >-
   Virtual Lab now speaks Spanish, Portuguese, Chinese, Polish, Ukrainian, French, and German.
 date: "2025-03-23T00:00:00.030Z"
 tags:
-  - tech
   - ai
   - quantum
+  - translation
 slug: vibe-translating-quantum-flytrap
 image: ./spanish-quantum-flytrap.jpg
 ---
@@ -34,7 +34,7 @@ The translation had a concrete goal: making quantum physics more accessible. Ini
 Based on [Ethnologue 2025 research as in Wikipedia](https://en.wikipedia.org/wiki/List_of_languages_by_total_number_of_speakers), visualized with [Quesma Charts](https://charts.quesma.com/) tools I currently work on. Just put your CSV, write a prompt, and get a chart.
 ::
 
-I used this as a proxy - as people
+I used worldwide speaker numbers as a proxy for potential reach, though actual usage patterns might differ.
 
 I made educated guesses about which languages might work and asked models about their capabilities. Hindi and Arabic are certainly on the list, but the models weren't entirely confident. An "OK translation" might be better than no translation, but no translation is preferable to something confusing — let alone gibberish.
 
@@ -56,7 +56,7 @@ Once I set up the system and automatic verification for missing keys, the rest w
 
 ![](./cursor-translation-workflow.jpg)
 
-It was essentially "vibe translating" — not just using LLMs to help, but blindly accepting their suggestions. Even so, there were safeguards. First, I used `.cursor/rules` to guide the LLMs, ensuring translations were idiomatic, consistent, scientifically accurate, and balanced correctness with playfulness.
+It was essentially **"vibe translating"** (vide [vibe coding](https://en.wikipedia.org/wiki/Vibe_coding)) — not just using LLMs to help, but blindly accepting their suggestions. Even so, there were safeguards. First, I used `.cursor/rules` to guide the LLMs, ensuring translations were idiomatic, consistent, scientifically accurate, and balanced correctness with playfulness.
 
 Second, since the files were large, agent systems couldn't handle all translations at once. After each translation, I ran checks for missing and extraneous keys.
 
@@ -68,7 +68,7 @@ I've reviewed the Polish translation, and it's workable. It's not perfect, but g
 
 While the translation isn't flawless, it seems to beat the industry standard. Consider UI Aliexpress' UI button "save" as "ratuj" (correct, but more suitable for rescuing someone from a fire) - which is still better than [this menu disaster](https://toppandigital.com/translation-blog/polish-restaurant-offers-cervical-cancer-on-menu-due-to-translation-error/).
 
-By extrapolation, I believe these models should perform well for other languages too, especially widely-used European ones like Castellano Spanish. With Mandarin Chinese, it's my leap of faith.
+Based on the Polish results, I'm hopeful these models should perform well for other languages too, especially widely-used European ones like Castellano Spanish. With Mandarin Chinese, it's my leap of faith.
 
 There's another issue — handling links. Some links (e.g., to Wikipedia) have direct translations, others don't.
 Here I decided to use the original links and, for now, ignore the problem.

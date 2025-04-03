@@ -5,7 +5,7 @@ description: >-
 date: "2025-03-09T00:00:00.030Z"
 tags:
   - spirituality
-  - ai
+  - translation
   - po polsku
 slug: gajatri-wychwalamy
 image: ./800px-Christ_et_Buddha_by_Paul_Ranson_1880.jpg

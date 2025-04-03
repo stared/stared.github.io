@@ -7,6 +7,7 @@ date: "2023-05-31T18:00:00.030Z"
 tags:
   - deep learning
   - arts
+  - translation
 slug: genesis-az-by-gpt
 image: ./genesis-a.jpg
 migdal_score: 0
