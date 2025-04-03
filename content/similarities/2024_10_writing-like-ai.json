@@ -19,16 +19,16 @@
       "path": "/blog/2025/01/dont-use-cosine-similarity"
     },
     {
+      "slug": "2025_04_vibe-translating-quantum-flytrap",
+      "similarity": 0.609751350828866,
+      "title": "Making Quantum Flytrap a polyglot with AI vibe translating",
+      "path": "/blog/2025/04/vibe-translating-quantum-flytrap"
+    },
+    {
       "slug": "2023_05_genesis-az-by-gpt",
       "similarity": 0.6097507885263646,
       "title": "Genesis 1 but every word begins with 'A' - with GPT4",
       "path": "/blog/2023/05/genesis-az-by-gpt"
-    },
-    {
-      "slug": "2022_07_dall-e-2-and-transcendence",
-      "similarity": 0.6057813514004488,
-      "title": "DALL·E 2 and transcendence - generating esoteric images with AI",
-      "path": "/blog/2022/07/dall-e-2-and-transcendence"
     }
   ]
 }

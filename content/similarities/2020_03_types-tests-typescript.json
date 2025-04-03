@@ -13,6 +13,12 @@
       "path": "/blog/2018/09/simple-diagrams-deep-learning"
     },
     {
+      "slug": "2025_04_vibe-translating-quantum-flytrap",
+      "similarity": 0.6321763984344682,
+      "title": "Making Quantum Flytrap a polyglot with AI vibe translating",
+      "path": "/blog/2025/04/vibe-translating-quantum-flytrap"
+    },
+    {
       "slug": "2025_01_dont-use-cosine-similarity",
       "similarity": 0.6101992184049959,
       "title": "Don't use cosine similarity carelessly",
@@ -23,12 +29,6 @@
       "similarity": 0.6040167642455663,
       "title": "If it is worth keeping, save it in Markdown",
       "path": "/blog/2025/02/markdown-saves"
-    },
-    {
-      "slug": "2017_08_bangbangcon",
-      "similarity": 0.5978060156176807,
-      "title": "!!con or doing inclusivity well",
-      "path": "/blog/2017/08/bangbangcon"
     }
   ]
 }

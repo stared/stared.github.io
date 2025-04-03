@@ -1,6 +1,12 @@
 {
   "most_similar": [
     {
+      "slug": "2025_04_vibe-translating-quantum-flytrap",
+      "similarity": 0.6375518096552825,
+      "title": "Making Quantum Flytrap a polyglot with AI vibe translating",
+      "path": "/blog/2025/04/vibe-translating-quantum-flytrap"
+    },
+    {
       "slug": "2023_02_ai-artists-information-theory",
       "similarity": 0.6174327272286763,
       "title": "AI won’t make artists redundant - thanks to information theory",
@@ -23,12 +29,6 @@
       "similarity": 0.5195736084181358,
       "title": "Exploring human vs machine learning (one blogpost at a time)",
       "path": "/blog/2019/07/human-machine-learning-motivation"
-    },
-    {
-      "slug": "2019_07_dreams-drugs-convnets",
-      "similarity": 0.5030819688585723,
-      "title": "Dreams, Drugs & ConvNets",
-      "path": "/blog/2019/07/dreams-drugs-convnets"
     }
   ]
 }

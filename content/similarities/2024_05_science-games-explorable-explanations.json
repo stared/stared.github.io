@@ -7,6 +7,12 @@
       "path": "/blog/2016/08/quantum-mechanics-for-high-school-students"
     },
     {
+      "slug": "2025_04_vibe-translating-quantum-flytrap",
+      "similarity": 0.6853253078398769,
+      "title": "Making Quantum Flytrap a polyglot with AI vibe translating",
+      "path": "/blog/2025/04/vibe-translating-quantum-flytrap"
+    },
+    {
       "slug": "2019_07_there-will-be-the-next-quantum-game-with-photons",
       "similarity": 0.642762694520703,
       "title": "There will be the next Quantum Game with Photons",
@@ -23,12 +29,6 @@
       "similarity": 0.6356132281863305,
       "title": "Dreams, Drugs & ConvNets",
       "path": "/blog/2019/07/dreams-drugs-convnets"
-    },
-    {
-      "slug": "2018_09_simple-diagrams-deep-learning",
-      "similarity": 0.6173137494611282,
-      "title": "Simple diagrams of convoluted neural networks",
-      "path": "/blog/2018/09/simple-diagrams-deep-learning"
     }
   ]
 }
