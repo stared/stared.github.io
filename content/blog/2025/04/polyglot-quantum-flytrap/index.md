@@ -1,14 +1,15 @@
 ---
-title: A(I) translated Virtual Lab by Quantum Flytrap into a few languages
+title: Making Quantum Flytrap a polyglot with AI vibe translating
 description: >-
-  Vibe translating - our Quantum Flytrap became a polyglot, with the power of Claude, DeepSeek, Cursor, and i18n.
+  Making quantum physics more accessible, thanks to with the power of Claude, DeepSeek, Cursor, and i18n.
+  Virtual Lab now speaks Spanish, Portuguese, Chinese, Polish, Ukrainian, French, and German.
 date: "2025-03-23T00:00:00.030Z"
 tags:
   - tech
   - ai
   - quantum
 slug: quantum-flytrap-polyglot
-image: ./galadriel-lotr-much-that-once-was.jpg
+image: ./spanish-quantum-flytrap.jpg
 ---
 
 Some people ask if Quantum Flytrap, a no-code quantum physics lab, is alive. Not only is it alive and well, but now it has started learning new languages.
@@ -33,13 +34,11 @@ The translation had a concrete goal: making quantum physics more accessible. Ini
 Based on [Ethnologue 2025 research as in Wikipedia](https://en.wikipedia.org/wiki/List_of_languages_by_total_number_of_speakers), visualized with [Quesma Charts](https://charts.quesma.com/) tools I currently work on. Just put your CSV, write a prompt, and get a chart.
 ::
 
-I used this as a proxy. Currently, Virtual Lab is rather advanced, more suitable for undergraduate students than a general audience. Making Quantum Game easier is still on the roadmap.
+I used this as a proxy - as people
 
-I made educated guesses about which languages might work and asked models about their capabilities. Hindi and Arabic are certainly on the list, but the models weren't entirely confident.
+I made educated guesses about which languages might work and asked models about their capabilities. Hindi and Arabic are certainly on the list, but the models weren't entirely confident. An "OK translation" might be better than no translation, but no translation is preferable to something confusing — let alone gibberish.
 
-An "OK translation" might be better than no translation, but no translation is preferable to something confusing — let alone gibberish.
-
-Additionally, I added Polish. The idea was personal but turned out to be a good way to evaluate quality. Ukrainian was included for political reasons, and German because it's the original language of quantum mechanics.
+While it is not in the top 10, I added Polish. The idea was personal but turned out to be a good way to evaluate quality. Ukrainian was included for political reasons, and German because it's [the original language of _Quantenmechanik_](https://en.wikipedia.org/wiki/History_of_quantum_mechanics).
 
 ### Models
 
@@ -47,13 +46,13 @@ I used Claude 3.5 Sonnet and enhanced the Chinese translation with DeepSeek R1. 
 
 [LLM Chat Arena](https://lmarena.ai/?leaderboard) offers a leaderboard for various languages. Another project tests linguistic and cultural knowledge of [LLMs for the Polish language](https://huggingface.co/spaces/sdadas/plcc). Like every ranking, it's a good starting point but not definitive. For example, while Gemini 2.5 tops their list, GPT 4.5 was, in my experience, far superior for nuanced translations[^gajatri].
 
-From my anecdotal experience, OpenAI's o1 and o3 models enforce their own style. Claude 3.7 Sonnet produces lackluster translations. Gemini models were fine, so perhaps they'd perform similarly. GPT 4.5 is stunning, but in Cursor, it costs $2 per call (not a typo!), so I used it sparingly.
+From my anecdotal experience, OpenAI's o1 and o3 models enforce their own style. Claude 3.7 Sonnet produces lackluster translations. Gemini models were fine, so perhaps they'd perform similarly as Claude 3.5 (or who knows, maybe better). GPT 4.5 is stunning, but in Cursor, it costs $2 per call (not a typo!), so I used it sparingly.
 
 I haven't precisely tracked the total cost (since I'm using Cursor for other projects), but I'd estimate it at around \$40.
 
 ### Workflow
 
-Once I set up the system and automatic verification for missing keys, the rest was a breeze with i18n — a standard localization tool. I translated everything as complete files (not piece-by-piece) within the codebase, allowing the AI to grasp the context in terms of both physics and UI components.
+Once I set up the system and automatic verification for missing keys, the rest was a breeze with [i18n](https://www.i18next.com/) — a standard localization tool. I translated everything as complete files (not piece-by-piece) within the codebase, allowing the AI to grasp the context in terms of both physics and UI components.
 
 ![](./cursor-translation-workflow.jpg)
 
@@ -67,11 +66,12 @@ Evaluation is tricky. If an LLM has done something, it naturally believes it's t
 
 I've reviewed the Polish translation, and it's workable. It's not perfect, but grammatically correct and readable. Regarding physics, the only change I made was replacing "intensywność" with "natężenie" — a more idiomatic term for "intensity" in physics contexts.
 
-While the translation isn't flawless, it seems to beat the industry standard. Consider UI buttons: "back" often translates literally as "plecy" (the anatomical back), or Aliexpress's "save" as "ratuj" (correct, but more suitable for rescuing someone from a fire).
+While the translation isn't flawless, it seems to beat the industry standard. Consider UI Aliexpress' UI button "save" as "ratuj" (correct, but more suitable for rescuing someone from a fire) - which is still better than [this menu disaster](https://toppandigital.com/translation-blog/polish-restaurant-offers-cervical-cancer-on-menu-due-to-translation-error/).
 
 By extrapolation, I believe these models should perform well for other languages too, especially widely-used European ones like Castellano Spanish. With Mandarin Chinese, it's my leap of faith.
 
 There's another issue — handling links. Some links (e.g., to Wikipedia) have direct translations, others don't.
+Here I decided to use the original links and, for now, ignore the problem.
 
 ## Bonus
 
