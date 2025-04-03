@@ -14,19 +14,19 @@ mentions:
     href: https://www.facebook.com/piotr.migdal.9/posts/pfbid0yxvgJLHfq77arMRhgsM7C9xc5LvyK9UVvT73cGAsHo24pKofjuFJzZ4p4g16jVTAl
 ---
 
-> Ziemio, niebo wysławiamy,
-> Przestrzeń, światłość nieskończoną,
-> Blask, co gwiazdy rozpaliłeś,
+> Ziemio, niebo wysławiamy,  
+> Przestrzeń, światłość nieskończoną,  
+> Blask, co gwiazdy rozpaliłeś,  
 > Słońce prawdą rozjaśnione.
 >
-> Promień życia, źródło światła,
-> Tchnienie, które świat przenika,
-> Myśli nasze oświeć jasne,
+> Promień życia, źródło światła,  
+> Tchnienie, które świat przenika,  
+> Myśli nasze oświeć jasne,  
 > Ciemność serc niechaj zanika.
 >
-> Wieczna prawdo, co jaśniejesz,
-> Ponad światem, ponad czasem,
-> Daj nam poznać Twe promienie,
+> Wieczna prawdo, co jaśniejesz,  
+> Ponad światem, ponad czasem,  
+> Daj nam poznać Twe promienie,  
 > Duszę przebudź swoim blaskiem.
 
 Ilekroć słyszę hinduską [mantrę Gajatri](https://en.wikipedia.org/wiki/Gayatri_Mantra), widzę podobieństwa z pierwszą, judaistyczną częścią chrześcijańskiego hymnu "Te Deum Laudamus". O ile pewnie nie miały na siebie bezpośredniego wpływu ([choć kto tam wie](https://en.wikipedia.org/wiki/Buddhism_and_Christianity)), to dotykają głębi sakrum, wspólnej ludziom na całym świecie, różnie nazywanej, bo nie ma jednego słowa nad tym, co ponad słowami.
