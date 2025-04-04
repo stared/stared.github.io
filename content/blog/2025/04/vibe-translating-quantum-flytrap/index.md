@@ -10,13 +10,16 @@ tags:
   - translation
 slug: vibe-translating-quantum-flytrap
 image: ./spanish-quantum-flytrap.jpg
+mentions:
+  - text: "Reddit r/Physics"
+    href: "https://www.reddit.com/r/Physics/comments/1jr8e3v/quantum_flytrap_nocode_quantum_laboratory_now_in/"
 ---
 
-Some people ask if Quantum Flytrap, a no-code quantum physics lab, is alive. Not only is it alive and well, but now it has started learning new languages.
+Some people ask if [Virtual Lab by Quantum Flytrap](https://lab.quantumflytrap.com/), a no-code quantum physics lab, is alive. Not only is it alive and well[^well], but now it has started learning new languages.
 
-(A)I translated [Virtual Lab](https://lab.quantumflytrap.com/) into several languages (🇪🇸🇵🇹🇨🇳🇵🇱🇺🇦🇫🇷🇩🇪) — our Quantum Flytrap became a polyglot! I hope this makes quantum physics more accessible worldwide. For some, it might simplify things; for others, it could open a doorway to a new world. Moreover, I wanted to give lecturers, teachers, and educators the opportunity to conduct classes in their native languages.
+(A)I translated the lab into several languages (🇪🇸🇵🇹🇨🇳🇵🇱🇺🇦🇫🇷🇩🇪) — our Quantum Flytrap became a polyglot! I hope this makes quantum physics more accessible worldwide. For some, it might simplify things; for others, it could open a doorway to a new world. Moreover, I wanted to give lecturers, teachers, and educators the opportunity to conduct classes in their native languages.
 
-![Atrapamoscas Cuántica, Kwantowa Muchołówka, Dioneia Quântica, Attrape-Mouches Quantique, Quantenfliegenfalle, Квантова Мухоловка, 量子捕蝇草](./spanish-quantum-flytrap.jpg)
+![Quantum Flytrap, also known as: Atrapamoscas Cuántica, Kwantowa Muchołówka, Dioneia Quântica, Attrape-Mouches Quantique, Quantenfliegenfalle, Квантова Мухоловка, and 量子捕蝇草](./spanish-quantum-flytrap.jpg)
 
 If you're a native speaker of any of these languages, I'd love to hear your take! Especially if you can compare it to the English version — to help distinguish between AI translation quirks and areas where the original material could be improved.
 
@@ -104,7 +107,8 @@ Now, it's time to double down on that. You have "Smol Words" — [give it a try]
 Do you want to see Quantum Flytrap in your language?
 So, what's your excuse for not translating your app?
 
-Discuss on [Mathstodon](https://mathstodon.xyz/@pmigdal/114273871390495262), [Twitter / X](https://x.com/pmigdal/status/1907762364629323811).
+Discuss on [Mathstodon](https://mathstodon.xyz/@pmigdal/114273871390495262), [Twitter / X](https://x.com/pmigdal/status/1907762364629323811), or [Reddit](https://www.reddit.com/r/Physics/comments/1jr8e3v/quantum_flytrap_nocode_quantum_laboratory_now_in/).
 
+[^well]: Over 1700 shared experiments, and our publication [Visualizing quantum mechanics in an interactive simulation – Virtual Lab by Quantum Flytrap](https://doi.org/10.1117/1.OE.61.8.081808) has received over 30 citations. We regularly receive emails from educators using it in their classes, science outreach activities, and research projects.
 [^gajatri]: It's one thing to make a correct translation, another to maintain poetic quality. GPT-4.5 excels here — see [Gayatri Mantra translation into Polish](https://p.migdal.pl/2025/03/gajatri-wychwalamy); Gemini 2.5 wasn't even close.
 [^simpler]: Inspiration comes diverse places - [xkcd](https://xkcd.com/), [Hillel](https://en.wikipedia.org/wiki/Hillel_the_Elder), [a link baron's minimalistic investment scheme](https://static.pinboard.in/prosperity_cloud.htm), and a [short poem](https://www.fuw.edu.pl/~dobaczew/kwanty/wiersz.html) which was sent solution to QM101 assigment "explain quantum mechanics in 200 words"
