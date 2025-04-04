@@ -10,14 +10,11 @@ tags:
   - translation
 slug: vibe-translating-quantum-flytrap
 image: ./spanish-quantum-flytrap.jpg
-mentions:
-  - text: "Hacker News post"
-    href: "https://news.ycombinator.com/item?id=43568455"
 ---
 
 Some people ask if Quantum Flytrap, a no-code quantum physics lab, is alive. Not only is it alive and well, but now it has started learning new languages.
 
-A(I) translated [Virtual Lab](https://lab.quantumflytrap.com/) into several languages (🇪🇸🇵🇹🇨🇳🇵🇱🇺🇦🇫🇷🇩🇪) — our Quantum Flytrap became a polyglot! I hope this makes quantum physics more accessible worldwide. For some, it might simplify things; for others, it could open a doorway to a new world. Moreover, I wanted to give lecturers, teachers, and educators the opportunity to conduct classes in their native languages.
+(A)I translated [Virtual Lab](https://lab.quantumflytrap.com/) into several languages (🇪🇸🇵🇹🇨🇳🇵🇱🇺🇦🇫🇷🇩🇪) — our Quantum Flytrap became a polyglot! I hope this makes quantum physics more accessible worldwide. For some, it might simplify things; for others, it could open a doorway to a new world. Moreover, I wanted to give lecturers, teachers, and educators the opportunity to conduct classes in their native languages.
 
 ![Atrapamoscas Cuántica, Kwantowa Muchołówka, Dioneia Quântica, Attrape-Mouches Quantique, Quantenfliegenfalle, Квантова Мухоловка, 量子捕蝇草](./spanish-quantum-flytrap.jpg)
 
@@ -70,7 +67,7 @@ Evaluation is tricky. If an LLM has done something, it naturally believes it's t
 
 I've reviewed the Polish translation, and it's workable. It's not perfect, but grammatically correct and readable. Regarding physics, the only change I made was replacing "intensywność" with "natężenie" — a more idiomatic term for "intensity" in physics contexts.
 
-While the translation isn't flawless, it seems to beat the industry standard. Consider UI Aliexpress' UI button "save" as "ratuj" (correct, but more suitable for rescuing someone from a fire) - which is still better than [this menu disaster](https://toppandigital.com/translation-blog/polish-restaurant-offers-cervical-cancer-on-menu-due-to-translation-error/).
+While the translation isn't flawless, it seems to beat the industry standard. Consider AliExpress' UI button "save" as "ratuj" (correct, but more suitable for rescuing someone from a fire) - which is still better than [this menu disaster](https://toppandigital.com/translation-blog/polish-restaurant-offers-cervical-cancer-on-menu-due-to-translation-error/).
 
 Based on the Polish results, I extrapolated that these models should perform well for other languages too, especially widely-used European ones like Castellano Spanish. With Mandarin Chinese, I keep my fingers crossed.
 
@@ -86,9 +83,7 @@ I also had to decide how to handle proper names. I chose to translate "Quantum G
 
 Since the system is set up, translating into additional languages or improving current translations (automatically or manually) will be straightforward. Thus, I slightly improved the current English version.
 
-But I also wanted to add a twist, especially since I started this [translation project](https://mathstodon.xyz/@pmigdal/114211836807094413) just a week before April 1st.
-
-Moreover, I've always wanted to try two things. First, creating a British version. I mean, proper British — imagine David Attenborough's voice:
+But I also wanted to add a twist, especially since I started this [translation project](https://mathstodon.xyz/@pmigdal/114211836807094413) just a week before April 1st. First, I wanted to create a British version. I mean, proper British — imagine David Attenborough's voice:
 
 > A refined medium of elevated refractive index, meticulously crafted to retard photon phase by λ/4. Its precise thickness orchestrates interference phenomena with the elegance of a conductor leading an orchestra.
 
@@ -107,10 +102,9 @@ Second, something... simpler[^simpler]. Back in Nov 2023, I asked GPT-4 to expla
 Now, it's time to double down on that. You have "Smol Words" — [give it a try](https://lab.quantumflytrap.com/lab). Yet, I must admit, such experiments consumed most of the budget. And time, as I chuckled between hand-picking correct answers.
 
 Do you want to see Quantum Flytrap in your language?
-
 So, what's your excuse for not translating your app?
 
-Discuss on [Mathstodon](https://mathstodon.xyz/@pmigdal/114273871390495262), [Twitter / X](https://x.com/pmigdal/status/1907762364629323811), or [Hacker News](https://news.ycombinator.com/item?id=43568455).
+Discuss on [Mathstodon](https://mathstodon.xyz/@pmigdal/114273871390495262), [Twitter / X](https://x.com/pmigdal/status/1907762364629323811).
 
 [^gajatri]: It's one thing to make a correct translation, another to maintain poetic quality. GPT-4.5 excels here — see [Gayatri Mantra translation into Polish](https://p.migdal.pl/2025/03/gajatri-wychwalamy); Gemini 2.5 wasn't even close.
 [^simpler]: Inspiration comes diverse places - [xkcd](https://xkcd.com/), [Hillel](https://en.wikipedia.org/wiki/Hillel_the_Elder), [a link baron's minimalistic investment scheme](https://static.pinboard.in/prosperity_cloud.htm), and a [short poem](https://www.fuw.edu.pl/~dobaczew/kwanty/wiersz.html) which was sent solution to QM101 assigment "explain quantum mechanics in 200 words"
