@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ContentDoc path="/text-components/projects" :head="false" />
+    <ContentRenderer v-if="projectsContent" :value="projectsContent" />
     <ul class="projects">
       <li
         v-for="(project, index) in projects.items"
@@ -31,7 +31,13 @@
 
 <script setup lang="ts">
 import { HeaderData } from "@/scripts/utils";
+import { queryCollection } from "#imports";
 import projects from "@/content/data/projects.json";
+
+// Fetch the projects content
+const { data: projectsContent } = await useAsyncData("projects-content", () =>
+  queryCollection("textComponents").path("/text-components/projects").first()
+);
 
 HeaderData.default()
   .setTitle("Projects")

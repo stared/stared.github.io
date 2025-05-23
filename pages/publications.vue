@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ContentDoc path="/text-components/publications" :head="false" />
+    <ContentRenderer v-if="publicationsContent" :value="publicationsContent" />
 
     <ul class="publications">
       <li
@@ -29,7 +29,17 @@
 
 <script setup lang="ts">
 import { HeaderData } from "@/scripts/utils";
+import { queryCollection } from "#imports";
 import publications from "@/content/data/publications.json";
+
+// Fetch the publications content
+const { data: publicationsContent } = await useAsyncData(
+  "publications-content",
+  () =>
+    queryCollection("textComponents")
+      .path("/text-components/publications")
+      .first()
+);
 
 useHead({
   title: "Publications",

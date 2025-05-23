@@ -1,33 +1,20 @@
 <template>
-  <figure v-if="caption">
-    <component
-      :is="imgComponent"
-      :src="refinedSrc"
-      :alt="alt"
-      :width="width"
-      :height="height"
-    />
-    <figcaption v-html="caption" />
-  </figure>
-  <component
-    v-else
-    :is="imgComponent"
-    :src="refinedSrc"
+  <img
+    v-if="resolvedSrc"
+    :src="resolvedSrc"
     :alt="alt"
     :width="width"
     :height="height"
+    :class="{
+      'width-max-half': modifiers.includes('width-max-half'),
+      'width-max-two-thirds': modifiers.includes('width-max-two-thirds'),
+    }"
   />
 </template>
 
 <script setup lang="ts">
-// approach from https://github.com/nuxt/image/issues/813
-
-import { withTrailingSlash, withLeadingSlash, joinURL } from "ufo";
-import { useRuntimeConfig, computed, resolveComponent } from "#imports";
-
-const imgComponent = useRuntimeConfig().public.mdc.useNuxtImage
-  ? resolveComponent("NuxtImg")
-  : "img";
+import { computed } from "vue";
+import { useRoute } from "vue-router";
 
 const props = defineProps({
   src: {
@@ -46,29 +33,40 @@ const props = defineProps({
     type: [String, Number],
     default: undefined,
   },
+  modifiers: {
+    type: Array,
+    default: () => [],
+  },
 });
 
-const refinedSrc = computed(() => {
-  if (props.src?.startsWith("/") && !props.src.startsWith("//")) {
-    const _base = withLeadingSlash(
-      withTrailingSlash(useRuntimeConfig().app.baseURL)
-    );
-    if (_base !== "/" && !props.src.startsWith(_base)) {
-      return joinURL(_base, props.src);
-    }
+const route = useRoute();
+
+const resolvedSrc = computed(() => {
+  // If it's an absolute URL, data URL, or starts with /, use as-is
+  if (
+    props.src.startsWith("http") ||
+    props.src.startsWith("data:") ||
+    props.src.startsWith("/")
+  ) {
+    return props.src;
   }
-  return props.src;
-});
 
-const caption = computed(() => {
-  return props.alt
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
-    .replace(/(?<!['"(])(https?:\/\/[^\s)]+)(?!\))/g, '<a href="$1">$1</a>');
+  // For relative paths (like ./image.jpg or image.jpg), resolve relative to current route
+  // Remove leading ./ if present
+  const imagePath = props.src.replace(/^\.\//, "");
+
+  // Ensure there's a slash between route path and image path
+  const basePath = route.path.endsWith("/") ? route.path : route.path + "/";
+  return basePath + imagePath;
 });
 </script>
 
 <style scoped>
-figure {
-  aspect-ratio: auto !important;
+img.width-max-half {
+  max-width: 380px;
+}
+
+img.width-max-two-thirds {
+  max-width: 506px;
 }
 </style>

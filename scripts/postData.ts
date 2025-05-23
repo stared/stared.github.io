@@ -22,6 +22,8 @@ export interface BlogPostMetadata extends BasePost {
   author?: string;
   description?: string;
   image?: string;
+  _path?: string;
+  path?: string;
 }
 
 type ExternalPostSource = {
@@ -32,7 +34,7 @@ type ExternalPostSource = {
 
 type InternalPostSource = {
   isExternal: false;
-  _path: string;
+  path: string;
 };
 
 type PostSource = ExternalPostSource | InternalPostSource;
@@ -50,25 +52,40 @@ export class BlogPostLabel {
   author: string;
 
   constructor(post: any, isExternal: boolean = false) {
-    this.title = post.title;
-    this.date = post.date;
-    this.tags = post.tags || [];
-    this.mentions = post.mentions || [];
-    this.views_k = post.views_k;
-    this.migdal_score = post.migdal_score ?? 0;
-    this.description = post.description || "";
-    this.image = post.image || "";
-    this.postSource = isExternal
-      ? {
-          isExternal: true,
-          href: post.href,
-          source: post.source,
-        }
-      : {
-          isExternal: false,
-          _path: post._path,
-        };
-    this.author = post.author || "Piotr Migdał";
+    if (isExternal) {
+      // External posts have their own structure
+      this.title = post.title;
+      this.date = post.date;
+      this.tags = post.tags;
+      this.mentions = post.mentions || [];
+      this.views_k = post.views_k;
+      this.migdal_score = post.migdal_score || 0;
+      this.description = post.description || "";
+      this.image = post.image || "";
+      this.author = post.author || "Piotr Migdał";
+      this.postSource = {
+        isExternal: true,
+        href: post.href,
+        source: post.source,
+      };
+    } else {
+      // Internal posts from Nuxt Content v3
+      this.title = post.title;
+
+      // Access frontmatter directly (Nuxt Content v3)
+      this.date = post.date;
+      this.tags = post.tags || [];
+      this.mentions = post.mentions || [];
+      this.views_k = post.views_k;
+      this.migdal_score = post.migdal_score || 0;
+      this.description = post.description || "";
+      this.image = post.image || "";
+      this.author = post.author || "Piotr Migdał";
+      this.postSource = {
+        isExternal: false,
+        path: post.path,
+      };
+    }
   }
 
   static fromQueryContent(post: BlogPostMetadata): BlogPostLabel {
@@ -80,13 +97,21 @@ export class BlogPostLabel {
   }
 
   get hn(): boolean {
-    return this.mentions.some((mention: Mention) =>
-      mention.href.includes("news.ycombinator")
+    return (
+      this.mentions &&
+      Array.isArray(this.mentions) &&
+      this.mentions.some((mention: Mention) =>
+        mention.href.includes("news.ycombinator")
+      )
     );
   }
 
   get displayDate(): string {
-    return new Date(this.date).toLocaleDateString("en-us", {
+    const dateObj = new Date(this.date);
+    if (isNaN(dateObj.getTime())) {
+      throw new Error(`Invalid date format: ${this.date}`);
+    }
+    return dateObj.toLocaleDateString("en-us", {
       year: "numeric",
       month: "short",
     });
@@ -111,6 +136,7 @@ export class BlogPostLabel {
     const yearsSince =
       (now.getTime() - postDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
     const age = Math.log2(yearsSince);
+
     return {
       popularity,
       mentions: mentionsCount,
