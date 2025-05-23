@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from "vue";
+import { computed } from "vue";
 import { useRoute } from "vue-router";
 
 const props = defineProps({
@@ -40,7 +40,6 @@ const props = defineProps({
 });
 
 const route = useRoute();
-const resolvedSrc = ref("");
 
 // Function to check if a path is relative
 const isRelativePath = (path: string) => {
@@ -52,7 +51,7 @@ const isRelativePath = (path: string) => {
 };
 
 // Resolve the image path
-onMounted(() => {
+const resolvedSrc = computed(() => {
   if (isRelativePath(props.src)) {
     // For relative paths like ./image.jpg or image.jpg
     // Extract the current route path
@@ -63,23 +62,53 @@ onMounted(() => {
 
     // If the path is a blog post
     if (routePath.startsWith("/blog/")) {
-      // Remove any filename part from the route
-      const pathParts = routePath.split("/");
-      // Remove the last part if it's not empty (likely the filename)
-      if (pathParts[pathParts.length - 1] !== "") {
-        pathParts.pop();
-      }
-      const basePath = pathParts.join("/");
+      // Check if we're in static generation (prerendering) mode
+      // Only use static paths during actual prerendering, not during SSR in development
+      const isStaticGeneration = process.prerender;
 
-      // Now we have a clean base directory path, add the image
-      resolvedSrc.value = `/content${basePath}/${imagePath}`;
+      if (isStaticGeneration) {
+        // In static build, use the full route path as base since images are at the same level as index.html
+        // Ensure no double slashes
+        const cleanPath = `${routePath}/${imagePath}`.replace(/\/+/g, "/");
+        return cleanPath;
+      } else {
+        // In development, use the content server route with parent directory
+        // Remove any filename part from the route for development content server
+        const pathParts = routePath.split("/");
+        // Remove the last part if it's not empty (likely the filename)
+        if (pathParts[pathParts.length - 1] !== "") {
+          pathParts.pop();
+        }
+        const basePath = pathParts.join("/");
+        // Ensure no double slashes
+        const cleanPath = `/content${basePath}/${imagePath}`.replace(
+          /\/+/g,
+          "/"
+        );
+        return cleanPath;
+      }
     } else {
       // Default for other content types
-      resolvedSrc.value = `/content${routePath}/${imagePath}`;
+      const isStaticGeneration = process.prerender;
+
+      if (isStaticGeneration) {
+        // In static build, use the full route path
+        // Ensure no double slashes
+        const cleanPath = `${routePath}/${imagePath}`.replace(/\/+/g, "/");
+        return cleanPath;
+      } else {
+        // In development
+        // Ensure no double slashes
+        const cleanPath = `/content${routePath}/${imagePath}`.replace(
+          /\/+/g,
+          "/"
+        );
+        return cleanPath;
+      }
     }
   } else {
     // Absolute or external path
-    resolvedSrc.value = props.src;
+    return props.src;
   }
 });
 </script>
