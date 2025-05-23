@@ -11,20 +11,20 @@
     "build:all": "yarn copy:assets && yarn generate:embeddings && yarn generate"
   },
   "dependencies": {
-    "@nuxt/content": "^3.4.0",
+    "@nuxt/content": "^3.5.1",
     "@nuxtjs/plausible": "^1.2.0",
     "@vueuse/head": "^2.0.0",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
-    "nuxt": "^3.16.2",
-    "openai": "^4.91.1",
+    "nuxt": "^3.17.4",
+    "openai": "^4.103.0",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
     "vue-slider-component": "^4.1.0-beta.7"
   },
   "devDependencies": {
-    "@types/node": "^22.13.17",
-    "tsx": "^4.19.3"
+    "@types/node": "^22.15.21",
+    "tsx": "^4.19.4"
   },
   "packageManager": "yarn@4.8.0"
 }
