@@ -41,75 +41,23 @@ const props = defineProps({
 
 const route = useRoute();
 
-// Function to check if a path is relative
-const isRelativePath = (path: string) => {
-  return !(
-    path.startsWith("/") ||
-    path.startsWith("http") ||
-    path.startsWith("data:")
-  );
-};
-
-// Resolve the image path
 const resolvedSrc = computed(() => {
-  if (isRelativePath(props.src)) {
-    // For relative paths like ./image.jpg or image.jpg
-    // Extract the current route path
-    const routePath = route.path;
-
-    // Clean up the path by removing any ./ and handling directory navigation
-    let imagePath = props.src.replace(/^\.\//, "");
-
-    // If the path is a blog post
-    if (routePath.startsWith("/blog/")) {
-      // Check if we're in static generation (prerendering) mode
-      // Only use static paths during actual prerendering, not during SSR in development
-      const isStaticGeneration = process.prerender;
-
-      if (isStaticGeneration) {
-        // In static build, use the full route path as base since images are at the same level as index.html
-        // Ensure no double slashes
-        const cleanPath = `${routePath}/${imagePath}`.replace(/\/+/g, "/");
-        return cleanPath;
-      } else {
-        // In development, use the content server route with parent directory
-        // Remove any filename part from the route for development content server
-        const pathParts = routePath.split("/");
-        // Remove the last part if it's not empty (likely the filename)
-        if (pathParts[pathParts.length - 1] !== "") {
-          pathParts.pop();
-        }
-        const basePath = pathParts.join("/");
-        // Ensure no double slashes
-        const cleanPath = `/content${basePath}/${imagePath}`.replace(
-          /\/+/g,
-          "/"
-        );
-        return cleanPath;
-      }
-    } else {
-      // Default for other content types
-      const isStaticGeneration = process.prerender;
-
-      if (isStaticGeneration) {
-        // In static build, use the full route path
-        // Ensure no double slashes
-        const cleanPath = `${routePath}/${imagePath}`.replace(/\/+/g, "/");
-        return cleanPath;
-      } else {
-        // In development
-        // Ensure no double slashes
-        const cleanPath = `/content${routePath}/${imagePath}`.replace(
-          /\/+/g,
-          "/"
-        );
-        return cleanPath;
-      }
-    }
-  } else {
-    // Absolute or external path
+  // If it's an absolute URL, data URL, or starts with /, use as-is
+  if (
+    props.src.startsWith("http") ||
+    props.src.startsWith("data:") ||
+    props.src.startsWith("/")
+  ) {
     return props.src;
   }
+
+  // For relative paths (like ./image.jpg or image.jpg), resolve relative to current route
+  // Remove leading ./ if present
+  const imagePath = props.src.replace(/^\.\//, "");
+
+  // Ensure there's a slash between route path and image path
+  const basePath = route.path.endsWith("/") ? route.path : route.path + "/";
+  return basePath + imagePath;
 });
 </script>
 
