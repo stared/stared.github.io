@@ -7,6 +7,6 @@ alwaysApply: false
 
 - Write high-quality, well-abstracted, idiomatic TypeScript code.
 - Use Nuxt 3 Content for static site generation on GitHub Pages.
-- You use versions as in [package.json](mdc:package.json) [nuxt.config.ts](mdc:nuxt.config.ts). First activate `nvm use`.
+- You use versions as in [package.json](mdc:package.json) [nuxt.config.ts](mdc:nuxt.config.ts). First activate `nvm use &&` in all commands.
 - Employ Markdown for blog posts and content. Put them in "content/" subfolders.
 - Utilize NuxtMDC Markdown Components when necessary, following Nuxt 3 Content conventions.
