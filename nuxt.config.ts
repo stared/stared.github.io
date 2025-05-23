@@ -1,4 +1,20 @@
 import { fileURLToPath } from "node:url";
+import { SITE_CONFIG } from "./config/site";
+
+// Generate route rules from legacy posts configuration
+const generateRouteRules = () => {
+  const rules: Record<string, { redirect: string }> = {};
+  SITE_CONFIG.legacyPosts.forEach((post) => {
+    rules[post.old] = { redirect: post.new };
+  });
+  return rules;
+};
+
+// Extract prerender routes from legacy posts
+const prerenderRoutes = [
+  ...SITE_CONFIG.legacyPosts.map((post) => post.old),
+  SITE_CONFIG.feedUrl,
+];
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -8,7 +24,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       assetsBase:
-        process.env.NODE_ENV === "production" ? "https://p.migdal.pl" : "",
+        process.env.NODE_ENV === "production" ? SITE_CONFIG.baseUrl : "",
     },
   },
 
@@ -36,52 +52,11 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      routes: [
-        "/2017/01/06/king-man-woman-queen-why.html",
-        "/2017/04/30/teaching-deep-learning.html",
-        "/2016/08/15/quantum-mechanics-for-high-school-students.html",
-        "/2015/12/14/sci-to-data-sci.html",
-        "/2016/03/15/data-science-intro-for-math-phys-background.html",
-        "/2017/09/30/dating-for-nerds-gender-differences.html",
-        "/2017/07/23/dating-for-nerds.html",
-        "/2018/09/15/simple-diagrams-deep-learning.html",
-        "/2017/08/14/bangbangcon.html",
-        "/feed.xml",
-      ],
+      routes: prerenderRoutes,
     },
   },
 
-  routeRules: {
-    // Redirect specific posts
-    // Legacy links from Jekyll times, still used online
-    "/2017/01/06/king-man-woman-queen-why.html": {
-      redirect: "/blog/2017/01/king-man-woman-queen-why",
-    },
-    "/2017/04/30/teaching-deep-learning.html": {
-      redirect: "/blog/2017/04/teaching-deep-learning",
-    },
-    "/2016/08/15/quantum-mechanics-for-high-school-students.html": {
-      redirect: "/blog/2016/08/quantum-mechanics-for-high-school-students",
-    },
-    "/2015/12/14/sci-to-data-sci.html": {
-      redirect: "/blog/2015/12/sci-to-data-sci",
-    },
-    "/2016/03/15/data-science-intro-for-math-phys-background.html": {
-      redirect: "/blog/2016/03/data-science-intro-for-math-phys-background",
-    },
-    "/2017/09/30/dating-for-nerds-gender-differences.html": {
-      redirect: "/blog/2017/09/dating-for-nerds-gender-differences",
-    },
-    "/2017/07/23/dating-for-nerds.html": {
-      redirect: "/blog/2017/07/dating-for-nerds",
-    },
-    "/2018/09/15/simple-diagrams-deep-learning.html": {
-      redirect: "/blog/2018/09/simple-diagrams-deep-learning",
-    },
-    "/2017/08/14/bangbangcon.html": {
-      redirect: "/blog/2017/08/bangbangcon",
-    },
-  },
+  routeRules: generateRouteRules(),
 
   hooks: {
     close: () => {
@@ -94,12 +69,18 @@ export default defineNuxtConfig({
 
   app: {
     baseURL: "/",
-    cdnURL: "https://p.migdal.pl",
+    cdnURL: SITE_CONFIG.baseUrl,
     head: {
       link: [
         {
           rel: "stylesheet",
           href: "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css",
+        },
+        {
+          rel: "alternate",
+          type: "application/rss+xml",
+          title: SITE_CONFIG.rss.title,
+          href: `${SITE_CONFIG.baseUrl}${SITE_CONFIG.feedUrl}`,
         },
       ],
     },

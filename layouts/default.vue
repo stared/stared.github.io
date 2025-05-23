@@ -2,13 +2,17 @@
   <div class="layout">
     <header class="header">
       <strong>
-        <NuxtLink to="/">Piotr Migdał</NuxtLink>
+        <NuxtLink to="/">{{ SITE_CONFIG.name }}</NuxtLink>
       </strong>
       <nav class="nav">
-        <NuxtLink class="nav__link" to="/blog">Blog</NuxtLink>
-        <NuxtLink class="nav__link" to="/projects">Projects</NuxtLink>
-        <NuxtLink class="nav__link" to="/publications">Publications</NuxtLink>
-        <NuxtLink class="nav__link" to="/resume">Resume</NuxtLink>
+        <NuxtLink
+          v-for="item in SITE_CONFIG.navigation"
+          :key="item.path"
+          class="nav__link"
+          :to="item.path"
+        >
+          {{ item.name }}
+        </NuxtLink>
       </nav>
     </header>
     <slot />
@@ -16,13 +20,15 @@
 </template>
 
 <script setup lang="ts">
+import { SITE_CONFIG } from "@/config/site";
+
 useHead({
   link: [
     {
       rel: "alternate",
       type: "application/rss+xml",
-      title: "RSS Feed for Piotr Migdał's Blog",
-      href: "https://p.migdal.pl/feed.xml",
+      title: SITE_CONFIG.rss.title,
+      href: `${SITE_CONFIG.baseUrl}${SITE_CONFIG.feedUrl}`,
     },
   ],
 });

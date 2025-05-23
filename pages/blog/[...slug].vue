@@ -27,6 +27,7 @@
 
 <script setup lang="ts">
 import { HeaderData } from "@/scripts/utils";
+import { formatDate } from "@/utils/formatters";
 import { queryCollection } from "#imports";
 
 // Define types for our content
@@ -44,26 +45,16 @@ interface FooterContent {
   [key: string]: any;
 }
 
-const formatDate = (date: string) => {
-  return new Date(date).toLocaleDateString("en-UK", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-};
-
 const { path } = useRoute();
 
 // Get blog post content using queryCollection
-const { data: blogPost } = await useAsyncData<BlogPost>(`content-${path}`, () =>
+const { data: blogPost } = await useAsyncData(`content-${path}`, () =>
   queryCollection("blog").path(path).first()
 );
 
 // Get footer content
-const { data: footerContent } = await useAsyncData<FooterContent>(
-  "footer-content",
-  () =>
-    queryCollection("textComponents").path("/text-components/footer").first()
+const { data: footerContent } = await useAsyncData("footer-content", () =>
+  queryCollection("textComponents").path("/text-components/footer").first()
 );
 
 // Add type guard for null/undefined

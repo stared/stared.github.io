@@ -1,11 +1,6 @@
 import { useHead } from "#imports";
+import { SITE_CONFIG } from "@/config/site";
 import defaultImage from "~/assets/imgs/piotr-migdal-direct-smiling-2022-by-cytacka-thumbnail.jpg";
-
-const DEFAULT_AUTHOR = "Piotr Migdał";
-const DEFAULT_TITLE = "Piotr Migdał";
-const DEFAULT_DESCRIPTION = "Piotr Migdał - blog posts and stuff";
-const DEFAULT_BASE_URL = "https://p.migdal.pl";
-const DEFAULT_IMAGE = defaultImage;
 
 /**
  * HeaderData for social media (Open Graph, Twitter aka X, etc.)
@@ -30,15 +25,15 @@ export class HeaderData {
 
   static default() {
     return new HeaderData(
-      DEFAULT_TITLE,
-      DEFAULT_DESCRIPTION,
-      DEFAULT_IMAGE,
-      DEFAULT_AUTHOR
+      SITE_CONFIG.title,
+      SITE_CONFIG.description,
+      defaultImage,
+      SITE_CONFIG.author
     );
   }
 
   setTitle(title?: string) {
-    this.title = `${title} - ${DEFAULT_AUTHOR}` || this.title;
+    this.title = `${title} - ${SITE_CONFIG.author}` || this.title;
     return this;
   }
 
@@ -55,14 +50,16 @@ export class HeaderData {
   getHead() {
     return {
       title: this.title,
-      link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
+      link: [
+        { rel: "icon", type: "image/png", href: SITE_CONFIG.images.favicon },
+      ],
       meta: [
         { name: "description", content: this.description },
         { name: "author", content: this.author },
         { property: "og:title", content: this.title },
         { property: "og:description", content: this.description },
         { property: "og:image", content: this.image },
-        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:card", content: SITE_CONFIG.twitter.card },
         { name: "twitter:title", content: this.title },
         { name: "twitter:description", content: this.description },
         { name: "twitter:image", content: this.image },

@@ -1,22 +1,23 @@
 import { Feed } from "feed";
 import { BlogPostLabel } from "~/scripts/postData";
-import type { BlogPostMetadata } from "~/scripts/postData"; // Assuming this structure matches ParsedContent
-import { useStorage } from "#imports"; // Use Nuxt's auto-import
+import type { BlogPostMetadata } from "~/scripts/postData";
+import { useStorage } from "#imports";
+import { SITE_CONFIG } from "~/config/site";
 
 export default defineEventHandler(async (event) => {
   const feed = new Feed({
-    title: "Piotr Migdał's Blog",
-    description: "Read blog posts by Piotr Migdał.",
-    id: "https://p.migdal.pl/",
-    link: "https://p.migdal.pl/",
+    title: SITE_CONFIG.rss.title,
+    description: SITE_CONFIG.rss.description,
+    id: SITE_CONFIG.baseUrl,
+    link: SITE_CONFIG.baseUrl,
     language: "en",
-    image: "https://p.migdal.pl/favicon.png",
-    favicon: "https://p.migdal.pl/favicon.png",
-    copyright: "All rights reserved 2024, Piotr Migdał",
+    image: `${SITE_CONFIG.baseUrl}${SITE_CONFIG.images.favicon}`,
+    favicon: `${SITE_CONFIG.baseUrl}${SITE_CONFIG.images.favicon}`,
+    copyright: SITE_CONFIG.rss.copyright,
     author: {
-      name: "Piotr Migdał",
-      email: "pmigdal@gmail.com",
-      link: "https://p.migdal.pl/",
+      name: SITE_CONFIG.author,
+      email: SITE_CONFIG.email,
+      link: SITE_CONFIG.baseUrl,
     },
   });
 
@@ -88,22 +89,22 @@ export default defineEventHandler(async (event) => {
   );
 
   for (const post of allPosts) {
-    // Feed item generation remains the same, using post.postSource.path
+    // Feed item generation using centralized configuration
+    const postUrl = post.postSource.isExternal
+      ? post.postSource.href
+      : `${SITE_CONFIG.baseUrl}${post.postSource.path}`;
+
     feed.addItem({
       title: post.title,
-      id: post.postSource.isExternal
-        ? post.postSource.href
-        : `https://p.migdal.pl${post.postSource.path}`,
-      link: post.postSource.isExternal
-        ? post.postSource.href
-        : `https://p.migdal.pl${post.postSource.path}`,
+      id: postUrl,
+      link: postUrl,
       description: post.description || "",
       content: post.description || "", // Consider mapping body content if needed
       author: [
         {
-          name: "Piotr Migdał",
-          email: "pmigdal@gmail.com",
-          link: "https://p.migdal.pl/",
+          name: SITE_CONFIG.author,
+          email: SITE_CONFIG.email,
+          link: SITE_CONFIG.baseUrl,
         },
       ],
       date: new Date(post.date),

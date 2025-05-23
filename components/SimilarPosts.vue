@@ -3,7 +3,7 @@
     <h2>See also cosine-similar posts</h2>
     <ul>
       <li v-for="post in similarPosts" :key="post.slug">
-        <code>{{ post.similarity.toFixed(3) }}</code>
+        <code>{{ formatSimilarityScore(post.similarity) }}</code>
         <NuxtLink :to="`${post.path}`">{{ post.title }}</NuxtLink>
       </li>
     </ul>
@@ -12,20 +12,29 @@
 
 <script setup lang="ts">
 import { useAsyncData, queryCollection } from "#imports";
+import { cleanSlugForSimilarity } from "@/utils/formatters";
+
+interface SimilarPost {
+  slug: string;
+  similarity: number;
+  title: string;
+  path: string;
+}
 
 const props = defineProps<{ slug: string }>();
 
-const slugCleaned = props.slug.replace(/\//g, "_").replace(/_+$/, "");
-const expectedStem = `similarities/${slugCleaned}`; // Target stem value
+const slugCleaned = cleanSlugForSimilarity(props.slug);
+const expectedStem = `similarities/${slugCleaned}`;
+
+const formatSimilarityScore = (similarity: number): string => {
+  return similarity.toFixed(3);
+};
 
 const { data: similarPosts } = await useAsyncData(
   `similar-posts-${slugCleaned}`,
-  async () => {
+  async (): Promise<SimilarPost[]> => {
     try {
       const allSimilarities = await queryCollection("similarities").all();
-
-      // No need to log anymore
-      // console.log('[SimilarPosts] Fetched all similarities:', JSON.stringify(allSimilarities, null, 2));
 
       if (!Array.isArray(allSimilarities)) {
         console.error(
@@ -35,7 +44,6 @@ const { data: similarPosts } = await useAsyncData(
         return [];
       }
 
-      // --- Reinstate filtering logic using 'stem' ---
       const targetData = allSimilarities.find(
         (item) => item.stem === expectedStem
       );
@@ -52,7 +60,6 @@ const { data: similarPosts } = await useAsyncData(
         );
         return [];
       }
-      // --- End of filtering logic ---
     } catch (error) {
       console.error(
         `[SimilarPosts] Error fetching posts for ${slugCleaned}:`,
