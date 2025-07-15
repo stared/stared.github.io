@@ -1,6 +1,14 @@
 {
   "items": [
     {
+      "title": "Building Grafana dashboards with AI, CLI and a bit of pragmatism",
+      "source": "Quesma",
+      "href": "https://quesma.com/blog-detail/building-grafana-dashboards-ai-cli",
+      "date": "2025-07-16T00:00:00.000Z",
+      "tags": ["ai", "data viz"],
+      "migdal_score": 0
+    },
+    {
       "title": "Naturalność nagości - sesja i wywiad",
       "source": "Nude Morning",
       "href": "https://nude-morning.blogspot.com/2024/09/m.html",

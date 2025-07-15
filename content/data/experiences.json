@@ -1,7 +1,21 @@
 {
   "items": [
     {
-      "period": "2023-now",
+      "period": "2025-now",
+      "position": "Founding engineer",
+      "company": "Quesma",
+      "href": "https://charts.quesma.com/",
+      "description": "Creating charts with AI.",
+      "stack": "Python, TypeScript, ggplot2, Grafana, OpenRouter",
+      "mentions": [
+        {
+          "text": "Building Grafana dashboards with AI, CLI and a bit of pragmatism",
+          "href": "https://quesma.com/blog-detail/building-grafana-dashboards-ai-cli"
+        }
+      ]
+    },
+    {
+      "period": "2023-2025",
       "position": "AI consultant",
       "company": "self-employed",
       "href": "https://p.migdal.pl",

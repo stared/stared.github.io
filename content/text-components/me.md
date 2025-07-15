@@ -6,7 +6,7 @@ Piotr Migdał
 /[pjɔtr](https://en.wiktionary.org/wiki/Piotr) [ˈmig.daw](https://en.wiktionary.org/wiki/migda%C5%82)/ -
 a curious being, doctor of sorcery.
 
-**Professionally:** I provide consulting and contract services in AI (focusing on user-facing applications), quantum computing, data visualization, and related technologies. I develop [Quesma Charts](https://charts.quesma.com/) - upload your CSV, write a prompt, and get a journal-worthy chart.
+**Professionally:** I am a founding engineer at [Quesma](https://charts.quesma.com/), using AI to explore data and create beautiful ggplot2 charts and Grafana dashboards.
 
 **Previously:**
 Co-founder & CTO of [Quantum Flytrap](https://quantumflytrap.com/),
