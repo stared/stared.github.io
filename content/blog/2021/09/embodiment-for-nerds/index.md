@@ -15,7 +15,7 @@ mentions:
   - text: Hacker News front page
     href: https://news.ycombinator.com/item?id=28895655
 views_k: 4
-migdal_score: 4
+migdal_score: 6
 ---
 
 Or how you can learn to get in touch with your body and emotions.
