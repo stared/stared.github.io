@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "title": "WebR ggplot2",
+      "desc": "Interactive R data viz entirely in your browser - thanks to WebAssembly",
+      "href": "https://quesmaorg.github.io/demo-webr-ggplot/",
+      "dateStart": "2025-07-13T00:00:00.000Z",
+      "tags": ["data viz", "typescript", "wasm", "r"]
+    },
+    {
       "title": "Quesma Charts",
       "desc": "Turn CSV, Excel, or SQL data into clean, accurate, and professional visuals instantly. Like MidJourney for charts, but accurate. With six figures, not six fingers.",
       "href": "https://charts.quesma.com",

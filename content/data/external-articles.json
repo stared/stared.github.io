@@ -1,6 +1,14 @@
 {
   "items": [
     {
+      "title": "Sandboxing AI-Generated Code: Why We Moved from WebR to AWS Lambda",
+      "source": "Quesma",
+      "href": "https://quesma.com/blog-detail/sandboxing-ai-generated-code-why-we-moved-from-webr-to-aws-lambda",
+      "date": "2025-08-07T00:00:00.000Z",
+      "tags": ["ai", "data viz"],
+      "migdal_score": 0
+    },
+    {
       "title": "Which chart would you swipe right?",
       "source": "Quesma",
       "href": "https://quesma.com/blog-detail/which-chart-would-you-swipe-right",
