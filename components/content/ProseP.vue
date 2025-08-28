@@ -10,6 +10,6 @@ const isImage = computed(() => {
 </script>
 
 <template>
-  <div class="prose-image" v-if="isImage"><slot /></div>
+  <div v-if="isImage" class="prose-image"><slot /></div>
   <p v-else><slot /></p>
 </template>

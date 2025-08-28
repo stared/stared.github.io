@@ -1,7 +1,6 @@
 import { Feed } from "feed";
 import { BlogPostLabel } from "~/scripts/postData";
-import type { BlogPostMetadata } from "~/scripts/postData"; // Assuming this structure matches ParsedContent
-import { useStorage } from "#imports"; // Use Nuxt's auto-import
+import type { BlogPostMetadata, ExternalPost, Mention } from "~/scripts/postData";
 
 export default defineEventHandler(async (event) => {
   const feed = new Feed({
@@ -27,8 +26,8 @@ export default defineEventHandler(async (event) => {
   const keys = await storage.getKeys(blogPrefix);
 
   const postsDataPromises = keys
-    .filter((key) => key.startsWith(blogPrefix) && key.endsWith(".md")) // Ensure we only process markdown files within the blog source
-    .map(async (key): Promise<BlogPostMetadata | null> => {
+    .filter((key: string) => key.startsWith(blogPrefix) && key.endsWith(".md")) // Ensure we only process markdown files within the blog source
+    .map(async (key: string): Promise<BlogPostMetadata | null> => {
       // Return null for invalid items
       const item = await storage.getItem(key);
 
@@ -38,30 +37,29 @@ export default defineEventHandler(async (event) => {
         typeof item !== "object" ||
         item === null ||
         !("_path" in item) ||
-        !(item as any).title
+        !("title" in item)
       ) {
         console.warn(`[Feed] Skipping invalid content item for key: ${key}`);
         return null; // Skip this item
       }
 
       // Assert type and reconstruct structure for BlogPostLabel
-      const parsedItem = item as Record<string, any>; // Assert as a generic object
+      const parsedItem = item as Record<string, unknown>; // Assert as a generic object
       return {
-        ...parsedItem, // Spread the parsed content properties
-        path: parsedItem._path, // Ensure 'path' is set from '_path' for BlogPostLabel
-        // Ensure other required fields for BlogPostMetadata are present or mapped
-        title: parsedItem.title,
-        date: parsedItem.date,
-        tags: parsedItem.tags || [],
+        title: parsedItem.title as string,
+        date: parsedItem.date as string,
+        tags: (parsedItem.tags as string[]) || [],
+        path: parsedItem._path as string, // Ensure 'path' is set from '_path' for BlogPostLabel
         // Map other optional fields if necessary
-        description: parsedItem.description,
-        image: parsedItem.image,
-        author: parsedItem.author,
-        mentions: parsedItem.mentions,
-        views_k: parsedItem.views_k,
-        migdal_score: parsedItem.migdal_score,
-        _path: parsedItem._path, // Ensure _path itself is included if needed by BlogPostMetadata
-      } as BlogPostMetadata; // Cast to the expected final type
+        description: parsedItem.description as string | undefined,
+        image: parsedItem.image as string | undefined,
+        author: parsedItem.author as string | undefined,
+        mentions: parsedItem.mentions as Mention[] | undefined,
+        views_k: parsedItem.views_k as number | undefined,
+        migdal_score: parsedItem.migdal_score as number | undefined,
+        _path: parsedItem._path as string | undefined,
+        slug: parsedItem.slug as string | undefined,
+      } satisfies BlogPostMetadata;
     });
 
   const postsDataResults = await Promise.all(postsDataPromises);
@@ -70,16 +68,16 @@ export default defineEventHandler(async (event) => {
     (post): post is BlogPostMetadata => post !== null
   );
 
-  const externalPosts = (await import("~/content/data/external-articles.json"))
-    .default.items;
+  const externalPostsData = (await import("~/content/data/external-articles.json"))
+    .default.items as ExternalPost[];
 
   // Cast posts to BlogPostMetadata[] if necessary and confident in type compatibility
   // Or adjust BlogPostLabel.fromQueryContent if the structure differs significantly
   const allPosts = [
     ...posts.map(
-      (post) => BlogPostLabel.fromQueryContent(post) // Assuming BlogPostLabel can handle this structure
+      (post: BlogPostMetadata) => BlogPostLabel.fromQueryContent(post) // Assuming BlogPostLabel can handle this structure
     ),
-    ...externalPosts.map((post) => BlogPostLabel.fromExternalPost(post)),
+    ...externalPostsData.map((post: ExternalPost) => BlogPostLabel.fromExternalPost(post)),
   ];
 
   // Sorting remains the same

@@ -46,7 +46,7 @@ function getPostTitle(slug: string): string {
       return slug.replace(/_/g, "/");
     }
     return data.title;
-  } catch (error) {
+  } catch {
     console.warn(`Could not read title for ${slug}, using fallback`);
     return slug.replace(/_/g, "/");
   }

@@ -9,7 +9,7 @@
       'width-max-half': modifiers.includes('width-max-half'),
       'width-max-two-thirds': modifiers.includes('width-max-two-thirds'),
     }"
-  />
+  >
 </template>
 
 <script setup lang="ts">

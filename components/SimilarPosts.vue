@@ -41,15 +41,10 @@ const { data: similarPosts } = await useAsyncData(
       );
 
       if (targetData?.most_similar) {
-        console.log(
-          `[SimilarPosts] Found similarity data for ${slugCleaned} by filtering on stem='${expectedStem}':`,
-          targetData.most_similar.length
-        );
+        // Found similarity data for this post
         return targetData.most_similar;
       } else {
-        console.log(
-          `[SimilarPosts] No matching similarity data found for slug: ${slugCleaned} (stem: '${expectedStem}') after filtering ${allSimilarities.length} items.`
-        );
+        // No matching similarity data found
         return [];
       }
       // --- End of filtering logic ---

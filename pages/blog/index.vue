@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from "vue";
 import { HeaderData } from "@/scripts/utils";
-// @ts-ignore
+// @ts-expect-error - Vue slider component doesn't provide TypeScript types
 import VueSlider from "vue-slider-component/dist-css/vue-slider-component.umd.min.js";
 import "vue-slider-component/dist-css/vue-slider-component.css";
 import "vue-slider-component/theme/default.css";
@@ -141,9 +141,9 @@ const { data: blogTextContent } = await useAsyncData(
       <span
         v-for="tag in allTagsCounted"
         :key="tag.name"
-        @click="selectTag(tag.name)"
         class="tag"
         :class="{ selected: tag.name === tagSelected }"
+        @click="selectTag(tag.name)"
         >[{{ tag.name }}]</span
       >
     </p>
@@ -159,9 +159,9 @@ const { data: blogTextContent } = await useAsyncData(
         <span
           v-for="tagName in post.tags"
           :key="tagName"
-          @click="selectTag(tagName)"
           class="tag"
           :class="{ selected: tagName === tagSelected }"
+          @click="selectTag(tagName)"
           >[{{ tagName }}]</span
         >
         <span v-if="post.hn" class="hn">[HN]</span>

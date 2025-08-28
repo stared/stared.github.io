@@ -10,7 +10,7 @@
       >
         <span class="authors">{{ publication.authors }}</span
         >,
-        <br />
+        <br >
         <a class="title" :href="publicationHref(publication)">{{
           publication.title
         }}</a
@@ -32,6 +32,15 @@ import { HeaderData } from "@/scripts/utils";
 import { queryCollection } from "#imports";
 import publications from "@/content/data/publications.json";
 
+interface Publication {
+  authors: string;
+  title: string;
+  journal: string;
+  year: string;
+  doi?: string;
+  arxiv?: string;
+}
+
 // Fetch the publications content
 const { data: publicationsContent } = await useAsyncData(
   "publications-content",
@@ -51,7 +60,7 @@ useHead({
   ],
 });
 
-function publicationHref(publication: any) {
+function publicationHref(publication: Publication) {
   if (publication.doi) {
     return `https://doi.org/${publication.doi}`;
   } else {

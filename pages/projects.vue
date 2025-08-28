@@ -14,11 +14,12 @@
         </span>
         &nbsp;
         <span class="status">({{ project.status }})</span>
-        <br />
+        <br >
         <span class="description">{{ project.desc }}</span>
         <span v-if="project.mentions" class="mentions">
           <a
-            v-for="mention in project.mentions"
+            v-for="(mention, mentionIndex) in project.mentions"
+            :key="`mention-${mentionIndex}`"
             :href="mention.href"
             class="mention"
             >[{{ mention.text }}]</a
