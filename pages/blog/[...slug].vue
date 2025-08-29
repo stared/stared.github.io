@@ -37,11 +37,16 @@ interface BlogPost {
   author?: string;
   mentions?: { href: string; text: string }[];
   image?: string;
-  [key: string]: any;
+  tags?: string[];
+  views_k?: number;
+  path?: string;
+  body?: object;
 }
 
 interface FooterContent {
-  [key: string]: any;
+  title?: string;
+  body?: object;
+  path?: string;
 }
 
 const formatDate = (date: string) => {

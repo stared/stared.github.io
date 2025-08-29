@@ -8,15 +8,15 @@
         <span class="period">{{ exp.period }}</span>
         <span class="position">{{ exp.position }}</span>
         <a :href="exp.href" class="company">{{ exp.company }}</a>
-        <br />
+        <br >
         <span class="description">{{ exp.description }}</span>
-        <br />
+        <br >
         <span v-if="exp.mentions" class="mentions">
           <span v-for="mention in exp.mentions" :key="mention.href">
             • <a :href="mention.href">{{ mention.text }}</a>
           </span>
           &nbsp;•
-          <br />
+          <br >
         </span>
         <span class="stack">{{ exp.stack }}</span>
       </li>

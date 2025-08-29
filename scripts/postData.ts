@@ -15,6 +15,9 @@ export interface BasePost {
 export interface ExternalPost extends BasePost {
   source: string;
   href: string;
+  description?: string;
+  image?: string;
+  author?: string;
 }
 
 export interface BlogPostMetadata extends BasePost {
@@ -23,7 +26,7 @@ export interface BlogPostMetadata extends BasePost {
   description?: string;
   image?: string;
   _path?: string;
-  path?: string;
+  path: string;
 }
 
 type ExternalPostSource = {
@@ -44,56 +47,72 @@ export class BlogPostLabel {
   date: string;
   tags: string[];
   mentions: Mention[];
-  views_k?: number;
+  views_k: number;
   migdal_score: number;
   description: string;
   image: string;
   postSource: PostSource;
   author: string;
 
-  constructor(post: any, isExternal: boolean = false) {
-    if (isExternal) {
-      // External posts have their own structure
-      this.title = post.title;
-      this.date = post.date;
-      this.tags = post.tags;
-      this.mentions = post.mentions || [];
-      this.views_k = post.views_k;
-      this.migdal_score = post.migdal_score || 0;
-      this.description = post.description || "";
-      this.image = post.image || "";
-      this.author = post.author || "Piotr Migdał";
-      this.postSource = {
-        isExternal: true,
-        href: post.href,
-        source: post.source,
-      };
-    } else {
-      // Internal posts from Nuxt Content v3
-      this.title = post.title;
-
-      // Access frontmatter directly (Nuxt Content v3)
-      this.date = post.date;
-      this.tags = post.tags || [];
-      this.mentions = post.mentions || [];
-      this.views_k = post.views_k;
-      this.migdal_score = post.migdal_score || 0;
-      this.description = post.description || "";
-      this.image = post.image || "";
-      this.author = post.author || "Piotr Migdał";
-      this.postSource = {
-        isExternal: false,
-        path: post.path,
-      };
-    }
+  private constructor(
+    title: string,
+    date: string,
+    tags: string[],
+    mentions: Mention[],
+    views_k: number,
+    migdal_score: number,
+    description: string,
+    image: string,
+    author: string,
+    postSource: PostSource
+  ) {
+    this.title = title;
+    this.date = date;
+    this.tags = tags;
+    this.mentions = mentions;
+    this.views_k = views_k;
+    this.migdal_score = migdal_score;
+    this.description = description;
+    this.image = image;
+    this.author = author;
+    this.postSource = postSource;
   }
 
   static fromQueryContent(post: BlogPostMetadata): BlogPostLabel {
-    return new BlogPostLabel(post);
+    return new BlogPostLabel(
+      post.title,
+      post.date,
+      post.tags || [],
+      post.mentions || [],
+      post.views_k || 0,
+      post.migdal_score || 0,
+      post.description || "",
+      post.image || "",
+      post.author || "Piotr Migdał",
+      {
+        isExternal: false,
+        path: post.path,
+      }
+    );
   }
 
   static fromExternalPost(post: ExternalPost): BlogPostLabel {
-    return new BlogPostLabel(post, true);
+    return new BlogPostLabel(
+      post.title,
+      post.date,
+      post.tags || [],
+      post.mentions || [],
+      post.views_k || 0,
+      post.migdal_score || 0,
+      post.description || "",
+      post.image || "",
+      post.author || "Piotr Migdał",
+      {
+        isExternal: true,
+        href: post.href,
+        source: post.source,
+      }
+    );
   }
 
   get hn(): boolean {
@@ -172,12 +191,12 @@ export class BlogPostLabels {
     return new BlogPostLabels([]);
   }
 
-  addExternal(posts: any[]): BlogPostLabels {
+  addExternal(posts: ExternalPost[]): BlogPostLabels {
     this.items.push(...posts.map(BlogPostLabel.fromExternalPost));
     return this;
   }
 
-  addInternal(posts: any[]): BlogPostLabels {
+  addInternal(posts: BlogPostMetadata[]): BlogPostLabels {
     this.items.push(...posts.map(BlogPostLabel.fromQueryContent));
     return this;
   }
