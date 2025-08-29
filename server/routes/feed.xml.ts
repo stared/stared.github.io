@@ -1,6 +1,6 @@
 import { Feed } from "feed";
-import { BlogPostLabel } from "~/scripts/postData";
-import type { BlogPostMetadata, ExternalPost, Mention } from "~/scripts/postData";
+import { BlogPostLabel } from "../../scripts/postData";
+import type { BlogPostMetadata, ExternalPost, Mention } from "../../scripts/postData";
 
 export default defineEventHandler(async (event) => {
   const feed = new Feed({
@@ -68,7 +68,7 @@ export default defineEventHandler(async (event) => {
     (post): post is BlogPostMetadata => post !== null
   );
 
-  const externalPostsData = (await import("~/content/data/external-articles.json"))
+  const externalPostsData = (await import("../../content/data/external-articles.json"))
     .default.items as ExternalPost[];
 
   // Cast posts to BlogPostMetadata[] if necessary and confident in type compatibility
