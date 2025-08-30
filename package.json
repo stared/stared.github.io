@@ -13,7 +13,7 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@nuxt/content": "^3.6.3",
+    "@nuxt/content": "^3.0.0",
     "@nuxtjs/plausible": "^2.0.0",
     "@vueuse/head": "^2.0.0",
     "feed": "^5.1.0",
@@ -22,7 +22,7 @@
     "openai": "^5.16.0",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
-    "vue-slider-component": "^3.2.24"
+    "vue-slider-component": "^4.1.0-beta.7"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.9.0",

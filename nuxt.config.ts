@@ -1,6 +1,17 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  
+  // Keep Nuxt 3 directory structure for compatibility
+  srcDir: '.',
+  
+  // Enable Nuxt 4 compatibility features
+  future: {
+    compatibilityVersion: 4,
+  },
+  
+  compatibilityDate: "2025-08-29",
+  
   modules: ["@nuxt/content", "@nuxtjs/plausible"],
 
   runtimeConfig: {
@@ -102,6 +113,4 @@ export default defineNuxtConfig({
       ],
     },
   },
-
-  compatibilityDate: "2024-10-13",
 });
