@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { HeaderData } from "@/scripts/utils";
+import { HeaderData } from "~/utils/utils";
 
 // Fetch the about me content
 const { data: aboutContent } = await useAsyncData("about-content", async () => {

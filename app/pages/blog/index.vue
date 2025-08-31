@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from "vue";
-import { HeaderData } from "@/scripts/utils";
+import { HeaderData } from "~/utils/utils";
 // @ts-expect-error - Vue slider component doesn't provide TypeScript types
 import VueSlider from "vue-slider-component/dist-css/vue-slider-component.umd.min.js";
 import "vue-slider-component/dist-css/vue-slider-component.css";
 import "vue-slider-component/theme/default.css";
-import type { ExternalPost } from "@/scripts/postData";
-import { BlogPostLabels } from "@/scripts/postData";
+import type { ExternalPost } from "~/utils/postData";
+import { BlogPostLabels } from "~/utils/postData";
 import { useRoute, useRouter } from "vue-router";
 import { queryCollection } from "#imports";
 
 const externalPosts: ExternalPost[] = (
-  await import("@/content/data/external-articles.json")
+  await import("../../../content/data/external-articles.json")
 ).default.items;
 
 HeaderData.default()

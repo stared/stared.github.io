@@ -2,9 +2,6 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   
-  // Keep Nuxt 3 directory structure for compatibility
-  srcDir: '.',
-  
   // Enable Nuxt 4 compatibility features
   future: {
     compatibilityVersion: 4,

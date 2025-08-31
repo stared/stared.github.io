@@ -30,9 +30,9 @@
 </template>
 
 <script setup lang="ts">
-import { HeaderData } from "@/scripts/utils";
+import { HeaderData } from "~/utils/utils";
 import { queryCollection } from "#imports";
-import experiences from "@/content/data/experiences.json";
+import experiences from "../../content/data/experiences.json";
 
 // Fetch the resume intro content
 const { data: resumeIntroContent } = await useAsyncData(

@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { HeaderData } from "@/scripts/utils";
+import { HeaderData } from "~/utils/utils";
 import { queryCollection } from "#imports";
 
 // Define types for our content

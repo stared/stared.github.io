@@ -28,9 +28,9 @@
 </template>
 
 <script setup lang="ts">
-import { HeaderData } from "@/scripts/utils";
+import { HeaderData } from "~/utils/utils";
 import { queryCollection } from "#imports";
-import publications from "@/content/data/publications.json";
+import publications from "../../content/data/publications.json";
 
 interface Publication {
   authors: string;
