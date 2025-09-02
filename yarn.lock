@@ -10974,7 +10974,9 @@ __metadata:
     rehype-katex: "npm:^7.0.1"
     remark-math: "npm:^6.0.0"
     tsx: "npm:^4.20.5"
+    typescript: "npm:^5.9.2"
     vue-slider-component: "npm:^4.1.0-beta.7"
+    vue-tsc: "npm:^3.0.6"
   languageName: unknown
   linkType: soft
 
@@ -11960,7 +11962,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.7.3, typescript@npm:^5.8.3":
+"typescript@npm:^5.7.3, typescript@npm:^5.8.3, typescript@npm:^5.9.2":
   version: 5.9.2
   resolution: "typescript@npm:5.9.2"
   bin:
@@ -11970,7 +11972,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A^5.7.3#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^5.8.3#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A^5.7.3#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^5.8.3#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^5.9.2#optional!builtin<compat/typescript>":
   version: 5.9.2
   resolution: "typescript@patch:typescript@npm%3A5.9.2#optional!builtin<compat/typescript>::version=5.9.2&hash=5786d5"
   bin:
@@ -12813,6 +12815,20 @@ __metadata:
   version: 4.1.0-beta.7
   resolution: "vue-slider-component@npm:4.1.0-beta.7"
   checksum: 10c0/1362d7ee5ab955f4d25809a84eacc35551e7f90170a2cf1159a340b47ecda90cf110fb6063cd5824f35ef4394701e1a779979a760d65f60150ae60f814ec813d
+  languageName: node
+  linkType: hard
+
+"vue-tsc@npm:^3.0.6":
+  version: 3.0.6
+  resolution: "vue-tsc@npm:3.0.6"
+  dependencies:
+    "@volar/typescript": "npm:2.4.23"
+    "@vue/language-core": "npm:3.0.6"
+  peerDependencies:
+    typescript: ">=5.0.0"
+  bin:
+    vue-tsc: ./bin/vue-tsc.js
+  checksum: 10c0/339f7518f4bff25a4b466e52d5db42670441c831aa2d53049ed3c7e7cf738e3b613cd249b6c48823f2731efb9344c9ca86df7e660f99328cac55139ca3a61a04
   languageName: node
   linkType: hard
 

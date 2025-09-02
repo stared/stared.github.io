@@ -1,245 +1,225 @@
-export interface Mention {
-  title: string;
-  href: string;
-}
+import type {
+  BlogPostContent,
+  ExternalArticle,
+  Mention,
+  ProcessedBlogPost,
+} from '~/types/content';
 
-export interface BasePost {
-  title: string;
-  date: string;
-  tags: string[];
-  mentions?: Mention[];
-  views_k?: number;
-  migdal_score?: number;
-}
+import {
+  validateBlogPost,
+  validateExternalArticle,
+} from '~/types/content';
 
-export interface ExternalPost extends BasePost {
-  source: string;
-  href: string;
-  description?: string;
-  image?: string;
-  author?: string;
-}
+export class BlogPostProcessor {
+  private readonly post: ProcessedBlogPost;
 
-export interface BlogPostMetadata extends BasePost {
-  slug?: string;
-  author?: string;
-  description?: string;
-  image?: string;
-  _path?: string;
-  path: string;
-}
-
-type ExternalPostSource = {
-  isExternal: true;
-  href: string;
-  source: string;
-};
-
-type InternalPostSource = {
-  isExternal: false;
-  path: string;
-};
-
-type PostSource = ExternalPostSource | InternalPostSource;
-
-export class BlogPostLabel {
-  title: string;
-  date: string;
-  tags: string[];
-  mentions: Mention[];
-  views_k: number;
-  migdal_score: number;
-  description: string;
-  image: string;
-  postSource: PostSource;
-  author: string;
-
-  private constructor(
-    title: string,
-    date: string,
-    tags: string[],
-    mentions: Mention[],
-    views_k: number,
-    migdal_score: number,
-    description: string,
-    image: string,
-    author: string,
-    postSource: PostSource
-  ) {
-    this.title = title;
-    this.date = date;
-    this.tags = tags;
-    this.mentions = mentions;
-    this.views_k = views_k;
-    this.migdal_score = migdal_score;
-    this.description = description;
-    this.image = image;
-    this.author = author;
-    this.postSource = postSource;
+  private constructor(post: ProcessedBlogPost) {
+    this.post = post;
   }
 
-  static fromQueryContent(post: BlogPostMetadata): BlogPostLabel {
-    return new BlogPostLabel(
-      post.title,
-      post.date,
-      post.tags || [],
-      post.mentions || [],
-      post.views_k || 0,
-      post.migdal_score || 0,
-      post.description || "",
-      post.image || "",
-      post.author || "Piotr Migdał",
-      {
-        isExternal: false,
-        path: post.path,
-      }
-    );
-  }
-
-  static fromExternalPost(post: ExternalPost): BlogPostLabel {
-    return new BlogPostLabel(
-      post.title,
-      post.date,
-      post.tags || [],
-      post.mentions || [],
-      post.views_k || 0,
-      post.migdal_score || 0,
-      post.description || "",
-      post.image || "",
-      post.author || "Piotr Migdał",
-      {
-        isExternal: true,
-        href: post.href,
-        source: post.source,
-      }
-    );
-  }
-
-  get hn(): boolean {
-    return (
-      this.mentions &&
-      Array.isArray(this.mentions) &&
-      this.mentions.some((mention: Mention) =>
-        mention.href.includes("news.ycombinator")
-      )
-    );
-  }
-
-  get displayDate(): string {
-    const dateObj = new Date(this.date);
-    if (isNaN(dateObj.getTime())) {
-      throw new Error(`Invalid date format: ${this.date}`);
-    }
-    return dateObj.toLocaleDateString("en-us", {
-      year: "numeric",
-      month: "short",
+  static fromBlogContent(content: BlogPostContent): BlogPostProcessor {
+    const validated = validateBlogPost(content);
+    
+    return new BlogPostProcessor({
+      title: validated.title,
+      date: validated.date,
+      displayDate: BlogPostProcessor.formatDisplayDate(validated.date),
+      tags: validated.tags,
+      mentions: validated.mentions,
+      views_k: validated.views_k,
+      migdal_score: validated.migdal_score,
+      description: validated.description,
+      image: validated.image,
+      author: validated.author,
+      source: {
+        type: 'internal',
+        path: content._path || '/blog/' + content.title.toLowerCase().replace(/\s+/g, '-'),
+      },
+      popularity: BlogPostProcessor.calculatePopularity(validated.views_k),
+      age: BlogPostProcessor.calculateAge(validated.date),
+      mentionCount: BlogPostProcessor.countImportantMentions(validated.mentions),
+      weight: 0, // Will be calculated when needed
     });
   }
 
-  get importantMentionCount(): number {
-    return this.mentions.filter(
-      (mention) => !mention.href.includes("medium.com")
+  static fromExternalArticle(article: ExternalArticle): BlogPostProcessor {
+    const validated = validateExternalArticle(article);
+    
+    return new BlogPostProcessor({
+      title: validated.title,
+      date: validated.date,
+      displayDate: BlogPostProcessor.formatDisplayDate(validated.date),
+      tags: validated.tags,
+      mentions: validated.mentions,
+      views_k: validated.views_k,
+      migdal_score: validated.migdal_score,
+      description: validated.description,
+      image: validated.image,
+      author: validated.author,
+      source: {
+        type: 'external',
+        href: validated.href,
+        source: validated.source,
+      },
+      popularity: BlogPostProcessor.calculatePopularity(validated.views_k),
+      age: BlogPostProcessor.calculateAge(validated.date),
+      mentionCount: BlogPostProcessor.countImportantMentions(validated.mentions),
+      weight: 0, // Will be calculated when needed
+    });
+  }
+
+  private static formatDisplayDate(date: string): string {
+    const dateObj = new Date(date);
+    if (isNaN(dateObj.getTime())) {
+      console.error(`Invalid date format: ${date}`);
+      return 'Invalid Date';
+    }
+    return dateObj.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+    });
+  }
+
+  private static calculatePopularity(views_k: number): number {
+    return views_k > 0 ? Math.log2(views_k) : 0;
+  }
+
+  private static calculateAge(date: string): number {
+    const now = new Date();
+    const postDate = new Date(date);
+    const yearsSince = (now.getTime() - postDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
+    return Math.max(0, yearsSince);
+  }
+
+  private static countImportantMentions(mentions: Mention[]): number {
+    return mentions.filter(
+      mention => !mention.href.includes('medium.com')
     ).length;
   }
 
-  toScores(): {
-    popularity: number;
-    mentions: number;
-    age: number;
-    migdalBias: number;
-  } {
-    const popularity = this.views_k ? Math.log2(this.views_k) : 0;
-    const mentionsCount = Math.sqrt(this.importantMentionCount);
-    const now = new Date();
-    const postDate = new Date(this.date);
-    const yearsSince =
-      (now.getTime() - postDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
-    const age = Math.log2(yearsSince);
-
-    return {
-      popularity,
-      mentions: mentionsCount,
-      age,
-      migdalBias: this.migdal_score,
-    };
+  get data(): ProcessedBlogPost {
+    return { ...this.post };
   }
 
-  toWeight(
+  get hasHackerNews(): boolean {
+    return this.post.mentions.some(
+      mention => mention.href.includes('news.ycombinator')
+    );
+  }
+
+  calculateWeight(
     weightPopularity: number,
     weightMentions: number,
     weightAge: number,
-    migdalweight: number
+    weightBias: number
   ): number {
-    const { popularity, mentions, age, migdalBias } = this.toScores();
+    const ageScore = this.post.age > 0 ? Math.log2(this.post.age) : 0;
+    const mentionScore = Math.sqrt(this.post.mentionCount);
+    
     return (
-      weightPopularity * popularity +
-      weightMentions * mentions +
-      weightAge * age +
-      migdalweight * migdalBias
-    );
-  }
-}
-
-export class BlogPostLabels {
-  items: BlogPostLabel[];
-
-  constructor(items: BlogPostLabel[]) {
-    this.items = items;
-  }
-
-  static new(): BlogPostLabels {
-    return new BlogPostLabels([]);
-  }
-
-  addExternal(posts: ExternalPost[]): BlogPostLabels {
-    this.items.push(...posts.map(BlogPostLabel.fromExternalPost));
-    return this;
-  }
-
-  addInternal(posts: BlogPostMetadata[]): BlogPostLabels {
-    this.items.push(...posts.map(BlogPostLabel.fromQueryContent));
-    return this;
-  }
-
-  /** Filter as a copy, unless 'all' is selected */
-  filterByTag(tag: string): BlogPostLabels {
-    if (tag === "all") {
-      return new BlogPostLabels([...this.items]);
-    }
-    return new BlogPostLabels(
-      this.items.filter((post) => post.tags && post.tags.includes(tag))
+      weightPopularity * this.post.popularity +
+      weightMentions * mentionScore +
+      weightAge * ageScore +
+      weightBias * this.post.migdal_score
     );
   }
 
-  /** Sort as a copy */
-  sortByWeights(
+  withWeight(
     weightPopularity: number,
     weightMentions: number,
     weightAge: number,
-    migdalWeight: number
-  ): BlogPostLabels {
-    const sortedItems = [...this.items].sort(
-      (a, b) =>
-        b.toWeight(weightPopularity, weightMentions, weightAge, migdalWeight) -
-        a.toWeight(weightPopularity, weightMentions, weightAge, migdalWeight)
-    );
-    return new BlogPostLabels(sortedItems);
-  }
-
-  allTagsCounted(): { name: string; count: number }[] {
-    const counter: Record<string, number> = {};
-    this.items.forEach((post) =>
-      post.tags.forEach((tag: string) => {
-        if (tag in counter) {
-          counter[tag] += 1;
-        } else {
-          counter[tag] = 1;
-        }
-      })
-    );
-    counter["all"] = this.items.length;
-    return Object.entries(counter)
-      .map(([name, count]) => ({ name, count }))
-      .sort((a, b) => b.count - a.count);
+    weightBias: number
+  ): BlogPostProcessor {
+    return new BlogPostProcessor({
+      ...this.post,
+      weight: this.calculateWeight(weightPopularity, weightMentions, weightAge, weightBias),
+    });
   }
 }
+
+export class BlogPostCollection {
+  private readonly posts: BlogPostProcessor[];
+
+  constructor(posts: BlogPostProcessor[] = []) {
+    this.posts = posts;
+  }
+
+  static create(): BlogPostCollection {
+    return new BlogPostCollection([]);
+  }
+
+  addBlogContent(contents: BlogPostContent[]): BlogPostCollection {
+    const newPosts = contents.map(content => BlogPostProcessor.fromBlogContent(content));
+    return new BlogPostCollection([...this.posts, ...newPosts]);
+  }
+
+  addExternalArticles(articles: ExternalArticle[]): BlogPostCollection {
+    const newPosts = articles.map(article => BlogPostProcessor.fromExternalArticle(article));
+    return new BlogPostCollection([...this.posts, ...newPosts]);
+  }
+
+  filterByTag(tag: string): BlogPostCollection {
+    if (tag === 'all') {
+      return new BlogPostCollection([...this.posts]);
+    }
+    
+    const filtered = this.posts.filter(
+      post => post.data.tags.includes(tag)
+    );
+    return new BlogPostCollection(filtered);
+  }
+
+  sortByWeight(
+    weightPopularity: number,
+    weightMentions: number,
+    weightAge: number,
+    weightBias: number
+  ): BlogPostCollection {
+    const weighted = this.posts.map(post =>
+      post.withWeight(weightPopularity, weightMentions, weightAge, weightBias)
+    );
+    
+    const sorted = [...weighted].sort(
+      (a, b) => b.data.weight - a.data.weight
+    );
+    
+    return new BlogPostCollection(sorted);
+  }
+
+  getTagCounts(): Map<string, number> {
+    const counts = new Map<string, number>();
+    counts.set('all', this.posts.length);
+    
+    for (const post of this.posts) {
+      for (const tag of post.data.tags) {
+        counts.set(tag, (counts.get(tag) || 0) + 1);
+      }
+    }
+    
+    return counts;
+  }
+
+  getTagCountsSorted(): Array<{ name: string; count: number }> {
+    const counts = this.getTagCounts();
+    return Array.from(counts.entries())
+      .map(([name, count]) => ({ name, count }))
+      .sort((a, b) => {
+        // 'all' tag always first
+        if (a.name === 'all') return -1;
+        if (b.name === 'all') return 1;
+        // Then sort by count descending
+        return b.count - a.count;
+      });
+  }
+
+  get items(): ProcessedBlogPost[] {
+    return this.posts.map(post => post.data);
+  }
+
+  get length(): number {
+    return this.posts.length;
+  }
+}
+
+// Re-export types for backward compatibility
+export type { BlogPostContent, ExternalArticle, Mention, ProcessedBlogPost } from '~/types/content';

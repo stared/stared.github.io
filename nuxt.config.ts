@@ -8,6 +8,12 @@ export default defineNuxtConfig({
   },
   
   compatibilityDate: "2025-08-29",
+
+  typescript: {
+    strict: true,
+    typeCheck: true,
+    shim: false
+  },
   
   modules: ["@nuxt/content", "@nuxtjs/plausible"],
 
