@@ -3,6 +3,7 @@ title: "The first post: why Jekyll?"
 slug: first-post
 date: 2015-12-02
 author: Piotr Migdał
+image: https://p.migdal.pl/imgs/blog/pmigdal-2024-by-julia-migdal.webp
 tags:
   - personal
   - tech

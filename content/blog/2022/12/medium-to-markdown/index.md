@@ -3,6 +3,8 @@ title: New blog - moving from Medium to Gridsome
 description: >-
   Why and how I moved from Jekyll and Medium to Gridsome.
 date: "2022-12-29T17:12:13.030Z"
+author: Piotr Migdał
+image: https://p.migdal.pl/imgs/blog/pmigdal-2024-by-julia-migdal.webp
 tags:
   - tech
 slug: new-blog-from-medium-to-gridsome

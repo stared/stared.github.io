@@ -6,8 +6,7 @@
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       :allowfullscreen="allowFullScreen"
-    >
-    </iframe>
+    />
   </div>
 </template>
 
@@ -64,10 +63,10 @@ const iframeSrc = computed(() => {
 });
 
 const containerStyle = computed(() => ({
-  position: "relative",
-  paddingBottom: "56.25%" /* 16:9 aspect ratio */,
-  height: 0,
-  overflow: "hidden",
+  position: "relative" as const,
+  paddingBottom: "56.25%",
+  height: "0",
+  overflow: "hidden" as const,
   maxWidth: "100%",
 }));
 </script>

@@ -3,6 +3,7 @@ title: "There are no projects like side projects"
 slug: theres-no-projects-like-side-projects
 date: 2015-01-02
 author: Piotr Migdał
+image: https://p.migdal.pl/imgs/blog/pmigdal-2024-by-julia-migdal.webp
 tags:
   - personal
 description: "What Albert Einstein, John Carmack and John Romero have in common? They all started their great projects as side projects."

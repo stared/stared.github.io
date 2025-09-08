@@ -4,13 +4,13 @@
 
     <ul class="publications">
       <li
-        v-for="(publication, index) in publications.items"
+        v-for="(publication, index) in publications"
         :key="index"
         class="publication"
       >
         <span class="authors">{{ publication.authors }}</span
         >,
-        <br />
+        <br >
         <a class="title" :href="publicationHref(publication)">{{
           publication.title
         }}</a
@@ -28,11 +28,12 @@
 </template>
 
 <script setup lang="ts">
-import { HeaderData } from "@/scripts/utils";
+import { HeaderData } from "~/utils/utils";
 import { queryCollection } from "#imports";
-import publications from "@/content/data/publications.json";
+import { usePublications } from "~/composables/useData";
 
-// Fetch the publications content
+// Fetch data
+const { data: publications } = await usePublications();
 const { data: publicationsContent } = await useAsyncData(
   "publications-content",
   () =>
@@ -46,23 +47,25 @@ useHead({
   meta: [
     {
       name: "description",
-      content: `Dr. Piotr Migdał wrote ${publications.items.length} publications.`,
+      content: `Dr. Piotr Migdał wrote ${publications.value?.length || 0} publications.`,
     },
   ],
 });
 
-function publicationHref(publication: any) {
+function publicationHref(publication: { doi?: string | null; arxiv?: string | null; link?: string }) {
   if (publication.doi) {
     return `https://doi.org/${publication.doi}`;
-  } else {
+  } else if (publication.arxiv) {
     return `https://arxiv.org/abs/${publication.arxiv}`;
+  } else {
+    return publication.link || '#';
   }
 }
 
 HeaderData.default()
   .setTitle("Publications")
   .setDescription(
-    `Dr. Piotr Migdał wrote ${publications.items.length} publications.`
+    `Dr. Piotr Migdał wrote ${publications.value?.length || 0} publications.`
   )
   .useHead();
 </script>

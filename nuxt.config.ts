@@ -1,8 +1,20 @@
-import { fileURLToPath } from "node:url";
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  
+  // Enable Nuxt 4 compatibility features
+  future: {
+    compatibilityVersion: 4,
+  },
+  
+  compatibilityDate: "2025-08-29",
+
+  typescript: {
+    strict: true,
+    typeCheck: true,
+    shim: false
+  },
+  
   modules: ["@nuxt/content", "@nuxtjs/plausible"],
 
   runtimeConfig: {
@@ -104,6 +116,4 @@ export default defineNuxtConfig({
       ],
     },
   },
-
-  compatibilityDate: "2024-10-13",
 });
