@@ -4,7 +4,7 @@
 
     <h2>Recent experience</h2>
     <ul class="experiences">
-      <li v-for="exp in experiences.items" :key="exp.period">
+      <li v-for="exp in experiences" :key="`${exp.period}-${exp.company}`">
         <span class="period">{{ exp.period }}</span>
         <span class="position">{{ exp.position }}</span>
         <a :href="exp.href" class="company">{{ exp.company }}</a>
@@ -32,7 +32,10 @@
 <script setup lang="ts">
 import { HeaderData } from "~/utils/utils";
 import { queryCollection } from "#imports";
-import experiences from "../../content/data/experiences.json";
+import { useExperiences } from "~/composables/useData";
+
+// Fetch data
+const { data: experiences } = await useExperiences();
 
 // Fetch the resume intro content
 const { data: resumeIntroContent } = await useAsyncData(

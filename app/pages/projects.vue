@@ -3,7 +3,7 @@
     <ContentRenderer v-if="projectsContent" :value="projectsContent" />
     <ul class="projects">
       <li
-        v-for="(project, index) in projects.items"
+        v-for="(project, index) in projects"
         :key="index"
         class="project"
       >
@@ -33,9 +33,10 @@
 <script setup lang="ts">
 import { HeaderData } from "~/utils/utils";
 import { queryCollection } from "#imports";
-import projects from "../../content/data/projects.json";
+import { useProjects } from "~/composables/useData";
 
-// Fetch the projects content
+// Fetch data
+const { data: projects } = await useProjects();
 const { data: projectsContent } = await useAsyncData("projects-content", () =>
   queryCollection("textComponents").path("/text-components/projects").first()
 );
@@ -45,7 +46,7 @@ HeaderData.default()
   .setDescription("Numerous projects by Piotr Migdał.")
   .useHead();
 
-function formatDate(x: string | null): string {
+function formatDate(x: string | null | undefined): string {
   if (x) {
     const date: Date = new Date(x);
     return date.getFullYear().toString();

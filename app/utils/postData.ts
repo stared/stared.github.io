@@ -1,14 +1,39 @@
-import type {
-  BlogPostContent,
-  ExternalArticle,
-  Mention,
-  ProcessedBlogPost,
-} from '~/types/content';
+import type { BlogPost, ExternalArticle, Mention } from '~/schemas'
+import { validateBlogPost, validateExternalArticle } from '~/schemas'
 
-import {
-  validateBlogPost,
-  validateExternalArticle,
-} from '~/types/content';
+// Internal processing type - ALL FIELDS ARE REQUIRED
+export interface ProcessedBlogPost {
+  // Core content fields
+  title: string
+  date: string
+  description: string
+  author: string
+  tags: string[]
+  image: string
+  mentions: Mention[]
+  views_k: number
+  migdal_score: number
+  
+  // Computed display fields
+  displayDate: string
+  popularity: number
+  age: number
+  mentionCount: number
+  weight: number
+  
+  // Nuxt Content fields (always have values, even for external)
+  _path: string
+  _id: string
+  _type: 'markdown'
+  _source: string
+  body: any
+  excerpt: any
+  
+  // External tracking
+  isExternal: boolean
+  href: string
+  source: string
+}
 
 export class BlogPostProcessor {
   private readonly post: ProcessedBlogPost;
@@ -17,9 +42,10 @@ export class BlogPostProcessor {
     this.post = post;
   }
 
-  static fromBlogContent(content: BlogPostContent): BlogPostProcessor {
+  static fromBlogContent(content: BlogPost): BlogPostProcessor {
     const validated = validateBlogPost(content);
     
+    const path = content._path || '/blog/' + content.title.toLowerCase().replace(/\s+/g, '-');
     return new BlogPostProcessor({
       title: validated.title,
       date: validated.date,
@@ -31,14 +57,19 @@ export class BlogPostProcessor {
       description: validated.description,
       image: validated.image,
       author: validated.author,
-      source: {
-        type: 'internal',
-        path: content._path || '/blog/' + content.title.toLowerCase().replace(/\s+/g, '-'),
-      },
       popularity: BlogPostProcessor.calculatePopularity(validated.views_k),
       age: BlogPostProcessor.calculateAge(validated.date),
       mentionCount: BlogPostProcessor.countImportantMentions(validated.mentions),
-      weight: 0, // Will be calculated when needed
+      weight: 0,
+      _path: path,
+      _id: content._id || path,
+      _type: 'markdown' as const,
+      _source: content._source || '',
+      body: content.body || null,
+      excerpt: content.excerpt || null,
+      isExternal: false,
+      href: path,
+      source: 'internal',
     });
   }
 
@@ -56,15 +87,19 @@ export class BlogPostProcessor {
       description: validated.description,
       image: validated.image,
       author: validated.author,
-      source: {
-        type: 'external',
-        href: validated.href,
-        source: validated.source,
-      },
       popularity: BlogPostProcessor.calculatePopularity(validated.views_k),
       age: BlogPostProcessor.calculateAge(validated.date),
       mentionCount: BlogPostProcessor.countImportantMentions(validated.mentions),
-      weight: 0, // Will be calculated when needed
+      weight: 0,
+      _path: `/external/${validated.title.toLowerCase().replace(/\s+/g, '-')}`,
+      _id: `external-${validated.href}`,
+      _type: 'markdown' as const,
+      _source: validated.source,
+      body: null,
+      excerpt: null,
+      isExternal: true,
+      href: validated.href,
+      source: validated.source,
     });
   }
 
@@ -103,7 +138,7 @@ export class BlogPostProcessor {
 
   get hasHackerNews(): boolean {
     return this.post.mentions.some(
-      mention => mention.href.includes('news.ycombinator')
+      (mention: Mention) => mention.href.includes('news.ycombinator')
     );
   }
 
@@ -148,7 +183,7 @@ export class BlogPostCollection {
     return new BlogPostCollection([]);
   }
 
-  addBlogContent(contents: BlogPostContent[]): BlogPostCollection {
+  addBlogContent(contents: BlogPost[]): BlogPostCollection {
     const newPosts = contents.map(content => BlogPostProcessor.fromBlogContent(content));
     return new BlogPostCollection([...this.posts, ...newPosts]);
   }
@@ -222,4 +257,4 @@ export class BlogPostCollection {
 }
 
 // Re-export types for backward compatibility
-export type { BlogPostContent, ExternalArticle, Mention, ProcessedBlogPost } from '~/types/content';
+export type { BlogPost, ExternalArticle, Mention } from '~/schemas'

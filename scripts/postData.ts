@@ -230,11 +230,7 @@ export class BlogPostLabels {
     const counter: Record<string, number> = {};
     this.items.forEach((post) =>
       post.tags.forEach((tag: string) => {
-        if (tag in counter) {
-          counter[tag] += 1;
-        } else {
-          counter[tag] = 1;
-        }
+        counter[tag] = (counter[tag] || 0) + 1;
       })
     );
     counter["all"] = this.items.length;

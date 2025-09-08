@@ -4,6 +4,7 @@ title: "My impressions from PyData Berlin 2016"
 slug: my-impressions-from-pydata-berlin-2016
 date: 2016-05-25
 author: Piotr Migdał
+image: https://p.migdal.pl/imgs/blog/pmigdal-2024-by-julia-migdal.webp
 tags:
   - event
   - data science
