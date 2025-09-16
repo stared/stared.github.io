@@ -1,9 +1,9 @@
 {
   "items": [
     {
-      "title": "WebR ggplot2",
+      "title": "WebR ggplot2 Playground",
       "desc": "Interactive R data viz entirely in your browser - thanks to WebAssembly",
-      "href": "https://quesmaorg.github.io/demo-webr-ggplot/",
+      "href": "https://quesmaorg.github.io/webr-ggplot-playground/",
       "dateStart": "2025-07-13T00:00:00.000Z",
       "tags": ["data viz", "typescript", "wasm", "r"]
     },
