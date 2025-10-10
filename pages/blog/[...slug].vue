@@ -4,8 +4,8 @@
       <div class="markdown-header">
         <h1>{{ blogPost.title }}</h1>
         <p class="header-information">
-          {{ formatDate(blogPost.date) }} | by
-          {{ blogPost.author || "Piotr Migdał" }}
+          {{ formatBlogDate(blogPost.date) }} | by
+          {{ blogPost.author || AUTHOR }}
         </p>
         <ul
           v-if="blogPost.mentions && blogPost.mentions.length > 0"
@@ -26,53 +26,22 @@
 </template>
 
 <script setup lang="ts">
-import { HeaderData } from "@/scripts/utils";
-import { queryCollection } from "#imports";
-
-// Define types for our content
-interface BlogPost {
-  title: string;
-  description?: string;
-  date: string;
-  author?: string;
-  mentions?: { href: string; text: string }[];
-  image?: string;
-  [key: string]: any;
-}
-
-interface FooterContent {
-  [key: string]: any;
-}
-
-const formatDate = (date: string) => {
-  return new Date(date).toLocaleDateString("en-UK", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-};
+import { AUTHOR } from "~/constants";
 
 const { path } = useRoute();
 
-// Get blog post content using queryCollection
-const { data: blogPost } = await useAsyncData<BlogPost>(`content-${path}`, () =>
+const { data: blogPost } = await useAsyncData(`content-${path}`, () =>
   queryCollection("blog").path(path).first()
 );
 
-// Get footer content
-const { data: footerContent } = await useAsyncData<FooterContent>(
-  "footer-content",
-  () =>
-    queryCollection("textComponents").path("/text-components/footer").first()
-);
+const { data: footerContent } = await contentPage("footer");
 
-// Add type guard for null/undefined
 if (blogPost.value) {
-  HeaderData.default()
-    .setTitle(blogPost.value.title)
-    .setDescription(blogPost.value.description || "")
-    .setImage(blogPost.value.image || "")
-    .useHead();
+  seo({
+    title: blogPost.value.title,
+    description: blogPost.value.description || "",
+    image: blogPost.value.image || "",
+  });
 }
 </script>
 

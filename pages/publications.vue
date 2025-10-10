@@ -28,43 +28,27 @@
 </template>
 
 <script setup lang="ts">
-import { HeaderData } from "@/scripts/utils";
-import { queryCollection } from "#imports";
 import publications from "@/content/data/publications.json";
 
-// Fetch the publications content
-const { data: publicationsContent } = await useAsyncData(
-  "publications-content",
-  () =>
-    queryCollection("textComponents")
-      .path("/text-components/publications")
-      .first()
-);
+const { data: publicationsContent } = await contentPage("publications");
 
-useHead({
+seo({
   title: "Publications",
-  meta: [
-    {
-      name: "description",
-      content: `Dr. Piotr Migdał wrote ${publications.items.length} publications.`,
-    },
-  ],
+  description: `Dr. Piotr Migdał wrote ${publications.items.length} publications.`,
 });
 
-function publicationHref(publication: any) {
+interface Publication {
+  doi?: string;
+  arxiv?: string;
+}
+
+function publicationHref(publication: Publication): string {
   if (publication.doi) {
     return `https://doi.org/${publication.doi}`;
   } else {
     return `https://arxiv.org/abs/${publication.arxiv}`;
   }
 }
-
-HeaderData.default()
-  .setTitle("Publications")
-  .setDescription(
-    `Dr. Piotr Migdał wrote ${publications.items.length} publications.`
-  )
-  .useHead();
 </script>
 
 <style scoped>

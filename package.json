@@ -11,12 +11,12 @@
     "build:all": "yarn copy:assets && yarn generate:embeddings && yarn generate"
   },
   "dependencies": {
-    "@nuxt/content": "^3.5.1",
+    "@nuxt/content": "^3.7.1",
     "@nuxtjs/plausible": "^1.2.0",
-    "@vueuse/head": "^2.0.0",
+    "better-sqlite3": "^12.4.1",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
-    "nuxt": "^3.17.4",
+    "nuxt": "^3.19.0",
     "openai": "^4.103.0",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",

@@ -1,22 +1,21 @@
 import { Feed } from "feed";
-import { BlogPostLabel } from "~/scripts/postData";
-import type { BlogPostMetadata } from "~/scripts/postData"; // Assuming this structure matches ParsedContent
-import { useStorage } from "#imports"; // Use Nuxt's auto-import
+import { BlogPostLabel, type BlogPostMetadata, type ExternalPost } from "~/scripts/postData";
+import { AUTHOR, SITE_URL } from "~/constants";
 
 export default defineEventHandler(async (event) => {
   const feed = new Feed({
-    title: "Piotr Migdał's Blog",
-    description: "Read blog posts by Piotr Migdał.",
-    id: "https://p.migdal.pl/",
-    link: "https://p.migdal.pl/",
+    title: `${AUTHOR}'s Blog`,
+    description: `Read blog posts by ${AUTHOR}.`,
+    id: `${SITE_URL}/`,
+    link: `${SITE_URL}/`,
     language: "en",
-    image: "https://p.migdal.pl/favicon.png",
-    favicon: "https://p.migdal.pl/favicon.png",
-    copyright: "All rights reserved 2024, Piotr Migdał",
+    image: `${SITE_URL}/favicon.png`,
+    favicon: `${SITE_URL}/favicon.png`,
+    copyright: `All rights reserved 2024, ${AUTHOR}`,
     author: {
-      name: "Piotr Migdał",
+      name: AUTHOR,
       email: "pmigdal@gmail.com",
-      link: "https://p.migdal.pl/",
+      link: `${SITE_URL}/`,
     },
   });
 
@@ -32,20 +31,17 @@ export default defineEventHandler(async (event) => {
       // Return null for invalid items
       const item = await storage.getItem(key);
 
-      // Check if item is a valid, non-null object representing content
-      // Added a check for 'title' as a basic sanity check for content structure
       if (
         typeof item !== "object" ||
         item === null ||
         !("_path" in item) ||
-        !(item as any).title
+        !("title" in item)
       ) {
         console.warn(`[Feed] Skipping invalid content item for key: ${key}`);
         return null; // Skip this item
       }
 
-      // Assert type and reconstruct structure for BlogPostLabel
-      const parsedItem = item as Record<string, any>; // Assert as a generic object
+      const parsedItem = item as Record<string, unknown>;
       return {
         ...parsedItem, // Spread the parsed content properties
         path: parsedItem._path, // Ensure 'path' is set from '_path' for BlogPostLabel
@@ -93,17 +89,17 @@ export default defineEventHandler(async (event) => {
       title: post.title,
       id: post.postSource.isExternal
         ? post.postSource.href
-        : `https://p.migdal.pl${post.postSource.path}`,
+        : `${SITE_URL}${post.postSource.path}`,
       link: post.postSource.isExternal
         ? post.postSource.href
-        : `https://p.migdal.pl${post.postSource.path}`,
+        : `${SITE_URL}${post.postSource.path}`,
       description: post.description || "",
       content: post.description || "", // Consider mapping body content if needed
       author: [
         {
-          name: "Piotr Migdał",
+          name: AUTHOR,
           email: "pmigdal@gmail.com",
-          link: "https://p.migdal.pl/",
+          link: `${SITE_URL}/`,
         },
       ],
       date: new Date(post.date),

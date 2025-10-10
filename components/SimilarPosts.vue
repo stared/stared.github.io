@@ -24,9 +24,6 @@ const { data: similarPosts } = await useAsyncData(
     try {
       const allSimilarities = await queryCollection("similarities").all();
 
-      // No need to log anymore
-      // console.log('[SimilarPosts] Fetched all similarities:', JSON.stringify(allSimilarities, null, 2));
-
       if (!Array.isArray(allSimilarities)) {
         console.error(
           "[SimilarPosts] Fetched data is not an array:",

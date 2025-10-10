@@ -30,32 +30,15 @@
 </template>
 
 <script setup lang="ts">
-import { HeaderData } from "@/scripts/utils";
-import { queryCollection } from "#imports";
 import experiences from "@/content/data/experiences.json";
 
-// Fetch the resume intro content
-const { data: resumeIntroContent } = await useAsyncData(
-  "resume-intro-content",
-  () =>
-    queryCollection("textComponents")
-      .path("/text-components/resume-intro")
-      .first()
-);
+const { data: resumeIntroContent } = await contentPage("resume-intro");
+const { data: resumeHighlightsContent } = await contentPage("resume-highlights");
 
-// Fetch the resume highlights content
-const { data: resumeHighlightsContent } = await useAsyncData(
-  "resume-highlights-content",
-  () =>
-    queryCollection("textComponents")
-      .path("/text-components/resume-highlights")
-      .first()
-);
-
-HeaderData.default()
-  .setTitle("Resume")
-  .setDescription("Piotr Migdał's career and availability.")
-  .useHead();
+seo({
+  title: "Resume",
+  description: "Piotr Migdał's career and availability.",
+});
 </script>
 
 <style scoped>

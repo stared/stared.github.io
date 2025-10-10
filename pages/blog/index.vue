@@ -1,54 +1,35 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from "vue";
-import { HeaderData } from "@/scripts/utils";
-// @ts-ignore
 import VueSlider from "vue-slider-component/dist-css/vue-slider-component.umd.min.js";
 import "vue-slider-component/dist-css/vue-slider-component.css";
 import "vue-slider-component/theme/default.css";
 import type { ExternalPost } from "@/scripts/postData";
 import { BlogPostLabels } from "@/scripts/postData";
 import { useRoute, useRouter } from "vue-router";
-import { queryCollection } from "#imports";
 
 const externalPosts: ExternalPost[] = (
   await import("@/content/data/external-articles.json")
 ).default.items;
 
-HeaderData.default()
-  .setTitle("Blog")
-  .setDescription("Read blog posts by Piotr Migdał.")
-  .useHead();
+seo({
+  title: "Blog",
+  description: "Read blog posts by Piotr Migdał.",
+});
 
 const { data: blogPosts } = await useAsyncData("blogPosts", async () => {
   return await queryCollection("blog").all();
 });
 
-const blogPostLabels = BlogPostLabels.new()
-  .addInternal(blogPosts.value || [])
-  .addExternal(externalPosts);
-
-const tagSelected = ref("all");
-const weightPopularity = ref(4);
-const weightMentions = ref(2);
-const weightAge = ref(-8);
-const migdalweight = ref(2);
-const sliderLine = (dotPos: number[]) => [
-  [50, dotPos[0], { backgroundColor: dotPos[0] < 50 ? "pink" : "" }],
-];
-
-const filteredPosts = computed(
-  () =>
-    blogPostLabels
-      .filterByTag(tagSelected.value)
-      .sortByWeights(
-        weightPopularity.value,
-        weightMentions.value,
-        weightAge.value,
-        migdalweight.value
-      ).items
-);
-
-const allTagsCounted = blogPostLabels.allTagsCounted();
+const {
+  tagSelected,
+  weightPopularity,
+  weightMentions,
+  weightAge,
+  migdalweight,
+  sliderLine,
+  filteredPosts,
+  allTagsCounted,
+} = blogFilter(blogPosts, externalPosts);
 
 const route = useRoute();
 onMounted(() => {
@@ -80,15 +61,7 @@ function selectTag(tag: string) {
   }
 }
 
-// Fetch the blog text content
-const { data: blogTextContent } = await useAsyncData(
-  "blog-text-content",
-  async () => {
-    return await queryCollection("textComponents")
-      .path("/text-components/blog")
-      .first();
-  }
-);
+const { data: blogTextContent } = await contentPage("blog");
 </script>
 
 <template>

@@ -1,30 +1,39 @@
+import { AUTHOR } from "~/constants";
+
 export interface Mention {
-  title: string;
+  text: string;
   href: string;
 }
 
-export interface BasePost {
+export interface ExternalPost {
   title: string;
   date: string;
   tags: string[];
   mentions?: Mention[];
   views_k?: number;
   migdal_score?: number;
-}
-
-export interface ExternalPost extends BasePost {
   source: string;
   href: string;
-}
-
-export interface BlogPostMetadata extends BasePost {
-  slug?: string;
-  author?: string;
   description?: string;
   image?: string;
-  _path?: string;
-  path?: string;
+  author?: string;
 }
+
+// For internal blog posts, use the inferred type from queryCollection
+export type BlogPostMetadata = {
+  title: string;
+  date: string;
+  tags: string[];
+  description?: string;
+  author?: string;
+  image?: string;
+  mentions?: Mention[];
+  views_k?: number;
+  migdal_score: number;
+  path: string;
+  _path?: string;
+  slug?: string;
+};
 
 type ExternalPostSource = {
   isExternal: true;
@@ -51,7 +60,10 @@ export class BlogPostLabel {
   postSource: PostSource;
   author: string;
 
-  constructor(post: any, isExternal: boolean = false) {
+  constructor(
+    post: BlogPostMetadata | ExternalPost,
+    isExternal: boolean = false
+  ) {
     if (isExternal) {
       // External posts have their own structure
       this.title = post.title;
@@ -62,7 +74,7 @@ export class BlogPostLabel {
       this.migdal_score = post.migdal_score || 0;
       this.description = post.description || "";
       this.image = post.image || "";
-      this.author = post.author || "Piotr Migdał";
+      this.author = post.author || AUTHOR;
       this.postSource = {
         isExternal: true,
         href: post.href,
@@ -80,7 +92,7 @@ export class BlogPostLabel {
       this.migdal_score = post.migdal_score || 0;
       this.description = post.description || "";
       this.image = post.image || "";
-      this.author = post.author || "Piotr Migdał";
+      this.author = post.author || AUTHOR;
       this.postSource = {
         isExternal: false,
         path: post.path,
@@ -172,12 +184,12 @@ export class BlogPostLabels {
     return new BlogPostLabels([]);
   }
 
-  addExternal(posts: any[]): BlogPostLabels {
+  addExternal(posts: ExternalPost[]): BlogPostLabels {
     this.items.push(...posts.map(BlogPostLabel.fromExternalPost));
     return this;
   }
 
-  addInternal(posts: any[]): BlogPostLabels {
+  addInternal(posts: BlogPostMetadata[]): BlogPostLabels {
     this.items.push(...posts.map(BlogPostLabel.fromQueryContent));
     return this;
   }
