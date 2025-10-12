@@ -32,6 +32,11 @@ jobs:
         run: yarn install
       - name: Static HTML export with Nuxt
         run: yarn generate
+      - name: Copy blog images to output
+        run: |
+          mkdir -p .output/public/blog
+          find content/blog -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.webp" -o -name "*.svg" \) -exec bash -c 'target=".output/public/blog/${1#content/blog/}"; mkdir -p "$(dirname "$target")"; cp "$1" "$target"' _ {} \;
+          echo "Copied $(find .output/public/blog -type f | wc -l) files"
       - name: Add CNAME file
         run: echo "p.migdal.pl" > .output/public/CNAME
       - name: Upload artifact
