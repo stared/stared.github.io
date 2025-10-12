@@ -5,13 +5,6 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxt/content', '@nuxtjs/plausible', '@nuxt/eslint'],
 
-  runtimeConfig: {
-    public: {
-      assetsBase:
-        process.env.NODE_ENV === 'production' ? 'https://p.migdal.pl' : '',
-    },
-  },
-
   content: {
     build: {
       markdown: {
