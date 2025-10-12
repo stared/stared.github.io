@@ -6,13 +6,12 @@
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       :allowfullscreen="allowFullScreen"
-    >
-    </iframe>
+    ></iframe>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed } from 'vue'
 
 const props = defineProps({
   videoId: {
@@ -21,15 +20,15 @@ const props = defineProps({
   },
   title: {
     type: String,
-    default: "YouTube video player",
+    default: 'YouTube video player',
   },
   width: {
     type: String,
-    default: "100%",
+    default: '100%',
   },
   height: {
     type: String,
-    default: "100%",
+    default: '100%',
   },
   allowFullScreen: {
     type: Boolean,
@@ -47,29 +46,29 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-});
+})
 
 const queryParams = computed(() => {
-  const params = new URLSearchParams();
-  if (props.start) params.set("start", props.start.toString());
-  if (props.end) params.set("end", props.end.toString());
-  if (props.autoplay) params.set("autoplay", "1");
-  return params.toString();
-});
+  const params = new URLSearchParams()
+  if (props.start) params.set('start', props.start.toString())
+  if (props.end) params.set('end', props.end.toString())
+  if (props.autoplay) params.set('autoplay', '1')
+  return params.toString()
+})
 
 const iframeSrc = computed(() => {
-  let src = `https://www.youtube.com/embed/${props.videoId}`;
-  if (queryParams.value) src += `?${queryParams.value}`;
-  return src;
-});
+  let src = `https://www.youtube.com/embed/${props.videoId}`
+  if (queryParams.value) src += `?${queryParams.value}`
+  return src
+})
 
 const containerStyle = computed(() => ({
-  position: "relative",
-  paddingBottom: "56.25%" /* 16:9 aspect ratio */,
+  position: 'relative',
+  paddingBottom: '56.25%' /* 16:9 aspect ratio */,
   height: 0,
-  overflow: "hidden",
-  maxWidth: "100%",
-}));
+  overflow: 'hidden',
+  maxWidth: '100%',
+}))
 </script>
 
 <style scoped>

@@ -1,173 +1,148 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from "vue";
-import { HeaderData } from "@/scripts/utils";
-// @ts-ignore
-import VueSlider from "vue-slider-component/dist-css/vue-slider-component.umd.min.js";
-import "vue-slider-component/dist-css/vue-slider-component.css";
-import "vue-slider-component/theme/default.css";
-import type { ExternalPost } from "@/scripts/postData";
-import { BlogPostLabels } from "@/scripts/postData";
-import { useRoute, useRouter } from "vue-router";
-import { queryCollection } from "#imports";
+import { onMounted, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+
+import type { ExternalPost } from '@/scripts/postData'
+import { getPostUrl, isExternalPost, hasHackerNews, formatPostDate } from '@/scripts/postData'
 
 const externalPosts: ExternalPost[] = (
-  await import("@/content/data/external-articles.json")
-).default.items;
+  await import('@/content/data/external-articles.json')
+).default.items
 
-HeaderData.default()
-  .setTitle("Blog")
-  .setDescription("Read blog posts by Piotr Migdał.")
-  .useHead();
+seo({
+  title: 'Blog',
+  description: 'Read blog posts by Piotr Migdał.',
+})
 
-const { data: blogPosts } = await useAsyncData("blogPosts", async () => {
-  return await queryCollection("blog").all();
-});
+const { data: blogPosts } = await useAsyncData('blogPosts', () => {
+  return queryCollection('blog').all()
+})
 
-const blogPostLabels = BlogPostLabels.new()
-  .addInternal(blogPosts.value || [])
-  .addExternal(externalPosts);
+const {
+  tagSelected,
+  weightPopularity,
+  weightMentions,
+  weightAge,
+  migdalweight,
+  sliderLine,
+  filteredPosts,
+  allTagsCounted,
+} = blogFilter(blogPosts, externalPosts)
 
-const tagSelected = ref("all");
-const weightPopularity = ref(4);
-const weightMentions = ref(2);
-const weightAge = ref(-8);
-const migdalweight = ref(2);
-const sliderLine = (dotPos: number[]) => [
-  [50, dotPos[0], { backgroundColor: dotPos[0] < 50 ? "pink" : "" }],
-];
-
-const filteredPosts = computed(
-  () =>
-    blogPostLabels
-      .filterByTag(tagSelected.value)
-      .sortByWeights(
-        weightPopularity.value,
-        weightMentions.value,
-        weightAge.value,
-        migdalweight.value
-      ).items
-);
-
-const allTagsCounted = blogPostLabels.allTagsCounted();
-
-const route = useRoute();
+const route = useRoute()
 onMounted(() => {
-  const tagParam = route.query.tag as string;
+  const tagParam = route.query.tag as string
   if (tagParam) {
-    tagSelected.value = tagParam;
+    tagSelected.value = tagParam
   }
-});
+})
 
 watch(
   () => route.query.tag,
   (newTag) => {
     if (newTag) {
-      tagSelected.value = newTag as string;
+      tagSelected.value = newTag as string
     } else {
-      tagSelected.value = "all";
+      tagSelected.value = 'all'
     }
-  }
-);
+  },
+)
 
-const router = useRouter();
+const router = useRouter()
 
 function selectTag(tag: string) {
-  tagSelected.value = tag;
-  if (tag === "all") {
-    router.push({ query: { tag: undefined } });
+  tagSelected.value = tag
+  if (tag === 'all') {
+    router.push({ query: { tag: undefined } })
   } else {
-    router.push({ query: { tag: tag } });
+    router.push({ query: { tag } })
   }
 }
 
-// Fetch the blog text content
-const { data: blogTextContent } = await useAsyncData(
-  "blog-text-content",
-  async () => {
-    return await queryCollection("textComponents")
-      .path("/text-components/blog")
-      .first();
-  }
-);
+const { data: blogTextContent } = await useAsyncData('blog-content', () =>
+  queryCollection('textComponents').path('/text-components/blog').first(),
+)
 </script>
 
 <template>
   <div>
     <ContentRenderer v-if="blogTextContent" :value="blogTextContent" />
-    <div class="slider-flexbox">
-      <div class="slider">
-        <span class="slider-label">log(popularity)</span>
-        <VueSlider
-          v-model="weightPopularity"
-          :min="-10"
-          :max="10"
-          width="150px"
-          :process="sliderLine"
-        />
+    <ClientOnly>
+      <div class="slider-flexbox">
+        <div class="slider">
+          <span class="slider-label">log(popularity)</span>
+          <VueSlider
+            v-model="weightPopularity"
+            :min="-10"
+            :max="10"
+            width="150px"
+            :process="sliderLine"
+          />
+        </div>
+        <div class="slider">
+          <span class="slider-label">sqrt(mentions)</span>
+          <VueSlider
+            v-model="weightMentions"
+            :min="-5"
+            :max="5"
+            width="150px"
+            :process="sliderLine"
+          />
+        </div>
+        <div class="slider">
+          <span class="slider-label">log(age)</span>
+          <VueSlider
+            v-model="weightAge"
+            :min="-20"
+            :max="20"
+            width="150px"
+            :process="sliderLine"
+          />
+        </div>
+        <div class="slider">
+          <span class="slider-label">author's bias</span>
+          <VueSlider
+            v-model="migdalweight"
+            :min="-5"
+            :max="5"
+            width="150px"
+            :process="sliderLine"
+          />
+        </div>
       </div>
-      <div class="slider">
-        <span class="slider-label">sqrt(mentions)</span>
-        <VueSlider
-          v-model="weightMentions"
-          :min="-5"
-          :max="5"
-          width="150px"
-          :process="sliderLine"
-        />
-      </div>
-      <div class="slider">
-        <span class="slider-label">log(age)</span>
-        <VueSlider
-          v-model="weightAge"
-          :min="-20"
-          :max="20"
-          width="150px"
-          :process="sliderLine"
-        />
-      </div>
-      <div class="slider">
-        <span class="slider-label">author's bias</span>
-        <VueSlider
-          v-model="migdalweight"
-          :min="-5"
-          :max="5"
-          width="150px"
-          :process="sliderLine"
-        />
-      </div>
-    </div>
+    </ClientOnly>
 
     <p>
       <span
         v-for="tag in allTagsCounted"
         :key="tag.name"
-        @click="selectTag(tag.name)"
         class="tag"
         :class="{ selected: tag.name === tagSelected }"
+        @click="selectTag(tag.name)"
         >[{{ tag.name }}]</span
       >
     </p>
 
     <div class="post-list">
       <div v-for="(post, index) in filteredPosts" :key="index" class="post">
-        <span v-if="!post.postSource.isExternal" class="title">
-          <NuxtLink :to="post.postSource.path">{{ post.title }}</NuxtLink>
+        <span v-if="!isExternalPost(post)" class="title">
+          <NuxtLink :to="getPostUrl(post)">{{ post.title }}</NuxtLink>
         </span>
         <span v-else class="title">
-          <a :href="post.postSource.href">{{ post.title }}</a>
+          <a :href="getPostUrl(post)">{{ post.title }}</a>
         </span>
         <span
           v-for="tagName in post.tags"
           :key="tagName"
-          @click="selectTag(tagName)"
           class="tag"
           :class="{ selected: tagName === tagSelected }"
+          @click="selectTag(tagName)"
           >[{{ tagName }}]</span
         >
-        <span v-if="post.hn" class="hn">[HN]</span>
-        <span class="date">{{ post.displayDate }}</span>
-        <span v-if="post.postSource.isExternal" class="source"
-          >@ {{ post.postSource.source }}</span
+        <span v-if="hasHackerNews(post)" class="hn">[HN]</span>
+        <span class="date">{{ formatPostDate(post) }}</span>
+        <span v-if="isExternalPost(post)" class="source"
+          >@ {{ post.source }}</span
         >
       </div>
     </div>

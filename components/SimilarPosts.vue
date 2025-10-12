@@ -11,58 +11,55 @@
 </template>
 
 <script setup lang="ts">
-import { useAsyncData, queryCollection } from "#imports";
+import { useAsyncData, queryCollection } from '#imports'
 
-const props = defineProps<{ slug: string }>();
+const props = defineProps<{ slug: string }>()
 
-const slugCleaned = props.slug.replace(/\//g, "_").replace(/_+$/, "");
-const expectedStem = `similarities/${slugCleaned}`; // Target stem value
+const slugCleaned = props.slug.replace(/\//g, '_').replace(/_+$/, '')
+const expectedStem = `similarities/${slugCleaned}` // Target stem value
 
 const { data: similarPosts } = await useAsyncData(
   `similar-posts-${slugCleaned}`,
   async () => {
     try {
-      const allSimilarities = await queryCollection("similarities").all();
-
-      // No need to log anymore
-      // console.log('[SimilarPosts] Fetched all similarities:', JSON.stringify(allSimilarities, null, 2));
+      const allSimilarities = await queryCollection('similarities').all()
 
       if (!Array.isArray(allSimilarities)) {
         console.error(
-          "[SimilarPosts] Fetched data is not an array:",
-          allSimilarities
-        );
-        return [];
+          '[SimilarPosts] Fetched data is not an array:',
+          allSimilarities,
+        )
+        return []
       }
 
       // --- Reinstate filtering logic using 'stem' ---
       const targetData = allSimilarities.find(
-        (item) => item.stem === expectedStem
-      );
+        (item) => item.stem === expectedStem,
+      )
 
       if (targetData?.most_similar) {
         console.log(
           `[SimilarPosts] Found similarity data for ${slugCleaned} by filtering on stem='${expectedStem}':`,
-          targetData.most_similar.length
-        );
-        return targetData.most_similar;
+          targetData.most_similar.length,
+        )
+        return targetData.most_similar
       } else {
         console.log(
-          `[SimilarPosts] No matching similarity data found for slug: ${slugCleaned} (stem: '${expectedStem}') after filtering ${allSimilarities.length} items.`
-        );
-        return [];
+          `[SimilarPosts] No matching similarity data found for slug: ${slugCleaned} (stem: '${expectedStem}') after filtering ${allSimilarities.length} items.`,
+        )
+        return []
       }
       // --- End of filtering logic ---
     } catch (error) {
       console.error(
         `[SimilarPosts] Error fetching posts for ${slugCleaned}:`,
-        error
-      );
-      return [];
+        error,
+      )
+      return []
     }
   },
-  { server: true }
-);
+  { server: true },
+)
 </script>
 
 <style>

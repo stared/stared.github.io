@@ -9,8 +9,9 @@
       >
         <a class="title" :href="project.href">{{ project.title }}</a
         >&nbsp;
-        <span class="status"
-          >{{ formatDate(project.dateStart) }}-{{ formatDate(project.dateEnd) }}
+        <span class="status">
+          {{ project.dateStart ? new Date(project.dateStart).getFullYear() : "" }}-
+          {{ project.dateEnd ? new Date(project.dateEnd).getFullYear() : "" }}
         </span>
         &nbsp;
         <span class="status">({{ project.status }})</span>
@@ -18,7 +19,8 @@
         <span class="description">{{ project.desc }}</span>
         <span v-if="project.mentions" class="mentions">
           <a
-            v-for="mention in project.mentions"
+            v-for="(mention, idx) in project.mentions"
+            :key="`${index}-${idx}`"
             :href="mention.href"
             class="mention"
             >[{{ mention.text }}]</a
@@ -30,28 +32,16 @@
 </template>
 
 <script setup lang="ts">
-import { HeaderData } from "@/scripts/utils";
-import { queryCollection } from "#imports";
-import projects from "@/content/data/projects.json";
+import projects from '@/content/data/projects.json'
 
-// Fetch the projects content
-const { data: projectsContent } = await useAsyncData("projects-content", () =>
-  queryCollection("textComponents").path("/text-components/projects").first()
-);
+const { data: projectsContent } = await useAsyncData('projects-content', () =>
+  queryCollection('textComponents').path('/text-components/projects').first(),
+)
 
-HeaderData.default()
-  .setTitle("Projects")
-  .setDescription("Numerous projects by Piotr Migdał.")
-  .useHead();
-
-function formatDate(x: string | null): string {
-  if (x) {
-    const date: Date = new Date(x);
-    return date.getFullYear().toString();
-  } else {
-    return "";
-  }
-}
+seo({
+  title: 'Projects',
+  description: 'Numerous projects by Piotr Migdał.',
+})
 </script>
 
 <style scoped>

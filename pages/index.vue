@@ -16,16 +16,11 @@
 </template>
 
 <script setup lang="ts">
-import { HeaderData } from "@/scripts/utils";
+const { data: aboutContent } = await useAsyncData('me-content', () =>
+  queryCollection('textComponents').path('/text-components/me').first(),
+)
 
-// Fetch the about me content
-const { data: aboutContent } = await useAsyncData("about-content", async () => {
-  return await queryCollection("textComponents")
-    .path("/text-components/me")
-    .first();
-});
-
-HeaderData.default().setTitle("Homepage").useHead();
+seo({ title: 'Homepage' })
 </script>
 
 <style>
