@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import VueSlider from 'vue-slider-component/dist-css/vue-slider-component.umd.min.js';
-import 'vue-slider-component/dist-css/vue-slider-component.css';
+import RangeSlider from '@/components/RangeSlider.vue';
 import { BlogPostCollection } from '@/lib/postData';
 import type { BlogPost } from '@/lib/postData';
 import { getPostUrl, isExternalPost, hasHackerNews, formatPostDate } from '@/lib/postData';
@@ -17,10 +16,6 @@ const weightPopularity = ref(4);
 const weightMentions = ref(2);
 const weightAge = ref(-8);
 const migdalweight = ref(2);
-
-const sliderLine = (dotPos: number[]) => [
-  [50, dotPos[0], { backgroundColor: dotPos[0] < 50 ? 'pink' : '' }],
-];
 
 const collection = new BlogPostCollection(props.posts);
 const allTagsCounted = collection.getAllTagsWithCounts();
@@ -46,42 +41,38 @@ function selectTag(tag: string) {
     <div class="slider-flexbox">
       <div class="slider">
         <span class="slider-label">log(popularity)</span>
-        <VueSlider
+        <RangeSlider
           v-model="weightPopularity"
           :min="-10"
           :max="10"
           width="150px"
-          :process="sliderLine"
         />
       </div>
       <div class="slider">
         <span class="slider-label">sqrt(mentions)</span>
-        <VueSlider
+        <RangeSlider
           v-model="weightMentions"
           :min="-5"
           :max="5"
           width="150px"
-          :process="sliderLine"
         />
       </div>
       <div class="slider">
         <span class="slider-label">log(age)</span>
-        <VueSlider
+        <RangeSlider
           v-model="weightAge"
           :min="-20"
           :max="20"
           width="150px"
-          :process="sliderLine"
         />
       </div>
       <div class="slider">
         <span class="slider-label">author's bias</span>
-        <VueSlider
+        <RangeSlider
           v-model="migdalweight"
           :min="-5"
           :max="5"
           width="150px"
-          :process="sliderLine"
         />
       </div>
     </div>

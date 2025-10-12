@@ -13,6 +13,9 @@ export default defineConfig({
     sitemap(),
     vue(),
   ],
+  image: {
+    remotePatterns: [{ protocol: 'https' }],
+  },
   markdown: {
     remarkPlugins: [remarkMath],
     rehypePlugins: [rehypeKatex],
@@ -31,10 +34,5 @@ export default defineConfig({
     '/2017/07/23/dating-for-nerds.html': '/blog/2017/07/dating-for-nerds',
     '/2018/09/15/simple-diagrams-deep-learning.html': '/blog/2018/09/simple-diagrams-deep-learning',
     '/2017/08/14/bangbangcon.html': '/blog/2017/08/bangbangcon',
-  },
-  vite: {
-    ssr: {
-      noExternal: ['vue-slider-component'],
-    },
   },
 });
