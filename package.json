@@ -4,7 +4,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "generate": "nuxt generate && node scripts/copyContentAssets.mjs",
     "preview": "nuxt preview",
     "generate:embeddings": "tsx scripts/generateEmbeddings.ts && tsx scripts/generateSimilarities.ts",
     "build:all": "yarn generate:embeddings && yarn generate",

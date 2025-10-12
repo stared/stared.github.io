@@ -1,6 +1,4 @@
 // ESLint configured
-import { join } from 'path'
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -78,21 +76,6 @@ export default defineNuxtConfig({
   },
 
   hooks: {
-    'nitro:build:public-assets': async (nitro) => {
-      // Copy blog images after build
-      const { cpSync } = await import('fs')
-      const sourceDir = join(process.cwd(), 'content/blog')
-      const destDir = join(nitro.options.output.publicDir, 'blog')
-
-      cpSync(sourceDir, destDir, {
-        recursive: true,
-        filter: (src) => {
-          return src.includes('.') ? /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(src) : true
-        }
-      })
-
-      console.log('[nitro] ✔ Blog images copied to public directory')
-    },
     close: () => {
       // fixes `nuxi generate` hanging at the end "You can preview this build"
       // @see https://github.com/nuxt/cli/issues/169#issuecomment-1729300497
