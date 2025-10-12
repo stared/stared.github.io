@@ -29,12 +29,6 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    publicAssets: [
-      {
-        dir: './content',
-        maxAge: 60 * 60 * 24 * 365, // 1 year cache
-      }
-    ],
     prerender: {
       routes: [
         '/2017/01/06/king-man-woman-queen-why.html',
