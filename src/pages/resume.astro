@@ -1,0 +1,15 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const resumeIntro = await getEntry('textComponents', 'resume-intro');
+const resumeHighlights = await getEntry('textComponents', 'resume-highlights');
+
+const { Content: IntroContent } = await resumeIntro.render();
+const { Content: HighlightsContent } = await resumeHighlights.render();
+---
+
+<BaseLayout title="Resume" description="Resume of Piotr Migdał.">
+  <IntroContent />
+  <HighlightsContent />
+</BaseLayout>

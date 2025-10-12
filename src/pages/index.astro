@@ -1,0 +1,43 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import migdalPhoto from '@/assets/imgs/piotr-migdal-direct-smiling-2022-by-cytacka-600px.jpg';
+
+const aboutContent = await getEntry('textComponents', 'me');
+const { Content } = await aboutContent.render();
+---
+
+<BaseLayout title="Homepage">
+  <div class="flex">
+    <div class="flex-column text">
+      <Content />
+    </div>
+    <div class="flex-column image">
+      <img
+        class="main-img"
+        alt="A photo of Piotr Migdał"
+        src={migdalPhoto.src}
+        width={migdalPhoto.width}
+        height={migdalPhoto.height}
+      />
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .flex-column {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 300px;
+  }
+
+  .main-img {
+    max-width: 100%;
+  }
+</style>

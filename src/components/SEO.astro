@@ -1,0 +1,32 @@
+---
+import defaultImage from '@/assets/imgs/piotr-migdal-direct-smiling-2022-by-cytacka-thumbnail.jpg';
+import { AUTHOR, SITE_TITLE, SITE_DESCRIPTION } from '@/lib/constants';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  author?: string;
+}
+
+const { title, description, image, author } = Astro.props;
+
+const pageTitle = title ? `${title} - ${AUTHOR}` : SITE_TITLE;
+const pageDescription = description || SITE_DESCRIPTION;
+const pageImage = image || defaultImage.src;
+const pageAuthor = author || AUTHOR;
+---
+
+<meta name="description" content={pageDescription} />
+<meta name="author" content={pageAuthor} />
+
+<!-- Open Graph -->
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={pageDescription} />
+<meta property="og:image" content={pageImage} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={pageDescription} />
+<meta name="twitter:image" content={pageImage} />

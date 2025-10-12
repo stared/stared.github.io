@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SimilarPosts from '@/components/SimilarPosts.astro';
+import { AUTHOR } from '@/lib/constants';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const { title, description, image, date, author = AUTHOR, mentions } = entry.data;
+
+const formattedDate = new Date(date).toLocaleDateString('en-UK', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+});
+---
+
+<BaseLayout title={title} description={description} image={image}>
+  <article>
+    <div class="markdown-header">
+      <h1>{title}</h1>
+      <p class="header-information">
+        {formattedDate} | by {author}
+      </p>
+      {mentions && mentions.length > 0 && (
+        <ul class="header-mentions">
+          {mentions.map((mention) => (
+            <li><a href={mention.href}>{mention.text}</a></li>
+          ))}
+        </ul>
+      )}
+    </div>
+    <Content />
+    <SimilarPosts slug={entry.slug} />
+  </article>
+</BaseLayout>
+
+<style>
+  .markdown-header .header-mentions {
+    font-size: 0.8em;
+  }
+
+  .header-information {
+    opacity: 0.7;
+    font-size: 0.9em;
+  }
+</style>

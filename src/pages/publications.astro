@@ -1,0 +1,11 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const publicationsContent = await getEntry('textComponents', 'publications');
+const { Content } = await publicationsContent.render();
+---
+
+<BaseLayout title="Publications" description="Publications by Piotr Migdał.">
+  <Content />
+</BaseLayout>

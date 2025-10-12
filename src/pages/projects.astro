@@ -1,0 +1,62 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import projectsData from '@/content/data/projects.json';
+
+const projectsContent = await getEntry('textComponents', 'projects');
+const { Content } = await projectsContent.render();
+
+interface Project {
+  title: string;
+  href: string;
+  dateStart: string;
+  dateEnd: string;
+  status: string;
+  desc: string;
+  mentions?: Array<{ text: string; href: string }>;
+}
+
+const projects = projectsData.items as Project[];
+---
+
+<BaseLayout title="Projects" description="Numerous projects by Piotr Migdał.">
+  <Content />
+  <ul class="projects">
+    {projects.map((project) => (
+      <li class="project">
+        <a class="title" href={project.href}>{project.title}</a>
+        {' '}
+        <span class="status">
+          {project.dateStart ? new Date(project.dateStart).getFullYear() : ''}-
+          {project.dateEnd ? new Date(project.dateEnd).getFullYear() : ''}
+        </span>
+        {' '}
+        <span class="status">({project.status})</span>
+        <br />
+        <span class="description">{project.desc}</span>
+        {project.mentions && (
+          <span class="mentions">
+            {project.mentions.map((mention) => (
+              <a href={mention.href} class="mention">[{mention.text}]</a>
+            ))}
+          </span>
+        )}
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
+
+<style>
+  li.project {
+    color: #828282;
+    font-size: 0.9rem;
+    list-style: none;
+    padding-bottom: 1rem;
+  }
+
+  a.mention {
+    font-size: 0.8em;
+    color: #ff6600;
+    padding: 0 0.2em;
+  }
+</style>

@@ -1,0 +1,34 @@
+{
+  "most_similar": [
+    {
+      "slug": "2021_02_dont-fight-flight-or-freeze-your-body-and-emotions",
+      "similarity": 0.7536839378178182,
+      "title": "Don’t fight, flight (or freeze) your body and emotions",
+      "path": "/blog/2021/02/dont-fight-flight-or-freeze-your-body-and-emotions"
+    },
+    {
+      "slug": "2017_07_dating-for-nerds",
+      "similarity": 0.719776882500594,
+      "title": "Dating for nerds (part 1): problem diagnosis",
+      "path": "/blog/2017/07/dating-for-nerds"
+    },
+    {
+      "slug": "2017_09_dating-for-nerds-gender-differences",
+      "similarity": 0.6723210469309983,
+      "title": "Dating for nerds (part 2): gender differences",
+      "path": "/blog/2017/09/dating-for-nerds-gender-differences"
+    },
+    {
+      "slug": "2019_07_dreams-drugs-convnets",
+      "similarity": 0.6409940224922167,
+      "title": "Dreams, Drugs & ConvNets",
+      "path": "/blog/2019/07/dreams-drugs-convnets"
+    },
+    {
+      "slug": "2019_06_cloak-dagger-creativity-camp",
+      "similarity": 0.6165247668519465,
+      "title": "Cloak & dagger creativity camp",
+      "path": "/blog/2019/06/cloak-dagger-creativity-camp"
+    }
+  ]
+}
