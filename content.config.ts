@@ -9,9 +9,9 @@ export default defineContentConfig({
         title: z.string(),
         date: z.string(),
         tags: z.array(z.string()).default([]),
-        description: z.string().optional(),
-        author: z.string().optional(),
-        image: z.string().optional(),
+        description: z.string().default(""),
+        author: z.string().default("Piotr Migdał"),
+        image: z.string().default(""),
         mentions: z
           .array(
             z.object({
@@ -20,7 +20,7 @@ export default defineContentConfig({
             })
           )
           .default([]),
-        views_k: z.number().optional(),
+        views_k: z.number().default(0),
         migdal_score: z.number().default(0),
       }),
     }),

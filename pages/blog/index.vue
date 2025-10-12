@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from "vue";
-import VueSlider from "vue-slider-component/dist-css/vue-slider-component.umd.min.js";
-import "vue-slider-component/dist-css/vue-slider-component.css";
-import "vue-slider-component/theme/default.css";
 import type { ExternalPost } from "@/scripts/postData";
-import { BlogPostLabels } from "@/scripts/postData";
+import { getPostUrl, isExternalPost, hasHackerNews, formatPostDate } from "@/scripts/postData";
 import { useRoute, useRouter } from "vue-router";
 
 const externalPosts: ExternalPost[] = (
@@ -61,54 +58,58 @@ function selectTag(tag: string) {
   }
 }
 
-const { data: blogTextContent } = await contentPage("blog");
+const { data: blogTextContent } = await useAsyncData("blog-content", () =>
+  queryCollection("textComponents").path("/text-components/blog").first()
+);
 </script>
 
 <template>
   <div>
     <ContentRenderer v-if="blogTextContent" :value="blogTextContent" />
-    <div class="slider-flexbox">
-      <div class="slider">
-        <span class="slider-label">log(popularity)</span>
-        <VueSlider
-          v-model="weightPopularity"
-          :min="-10"
-          :max="10"
-          width="150px"
-          :process="sliderLine"
-        />
+    <ClientOnly>
+      <div class="slider-flexbox">
+        <div class="slider">
+          <span class="slider-label">log(popularity)</span>
+          <VueSlider
+            v-model="weightPopularity"
+            :min="-10"
+            :max="10"
+            width="150px"
+            :process="sliderLine"
+          />
+        </div>
+        <div class="slider">
+          <span class="slider-label">sqrt(mentions)</span>
+          <VueSlider
+            v-model="weightMentions"
+            :min="-5"
+            :max="5"
+            width="150px"
+            :process="sliderLine"
+          />
+        </div>
+        <div class="slider">
+          <span class="slider-label">log(age)</span>
+          <VueSlider
+            v-model="weightAge"
+            :min="-20"
+            :max="20"
+            width="150px"
+            :process="sliderLine"
+          />
+        </div>
+        <div class="slider">
+          <span class="slider-label">author's bias</span>
+          <VueSlider
+            v-model="migdalweight"
+            :min="-5"
+            :max="5"
+            width="150px"
+            :process="sliderLine"
+          />
+        </div>
       </div>
-      <div class="slider">
-        <span class="slider-label">sqrt(mentions)</span>
-        <VueSlider
-          v-model="weightMentions"
-          :min="-5"
-          :max="5"
-          width="150px"
-          :process="sliderLine"
-        />
-      </div>
-      <div class="slider">
-        <span class="slider-label">log(age)</span>
-        <VueSlider
-          v-model="weightAge"
-          :min="-20"
-          :max="20"
-          width="150px"
-          :process="sliderLine"
-        />
-      </div>
-      <div class="slider">
-        <span class="slider-label">author's bias</span>
-        <VueSlider
-          v-model="migdalweight"
-          :min="-5"
-          :max="5"
-          width="150px"
-          :process="sliderLine"
-        />
-      </div>
-    </div>
+    </ClientOnly>
 
     <p>
       <span
@@ -123,11 +124,11 @@ const { data: blogTextContent } = await contentPage("blog");
 
     <div class="post-list">
       <div v-for="(post, index) in filteredPosts" :key="index" class="post">
-        <span v-if="!post.postSource.isExternal" class="title">
-          <NuxtLink :to="post.postSource.path">{{ post.title }}</NuxtLink>
+        <span v-if="!isExternalPost(post)" class="title">
+          <NuxtLink :to="getPostUrl(post)">{{ post.title }}</NuxtLink>
         </span>
         <span v-else class="title">
-          <a :href="post.postSource.href">{{ post.title }}</a>
+          <a :href="getPostUrl(post)">{{ post.title }}</a>
         </span>
         <span
           v-for="tagName in post.tags"
@@ -137,10 +138,10 @@ const { data: blogTextContent } = await contentPage("blog");
           :class="{ selected: tagName === tagSelected }"
           >[{{ tagName }}]</span
         >
-        <span v-if="post.hn" class="hn">[HN]</span>
-        <span class="date">{{ post.displayDate }}</span>
-        <span v-if="post.postSource.isExternal" class="source"
-          >@ {{ post.postSource.source }}</span
+        <span v-if="hasHackerNews(post)" class="hn">[HN]</span>
+        <span class="date">{{ formatPostDate(post) }}</span>
+        <span v-if="isExternalPost(post)" class="source"
+          >@ {{ post.source }}</span
         >
       </div>
     </div>

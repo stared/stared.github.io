@@ -16,7 +16,9 @@
 </template>
 
 <script setup lang="ts">
-const { data: aboutContent } = await contentPage("me");
+const { data: aboutContent } = await useAsyncData("me-content", () =>
+  queryCollection("textComponents").path("/text-components/me").first()
+);
 
 seo({ title: "Homepage" });
 </script>

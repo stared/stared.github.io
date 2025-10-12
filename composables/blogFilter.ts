@@ -1,12 +1,13 @@
 import { ref, computed, type Ref } from "vue";
-import type { ExternalPost, BlogPostMetadata } from "@/scripts/postData";
-import { BlogPostLabels } from "@/scripts/postData";
+import type { BlogCollectionItem } from "@nuxt/content";
+import type { ExternalPost } from "@/scripts/postData";
+import { BlogPostCollection } from "@/scripts/postData";
 
 /**
  * Manage blog post filtering and sorting
  */
 export const blogFilter = (
-  blogPosts: Ref<BlogPostMetadata[] | null>,
+  blogPosts: Ref<BlogCollectionItem[] | null>,
   externalPosts: ExternalPost[]
 ) => {
   const tagSelected = ref("all");
@@ -19,22 +20,25 @@ export const blogFilter = (
     [50, dotPos[0], { backgroundColor: dotPos[0] < 50 ? "pink" : "" }],
   ];
 
-  const blogPostLabels = BlogPostLabels.new()
-    .addInternal(blogPosts.value || [])
-    .addExternal(externalPosts);
+  // Create collection with all posts
+  const collection = new BlogPostCollection();
+  if (blogPosts.value) {
+    collection.addPosts(...blogPosts.value);
+  }
+  collection.addPosts(...externalPosts);
 
   const filteredPosts = computed(() =>
-    blogPostLabels
+    collection
       .filterByTag(tagSelected.value)
       .sortByWeights(
         weightPopularity.value,
         weightMentions.value,
         weightAge.value,
         migdalweight.value
-      ).items
+      ).posts
   );
 
-  const allTagsCounted = blogPostLabels.allTagsCounted();
+  const allTagsCounted = collection.getAllTagsWithCounts();
 
   return {
     tagSelected,

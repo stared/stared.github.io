@@ -30,7 +30,9 @@
 <script setup lang="ts">
 import publications from "@/content/data/publications.json";
 
-const { data: publicationsContent } = await contentPage("publications");
+const { data: publicationsContent } = await useAsyncData("publications-content", () =>
+  queryCollection("textComponents").path("/text-components/publications").first()
+);
 
 seo({
   title: "Publications",

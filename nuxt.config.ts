@@ -94,7 +94,6 @@ export default defineNuxtConfig({
 
   app: {
     baseURL: "/",
-    cdnURL: "https://p.migdal.pl",
     head: {
       link: [
         {

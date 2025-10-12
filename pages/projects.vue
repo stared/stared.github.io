@@ -10,7 +10,7 @@
         <a class="title" :href="project.href">{{ project.title }}</a
         >&nbsp;
         <span class="status"
-          >{{ formatYear(project.dateStart) }}-{{ formatYear(project.dateEnd) }}
+          >{{ project.dateStart ? new Date(project.dateStart).getFullYear() : "" }}-{{ project.dateEnd ? new Date(project.dateEnd).getFullYear() : "" }}
         </span>
         &nbsp;
         <span class="status">({{ project.status }})</span>
@@ -32,7 +32,9 @@
 <script setup lang="ts">
 import projects from "@/content/data/projects.json";
 
-const { data: projectsContent } = await contentPage("projects");
+const { data: projectsContent } = await useAsyncData("projects-content", () =>
+  queryCollection("textComponents").path("/text-components/projects").first()
+);
 
 seo({
   title: "Projects",

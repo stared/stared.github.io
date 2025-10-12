@@ -4,7 +4,11 @@
       <div class="markdown-header">
         <h1>{{ blogPost.title }}</h1>
         <p class="header-information">
-          {{ formatBlogDate(blogPost.date) }} | by
+          {{ new Date(blogPost.date).toLocaleDateString("en-UK", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          }) }} | by
           {{ blogPost.author || AUTHOR }}
         </p>
         <ul
@@ -27,6 +31,7 @@
 
 <script setup lang="ts">
 import { AUTHOR } from "~/constants";
+import { formatPostDate } from "@/scripts/postData";
 
 const { path } = useRoute();
 
@@ -34,7 +39,9 @@ const { data: blogPost } = await useAsyncData(`content-${path}`, () =>
   queryCollection("blog").path(path).first()
 );
 
-const { data: footerContent } = await contentPage("footer");
+const { data: footerContent } = await useAsyncData("footer-content", () =>
+  queryCollection("textComponents").path("/text-components/footer").first()
+);
 
 if (blogPost.value) {
   seo({

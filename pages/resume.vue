@@ -32,8 +32,12 @@
 <script setup lang="ts">
 import experiences from "@/content/data/experiences.json";
 
-const { data: resumeIntroContent } = await contentPage("resume-intro");
-const { data: resumeHighlightsContent } = await contentPage("resume-highlights");
+const { data: resumeIntroContent } = await useAsyncData("resume-intro-content", () =>
+  queryCollection("textComponents").path("/text-components/resume-intro").first()
+);
+const { data: resumeHighlightsContent } = await useAsyncData("resume-highlights-content", () =>
+  queryCollection("textComponents").path("/text-components/resume-highlights").first()
+);
 
 seo({
   title: "Resume",
