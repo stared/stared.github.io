@@ -103,6 +103,28 @@ const experiences = defineCollection({
   }),
 });
 
+const externalArticles = defineCollection({
+  type: 'data',
+  schema: z.object({
+    items: z.array(
+      z.object({
+        title: z.string(),
+        source: z.string(),
+        href: z.string(),
+        date: z.string(),
+        tags: z.array(z.string()).default([]),
+        migdal_score: z.number(),
+        description: z.string().optional(),
+        image: z.string().optional(),
+        author: z.string().optional(),
+        mentions: z.array(mentionSchema).optional(),
+        view_k: z.number().optional(),
+        views_k: z.number().optional(),
+      })
+    ),
+  }),
+});
+
 const data = defineCollection({
   type: 'data',
   schema: z.object({}).passthrough(),
@@ -115,5 +137,6 @@ export const collections = {
   projects,
   publications,
   experiences,
+  externalArticles,
   data,
 };

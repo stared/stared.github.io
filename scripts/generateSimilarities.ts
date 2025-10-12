@@ -6,8 +6,8 @@ import matter from 'gray-matter'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const EMBEDDINGS_DIR = path.join(__dirname, '../public/embeddings')
-const SIMILARITIES_DIR = path.join(__dirname, '../content/similarities')
-const CONTENT_DIR = path.join(__dirname, '../content')
+const SIMILARITIES_DIR = path.join(__dirname, '../src/content/similarities')
+const CONTENT_DIR = path.join(__dirname, '../src/content')
 
 interface EmbeddingData {
   slug: string;

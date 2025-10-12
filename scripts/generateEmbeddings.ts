@@ -16,7 +16,7 @@ if (!OPENAI_API_KEY) {
 
 const openai = new OpenAI({ apiKey: OPENAI_API_KEY })
 
-const POSTS_DIR = path.join(__dirname, '../content/blog')
+const POSTS_DIR = path.join(__dirname, '../src/content/blog')
 const EMBEDDINGS_DIR = path.join(__dirname, '../public/embeddings')
 
 async function getEmbedding(text: string): Promise<number[]> {

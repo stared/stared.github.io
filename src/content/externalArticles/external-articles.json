@@ -136,7 +136,7 @@
       "tags": ["tech", "deep learning", "cognition"],
       "mentions": [
         {
-          "title": "On Reddit r/learningmachinelearning",
+          "text": "On Reddit r/learningmachinelearning",
           "href": "https://www.reddit.com/r/learnmachinelearning/comments/bdts7u/does_ai_have_a_dirty_mind_too/"
         }
       ],
@@ -159,7 +159,7 @@
       "tags": ["tech", "deep learning"],
       "mentions": [
         {
-          "title": "Hacker News front page with an inflamatory title \"Don't learn TensorFlow! Start with Keras or PyTorch instead\"",
+          "text": "Hacker News front page with an inflamatory title \"Don't learn TensorFlow! Start with Keras or PyTorch instead\"",
           "href": "https://news.ycombinator.com/item?id=17415321"
         }
       ],

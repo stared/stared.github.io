@@ -496,11 +496,6 @@ declare module 'astro:content' {
 
 	type DataEntryMap = {
 		"data": {
-"external-articles": {
-	id: "external-articles";
-  collection: "data";
-  data: InferEntrySchema<"data">
-};
 "media-mentions": {
 	id: "media-mentions";
   collection: "data";
@@ -512,6 +507,13 @@ declare module 'astro:content' {
 	id: "experiences";
   collection: "experiences";
   data: InferEntrySchema<"experiences">
+};
+};
+"externalArticles": {
+"external-articles": {
+	id: "external-articles";
+  collection: "externalArticles";
+  data: InferEntrySchema<"externalArticles">
 };
 };
 "projects": {

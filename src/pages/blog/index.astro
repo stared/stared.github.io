@@ -2,11 +2,11 @@
 import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import BlogList from '@/components/BlogList.vue';
-import externalArticles from '@/content/data/external-articles.json';
 import type { ExternalPost } from '@/lib/postData';
 
 const blogPosts = await getCollection('blog');
-const externalPosts = externalArticles.items as ExternalPost[];
+const externalArticlesData = await getEntry('externalArticles', 'external-articles');
+const externalPosts = externalArticlesData.data.items as ExternalPost[];
 const allPosts = [...blogPosts, ...externalPosts];
 
 const blogTextContent = await getEntry('textComponents', 'blog');
