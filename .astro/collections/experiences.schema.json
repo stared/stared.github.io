@@ -1,0 +1,70 @@
+{
+  "$ref": "#/definitions/experiences",
+  "definitions": {
+    "experiences": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "period": {
+                "type": "string"
+              },
+              "position": {
+                "type": "string"
+              },
+              "company": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "stack": {
+                "type": "string"
+              },
+              "mentions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    },
+                    "href": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "text",
+                    "href"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "period",
+              "position",
+              "company",
+              "description"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "items"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

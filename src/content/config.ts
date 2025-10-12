@@ -67,6 +67,42 @@ const projects = defineCollection({
   }),
 });
 
+const publications = defineCollection({
+  type: 'data',
+  schema: z.object({
+    items: z.array(
+      z.object({
+        authors: z.string(),
+        title: z.string(),
+        journal: z.string().optional(),
+        link: z.string().optional(),
+        year: z.number(),
+        arxiv: z.string().optional(),
+        doi: z.string().optional(),
+        misc: z.string().optional(),
+        mentions: z.array(mentionSchema).optional(),
+      })
+    ),
+  }),
+});
+
+const experiences = defineCollection({
+  type: 'data',
+  schema: z.object({
+    items: z.array(
+      z.object({
+        period: z.string(),
+        position: z.string(),
+        company: z.string(),
+        href: z.string().optional(),
+        description: z.string(),
+        stack: z.string().optional(),
+        mentions: z.array(mentionSchema).optional(),
+      })
+    ),
+  }),
+});
+
 const data = defineCollection({
   type: 'data',
   schema: z.object({}).passthrough(),
@@ -77,5 +113,7 @@ export const collections = {
   textComponents,
   similarities,
   projects,
+  publications,
+  experiences,
   data,
 };

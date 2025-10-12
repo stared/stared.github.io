@@ -7,9 +7,69 @@ const resumeHighlights = await getEntry('textComponents', 'resume-highlights');
 
 const { Content: IntroContent } = await resumeIntro.render();
 const { Content: HighlightsContent } = await resumeHighlights.render();
+
+const experiencesData = await getEntry('experiences', 'experiences');
+const experiences = experiencesData.data.items;
 ---
 
 <BaseLayout title="Resume" description="Resume of Piotr Migdał.">
   <IntroContent />
   <HighlightsContent />
+
+  <h2>Recent experience</h2>
+  <ul class="experiences">
+    {experiences.map((exp) => (
+      <li>
+        <span class="period">{exp.period}</span>
+        <span class="position">{exp.position}</span>
+        {exp.href ? (
+          <a href={exp.href} class="company">{exp.company}</a>
+        ) : (
+          <span class="company">{exp.company}</span>
+        )}
+        <br />
+        <span class="description">{exp.description}</span>
+        <br />
+        {exp.mentions && (
+          <span class="mentions">
+            {exp.mentions.map((mention) => (
+              <>• <a href={mention.href}>{mention.text}</a> </>
+            ))}
+            •
+            <br />
+          </span>
+        )}
+        <span class="stack">{exp.stack}</span>
+      </li>
+    ))}
+  </ul>
 </BaseLayout>
+
+<style>
+  .experiences li {
+    list-style: none;
+    padding-bottom: 1rem;
+  }
+
+  .experiences .period {
+    margin-right: 2rem;
+  }
+
+  .experiences .position {
+    margin-right: 1rem;
+  }
+
+  .experiences .description {
+    color: #828282;
+  }
+
+  .experiences .mentions {
+    color: #828282;
+    font-size: 0.8rem;
+  }
+
+  .experiences .stack {
+    color: #828282;
+    font-size: 0.8rem;
+  }
+</style>

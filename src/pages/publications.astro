@@ -4,8 +4,64 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
 const publicationsContent = await getEntry('textComponents', 'publications');
 const { Content } = await publicationsContent.render();
+
+const publicationsData = await getEntry('publications', 'publications');
+const publications = publicationsData.data.items;
 ---
 
 <BaseLayout title="Publications" description="Publications by Piotr Migdał.">
   <Content />
+  <ul class="publications">
+    {publications.map((pub) => (
+      <li class="publication">
+        {pub.authors}<br />
+        {pub.link ? (
+          <a href={pub.link}>{pub.title}</a>
+        ) : (
+          <>{pub.title}</>
+        )}
+        <br />
+        {pub.journal && <>{pub.journal}, </>}
+        {pub.year}
+        {' '}
+        {pub.arxiv && (
+          <a href={`https://arxiv.org/abs/${pub.arxiv}`}>
+            [arXiv:{pub.arxiv}]
+          </a>
+        )}
+        {pub.doi && (
+          <>
+            {' '}
+            <a href={`https://doi.org/${pub.doi}`}>
+              [doi]
+            </a>
+          </>
+        )}
+        {pub.mentions && (
+          <>
+            {' '}
+            {pub.mentions.map((mention) => (
+              <a href={mention.href} class="mention">[{mention.text}]</a>
+            ))}
+          </>
+        )}
+        {pub.misc && <><br />{pub.misc}</>}
+      </li>
+    ))}
+  </ul>
 </BaseLayout>
+
+<style>
+  li.publication {
+    color: #828282;
+    font-size: 0.9rem;
+    list-style: none;
+    padding-bottom: 1rem;
+  }
+
+  a.mention {
+    font-size: 0.8em;
+    color: #ff6600;
+    padding: 0 0.2em;
+  }
+</style>
