@@ -31,7 +31,7 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Static HTML export with Nuxt
-        run: yarn generate --no-cache
+        run: yarn generate
       - name: Add CNAME file
         run: echo "p.migdal.pl" > .output/public/CNAME
       - name: Upload artifact
