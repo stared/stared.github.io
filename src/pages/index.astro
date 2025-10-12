@@ -1,5 +1,6 @@
 ---
 import { getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import migdalPhoto from '@/assets/imgs/piotr-migdal-direct-smiling-2022-by-cytacka-600px.jpg';
 
@@ -13,12 +14,13 @@ const { Content } = await aboutContent.render();
       <Content />
     </div>
     <div class="flex-column image">
-      <img
+      <Image
         class="main-img"
         alt="A photo of Piotr Migdał"
-        src={migdalPhoto.src}
-        width={migdalPhoto.width}
-        height={migdalPhoto.height}
+        src={migdalPhoto}
+        width={600}
+        height={600}
+        loading="eager"
       />
     </div>
   </div>

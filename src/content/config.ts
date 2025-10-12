@@ -44,6 +44,29 @@ const similarities = defineCollection({
   }),
 });
 
+const mentionSchema = z.object({
+  text: z.string(),
+  href: z.string(),
+});
+
+const projects = defineCollection({
+  type: 'data',
+  schema: z.object({
+    items: z.array(
+      z.object({
+        title: z.string(),
+        desc: z.string(),
+        href: z.string(),
+        dateStart: z.string(),
+        dateEnd: z.string().nullable().optional(),
+        tags: z.array(z.string()).default([]),
+        mentions: z.array(mentionSchema).optional(),
+        status: z.string().optional(),
+      })
+    ),
+  }),
+});
+
 const data = defineCollection({
   type: 'data',
   schema: z.object({}).passthrough(),
@@ -53,5 +76,6 @@ export const collections = {
   blog,
   textComponents,
   similarities,
+  projects,
   data,
 };
