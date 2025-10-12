@@ -13,17 +13,17 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
-import { useRoute } from "vue-router";
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 
 const props = defineProps({
   src: {
     type: String,
-    default: "",
+    default: '',
   },
   alt: {
     type: String,
-    default: "",
+    default: '',
   },
   width: {
     type: [String, Number],
@@ -37,28 +37,28 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
-});
+})
 
-const route = useRoute();
+const route = useRoute()
 
 const resolvedSrc = computed(() => {
   // If it's an absolute URL, data URL, or starts with /, use as-is
   if (
-    props.src.startsWith("http") ||
-    props.src.startsWith("data:") ||
-    props.src.startsWith("/")
+    props.src.startsWith('http') ||
+    props.src.startsWith('data:') ||
+    props.src.startsWith('/')
   ) {
-    return props.src;
+    return props.src
   }
 
   // For relative paths (like ./image.jpg or image.jpg), resolve relative to current route
   // Remove leading ./ if present
-  const imagePath = props.src.replace(/^\.\//, "");
+  const imagePath = props.src.replace(/^\.\//, '')
 
   // Ensure there's a slash between route path and image path
-  const basePath = route.path.endsWith("/") ? route.path : route.path + "/";
-  return basePath + imagePath;
-});
+  const basePath = route.path.endsWith('/') ? route.path : `${route.path  }/`
+  return basePath + imagePath
+})
 </script>
 
 <style scoped>

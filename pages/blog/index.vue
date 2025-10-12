@@ -1,21 +1,22 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from "vue";
-import type { ExternalPost } from "@/scripts/postData";
-import { getPostUrl, isExternalPost, hasHackerNews, formatPostDate } from "@/scripts/postData";
-import { useRoute, useRouter } from "vue-router";
+import { onMounted, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+
+import type { ExternalPost } from '@/scripts/postData'
+import { getPostUrl, isExternalPost, hasHackerNews, formatPostDate } from '@/scripts/postData'
 
 const externalPosts: ExternalPost[] = (
-  await import("@/content/data/external-articles.json")
-).default.items;
+  await import('@/content/data/external-articles.json')
+).default.items
 
 seo({
-  title: "Blog",
-  description: "Read blog posts by Piotr Migdał.",
-});
+  title: 'Blog',
+  description: 'Read blog posts by Piotr Migdał.',
+})
 
-const { data: blogPosts } = await useAsyncData("blogPosts", async () => {
-  return await queryCollection("blog").all();
-});
+const { data: blogPosts } = await useAsyncData('blogPosts', () => {
+  return queryCollection('blog').all()
+})
 
 const {
   tagSelected,
@@ -26,41 +27,41 @@ const {
   sliderLine,
   filteredPosts,
   allTagsCounted,
-} = blogFilter(blogPosts, externalPosts);
+} = blogFilter(blogPosts, externalPosts)
 
-const route = useRoute();
+const route = useRoute()
 onMounted(() => {
-  const tagParam = route.query.tag as string;
+  const tagParam = route.query.tag as string
   if (tagParam) {
-    tagSelected.value = tagParam;
+    tagSelected.value = tagParam
   }
-});
+})
 
 watch(
   () => route.query.tag,
   (newTag) => {
     if (newTag) {
-      tagSelected.value = newTag as string;
+      tagSelected.value = newTag as string
     } else {
-      tagSelected.value = "all";
+      tagSelected.value = 'all'
     }
-  }
-);
+  },
+)
 
-const router = useRouter();
+const router = useRouter()
 
 function selectTag(tag: string) {
-  tagSelected.value = tag;
-  if (tag === "all") {
-    router.push({ query: { tag: undefined } });
+  tagSelected.value = tag
+  if (tag === 'all') {
+    router.push({ query: { tag: undefined } })
   } else {
-    router.push({ query: { tag: tag } });
+    router.push({ query: { tag } })
   }
 }
 
-const { data: blogTextContent } = await useAsyncData("blog-content", () =>
-  queryCollection("textComponents").path("/text-components/blog").first()
-);
+const { data: blogTextContent } = await useAsyncData('blog-content', () =>
+  queryCollection('textComponents').path('/text-components/blog').first(),
+)
 </script>
 
 <template>
@@ -115,9 +116,9 @@ const { data: blogTextContent } = await useAsyncData("blog-content", () =>
       <span
         v-for="tag in allTagsCounted"
         :key="tag.name"
-        @click="selectTag(tag.name)"
         class="tag"
         :class="{ selected: tag.name === tagSelected }"
+        @click="selectTag(tag.name)"
         >[{{ tag.name }}]</span
       >
     </p>
@@ -133,9 +134,9 @@ const { data: blogTextContent } = await useAsyncData("blog-content", () =>
         <span
           v-for="tagName in post.tags"
           :key="tagName"
-          @click="selectTag(tagName)"
           class="tag"
           :class="{ selected: tagName === tagSelected }"
+          @click="selectTag(tagName)"
           >[{{ tagName }}]</span
         >
         <span v-if="hasHackerNews(post)" class="hn">[HN]</span>

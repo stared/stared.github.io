@@ -8,7 +8,9 @@
     "generate": "yarn copy:assets && nuxt generate",
     "preview": "nuxt preview",
     "generate:embeddings": "tsx scripts/generateEmbeddings.ts && tsx scripts/generateSimilarities.ts",
-    "build:all": "yarn copy:assets && yarn generate:embeddings && yarn generate"
+    "build:all": "yarn copy:assets && yarn generate:embeddings && yarn generate",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@nuxt/content": "^3.7.1",
@@ -23,7 +25,9 @@
     "vue-slider-component": "^4.1.0-beta.7"
   },
   "devDependencies": {
+    "@nuxt/eslint": "^1.9.0",
     "@types/node": "^22.15.21",
+    "eslint": "^9.37.0",
     "tsx": "^4.19.4"
   },
   "packageManager": "yarn@4.8.0"

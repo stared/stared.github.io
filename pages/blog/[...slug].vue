@@ -30,25 +30,24 @@
 </template>
 
 <script setup lang="ts">
-import { AUTHOR } from "~/constants";
-import { formatPostDate } from "@/scripts/postData";
+import { AUTHOR } from '~/constants'
 
-const { path } = useRoute();
+const { path } = useRoute()
 
 const { data: blogPost } = await useAsyncData(`content-${path}`, () =>
-  queryCollection("blog").path(path).first()
-);
+  queryCollection('blog').path(path).first(),
+)
 
-const { data: footerContent } = await useAsyncData("footer-content", () =>
-  queryCollection("textComponents").path("/text-components/footer").first()
-);
+const { data: footerContent } = await useAsyncData('footer-content', () =>
+  queryCollection('textComponents').path('/text-components/footer').first(),
+)
 
 if (blogPost.value) {
   seo({
     title: blogPost.value.title,
-    description: blogPost.value.description || "",
-    image: blogPost.value.image || "",
-  });
+    description: blogPost.value.description || '',
+    image: blogPost.value.image || '',
+  })
 }
 </script>
 

@@ -30,19 +30,19 @@
 </template>
 
 <script setup lang="ts">
-import experiences from "@/content/data/experiences.json";
+import experiences from '@/content/data/experiences.json'
 
-const { data: resumeIntroContent } = await useAsyncData("resume-intro-content", () =>
-  queryCollection("textComponents").path("/text-components/resume-intro").first()
-);
-const { data: resumeHighlightsContent } = await useAsyncData("resume-highlights-content", () =>
-  queryCollection("textComponents").path("/text-components/resume-highlights").first()
-);
+const { data: resumeIntroContent } = await useAsyncData('resume-intro-content', () =>
+  queryCollection('textComponents').path('/text-components/resume-intro').first(),
+)
+const { data: resumeHighlightsContent } = await useAsyncData('resume-highlights-content', () =>
+  queryCollection('textComponents').path('/text-components/resume-highlights').first(),
+)
 
 seo({
-  title: "Resume",
+  title: 'Resume',
   description: "Piotr Migdał's career and availability.",
-});
+})
 </script>
 
 <style scoped>

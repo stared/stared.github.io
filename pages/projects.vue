@@ -9,8 +9,9 @@
       >
         <a class="title" :href="project.href">{{ project.title }}</a
         >&nbsp;
-        <span class="status"
-          >{{ project.dateStart ? new Date(project.dateStart).getFullYear() : "" }}-{{ project.dateEnd ? new Date(project.dateEnd).getFullYear() : "" }}
+        <span class="status">
+          {{ project.dateStart ? new Date(project.dateStart).getFullYear() : "" }}-
+          {{ project.dateEnd ? new Date(project.dateEnd).getFullYear() : "" }}
         </span>
         &nbsp;
         <span class="status">({{ project.status }})</span>
@@ -18,7 +19,8 @@
         <span class="description">{{ project.desc }}</span>
         <span v-if="project.mentions" class="mentions">
           <a
-            v-for="mention in project.mentions"
+            v-for="(mention, idx) in project.mentions"
+            :key="`${index}-${idx}`"
             :href="mention.href"
             class="mention"
             >[{{ mention.text }}]</a
@@ -30,16 +32,16 @@
 </template>
 
 <script setup lang="ts">
-import projects from "@/content/data/projects.json";
+import projects from '@/content/data/projects.json'
 
-const { data: projectsContent } = await useAsyncData("projects-content", () =>
-  queryCollection("textComponents").path("/text-components/projects").first()
-);
+const { data: projectsContent } = await useAsyncData('projects-content', () =>
+  queryCollection('textComponents').path('/text-components/projects').first(),
+)
 
 seo({
-  title: "Projects",
-  description: "Numerous projects by Piotr Migdał.",
-});
+  title: 'Projects',
+  description: 'Numerous projects by Piotr Migdał.',
+})
 </script>
 
 <style scoped>

@@ -28,16 +28,16 @@
 </template>
 
 <script setup lang="ts">
-import publications from "@/content/data/publications.json";
+import publications from '@/content/data/publications.json'
 
-const { data: publicationsContent } = await useAsyncData("publications-content", () =>
-  queryCollection("textComponents").path("/text-components/publications").first()
-);
+const { data: publicationsContent } = await useAsyncData('publications-content', () =>
+  queryCollection('textComponents').path('/text-components/publications').first(),
+)
 
 seo({
-  title: "Publications",
+  title: 'Publications',
   description: `Dr. Piotr Migdał wrote ${publications.items.length} publications.`,
-});
+})
 
 interface Publication {
   doi?: string;
@@ -46,9 +46,9 @@ interface Publication {
 
 function publicationHref(publication: Publication): string {
   if (publication.doi) {
-    return `https://doi.org/${publication.doi}`;
+    return `https://doi.org/${publication.doi}`
   } else {
-    return `https://arxiv.org/abs/${publication.arxiv}`;
+    return `https://arxiv.org/abs/${publication.arxiv}`
   }
 }
 </script>

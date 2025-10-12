@@ -16,11 +16,11 @@
 </template>
 
 <script setup lang="ts">
-const { data: aboutContent } = await useAsyncData("me-content", () =>
-  queryCollection("textComponents").path("/text-components/me").first()
-);
+const { data: aboutContent } = await useAsyncData('me-content', () =>
+  queryCollection('textComponents').path('/text-components/me').first(),
+)
 
-seo({ title: "Homepage" });
+seo({ title: 'Homepage' })
 </script>
 
 <style>

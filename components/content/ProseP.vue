@@ -1,15 +1,15 @@
 <script setup>
-const slots = useSlots();
+const slots = useSlots()
 
 // Hacky check for an image to not wrap in a <p> tag
 // Before we were getting hydration errors
 // https://github.com/nuxt/content/issues/1537
 const isImage = computed(() => {
-  return slots.default()[0].type.tag === "img";
-});
+  return slots.default()[0].type.tag === 'img'
+})
 </script>
 
 <template>
-  <div class="prose-image" v-if="isImage"><slot /></div>
-  <p v-else><slot /></p>
+  <div v-if="isImage" class="prose-image"><slot ></slot></div>
+  <p v-else><slot ></slot></p>
 </template>

@@ -1,27 +1,27 @@
 <template>
   <figure class="gallery">
     <div class="image-container" :style="containerStyle">
-      <slot mdc-unwrap="p" />
+      <slot mdc-unwrap="p" ></slot>
     </div>
     <figcaption v-if="$slots.caption">
-      <slot name="caption" mdc-unwrap="p" />
+      <slot name="caption" mdc-unwrap="p" ></slot>
     </figcaption>
   </figure>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed } from 'vue'
 
 const props = defineProps({
   width: {
     type: Number,
     default: 2,
   },
-});
+})
 
 const containerStyle = computed(() => ({
   gridTemplateColumns: `repeat(${props.width}, 1fr)`,
-}));
+}))
 </script>
 
 <style scoped>

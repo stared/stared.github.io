@@ -11,7 +11,7 @@
         <NuxtLink class="nav__link" to="/resume">Resume</NuxtLink>
       </nav>
     </header>
-    <slot />
+    <slot ></slot>
   </div>
 </template>
 
@@ -19,13 +19,13 @@
 useHead({
   link: [
     {
-      rel: "alternate",
-      type: "application/rss+xml",
+      rel: 'alternate',
+      type: 'application/rss+xml',
       title: "RSS Feed for Piotr Migdał's Blog",
-      href: "https://p.migdal.pl/feed.xml",
+      href: 'https://p.migdal.pl/feed.xml',
     },
   ],
-});
+})
 </script>
 
 <style>
