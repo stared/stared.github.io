@@ -1,4 +1,5 @@
 import { defineCollection, z } from 'astro:content';
+import { file, glob } from 'astro/loaders';
 
 const blog = defineCollection({
   type: 'content',
@@ -28,7 +29,7 @@ const textComponents = defineCollection({
 });
 
 const similarities = defineCollection({
-  type: 'data',
+  loader: glob({ pattern: '*.json', base: 'src/data/similarities' }),
   schema: z.object({
     stem: z.string().optional(),
     most_similar: z
@@ -50,84 +51,75 @@ const mentionSchema = z.object({
 });
 
 const projects = defineCollection({
-  type: 'data',
+  loader: file('src/data/projects.json'),
   schema: z.object({
-    items: z.array(
-      z.object({
-        title: z.string(),
-        desc: z.string(),
-        href: z.string(),
-        dateStart: z.string(),
-        dateEnd: z.string().nullable().optional(),
-        tags: z.array(z.string()).default([]),
-        mentions: z.array(mentionSchema).optional(),
-        status: z.string().optional(),
-      })
-    ),
+    title: z.string(),
+    desc: z.string(),
+    href: z.string(),
+    dateStart: z.string(),
+    dateEnd: z.string().nullable().optional(),
+    tags: z.array(z.string()).default([]),
+    mentions: z.array(mentionSchema).optional(),
+    status: z.string().optional(),
   }),
 });
 
 const publications = defineCollection({
-  type: 'data',
+  loader: file('src/data/publications.json'),
   schema: z.object({
-    items: z.array(
-      z.object({
-        authors: z.string(),
-        title: z.string(),
-        journal: z.string().optional(),
-        link: z.string().optional(),
-        year: z.number(),
-        arxiv: z.string().optional(),
-        doi: z.string().optional(),
-        misc: z.string().optional(),
-        mentions: z.array(mentionSchema).optional(),
-      })
-    ),
+    authors: z.string(),
+    title: z.string(),
+    journal: z.string().optional(),
+    link: z.string().optional(),
+    year: z.number(),
+    arxiv: z.string().optional(),
+    doi: z.string().optional(),
+    misc: z.string().optional(),
+    mentions: z.array(mentionSchema).optional(),
   }),
 });
 
 const experiences = defineCollection({
-  type: 'data',
+  loader: file('src/data/experiences.json'),
   schema: z.object({
-    items: z.array(
-      z.object({
-        period: z.string(),
-        position: z.string(),
-        company: z.string(),
-        href: z.string().optional(),
-        description: z.string(),
-        stack: z.string().optional(),
-        mentions: z.array(mentionSchema).optional(),
-      })
-    ),
+    period: z.string(),
+    position: z.string(),
+    company: z.string(),
+    href: z.string().optional(),
+    description: z.string(),
+    stack: z.string().optional(),
+    mentions: z.array(mentionSchema).optional(),
   }),
 });
 
 const externalArticles = defineCollection({
-  type: 'data',
+  loader: file('src/data/external-articles.json'),
   schema: z.object({
-    items: z.array(
-      z.object({
-        title: z.string(),
-        source: z.string(),
-        href: z.string(),
-        date: z.string(),
-        tags: z.array(z.string()).default([]),
-        migdal_score: z.number(),
-        description: z.string().optional(),
-        image: z.string().optional(),
-        author: z.string().optional(),
-        mentions: z.array(mentionSchema).optional(),
-        view_k: z.number().optional(),
-        views_k: z.number().optional(),
-      })
-    ),
+    title: z.string(),
+    source: z.string(),
+    href: z.string(),
+    date: z.string(),
+    tags: z.array(z.string()).default([]),
+    migdal_score: z.number(),
+    description: z.string().optional(),
+    image: z.string().optional(),
+    author: z.string().optional(),
+    mentions: z.array(mentionSchema).optional(),
+    view_k: z.number().optional(),
+    views_k: z.number().optional(),
   }),
 });
 
-const data = defineCollection({
-  type: 'data',
-  schema: z.object({}).passthrough(),
+const mediaMentions = defineCollection({
+  loader: file('src/data/media-mentions.json'),
+  schema: z.object({
+    title: z.string(),
+    medium: z.string(),
+    href: z.string(),
+    date: z.string(),
+    tags: z.array(z.string()).default([]),
+    migdal_score: z.number().optional(),
+  }),
 });
 
 export const collections = {
@@ -138,5 +130,5 @@ export const collections = {
   publications,
   experiences,
   externalArticles,
-  data,
+  mediaMentions,
 };

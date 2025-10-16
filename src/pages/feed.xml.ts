@@ -1,13 +1,13 @@
 import rss from '@astrojs/rss';
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import { AUTHOR, SITE_URL, SITE_DESCRIPTION } from '@/lib/constants';
 import type { ExternalPost } from '@/lib/postData';
 import type { APIContext } from 'astro';
 
 export async function GET(context: APIContext) {
   const blogPosts = await getCollection('blog');
-  const externalArticlesData = await getEntry('externalArticles', 'external-articles');
-  const externalPosts = externalArticlesData.data.items as ExternalPost[];
+  const externalArticlesEntries = await getCollection('externalArticles');
+  const externalPosts = externalArticlesEntries.map((entry) => entry.data) as ExternalPost[];
 
   const allPosts = [
     ...blogPosts.map(post => ({

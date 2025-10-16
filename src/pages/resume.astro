@@ -1,5 +1,5 @@
 ---
-import { getEntry } from 'astro:content';
+import { getEntry, getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
 const resumeIntro = await getEntry('textComponents', 'resume-intro');
@@ -8,8 +8,8 @@ const resumeHighlights = await getEntry('textComponents', 'resume-highlights');
 const { Content: IntroContent } = await resumeIntro.render();
 const { Content: HighlightsContent } = await resumeHighlights.render();
 
-const experiencesData = await getEntry('experiences', 'experiences');
-const experiences = experiencesData.data.items;
+const experiencesEntries = await getCollection('experiences');
+const experiences = experiencesEntries.map((entry) => entry.data);
 ---
 
 <BaseLayout title="Resume" description="Resume of Piotr Migdał.">

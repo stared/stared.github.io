@@ -5,8 +5,8 @@ import BlogList from '@/components/BlogList.vue';
 import type { ExternalPost } from '@/lib/postData';
 
 const blogPosts = await getCollection('blog');
-const externalArticlesData = await getEntry('externalArticles', 'external-articles');
-const externalPosts = externalArticlesData.data.items as ExternalPost[];
+const externalArticlesEntries = await getCollection('externalArticles');
+const externalPosts = externalArticlesEntries.map((entry) => entry.data) as ExternalPost[];
 const allPosts = [...blogPosts, ...externalPosts];
 
 const blogTextContent = await getEntry('textComponents', 'blog');

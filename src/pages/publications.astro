@@ -1,12 +1,12 @@
 ---
-import { getEntry } from 'astro:content';
+import { getEntry, getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
 const publicationsContent = await getEntry('textComponents', 'publications');
 const { Content } = await publicationsContent.render();
 
-const publicationsData = await getEntry('publications', 'publications');
-const publications = publicationsData.data.items;
+const publicationsEntries = await getCollection('publications');
+const publications = publicationsEntries.map((entry) => entry.data);
 ---
 
 <BaseLayout title="Publications" description="Publications by Piotr Migdał.">

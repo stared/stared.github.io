@@ -1,12 +1,12 @@
 ---
-import { getEntry } from 'astro:content';
+import { getEntry, getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
 const projectsContent = await getEntry('textComponents', 'projects');
 const { Content } = await projectsContent.render();
 
-const projectsData = await getEntry('projects', 'projects');
-const projects = projectsData.data.items;
+const projectsEntries = await getCollection('projects');
+const projects = projectsEntries.map((entry) => entry.data);
 ---
 
 <BaseLayout title="Projects" description="Numerous projects by Piotr Migdał.">
