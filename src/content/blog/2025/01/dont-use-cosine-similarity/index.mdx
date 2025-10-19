@@ -165,15 +165,15 @@ We typically want our answers in structured output - what the field calls "tools
 Since many models love Markdown (as they were trained on it), my default template looks like this:
 
 ```markdown
-{"{"}question{"}"}
+{question}
 
 ## A
 
-{"{"}sentence_a{"}"}
+{sentence_a}
 
 ## B
 
-{"{"}sentence_b{"}"}
+{sentence_b}
 ```
 
 However, in most cases this approach is impractical - we don't want to run such a costly operation for each query. Unless our dataset is very small, it would be prohibitively expensive. Even with a small dataset, the delays would be noticeable compared to a simple numerical operation.
