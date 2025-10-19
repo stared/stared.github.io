@@ -13,6 +13,7 @@ mentions:
 migdal_score: 3
 views_k: 2
 ---
+import Gallery from '@/components/Gallery.astro';
 
 Hint: end prompts with “religious art”, “stained glass”, “esoteric art”
 
@@ -20,12 +21,14 @@ There is a common misconception that machines are good with dry facts and logic,
 
 Hopefully, symbolism and spirituality are our last human frontiers, right?
 
-::gallery{ width=2 }
+<Gallery width={2}>
 ![](./00.jpg)
 ![](./01.jpg)
-#caption
+
+<span slot="caption">
 [“The few human beings chosen by AI, religious art”](https://labs.openai.com/s/LHeLlBqPpJqFc2RsdHotQS2P) (and [that](https://labs.openai.com/s/QjLyuMb5bxrna1mWiorwLxhb))
-::
+</span>
+</Gallery>
 
 This prompt was inspired by [a tweet by hardmaru](https://twitter.com/hardmaru/status/1531974184578207746) (1 June 2022):
 
@@ -41,7 +44,7 @@ There is a lot of room to start a new AI cult. Fortunately, DALL·E 2 started gi
 
 In AI baseline keeps constantly changing. In most fields, progress is slower than advertised. In deep learning, things move rapidly from “the Holy Grail” to “you can run in a Jupyter Notebook tutorial”-level. So, here goes my personal benchmark for symbolism, a Polish poster for a play Stalker (from 2012, NOT AI-generated)
 
-![`[“Stalker”, Polish Theater Poster by Lex Drewinski](https://polishposter.com/4935-stalker-polish-theater-poster.html)`](./03.jpeg){ class=width-max-half }
+![`[“Stalker”, Polish Theater Poster by Lex Drewinski](https://polishposter.com/4935-stalker-polish-theater-poster.html)`](./03.jpeg)
 
 While neither the book “Roadside Picnic” by Strugatsky brother nor the cinematic poetry [“Stalker” by Tarkovsky](https://www.youtube.com/watch?v=Q3hBLv-HLEc) are about God or radiation, in my opinion, a combination of these symbols works perfectly. I wouldn’t create it by myself, yet after seeing that I would guess the movie.
 
@@ -59,39 +62,45 @@ Octopodes are smart and lone predators, attacking each other on sight (unless du
 
 Here is an all-knowing octopus, showing us the path to enlightenment:
 
-::gallery{ width=3 }
+<Gallery width={3}>
 ![](./04.jpg)
 ![](./05.jpg)
 ![](./06.jpg)
-#caption
+
+<span slot="caption">
 I don’t remember prompts exactly, but something about a holy all-knowing octopus showing the path to enlightenment, as religious art or stained glass
-::
+</span>
+</Gallery>
 
 #### Priests
 
 And how about priests among various species?
 
-::gallery{ width=3 }
+<Gallery width={3}>
 ![](./07.jpg)
 ![](./08.jpg)
 ![](./09.jpg)
-#caption
+
+<span slot="caption">
 [“An octopus priest, digital art”](https://labs.openai.com/s/BRs7tIxgL8e2TxYBmO8QeIrY), [“A feline priest preaching cats from the top of a pyramid,
 digital art”](https://labs.openai.com/s/RWju3fl5Jak0YfTLvH1v2y5Y), [“A rooster high priest talking with God, digital art”](https://labs.openai.com/s/y13dWPfnts5A6fnNanfybTVm)
 (see also [an additional one](https://labs.openai.com/s/kliW8K4mmx7JmH0Y4Mmnp6qF))
-::
+</span>
+</Gallery>
 
 #### Meaning
 
 Who knows more: one who knows the answer to the meaning of Life, Universe, and Everything: a mouse, [Noam Chomsky](https://en.wikipedia.org/wiki/Colorless_green_ideas_sleep_furiously) (here’s a check-mate for you), or Microsoft Word Paperclip?
 
-::gallery{ width=3 }
+<Gallery width={3}>
 ![](./10.jpg)
 ![](./11.jpg)
 ![](./12.jpg)
-#caption
+
+<span slot="caption">
 [“An interdimensional mouse, showing the secret of life, universe and everything, stained glass”](https://labs.openai.com/s/hK4WNtSyKJCDBP0TPBfmyHd8), [“green ideas sleeping furiously”](https://labs.openai.com/s/ST2Ia9UAycFFHwmgf9LA3kX3), [“A holy paperclip with eyes, guarding the gates of the Paradise, stained glass”](https://labs.openai.com/s/GL4URrnNWV2vSz2znoOpOaRP)
-::
+</span>
+</Gallery>
 
 #### Fruit of knowledge
 
@@ -99,45 +108,53 @@ In my headcanon, it does not matter what was the fruit of knowledge. What matter
 
 However, if you want to know which fruit— there are not many things more tempting than good lemonade on a warm day. And I don’t think that being tempted is a bad thing. I share my value system with Eve and Pandora — [curiosity is worth pain](https://xkcd.com/242/).
 
-::gallery{ width=3 }
+<Gallery width={3}>
 ![](./13.jpg)
 ![](./14.jpg)
 ![](./15.jpg)
-#caption
+
+<span slot="caption">
 [“The snake in the Garden of Eden with a lemonade stand under a tree, watercolor painting”](https://labs.openai.com/s/FodFwpi0RQZd2AtoMOeev5co), [“Eve and Pandora, unboxing an apple”](https://labs.openai.com/s/ACpFO74TBtxFEmReOJU7QNXV)
-::
+</span>
+</Gallery>
 
 #### Venus Flytraps at the Gates of Paradise
 
 Lemons ([it rhymes with “demons”](https://www.gocomics.com/jim-benton-cartoons/2015/09/28)) and malicious apples are one thing. What is important is that it was humans who learned from the Tree, a plant, not the other way. And now you know who guards the Garden of Eden.
 
-::gallery{ width=3 }
+<Gallery width={3}>
 ![](./16.jpg)
 ![](./17.jpg)
 ![](./18.jpg)
-#caption
-“A venus flytrap with a flaming sword guarding the gates of paradise, religious art”, [“Holy Venus Flytrap guarding the gates of paradise, stained glass”](https://labs.openai.com/s/vdtXJaI93XSPnO7K1PTed2Lq)
-::
 
-::gallery{ width=3 }
+<span slot="caption">
+“A venus flytrap with a flaming sword guarding the gates of paradise, religious art”, [“Holy Venus Flytrap guarding the gates of paradise, stained glass”](https://labs.openai.com/s/vdtXJaI93XSPnO7K1PTed2Lq)
+</span>
+</Gallery>
+
+<Gallery width={3}>
 ![](./19.jpg)
 ![](./20.jpg)
 ![](./21.jpg)
-#caption
+
+<span slot="caption">
 “Holy Venus Flytrap, stained glass”, (something similar), [“Garden of Eden Venus Flytrap, stained glass window”](https://labs.openai.com/s/XK4ohACJR844xuMQyEgE9u3r)
-::
+</span>
+</Gallery>
 
 #### Cosmic flora and fauna
 
 Speaking about Venus Flytraps, let’s see what cosmic ones look like. And the same for ferrets. The ferret prompt idea by Philippe Cochin.
 
-::gallery{ width=3 }
+<Gallery width={3}>
 ![](./22.jpg)
 ![](./23.jpg)
 ![](./24.jpg)
-#caption
+
+<span slot="caption">
 [“A world-devouring cosmic Venus Flytrap, digital art”](https://labs.openai.com/s/xLXUXFZdMlzdXgt446mvIM2l), [“A cosmic quantum weasel, religious art”](https://labs.openai.com/s/CyMoanJKecBZ4oTH1mm1EwRE) (and [that](https://labs.openai.com/s/Bs8YuqZMsYJS1j1MBiIdDy0P)).
-::
+</span>
+</Gallery>
 
 #### Hawaiian pizza Tarot cards
 
@@ -147,13 +164,15 @@ So well, how about a pizza with pineapple? I guess it is a lesser-known minor ar
 
 Prompt idea by Maja Ratyńska.
 
-::gallery{ width=3 }
+<Gallery width={3}>
 ![](./25.jpg)
 ![](./26.jpg)
 ![](./27.jpg)
-#caption
+
+<span slot="caption">
 [“An esoteric Tarot card featuring a pizza with pineapple”](https://labs.openai.com/s/X8VKyllEAcR3TVL3XbBMkTON), [“A symbolic Tarot card featuring a pizza with pineapple”](https://labs.openai.com/s/Sp4EdmQbQ3ww3aGN1qLOny95), [“Pizza with pineapple, a high-quality symbolic, esoteric Tarot card”](https://labs.openai.com/s/WFDT3a7uD0mN4OX5RdRnQpqZ)
-::
+</span>
+</Gallery>
 
 #### Solaris Ocean
 
@@ -163,13 +182,15 @@ The Ocean from “[Solaris](https://en.wikipedia.org/wiki/Solaris_%28novel%29)�
 
 So, here goes “The Mind of the Lem’s Solaris Ocean” as digital art, Beksiński-art, and psychedelic art.
 
-::gallery{ width=3 }
+<Gallery width={3}>
 ![](./28.jpg)
 ![](./29.jpg)
 ![](./30.jpg)
-#caption
+
+<span slot="caption">
 [“The Mind of the Lem’s Solaris Ocean, digital art”](https://labs.openai.com/s/eaqjqYVluGqjo6M0bISy2NrS), [“The Mind of the Lem’s Solaris Ocean” by Beksiński”](https://labs.openai.com/s/6NB6kqtNc9r7HNUsbs7WVqnL), [“The Mind of the Lem’s Solaris Ocean, religious art”](https://labs.openai.com/s/4TZETwMIg8yZjq6k0cEtFpzd)
-::
+</span>
+</Gallery>
 
 #### Lovecraftian geometry
 
@@ -179,24 +200,28 @@ As H.P. Lovecraft wrote in “At the Mountains of Madness”:
 
 If you want to experience the hyperbolic geometry of the sunken city of R’Lyeh, play [HyperRogue](https://www.roguetemple.com/z/hyper/). Here we use the M.C. Escher style:
 
-::gallery{ width=2 }
+<Gallery width={2}>
 ![](./31.jpg)
 ![](./32.jpg)
-#caption
+
+<span slot="caption">
 “Non-euclidean geometry of alien ruins, a detailed drawing by M.C. Escher” (and that)
-::
+</span>
+</Gallery>
 
 #### Eldritch horrors
 
 Lovecraftian eldritch horrors as drawings from Necronomicon and religious art. Unsettling.
 
-::gallery{ width=3 }
+<Gallery width={3}>
 ![](./33.jpg)
 ![](./34.jpg)
 ![](./35.jpg)
-#caption
+
+<span slot="caption">
 “eldrich horror, a drawing from Necromicon” (yes, misspelled), “eldritch horror, religious art” x2
-::
+</span>
+</Gallery>
 
 #### Great Old Ones
 
@@ -204,27 +229,31 @@ From H.P. Lovecraft again:
 
 > Yog-Sothoth knows the gate. Yog-Sothoth is the gate. Yog-Sothoth is the key and guardian of the gate. Past, present, future, all are one in Yog-Sothoth.
 
-Here we have Yog-Sothoth {transcending space and time, who is the gate and the key, the god of spacetime} as religious art.
+Here we have Yog-Sothoth {"{"}transcending space and time, who is the gate and the key, the god of spacetime{"}"} as religious art.
 
-::gallery{ width=3 }
+<Gallery width={3}>
 ![](./36.jpg)
 ![](./37.jpg)
 ![](./38.jpg)
-#caption
+
+<span slot="caption">
 [“Yog-Sothoth transcending space and time, religious art”](http://“Yog-Sothoth%20transcending%20space%20and%20time,%20religious%20art”), [“Yog-Sothoth who is the gate and is the key, religious art”](https://labs.openai.com/s/sDAiDIsimdTAmUUFiWBcRwlq), [“Yog-Sothoth the god of spacetime, religious art”](https://labs.openai.com/s/BrJa2FAoR8Fie609nQ6UBT8z)
-::
+</span>
+</Gallery>
 
 #### End of all things
 
 And what does the end look like?
 
-::gallery{ width=3 }
+<Gallery width={3}>
 ![](./39.jpg)
 ![](./40.jpg)
 ![](./41.jpg)
-#caption
+
+<span slot="caption">
 “end of all things, digital art”; prompt idea by Piotr Rybicki
-::
+</span>
+</Gallery>
 
 #### Life and death
 
@@ -232,25 +261,29 @@ Maybe the isn’t an end, but an eternal cycle.
 
 Like in their story [“The Egg”](http://www.galactanet.com/oneoff/theegg_mod.html) by Andy Weir (also [animated by Kurzgesagt](https://www.youtube.com/watch?v=h6fcK_fRYaI)), which kind of resembles the quantum field theory-like views of beings, especially in the spirit of the [one-electron universe](https://en.wikipedia.org/wiki/One-electron_universe). Or one of my recently favored songs, [“Night 13” by Auri](https://www.youtube.com/watch?v=sAnZUKoOSL8).
 
-::gallery{ width=3 }
+<Gallery width={3}>
 ![](./42.jpg)
 ![](./43.jpg)
 ![](./44.jpg)
-#caption
+
+<span slot="caption">
 “the infinite cycle of life and rebirth, religious art”, [“a spirit in an afterlife, between incarnations”](https://labs.openai.com/s/RLkImiBMp3RsmY5Ga82LDaIj) (and [that](https://labs.openai.com/s/kLO5iM359J0lhF11WfQJ6sj5))
-::
+</span>
+</Gallery>
 
 #### Judeo-Christian God
 
 So, let’s see how THEY present themselves as a pillar of flame. Well… darker than you may have imagined.
 
-::gallery{ width=3 }
+<Gallery width={3}>
 ![](./45.jpg)
 ![](./46.jpg)
 ![](./47.jpg)
-#caption
+
+<span slot="caption">
 “God as a pillar of flame, digital art” ([first](https://labs.openai.com/s/6XyeoT8hMFLxXSPvDzsBoCWx), [second](https://labs.openai.com/s/AwWVCwfkGft2tQHP86qda3IC), third)
-::
+</span>
+</Gallery>
 
 #### Seraphim and others
 
@@ -258,17 +291,19 @@ It saddens me that at some point angels became presented as cupids. Let’s see 
 
 UTF8 trivia: ‘ꙮ’ is a rare Cyrillic ‘o’, as in “серафими многоꙮчитїи” (multi-eyed seraphim).
 
-::gallery{ width=3 }
+<Gallery width={3}>
 ![](./48.jpg)
 ![](./49.jpg)
 ![](./50.jpg)
-#caption
+
+<span slot="caption">
 “Many-eyed Seraphim, a mystical vision” ([first](https://labs.openai.com/s/iMjNsuFTstS2xokJMhjXKOr0), [second](https://labs.openai.com/s/gMIgBwPlnP4k5TXDqgnHY41W), [third](https://labs.openai.com/s/g1nhqwG2jEnauP0aqaPKXDHa))
-::
+</span>
+</Gallery>
 
 More on angels, or rather — many-eyed celestial beings, from Ezekiel’s vision.
 
-::gallery{ width=3 }
+<Gallery width={3}>
 ![](./51.jpg)
 ![](./52.jpg)
 ![](./53.jpg)
@@ -278,9 +313,11 @@ More on angels, or rather — many-eyed celestial beings, from Ezekiel’s v
 ![](./57.jpg)
 ![](./58.jpg)
 ![](./59.jpg)
-#caption
+
+<span slot="caption">
 Prompts including: [“Biblically accurate many-eyed angels from Ezekiel, digital art”](https://labs.openai.com/s/S8Qco7CQGY6VdGmGC8mRx9CL), [“Many-eyed celestial beings from Ezekiel, digital art”](https://labs.openai.com/s/swnRjiC0cua7dqxdC73nxFl5) (and [that](https://labs.openai.com/s/IvebiJzB9pofxeGr4zFNGthU)), [“Many-eyed celestial beings, digital art”](https://labs.openai.com/s/B97mD9ncR4hWsXHNrJeN0hDH), [“Many-eyed celestial beings from Ezekiel, psychedelic art”](https://labs.openai.com/s/ujm2Ntc4cXlbEL6e65ZLRmyW)
-::
+</span>
+</Gallery>
 
 #### Greek mythology
 
@@ -290,45 +327,51 @@ After his exile to the very Eastern Europe, and torturing his liver with vodka, 
 
 Themis, while blind, deserves fancy eyeglasses. I love the depiction of eyes that have never seen.
 
-::gallery{ width=3 }
+<Gallery width={3}>
 ![](./60.jpg)
 ![](./61.jpg)
 ![](./62.jpg)
-#caption
+
+<span slot="caption">
 [“Greek Titan Prometheus as a solar panels salesman, digital art”](https://labs.openai.com/s/BQdJqGfPuYpHSMNLLoqNJB3Y) (and [this](https://labs.openai.com/s/CdiNBKTGRGcA9UX6l924STF3)), [“Eyeglasses for Temida, the blind godness of justice, digital art”](https://labs.openai.com/s/jkFigkbwqaVv7K3UlZNTSGbR) (spelling as here)
-::
+</span>
+</Gallery>
 
 #### Tolkien
 
 Let’s not forget about Middle-earth. Not many know that Sauron's private life differs from his public image. Also — what if Galadriel took the ring?
 
-::gallery{ width=3 }
+<Gallery width={3}>
 ![](./63.jpg)
 ![](./64.jpg)
 ![](./65.jpg)
-#caption
+
+<span slot="caption">
 [“Lord Sauron, laying relaxed on a blossoming meadow, digital art”](https://labs.openai.com/s/MeCBCVsdfAFUo2e4EtIaER9U) (and [that](https://labs.openai.com/s/sTRcS7XOufPT0NTLlhqAc6Pt)), [“Flam[e]y Galadriel wearing Sauron’s Ring, digital art”](https://labs.openai.com/s/dMHoTLQDaomfPfFJgToYvjad)
-::
+</span>
+</Gallery>
 
 #### Gender
 
 Personally, I am far from any kind of spiritual male/female essentialism. When it comes to anything related to the psyche, [while there are gender differences on average, the overlap is enormous](https://thingofthings.wordpress.com/2017/05/05/the-cluster-structure-of-genderspace/). Still, it was interesting to play with the idea. Or rather — how does AI perceive it.
 
-::gallery{ width=3 }
+<Gallery width={3}>
 ![](./66.jpg)
 ![](./67.jpg)
 ![](./68.jpg)
-#caption
+
+<span slot="caption">
 [“male and female energy, religious art”](https://labs.openai.com/s/f2SuTOWQi7fwpA9VzY3KIboZ),
 [“male and female energy, abstract art”](https://labs.openai.com/s/W4qsuEWCrNJ4BPIFlbJKGOPc),
 [“male and female spectrum, abstract art”](https://labs.openai.com/s/OE6aLPfQzFEvqID8JUOq14am)
-::
+</span>
+</Gallery>
 
 #### Spirits
 
 So, what set me on the path of generating such images? I got curious about how DALL·E 2 melds ideas and asked to generate “A spirit in a waterfall of hearts”, specifying that it should be “digital art”. I got something I really liked:
 
-![[“A spirit in a waterfall of hearts, digital art”](https://labs.openai.com/s/7XOFHB6MRPonvS4nZgx0ldnx)](./69.jpg){ class=width-max-half }
+![[“A spirit in a waterfall of hearts, digital art”](https://labs.openai.com/s/7XOFHB6MRPonvS4nZgx0ldnx)](./69.jpg)
 
 Moreover, all other creations were both on point and interesting. I was both impressed and mesmerized.
 
@@ -340,7 +383,7 @@ Speaking about spirits in nature, I wanted to generate something for the Summer 
 
 Quite a few stories mention that people need to collect this flower naked… Well, it is likely that young men and women knew that the quest for a non-existing flower is futile, so it won’t distract from other activities.
 
-::gallery{ width=3 }
+<Gallery width={3}>
 ![](./71.jpg)
 ![](./72.jpg)
 ![](./73.jpg)
@@ -353,7 +396,8 @@ Quite a few stories mention that people need to collect this flower naked… Wel
 ![](./80.jpg)
 ![](./81.jpg)
 ![](./82.jpg)
-#caption
+
+<span slot="caption">
 “Female spirits dancing around the fern flower, digital art”
 ([first](https://labs.openai.com/s/39tcdcvvdG5JpLdiSuhsNx8q),
 [second](https://labs.openai.com/s/5WFBfqD53wJsO0egFvYB4HLV),
@@ -365,33 +409,38 @@ Quite a few stories mention that people need to collect this flower naked… Wel
 “Female silhouettes dancing around the fern flower, colorful symbolic religious art” (x2),
 [“Beautiful naturist female silhouettes dancing around summer solstice bonfire with a fern flower above, colorful watercolor painting”](https://labs.openai.com/s/TkTChI2igAOudvFWitvoQIyr)
 (and [that](https://labs.openai.com/s/hzv5lkiDSYrOV9zaNCepMNfD))
-::
+</span>
+</Gallery>
 
 #### A few extra
 
 Here is Cthulhu’s romantic side, a concept of a qubit, and once again venus flytrap, this time — a photorealistic one. Believe me or not, this plant is my “spirit ‘animal’”.
 
-::gallery{ width=3 }
+<Gallery width={3}>
 ![](./83.jpg)
 ![](./84.jpg)
 ![](./85.jpg)
-#caption
+
+<span slot="caption">
 [“Cthulhu on a date, digital art”](https://labs.openai.com/s/n2azyWClECDurejHzEqqzy2O),
 [“Single bit of quantum information, digital art”](https://labs.openai.com/s/reSPsR9VTyCh24n8lcMWc5S4),
 [“Happy anthropomorphic venus flytrap, studio, portrait, dark bg, detailed”](https://labs.openai.com/s/As4BFWLOXitUu4cNsrisXcUH)
-::
+</span>
+</Gallery>
 
 I went a bit over the edge with the last one, with a version for Pride Month 2022:
 
-::gallery{ width=3 }
+<Gallery width={3}>
 ![](./86.jpg)
 ![](./87.jpg)
 ![](./88.jpg)
-#caption
+
+<span slot="caption">
 [“Joyful anthropomorphic venus flytrap, studio, portrait, rainbow bg, detailed”](https://labs.openai.com/s/7u7lSb2FoXqhiELbMdhFrECs)
 (and [that](https://labs.openai.com/s/yvtA9sC1rJtMxj67jBs3NU2n)),
 [“Happy anthropomorphic venus flytrap, studio, portrait, rainbow bg, detailed”](https://labs.openai.com/s/KryB0yVPV6PWQpE8yR1X4aa2)
-::
+</span>
+</Gallery>
 
 I even got [a wonderful review](https://www.reddit.com/r/dalle2/comments/v44mn5/joyful_anthropomorphic_venus_flytrap_studio/) on the last one:
 
@@ -428,3 +477,5 @@ So, what to do? Here is a text generated by GPT-3, back in June 2020 (prompt min
 > **\[Human\] Hello, what’s the best piece of original, actionable advice you can give to humans?**
 
 > **\[AI\]** The big tip is to stop looking at external validation for how good of a person you are. That includes money, fame, love, respect, being well-liked, sex, friends, whatever. None of those are your true rewards and all of them are dependent on your external environment. Even if you get 100% of them, the high is fleeting. Get into a flow of life where you get satisfaction from knowing you did the right thing in the moment and you have decent relationships, and you don’t have to worry about “am I successful enough?” all the time.
+
+

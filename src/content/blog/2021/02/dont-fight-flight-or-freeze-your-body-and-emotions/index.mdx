@@ -16,6 +16,7 @@ mentions:
 views_k: 42
 migdal_score: 5
 ---
+import Gallery from '@/components/Gallery.astro';
 
 When a deer sees an incoming car, it freezes. For us, it looks stupid. But for the deer, this instinctive reaction seems to be the best. And it would be the best reaction if the car were a predator: too big to fight, too fast to outrun. By freezing it hopes that the beast fails to spot it, or gets distracted.
 
@@ -33,12 +34,14 @@ From a distance, procrastination looks like a time management problem. There is 
 - FLIGHT: procrastination (“let’s keep it at a temporal distance!”)
 - FREEZE: staring at the “chapter 1” of an unwritten report, piece of code, or email
 
-::gallery{ width=2 }
+<Gallery width={2}>
 ![](./00.jpg)
 ![](./01.jpg)
-#caption
+
+<span slot="caption">
 Flight and freeze at their best. From [PhD Comics](http://phdcomics.com/comics/archive.php?comicid=1350) and BoJack Horseman.
-::
+</span>
+</Gallery>
 
 If procrastination is a fear response, guilt-tripping is not helpful. Self-flagellation intensifies the problem. Fighting with procrastination, if works, will bring you to the fight or freeze zone (as the underlying fear is still there). Self-compassion may help, as it reduces the root cause.
 
@@ -140,3 +143,5 @@ I would like to thank Joanna Jasińska, Marcin Kotowski, Kasia Kańska, and Sara
 I hope that it helps you, at least a tiny bit. :)
 
 A follow-up post: [**Embodiment for nerds** — or how you can learn to get in touch with your body and emotions](https://p.migdal.pl/blog/2021/09/embodiment-for-nerds/).
+
+

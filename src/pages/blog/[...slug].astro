@@ -7,7 +7,7 @@ import { AUTHOR } from '@/lib/constants';
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
   return blogEntries.map(entry => ({
-    params: { slug: entry.id.replace(/\/index\.md$/, '') },
+    params: { slug: entry.id.replace(/\/index\.mdx?$/, '') },
     props: { entry },
   }));
 }
@@ -39,7 +39,7 @@ const formattedDate = new Date(date).toLocaleDateString('en-UK', {
       )}
     </div>
     <Content />
-    <SimilarPosts slug={entry.id.replace(/\/index\.md$/, '')} />
+    <SimilarPosts slug={entry.id.replace(/\/index\.mdx?$/, '')} />
   </article>
 </BaseLayout>
 

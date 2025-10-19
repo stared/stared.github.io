@@ -7,6 +7,7 @@ tags:
 image: ./dalle-ai-writing-zen-master.jpeg
 migdal_score: 0
 ---
+import Gallery from '@/components/Gallery.astro';
 
 Have you ever chatted with someone who could talk for hours, only to watch them freeze up when asked to write a simple email? Writer's block doesn't discriminate — it plagues everyone from first-time bloggers to bestselling authors. But what if our AI companions could teach us a thing or two about breaking through that mental barrier?
 
@@ -24,11 +25,13 @@ We often treat written words as if we're carving them into stone tablets. In rea
 
 ChatGPT, Claude, and Llama write as if no-one was judging them. These LLMs are the ultimate "go with the flow" writers. They don't overthink — they write one token at a time, without planning ahead or obsessing over edits.
 
-::gallery{ width=1 }
+<Gallery width={1}>
 ![](./transformer-explainer.png)
-#caption
+
+<span slot="caption">
 From [an explorable explanation](https://p.migdal.pl/blog/2024/05/science-games-explorable-explanations), [Transformer Explainer](https://poloclub.github.io/transformer-explainer/). It predicts all possibilities of the next token, picks one, never going back.
-::
+</span>
+</Gallery>
 
 It's mind-boggling that we, too, can create complex text without meticulous planning. During my first year of studies, [a professor](https://www.mimuw.edu.pl/~urzy/) called proofs a "literary form," akin to poetry with specific rules. His advice for starting a proof? Simply restate what you know and assign symbols to entities you need. Curiously, the proof often unfolded naturally from there. If a mathematical proof can be done this way, the sky's the limit for other forms of writing.
 
@@ -71,3 +74,5 @@ Now, go forth and write like the beautiful, imperfect, token-generating human yo
 I would like to thank [Grzegorz Uriasz](https://gorbak25.eu/) for his insightful feedback on the initial draft.
 
 Stay tuned for the next post, where I'll reveal some nifty tricks for harnessing LLMs as your editorial sidekicks.
+
+

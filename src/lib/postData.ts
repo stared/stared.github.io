@@ -21,7 +21,7 @@ export type BlogPost = CollectionEntry<'blog'> | ExternalPost;
 
 // Helper to get URL from a post
 export function getPostUrl(post: BlogPost): string {
-  return 'href' in post ? post.href : `/blog/${post.id.replace(/\/index\.md$/, '')}`;
+  return 'href' in post ? post.href : `/blog/${post.id.replace(/\/index\.mdx?$/, '')}`;
 }
 
 // Helper to check if post is external

@@ -13,6 +13,7 @@ mentions:
 views_k: 30
 migdal_score: 3
 ---
+import Gallery from '@/components/Gallery.astro';
 
 Albert Einstein, famously, started developing his ideas of space and time while working as a patent clerk. It was clearly not one of his duties. Yet, he pursued it, and made some of the greatest contributions to physics ever.
 
@@ -30,14 +31,18 @@ If you have a great project, do moonlight. Don't wait for better times, because 
 
 All of my best projects were side projects. And yours?
 
-::gallery{ width=1 }
-![](./piotrbw.jpg){ class=width-max-half }
-#caption
+<Gallery width={1}>
+![](./piotrbw.jpg)
+
+<span slot="caption">
 **Piotr Migdał, Ph.D.** is a quantum physicist turned into a data science freelancer (data analysis, interactive visualizations). He organized independent events such as [camps for gifted high school students](http://warsztatywww.wikidot.com/en:indie-camp-for-hs-geeks) and an unconference series [Offtopicarium](http://offtopicarium.wikidot.com/); now working on a [quantum game](http://quantumgame.io/).
-::
+</span>
+</Gallery>
 
 [^1]: Isaac Asimov, [On creativity – How do people get new ideas?](https://www.technologyreview.com/view/531911/isaac-asimov-asks-how-do-people-get-new-ideas/) (1959)
 [^2]: Ludwik Fleck, [Genesis and development of a scientific fact](https://www.worldcat.org/oclc/4908000) (1979), [pdf](http://www.evolocus.com/Textbooks/Fleck1979.pdf)
 [^3]: Scott Berkut, [The Myths of Innovation](https://www.scottberkun.com/2013/ten-myths-of-innnovation/) (2010); see [The Ten Myths of Innovation: the best summary](https://www.scottberkun.com/2013/ten-myths-of-innnovation/)
 [^4]: David Kaiser, [How the Hippies Saved Physics: Science, Counterculture, and the Quantum Revival](https://www.hippiessavedphysics.com/) (2011)
 [^5]: David Kushner, [Masters of Doom: How Two Guys Created an Empire and Transformed Pop Culture](https://en.wikipedia.org/wiki/Masters_of_Doom) (2003); see also as reviewed here: [You Don't Need Millions of Dollars](https://blog.codinghorror.com/you-dont-need-millions-of-dollars/)
+
+

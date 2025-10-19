@@ -15,6 +15,7 @@ mentions:
     href: https://news.ycombinator.com/item?id=43137616
 views_k: 18
 ---
+import Gallery from '@/components/Gallery.astro';
 
 One of Stanisław Lem's stories, [The Memoirs Found in a Bathtub](https://en.wikipedia.org/wiki/Memoirs_Found_in_a_Bathtub), begins with a strange phenomenon that turns all written materials into dust. While this is science fiction, something similar happens in our digital world.
 
@@ -30,11 +31,13 @@ Even self-hosting isn't foolproof - your content can vanish when you forget to p
 
 The only reliable solution is to store content in formats that can be opened without specialized software - formats that will remain accessible for decades to come.
 
-::gallery{ width=1 }
+<Gallery width={1}>
 ![](./galadriel-lotr-much-that-once-was.jpg)
-#caption
+
+<span slot="caption">
 Galadriel in "the Lord of the Rings" opening scene ([video](https://www.youtube.com/watch?v=qj139dE7tFI), [transcript](https://www.tk421.net/lotr/film/fotr/01.html)).
-::
+</span>
+</Gallery>
 
 ## Why things are worth saving
 
@@ -107,3 +110,5 @@ Discuss this post on [Hacker News](https://news.ycombinator.com/item?id=43137616
 [^plaintext]: I don't claim Markdown is the only solution. There are valid reasons to use other formats. My focus is on plaintext in UTF-8. If you prefer other markup languages (like reStructuredText, AsciiDoc, Org-Mode) or just plain text without formatting - the principles still apply. In some cases original format works - e.g. if it is JSON or code.
 [^html]: Consider HTML (Hypertext Markup Language) as a counterexample. It was meant to enrich text with semantics, but now serves primarily as a tool for building UIs. While this evolution brought many benefits, typical end-user HTML is no longer suitable for pure content storage. At the same time, if you can use simple HTML with actual semantic `<strong>` and `<em>` tags, go for it. But it's often a slippery slope - from "just add a few colors," through "add tables," to creating a full-fledged app.
 [^blog]: This blog uses [Nuxt 3 Content](https://content.nuxt.com/) (source: [github.com/stared/stared.github.io](https://github.com/stared/stared.github.io)). It follows my previous versions in [Jekyll](https://jekyllrb.com/) and [Gridsome](https://gridsome.org/). Thanks to Markdown, migration between platforms has been seamless - see [New blog - moving from Medium to Gridsome](https://p.migdal.pl/blog/2022/12/medium-to-markdown). For the latest migration from Gridsome to Nuxt 3 Content, [Cursor IDE](https://www.cursor.com/) was a great help. [Astro](https://astro.build/) is another static site generator gaining significant traction.
+
+

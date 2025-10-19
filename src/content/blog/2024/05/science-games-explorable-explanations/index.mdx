@@ -16,15 +16,18 @@ mentions:
     href: https://news.ycombinator.com/item?id=41648048
 author: Piotr Migdał et al.
 ---
+import Gallery from '@/components/Gallery.astro';
 
 The traditional way of teaching includes textbooks, lectures, and projects. This teaching method is performed top-down, with clear instructions and expectations. Students are tested via grading of projects, homework assignments, and exams. Usually fun, or the ability to explore on one's own, is not the key focus. Often students' motivation is extrinsic — to pass a course with a good grade. These activities can be gamified, provided with supplementary goals, scores, and challenges to make them more engaging.
 
-::gallery{ width=2 }
+<Gallery width={2}>
 ![](./velocity-raptor.jpg)
 ![](./hyper-rogue.jpg)
-#caption
+
+<span slot="caption">
 [Velocity Raptor](https://testtubegames.com/velocityraptor.html) by Test Tube Games and [HyperRogue](https://roguetemple.com/z/hyper/) by Zeno Rogue.
-::
+</span>
+</Gallery>
 
 In contrast, **science-based games**[^29] approach teaching from the opposite direction: to primarily focus on creating an experience sparking intrinsic motivation,[^89] that is, students play for fun, but learn in the process, as their gaming experience requires learning concepts to proceed or provides an explorative pathway through the game that promotes learning[^90] (even if it is not strictly necessary).
 
@@ -97,3 +100,5 @@ I shared it here (on the same Creative Commons CC BY license, obviously) because
 [^virtuallabsite]: [Virtual Lab by Quantum Flytrap](https://lab.quantumflytrap.com)
 [^virtuallab]: Piotr Migdał, Klementyna Jankiewicz, Paweł Grabarz, Chiara Decaroli, Philippe Cochin, [Visualizing quantum mechanics in an interactive simulation - Virtual Lab by Quantum Flytrap](https://doi.org/10.1117/1.OE.61.8.081808), Optical Engineering 61(8), 081808 (2022)
 [^hyperrogue]: E. Kopczynski, D. Celinska, and M. Ctrnáct [HyperRogue: Playing with Hyperbolic Geometry](https://archive.bridgesmathart.org/2017/bridges2017-9.html#gsc.tab=0), Proceedings of Bridges, 9–16 (2017)
+
+

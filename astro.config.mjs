@@ -9,7 +9,10 @@ import rehypeKatex from 'rehype-katex';
 export default defineConfig({
   site: 'https://p.migdal.pl',
   integrations: [
-    mdx(),
+    mdx({
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [rehypeKatex],
+    }),
     sitemap(),
     vue(),
   ],

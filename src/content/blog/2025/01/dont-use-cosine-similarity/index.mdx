@@ -13,6 +13,7 @@ mentions:
   - text: see Hacker News for the discussion
     href: https://news.ycombinator.com/item?id=42704078
 ---
+import Gallery from '@/components/Gallery.astro';
 
 ![](./python-summit-2024-warsaw-migdal-cosine-talking.jpg)
 
@@ -54,7 +55,7 @@ When we calculate cosine similarity, we get 0.750 between A and C (the semantica
 
 When comparing vectors, there's a temptingly simple solution that every data scientist reaches for, often without a second thought — cosine similarity:
 
-$$ \text{cosine similarity}(\vec{a}, \vec{b}) = \frac{\vec{a} \cdot \vec{b}}{\|\vec{a}\| \|\vec{b}\|} = \frac{\sum_i a_i b_i}{\sqrt{\sum_i a_i^2} \sqrt{\sum_i b_i^2}} $$
+$$ \text{"{"}cosine similarity{"}"}(\vec{"{"}a{"}"}, \vec{"{"}b{"}"}) = \frac{"{"}\vec{a{"}"} \cdot \vec{"{"}b{"}"}}{"{"}\|\vec{a{"}"}\| \|\vec{"{"}b{"}"}\|} = \frac{"{"}\sum_i a_i b_i{"}"}{"{"}\sqrt{\sum_i a_i^2{"}"} \sqrt{"{"}\sum_i b_i^2{"}"}} $$
 
 Geometrically speaking, it is the cosine of the angle between two vectors. However, I avoid thinking about it this way - we're dealing with spaces of dozens, hundreds, or thousands of dimensions. Our geometric intuition fails us in such high-dimensional spaces, and we shouldn't pretend otherwise.
 
@@ -67,12 +68,14 @@ It has some appealing properties:
 
 Yet, this simplicity is misleading. Just because the values usually fall between 0 and 1 doesn't mean they represent probabilities or any other meaningful metric. The value 0.6 tells little if we have something really similar, or not so much. And while negative values are possible, they rarely indicate semantic opposites — more often, the opposite of something is gibberish.
 
-::gallery{ width=1 }
+<Gallery width={1}>
 ![](./glove-dog-cosine-similarity.png)
-#caption
+
+<span slot="caption">
 When using cosine similarity on [Glove vectors](https://nlp.stanford.edu/projects/glove/) (`glove.6B.300d`), the closest words to "dog" are predictable, the farthest - not
 You can play with it [in Colab](https://colab.research.google.com/github/stared/thinking-in-tensors-writing-in-pytorch/blob/master/rnns/Word%20vectors.ipynb) from my [Thinking in tensors, writing in PyTorch](https://github.com/stared/thinking-in-tensors-writing-in-pytorch) series.
-::
+</span>
+</Gallery>
 
 In other words, cosine similarity is the duct tape of vector comparisons. Sure, it sticks everything together — images, text, audio, code — but like real duct tape, it's a quick fix that often masks deeper problems rather than solving them. And just as you wouldn't use duct tape to permanently repair a water pipe, you shouldn't blindly trust cosine similarity for all your vector comparison needs.
 
@@ -137,12 +140,14 @@ Now, using cosine similarity, we can compare it to other notes:
 - _"Where did I put my wallet?"_
 - _"What I did to my life?"_
 
-::gallery{ width=1 }
+<Gallery width={1}>
 ![](./the-quest-for-keys.png)
-#caption
+
+<span slot="caption">
 The closest match is not a plausible answer to our question — instead, it is another question. With sentence embedding cosine similarity, we are more likely to question our own life than to solve our mundane task.
 Fortunately, sentences about Python are close to zero - as they are not related.
-::
+</span>
+</Gallery>
 
 And remember, this is just a toy example with five sentences. In real-world applications, we're often dealing with thousands of documents — far more than could fit in a single context window. As your dataset grows, so does the noise sensitivity, turning your similarity scores into a game of high-dimensional roulette.
 
@@ -152,7 +157,7 @@ And remember, this is just a toy example with five sentences. In real-world appl
 
 The best approach is to directly use LLM query to compare two entries. So, first, start with [a powerful model of your choice](https://lmarena.ai/?leaderboard). Then, we can write something in the line of:
 
-> "Is {sentence_a} a plausible answer to {sentence_b}?"
+> "Is {"{"}sentence_a{"}"} a plausible answer to {"{"}sentence_b{"}"}?"
 
 This way we harness the full power of an LLM to extract meaningful comparisons - powerful enough to find our keys in pockets, and wise enough to understand the difference between questions and answers.
 We typically want our answers in structured output - what the field calls "tools" or "function calls" (which is really just a fancy way of saying "JSON").
@@ -160,15 +165,15 @@ We typically want our answers in structured output - what the field calls "tools
 Since many models love Markdown (as they were trained on it), my default template looks like this:
 
 ```markdown
-{question}
+{"{"}question{"}"}
 
 ## A
 
-{sentence_a}
+{"{"}sentence_a{"}"}
 
 ## B
 
-{sentence_b}
+{"{"}sentence_b{"}"}
 ```
 
 However, in most cases this approach is impractical - we don't want to run such a costly operation for each query. Unless our dataset is very small, it would be prohibitively expensive. Even with a small dataset, the delays would be noticeable compared to a simple numerical operation.
@@ -187,7 +192,7 @@ Let's start with a symmetric case. Say we want to ask, **"Is A similar to B?"** 
 
 $$\sigma(u_A \cdot u_B)$$
 
-where $u = M v$, and $M$ is a matrix that reduces the embedding space to dimensions we actually care about; and $\sigma(x)=1/(1+e^{-x})$ is the sigmoid function. Think of it as decluttering — we're keeping only the features relevant to our specific similarity definition.
+where $u = M v$, and $M$ is a matrix that reduces the embedding space to dimensions we actually care about; and $\sigma(x)=1/(1+e^{"{"}-x{"}"})$ is the sigmoid function. Think of it as decluttering — we're keeping only the features relevant to our specific similarity definition.
 
 But often, similarity isn't what we're really after. Consider the question **"Is document B a correct answer to question A?"** (note the word "correct") and the relevant probability:
 
@@ -212,12 +217,12 @@ A simple example — let's have the list of [Time's 100 Most Significant Figures
 ![](./time-newton-sim1.png)
 
 No surprise, it's other physicists and natural philosophers.
-Yet, let's say we want to focus on his nationality - so we add a prompt _"Nationality of {person}"_.
+Yet, let's say we want to focus on his nationality - so we add a prompt _"Nationality of {"{"}person{"}"}"_.
 
 ![](./time-newton-sim2.png)
 
 Sadly, the results are underwhelming - sure, Galileo went a few places down, but Albert Einstein is listed as the most similar.
-So, let's try another approach, by making nationality the subject of the sentence - _"This is a country that has produced many influential historical figures, including {person}"_.
+So, let's try another approach, by making nationality the subject of the sentence - _"This is a country that has produced many influential historical figures, including {"{"}person{"}"}"_.
 
 ![](./time-newton-sim3.png)
 
@@ -280,3 +285,5 @@ And, as an experiment, here are my least similar posts:
 - `0.285` [The Statues by Jacek Kaczmarski](https://p.migdal.pl/blog/2019/10/the-statues-by-jacek-kaczmarski/)
 
 Yes, I see the irony in using cosine similarity after warning against it. But here I'm using it exactly as intended — on a model trained on it and comparing apples to apples (various blog posts). Sometimes duck tape is all we need.
+
+
