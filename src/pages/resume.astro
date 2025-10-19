@@ -1,12 +1,14 @@
 ---
-import { getEntry, getCollection } from 'astro:content';
+import { getEntry, getCollection, render } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
 const resumeIntro = await getEntry('textComponents', 'resume-intro');
 const resumeHighlights = await getEntry('textComponents', 'resume-highlights');
+if (!resumeIntro) throw new Error('Resume intro content not found');
+if (!resumeHighlights) throw new Error('Resume highlights content not found');
 
-const { Content: IntroContent } = await resumeIntro.render();
-const { Content: HighlightsContent } = await resumeHighlights.render();
+const { Content: IntroContent } = await render(resumeIntro);
+const { Content: HighlightsContent } = await render(resumeHighlights);
 
 const experiencesEntries = await getCollection('experiences');
 const experiences = experiencesEntries.map((entry) => entry.data);

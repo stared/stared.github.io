@@ -1,9 +1,10 @@
 ---
-import { getEntry, getCollection } from 'astro:content';
+import { getEntry, getCollection, render } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
 const publicationsContent = await getEntry('textComponents', 'publications');
-const { Content } = await publicationsContent.render();
+if (!publicationsContent) throw new Error('Publications content not found');
+const { Content } = await render(publicationsContent);
 
 const publicationsEntries = await getCollection('publications');
 const publications = publicationsEntries.map((entry) => entry.data);

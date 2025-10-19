@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import SimilarPosts from '@/components/SimilarPosts.astro';
 import { AUTHOR } from '@/lib/constants';
@@ -7,13 +7,13 @@ import { AUTHOR } from '@/lib/constants';
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
   return blogEntries.map(entry => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id.replace(/\/index\.md$/, '') },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 const { title, description, image, date, author = AUTHOR, mentions } = entry.data;
 
 const formattedDate = new Date(date).toLocaleDateString('en-UK', {
@@ -39,7 +39,7 @@ const formattedDate = new Date(date).toLocaleDateString('en-UK', {
       )}
     </div>
     <Content />
-    <SimilarPosts slug={entry.slug} />
+    <SimilarPosts slug={entry.id.replace(/\/index\.md$/, '')} />
   </article>
 </BaseLayout>
 

@@ -14,7 +14,7 @@ export async function GET(context: APIContext) {
       title: post.data.title,
       pubDate: new Date(post.data.date),
       description: post.data.description,
-      link: `${SITE_URL}/blog/${post.slug}`,
+      link: `${SITE_URL}/blog/${post.id.replace(/\/index\.md$/, '')}`,
       author: post.data.author || AUTHOR,
     })),
     ...externalPosts.map(post => ({
