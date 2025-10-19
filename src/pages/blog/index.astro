@@ -1,0 +1,20 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogList from '@/components/BlogList.vue';
+import type { ExternalPost } from '@/lib/postData';
+
+const blogPosts = await getCollection('blog');
+const externalArticlesEntries = await getCollection('externalArticles');
+const externalPosts = externalArticlesEntries.map((entry) => entry.data) as ExternalPost[];
+const allPosts = [...blogPosts, ...externalPosts];
+
+const blogTextContent = await getEntry('textComponents', 'blog');
+if (!blogTextContent) throw new Error('Blog text content not found');
+const { Content } = await render(blogTextContent);
+---
+
+<BaseLayout title="Blog" description="Read blog posts by Piotr Migdał.">
+  <Content />
+  <BlogList client:only="vue" posts={allPosts} />
+</BaseLayout>

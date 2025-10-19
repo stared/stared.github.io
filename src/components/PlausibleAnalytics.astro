@@ -1,0 +1,7 @@
+---
+const isProduction = import.meta.env.PROD;
+---
+
+{isProduction && (
+  <script is:inline defer data-domain="p.migdal.pl" src="https://plausible.io/js/script.js"></script>
+)}

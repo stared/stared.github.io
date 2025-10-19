@@ -12,4 +12,6 @@ dist
 
 .yarn/
 
-public/blog/
+.astro/
+public/blog/.astro/
+dist/

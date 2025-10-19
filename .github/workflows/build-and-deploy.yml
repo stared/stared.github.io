@@ -1,9 +1,8 @@
-name: Deploy Nuxt site to Pages
+name: Deploy Astro site to Pages
 
 on:
   push:
     branches: ["main"]
-
   workflow_dispatch:
 
 permissions:
@@ -17,17 +16,27 @@ concurrency:
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Enable Corepack
-        run: corepack enable
-      - name: Setup Node 
+
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
-          cache: 'yarn'
+          node-version: "22"
+          cache: "pnpm"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
       - name: Install dependencies
         run: yarn install
       - name: Static HTML export with Nuxt
@@ -38,18 +47,20 @@ jobs:
           find content/blog -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.webp" -o -name "*.svg" \) -exec bash -c 'target=".output/public/blog/${1#content/blog/}"; mkdir -p "$(dirname "$target")"; cp "$1" "$target"' _ {} \;
           echo "Copied $(find .output/public/blog -type f | wc -l) files"
       - name: Add CNAME file
-        run: echo "p.migdal.pl" > .output/public/CNAME
+        run: echo "p.migdal.pl" > dist/CNAME
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .output/public
+          path: ./dist
 
   deploy:
+    name: Deploy
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     needs: build
+    runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
