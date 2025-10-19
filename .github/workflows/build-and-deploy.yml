@@ -22,30 +22,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "22"
           cache: "pnpm"
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
 
       - name: Install dependencies
-        run: yarn install
-      - name: Static HTML export with Nuxt
-        run: yarn generate
-      - name: Copy blog images to output
-        run: |
-          mkdir -p .output/public/blog
-          find content/blog -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.webp" -o -name "*.svg" \) -exec bash -c 'target=".output/public/blog/${1#content/blog/}"; mkdir -p "$(dirname "$target")"; cp "$1" "$target"' _ {} \;
-          echo "Copied $(find .output/public/blog -type f | wc -l) files"
+        run: pnpm install
+
+      - name: Build Astro site
+        run: pnpm build
+
       - name: Add CNAME file
         run: echo "p.migdal.pl" > dist/CNAME
 
