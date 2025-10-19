@@ -25,6 +25,10 @@ const { width } = Astro.props;
     gap: 1rem;
   }
 
+  .image-container :global(p) {
+    display: contents;
+  }
+
   .image-container :global(img) {
     width: 100%;
     height: auto;
