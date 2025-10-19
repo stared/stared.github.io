@@ -192,7 +192,7 @@ Let's start with a symmetric case. Say we want to ask, **"Is A similar to B?"** 
 
 $$\sigma(u_A \cdot u_B)$$
 
-where $u = M v$, and $M$ is a matrix that reduces the embedding space to dimensions we actually care about; and $\sigma(x)=1/(1+e^{"{"}-x{"}"})$ is the sigmoid function. Think of it as decluttering — we're keeping only the features relevant to our specific similarity definition.
+where $u = M v$, and $M$ is a matrix that reduces the embedding space to dimensions we actually care about; and $\sigma(x)=1/(1+e^{-x})$ is the sigmoid function. Think of it as decluttering — we're keeping only the features relevant to our specific similarity definition.
 
 But often, similarity isn't what we're really after. Consider the question **"Is document B a correct answer to question A?"** (note the word "correct") and the relevant probability:
 
