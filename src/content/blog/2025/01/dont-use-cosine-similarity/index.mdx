@@ -55,7 +55,7 @@ When we calculate cosine similarity, we get 0.750 between A and C (the semantica
 
 When comparing vectors, there's a temptingly simple solution that every data scientist reaches for, often without a second thought — cosine similarity:
 
-$$ \text{"{"}cosine similarity{"}"}(\vec{"{"}a{"}"}, \vec{"{"}b{"}"}) = \frac{"{"}\vec{a{"}"} \cdot \vec{"{"}b{"}"}}{"{"}\|\vec{a{"}"}\| \|\vec{"{"}b{"}"}\|} = \frac{"{"}\sum_i a_i b_i{"}"}{"{"}\sqrt{\sum_i a_i^2{"}"} \sqrt{"{"}\sum_i b_i^2{"}"}} $$
+$$ \text{cosine similarity}(\vec{a}, \vec{b}) = \frac{\vec{a} \cdot \vec{b}}{\|\vec{a}\| \|\vec{b}\|} = \frac{\sum_i a_i b_i}{\sqrt{\sum_i a_i^2} \sqrt{\sum_i b_i^2}} $$
 
 Geometrically speaking, it is the cosine of the angle between two vectors. However, I avoid thinking about it this way - we're dealing with spaces of dozens, hundreds, or thousands of dimensions. Our geometric intuition fails us in such high-dimensional spaces, and we shouldn't pretend otherwise.
 
