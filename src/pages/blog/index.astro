@@ -16,5 +16,5 @@ const { Content } = await render(blogTextContent);
 
 <BaseLayout title="Blog" description="Read blog posts by Piotr Migdał.">
   <Content />
-  <BlogList client:only="vue" posts={allPosts} />
+  <BlogList client:load posts={allPosts} />
 </BaseLayout>
