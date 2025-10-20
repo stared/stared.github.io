@@ -16,7 +16,7 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 const { title, description, image, date, author = AUTHOR, mentions } = entry.data;
 
-const formattedDate = new Date(date).toLocaleDateString('en-UK', {
+const formattedDate = date.toLocaleDateString('en-UK', {
   month: 'short',
   day: 'numeric',
   year: 'numeric',

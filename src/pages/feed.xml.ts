@@ -12,7 +12,7 @@ export async function GET(context: APIContext) {
   const allPosts = [
     ...blogPosts.map(post => ({
       title: post.data.title,
-      pubDate: new Date(post.data.date),
+      pubDate: post.data.date,
       description: post.data.description,
       link: `${SITE_URL}/blog/${post.id.replace(/\/index\.mdx?$/, '')}`,
       author: post.data.author || AUTHOR,
