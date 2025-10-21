@@ -1,7 +1,3 @@
----
-id: publications
----
-
 # Research publications
 
 My list of academic publications (quantum optics & information, complex systems, mathematical psychology).

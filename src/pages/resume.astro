@@ -1,22 +1,16 @@
 ---
-import { getEntry, getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-
-const resumeIntro = await getEntry('textComponents', 'resume-intro');
-const resumeHighlights = await getEntry('textComponents', 'resume-highlights');
-if (!resumeIntro) throw new Error('Resume intro content not found');
-if (!resumeHighlights) throw new Error('Resume highlights content not found');
-
-const { Content: IntroContent } = await render(resumeIntro);
-const { Content: HighlightsContent } = await render(resumeHighlights);
+import {Content as ResumeIntro} from '@/content/textComponents/resume-intro.md';
+import {Content as ResumeHighlights} from '@/content/textComponents/resume-highlights.md';
 
 const experiencesEntries = await getCollection('experiences');
 const experiences = experiencesEntries.map((entry) => entry.data);
 ---
 
 <BaseLayout title="Resume" description="Resume of Piotr Migdał.">
-  <IntroContent />
-  <HighlightsContent />
+  <ResumeIntro />
+  <ResumeHighlights />
 
   <h2>Recent experience</h2>
   <ul class="experiences">

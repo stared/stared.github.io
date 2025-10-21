@@ -23,11 +23,6 @@ const blog = defineCollection({
   }),
 });
 
-const textComponents = defineCollection({
-  type: 'content',
-  schema: z.object({}),
-});
-
 const similarities = defineCollection({
   loader: glob({ pattern: '*.json', base: 'src/data/similarities' }),
   schema: z.object({
@@ -124,7 +119,6 @@ const mediaMentions = defineCollection({
 
 export const collections = {
   blog,
-  textComponents,
   similarities,
   projects,
   publications,
