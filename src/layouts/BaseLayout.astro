@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import { AUTHOR, SITE_DESCRIPTION } from '@/lib/constants';
 import PlausibleAnalytics from '@/components/PlausibleAnalytics.astro';
 
@@ -45,7 +45,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:description" content={description} />
     {image && <meta name="twitter:image" content={image} />}
 
-    <ViewTransitions />
+    <ClientRouter />
     <PlausibleAnalytics />
     <title>{fullTitle}</title>
   </head>

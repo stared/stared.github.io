@@ -7,7 +7,7 @@ import OpenAI from 'openai'
 
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY
+const OPENAI_API_KEY = process.env['OPENAI_API_KEY']
 
 if (!OPENAI_API_KEY) {
   console.error('Error: OPENAI_API_KEY environment variable is not set')
@@ -24,7 +24,11 @@ async function getEmbedding(text: string): Promise<number[]> {
     model: 'text-embedding-3-large',
     input: text,
   })
-  return response.data[0].embedding
+  const embedding = response.data[0]?.embedding
+  if (!embedding) {
+    throw new Error('No embedding returned from OpenAI')
+  }
+  return embedding
 }
 
 async function generateEmbeddings() {
@@ -52,7 +56,7 @@ async function generateEmbeddings() {
       .split(' ')
       .slice(0, 4000)
       .join(' ')
-    const text = `${data.title}\n\n${truncatedContent}`
+    const text = `${data['title']}\n\n${truncatedContent}`
 
     console.log(`Generating embedding for ${slug}...`)
     try {
