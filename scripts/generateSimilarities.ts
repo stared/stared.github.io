@@ -26,7 +26,7 @@ interface SimilarityOutput {
 }
 
 function cosineSimilarity(a: number[], b: number[]): number {
-  const dot = a.reduce((sum, ai, i) => sum + ai * b[i], 0)
+  const dot = a.reduce((sum, ai, i) => sum + ai * (b[i] ?? 0), 0)
   const normA = Math.sqrt(a.reduce((sum, ai) => sum + ai * ai, 0))
   const normB = Math.sqrt(b.reduce((sum, bi) => sum + bi * bi, 0))
   return dot / (normA * normB)
@@ -34,19 +34,19 @@ function cosineSimilarity(a: number[], b: number[]): number {
 
 function getPostTitle(slug: string): string {
   const parts = slug.split('_')
-  const year = parts[0]
-  const month = parts[1]
+  const year = parts[0] ?? ''
+  const month = parts[1] ?? ''
   const rest = parts.slice(2).join('_')
   const mdPath = path.join(CONTENT_DIR, 'blog', year, month, rest, 'index.md')
 
   try {
     const fileContent = fs.readFileSync(mdPath, 'utf-8')
     const { data } = matter(fileContent)
-    if (!data.title) {
+    if (!data['title']) {
       console.warn(`No title found in frontmatter for ${slug}`)
       return slug.replace(/_/g, '/')
     }
-    return data.title
+    return data['title']
   } catch {
     console.warn(`Could not read title for ${slug}, using fallback`)
     return slug.replace(/_/g, '/')

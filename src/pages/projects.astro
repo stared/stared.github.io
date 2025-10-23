@@ -1,17 +1,14 @@
 ---
-import { getEntry, getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-
-const projectsContent = await getEntry('textComponents', 'projects');
-if (!projectsContent) throw new Error('Projects content not found');
-const { Content } = await render(projectsContent);
+import {Content as ProjectsIntro} from '@/content/textComponents/projects.md';
 
 const projectsEntries = await getCollection('projects');
 const projects = projectsEntries.map((entry) => entry.data);
 ---
 
 <BaseLayout title="Projects" description="Numerous projects by Piotr Migdał.">
-  <Content />
+  <ProjectsIntro />
   <ul class="projects">
     {projects.map((project) => (
       <li class="project">

@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import SimilarPosts from '@/components/SimilarPosts.astro';
 import { AUTHOR } from '@/lib/constants';
+import {Content as Footer} from '@/content/textComponents/footer.md';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
@@ -16,7 +17,7 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 const { title, description, image, date, author = AUTHOR, mentions } = entry.data;
 
-const formattedDate = new Date(date).toLocaleDateString('en-UK', {
+const formattedDate = date.toLocaleDateString('en-UK', {
   month: 'short',
   day: 'numeric',
   year: 'numeric',
@@ -40,6 +41,9 @@ const formattedDate = new Date(date).toLocaleDateString('en-UK', {
     </div>
     <Content />
     <SimilarPosts slug={entry.id.replace(/\/index\.mdx?$/, '')} />
+    <footer>
+      <Footer />
+    </footer>
   </article>
 </BaseLayout>
 

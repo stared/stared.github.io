@@ -1,7 +1,3 @@
----
-id: resume-highlights
----
-
 ## A few highlights
 
 - [Virtual Lab](https://lab.quantumflytrap.com/) has been [nominated for the 27th Webby Awards in the Science category](https://vote.webbyawards.com/PublicVoting#/2023/websites-and-mobile-sites/general-websites-and-mobile-sites/science), among OpenAI and NASA.

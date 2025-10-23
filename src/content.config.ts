@@ -5,7 +5,7 @@ const blog = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    date: z.coerce.string(),
+    date: z.coerce.date(),
     tags: z.array(z.string()).default([]),
     description: z.string().default(''),
     author: z.string().default('Piotr Migdał'),
@@ -21,11 +21,6 @@ const blog = defineCollection({
     views_k: z.number().default(0),
     migdal_score: z.number().default(0),
   }),
-});
-
-const textComponents = defineCollection({
-  type: 'content',
-  schema: z.object({}),
 });
 
 const similarities = defineCollection({
@@ -124,7 +119,6 @@ const mediaMentions = defineCollection({
 
 export const collections = {
   blog,
-  textComponents,
   similarities,
   projects,
   publications,

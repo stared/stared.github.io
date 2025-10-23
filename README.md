@@ -2,14 +2,16 @@
 
 For previous versions of the website, see:
 
-- [stared/jekyll-blog-pre-2022](https://github.com/stared/jekyll-blog-pre-2022)
-- [stared/old-blog-gridsome-pre-2024](https://github.com/stared/old-blog-gridsome-pre-2024)
+- [stared/jekyll-blog-pre-2022](https://github.com/stared/jekyll-blog-pre-2022) - Jekyll static site
+- [stared/old-blog-gridsome-pre-2024](https://github.com/stared/old-blog-gridsome-pre-2024) - Gridsome (Vue 2)
+- Nuxt 3 Content (2024-2025) - Vue 3 + TypeScript
 
-I migrated to Nuxt 3 Content for a few reasons
+I migrated to Astro for a few reasons:
 
-- Gridsome is no longer maintained (and uses old Vue 2)
-- I wanted to use Vue 3 + TypeScript
-- Nuxt 3 Content makes using a combination of Vue and Markdown-based posts really easy (for my use case, much GraphMQ-based approach of Gridsome and React-based GatsbyJS)
+- Better performance with static site generation and modern optimizations
+- Excellent content collections with built-in type safety via Zod schemas
+- Great support for MDX, Vue components (when needed), and modern web standards
+- Active maintenance and vibrant ecosystem
 
 ## License
 
@@ -19,17 +21,17 @@ I share all content (blog posts, images, etc.) under the Creative Commons Attrib
 
 ## Setup
 
-Look at the [Nuxt 3 Content documentation](https://content.nuxt.com/) to learn more.
+Look at the [Astro documentation](https://docs.astro.build/) to learn more.
 
 If you want to run it locally:
 
 ```bash
-yarn install
-yarn dev
+pnpm install
+pnpm dev
 ```
 
-To create a static version, see how I do it in GitHub Actions, `.github/workflows/build-and-deploy.yml`; in general, you need to run:
+To create a static build, see how I do it in GitHub Actions, `.github/workflows/build-and-deploy.yml`; in general, you need to run:
 
 ```bash
-yarn generate
+pnpm build
 ```

@@ -1,7 +1,3 @@
----
-id: projects
----
-
 # Public projects
 
 My public projects with a certain overrepresentation of data visualizations (easy to share, easy to explain, eye-candy).
