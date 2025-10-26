@@ -90,7 +90,7 @@ function selectTag(tag: string) {
     </p>
 
     <div class="post-list">
-      <div v-for="(post, index) in filteredPosts" :key="index" class="post">
+      <div v-for="post in filteredPosts" :key="getPostUrl(post)" class="post">
         <span v-if="!isExternalPost(post)" class="title">
           <a :href="getPostUrl(post)">{{ 'data' in post ? post.data.title : post.title }}</a>
         </span>
