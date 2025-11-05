@@ -1,0 +1,40 @@
+# Lychee link checker exclusions
+# See: https://lychee.cli.rs/usage/ignore/
+
+# Known broken links (404s)
+https://adereth.github.io/blog/2013/11/29/colorful-equations
+
+# Social media that blocks bots/requires login
+https://twitter.com/*
+https://x.com/*
+https://www.facebook.com/*
+https://www.linkedin.com/*
+https://www.instagram.com/*
+# Reddit sometimes blocks automated checks on specific threads
+https://www.reddit.com/r/*/comments/*
+
+# Analytics and tracking
+https://www.google-analytics.com/*
+https://analytics.google.com/*
+https://plausible.io/*
+https://matomo.org/*
+
+# Paywalls and subscription content
+https://www.nytimes.com/*
+https://www.wsj.com/*
+https://www.economist.com/*
+https://www.ft.com/*
+
+# Local/example URLs
+http://localhost*
+http://127.0.0.1*
+http://0.0.0.0*
+https://example.com/*
+https://example.org/*
+
+# Email addresses (mailto links)
+mailto:*
+
+# Archive.org can be slow/intermittent
+# Uncomment if needed:
+# https://web.archive.org/*
