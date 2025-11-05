@@ -1,0 +1,22 @@
+# Lychee link checker exclusions
+# See: https://lychee.cli.rs/usage/ignore/
+
+# Only exclude things that genuinely cannot be checked or cause false positives
+
+# Local/example URLs
+http://localhost*
+http://127.0.0.1*
+http://0.0.0.0*
+https://example.com/*
+https://example.org/*
+
+# Email addresses (mailto links) - if you want to skip email validation
+# Uncomment if needed:
+# mailto:*
+
+# Analytics and tracking that completely block automated requests
+# Add specific URLs here if they cause problems
+
+# Archive.org can be slow/intermittent
+# Uncomment if it causes timeout issues:
+# https://web.archive.org/*

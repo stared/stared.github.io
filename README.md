@@ -35,3 +35,14 @@ To create a static build, see how I do it in GitHub Actions, `.github/workflows/
 ```bash
 pnpm build
 ```
+
+## Link Checking
+
+Check for broken links in blog posts using [Lychee](https://lychee.cli.rs/):
+
+```bash
+# Install lychee first: brew install lychee (macOS) or cargo install lychee
+pnpm check:links
+```
+
+GitHub Actions runs this automatically every Monday. See `.github/workflows/check-links.yml`.

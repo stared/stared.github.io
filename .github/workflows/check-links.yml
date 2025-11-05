@@ -1,0 +1,51 @@
+name: Check Links
+
+on:
+  schedule:
+    # Run every Monday at 9:15 AM UTC
+    - cron: '15 9 * * 1'
+  workflow_dispatch:
+    # Allow manual triggering from GitHub Actions UI
+
+jobs:
+  check-links:
+    name: Check blog post links
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check links with Lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # Check all markdown and MDX files in blog directory
+          args: >-
+            --cache
+            --max-cache-age 1d
+            --verbose
+            --no-progress
+            --max-retries 3
+            --timeout 30
+            --accept 200,204,206,301,302,307,308,429
+            './src/content/blog/**/*.md'
+            './src/content/blog/**/*.mdx'
+
+          # Use GitHub token to avoid rate limiting
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+          # Output results to workflow summary
+          jobSummary: true
+
+          # Don't fail the workflow on broken links (report only)
+          fail: false
+
+      - name: Link check results
+        if: always()
+        run: |
+          echo "Link check completed!"
+          echo "Check the job summary above for detailed results."
+          echo "Look for:"
+          echo "  - 404 errors (broken links)"
+          echo "  - 3xx redirects (moved content)"
+          echo "  - Timeout errors (slow/unreachable sites)"
