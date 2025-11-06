@@ -12,9 +12,9 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "astro": "astro",
-    "check:links": "lychee --cache --max-cache-age 7d --verbose 'src/content/blog/**/*.md' 'src/content/blog/**/*.mdx'",
-    "check:links:verbose": "lychee --cache --max-cache-age 7d --verbose --no-progress 'src/content/blog/**/*.md' 'src/content/blog/**/*.mdx'",
-    "check:links:nocache": "lychee --verbose 'src/content/blog/**/*.md' 'src/content/blog/**/*.mdx'",
+    "check:links": "lychee --cache --max-cache-age 7d --verbose --user-agent 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' 'src/content/blog/**/*.md' 'src/content/blog/**/*.mdx'",
+    "check:links:verbose": "lychee --cache --max-cache-age 7d --verbose --no-progress --user-agent 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' 'src/content/blog/**/*.md' 'src/content/blog/**/*.mdx'",
+    "check:links:nocache": "lychee --verbose --user-agent 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' 'src/content/blog/**/*.md' 'src/content/blog/**/*.mdx'",
     "check:links:install": "echo 'Install lychee via: brew install lychee (macOS) or cargo install lychee (Rust) or see https://lychee.cli.rs/#/installation'"
   },
   "dependencies": {
