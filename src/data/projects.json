@@ -1,5 +1,17 @@
 [
   {
+    "id": "-1",
+    "title": "Equations Explained Colorfully",
+    "desc": "Use Markdown and LaTeX to create interactive equations",
+    "href": "https://p.migdal.pl/equations-explained-colorfully",
+    "dateStart": "2025-11-02T00:00:00.000Z",
+    "tags": [
+      "data viz",
+      "typescript",
+      "latex"
+    ]
+  },
+  {
     "id": "0",
     "title": "WebR ggplot2 Playground",
     "desc": "Interactive R data viz entirely in your browser - thanks to WebAssembly",
