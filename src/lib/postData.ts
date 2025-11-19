@@ -19,6 +19,15 @@ export interface ExternalPost {
 // Unified blog post type that works with both internal and external posts
 export type BlogPost = CollectionEntry<'blog'> | ExternalPost;
 
+// Default weights for sorting blog posts
+// Used to ensure SSR and CSR render identical initial state
+export const DEFAULT_WEIGHTS = {
+  popularity: 4,
+  mentions: 2,
+  age: -8,
+  migdalScore: 2,
+} as const;
+
 // Helper to get URL from a post
 export function getPostUrl(post: BlogPost): string {
   return 'href' in post ? post.href : `/blog/${post.id.replace(/\/index\.mdx?$/, '')}`;

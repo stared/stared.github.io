@@ -3,12 +3,22 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import BlogList from '@/components/BlogList.vue';
 import type { ExternalPost } from '@/lib/postData';
+import { BlogPostCollection, DEFAULT_WEIGHTS } from '@/lib/postData';
 import {Content as BlogIntro} from '@/content/textComponents/blog.md';
 
 const blogPosts = await getCollection('blog');
 const externalArticlesEntries = await getCollection('externalArticles');
 const externalPosts = externalArticlesEntries.map((entry) => entry.data) as ExternalPost[];
-const allPosts = [...blogPosts, ...externalPosts];
+
+// Pre-sort posts with default weights to match BlogList's initial state
+// This ensures SSR and CSR render identical HTML, preventing hydration mismatches
+const collection = new BlogPostCollection([...blogPosts, ...externalPosts]);
+const allPosts = collection.sortByWeights(
+  DEFAULT_WEIGHTS.popularity,
+  DEFAULT_WEIGHTS.mentions,
+  DEFAULT_WEIGHTS.age,
+  DEFAULT_WEIGHTS.migdalScore
+).posts;
 ---
 
 <BaseLayout title="Blog" description="Read blog posts by Piotr Migdał.">

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import RangeSlider from '@/components/RangeSlider.vue';
-import { BlogPostCollection } from '@/lib/postData';
+import { BlogPostCollection, DEFAULT_WEIGHTS } from '@/lib/postData';
 import type { BlogPost } from '@/lib/postData';
 import { getPostUrl, isExternalPost, hasHackerNews, formatPostDate } from '@/lib/postData';
 
@@ -12,10 +12,10 @@ interface Props {
 const props = defineProps<Props>();
 
 const tagSelected = ref('all');
-const weightPopularity = ref(4);
-const weightMentions = ref(2);
-const weightAge = ref(-8);
-const migdalweight = ref(2);
+const weightPopularity = ref(DEFAULT_WEIGHTS.popularity);
+const weightMentions = ref(DEFAULT_WEIGHTS.mentions);
+const weightAge = ref(DEFAULT_WEIGHTS.age);
+const migdalweight = ref(DEFAULT_WEIGHTS.migdalScore);
 
 const collection = new BlogPostCollection(props.posts);
 const allTagsCounted = collection.getAllTagsWithCounts();
