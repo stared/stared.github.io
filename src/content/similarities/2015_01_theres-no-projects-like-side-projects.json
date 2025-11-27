@@ -1,0 +1,39 @@
+{
+  "most_similar": [
+    {
+      "slug": "2015_12_sci-to-data-sci",
+      "similarity": 0.6718533003672715,
+      "title": "What I do or: science to data science",
+      "path": "/blog/2015/12/sci-to-data-sci",
+      "isExternal": false
+    },
+    {
+      "slug": "external_2012_08_en-indie-camp-for-hs-geeks",
+      "similarity": 0.5928163262198378,
+      "title": "An independent camp for high school geeks",
+      "path": "https://warsztatywww.pl/article/en-indie-camp-for-hs-geeks/",
+      "isExternal": true
+    },
+    {
+      "slug": "external_2019_08_to-make-cool-game-play-cool-games",
+      "similarity": 0.5653922682616136,
+      "title": "To make a cool game, you first have to play other cool games",
+      "path": "https://medium.com/quantum-photons/to-make-a-cool-game-you-first-have-to-play-other-cool-games-a1a1d45e169b",
+      "isExternal": true
+    },
+    {
+      "slug": "2024_05_science-games-explorable-explanations",
+      "similarity": 0.5476085878155914,
+      "title": "Science-based games and explorable explanations",
+      "path": "/blog/2024/05/science-games-explorable-explanations",
+      "isExternal": false
+    },
+    {
+      "slug": "2019_06_cloak-dagger-creativity-camp",
+      "similarity": 0.5375989141992439,
+      "title": "Cloak & dagger creativity camp",
+      "path": "/blog/2019/06/cloak-dagger-creativity-camp",
+      "isExternal": false
+    }
+  ]
+}

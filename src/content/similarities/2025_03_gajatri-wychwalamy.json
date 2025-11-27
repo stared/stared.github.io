@@ -1,0 +1,39 @@
+{
+  "most_similar": [
+    {
+      "slug": "2023_05_genesis-az-by-gpt",
+      "similarity": 0.5065832674954579,
+      "title": "Genesis 1 but every word begins with 'A' - with GPT4",
+      "path": "/blog/2023/05/genesis-az-by-gpt",
+      "isExternal": false
+    },
+    {
+      "slug": "2025_04_vibe-translating-quantum-flytrap",
+      "similarity": 0.4642606005009673,
+      "title": "Making Quantum Flytrap a polyglot with AI vibe translating",
+      "path": "/blog/2025/04/vibe-translating-quantum-flytrap",
+      "isExternal": false
+    },
+    {
+      "slug": "2019_10_the-statues-by-jacek-kaczmarski",
+      "similarity": 0.4188920793982519,
+      "title": "“The Statues” by Jacek Kaczmarski",
+      "path": "/blog/2019/10/the-statues-by-jacek-kaczmarski",
+      "isExternal": false
+    },
+    {
+      "slug": "2022_09_co-chcialbym-wiedziec-wczesniej-o-adhd",
+      "similarity": 0.40825324736680646,
+      "title": "Co chciałbym wiedzieć wcześniej o ADHD",
+      "path": "/blog/2022/09/co-chcialbym-wiedziec-wczesniej-o-adhd",
+      "isExternal": false
+    },
+    {
+      "slug": "2019_07_human-machine-learning-motivation",
+      "similarity": 0.40482834789049177,
+      "title": "Exploring human vs machine learning (one blogpost at a time)",
+      "path": "/blog/2019/07/human-machine-learning-motivation",
+      "isExternal": false
+    }
+  ]
+}

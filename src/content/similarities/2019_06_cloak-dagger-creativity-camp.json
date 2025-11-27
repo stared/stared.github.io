@@ -1,0 +1,39 @@
+{
+  "most_similar": [
+    {
+      "slug": "external_2012_08_en-indie-camp-for-hs-geeks",
+      "similarity": 0.684247360354223,
+      "title": "An independent camp for high school geeks",
+      "path": "https://warsztatywww.pl/article/en-indie-camp-for-hs-geeks/",
+      "isExternal": true
+    },
+    {
+      "slug": "2021_09_embodiment-for-nerds",
+      "similarity": 0.6165247668519465,
+      "title": "Embodiment for nerds",
+      "path": "/blog/2021/09/embodiment-for-nerds",
+      "isExternal": false
+    },
+    {
+      "slug": "2017_08_bangbangcon",
+      "similarity": 0.5794454468451867,
+      "title": "!!con or doing inclusivity well",
+      "path": "/blog/2017/08/bangbangcon",
+      "isExternal": false
+    },
+    {
+      "slug": "2016_02_d3js-icm-kfnrd",
+      "similarity": 0.5584852226615948,
+      "title": "D3.js workshop at ICM for KFnrD",
+      "path": "/blog/2016/02/d3js-icm-kfnrd",
+      "isExternal": false
+    },
+    {
+      "slug": "2016_05_my-impressions-from-pydata-berlin-2016",
+      "similarity": 0.5568332982534314,
+      "title": "My impressions from PyData Berlin 2016",
+      "path": "/blog/2016/05/my-impressions-from-pydata-berlin-2016",
+      "isExternal": false
+    }
+  ]
+}

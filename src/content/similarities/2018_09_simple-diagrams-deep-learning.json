@@ -1,0 +1,39 @@
+{
+  "most_similar": [
+    {
+      "slug": "2017_04_teaching-deep-learning",
+      "similarity": 0.768236274282111,
+      "title": "Learning Deep Learning with Keras",
+      "path": "/blog/2017/04/teaching-deep-learning",
+      "isExternal": false
+    },
+    {
+      "slug": "2019_07_dreams-drugs-convnets",
+      "similarity": 0.720799382207553,
+      "title": "Dreams, Drugs & ConvNets",
+      "path": "/blog/2019/07/dreams-drugs-convnets",
+      "isExternal": false
+    },
+    {
+      "slug": "2023_02_ai-artists-information-theory",
+      "similarity": 0.7030589329582856,
+      "title": "AI won’t make artists redundant - thanks to information theory",
+      "path": "/blog/2023/02/ai-artists-information-theory",
+      "isExternal": false
+    },
+    {
+      "slug": "2017_01_king-man-woman-queen-why",
+      "similarity": 0.6880153876865557,
+      "title": "king - man + woman is queen; but why?",
+      "path": "/blog/2017/01/king-man-woman-queen-why",
+      "isExternal": false
+    },
+    {
+      "slug": "2016_03_data-science-intro-for-math-phys-background",
+      "similarity": 0.6812665103323189,
+      "title": "Data science intro for math/phys background",
+      "path": "/blog/2016/03/data-science-intro-for-math-phys-background",
+      "isExternal": false
+    }
+  ]
+}

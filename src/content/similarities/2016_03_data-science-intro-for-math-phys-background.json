@@ -1,0 +1,39 @@
+{
+  "most_similar": [
+    {
+      "slug": "2017_04_teaching-deep-learning",
+      "similarity": 0.7454227021990072,
+      "title": "Learning Deep Learning with Keras",
+      "path": "/blog/2017/04/teaching-deep-learning",
+      "isExternal": false
+    },
+    {
+      "slug": "2025_01_dont-use-cosine-similarity",
+      "similarity": 0.6836433867861794,
+      "title": "Don't use cosine similarity carelessly",
+      "path": "/blog/2025/01/dont-use-cosine-similarity",
+      "isExternal": false
+    },
+    {
+      "slug": "2018_09_simple-diagrams-deep-learning",
+      "similarity": 0.6812665103323189,
+      "title": "Simple diagrams of convoluted neural networks",
+      "path": "/blog/2018/09/simple-diagrams-deep-learning",
+      "isExternal": false
+    },
+    {
+      "slug": "2017_01_king-man-woman-queen-why",
+      "similarity": 0.6811794654895753,
+      "title": "king - man + woman is queen; but why?",
+      "path": "/blog/2017/01/king-man-woman-queen-why",
+      "isExternal": false
+    },
+    {
+      "slug": "2015_12_sci-to-data-sci",
+      "similarity": 0.6597930342907611,
+      "title": "What I do or: science to data science",
+      "path": "/blog/2015/12/sci-to-data-sci",
+      "isExternal": false
+    }
+  ]
+}

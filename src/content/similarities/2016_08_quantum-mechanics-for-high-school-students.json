@@ -1,0 +1,39 @@
+{
+  "most_similar": [
+    {
+      "slug": "2024_05_science-games-explorable-explanations",
+      "similarity": 0.7482117261776766,
+      "title": "Science-based games and explorable explanations",
+      "path": "/blog/2024/05/science-games-explorable-explanations",
+      "isExternal": false
+    },
+    {
+      "slug": "2025_04_vibe-translating-quantum-flytrap",
+      "similarity": 0.6687391537931364,
+      "title": "Making Quantum Flytrap a polyglot with AI vibe translating",
+      "path": "/blog/2025/04/vibe-translating-quantum-flytrap",
+      "isExternal": false
+    },
+    {
+      "slug": "2016_03_data-science-intro-for-math-phys-background",
+      "similarity": 0.6489896997014458,
+      "title": "Data science intro for math/phys background",
+      "path": "/blog/2016/03/data-science-intro-for-math-phys-background",
+      "isExternal": false
+    },
+    {
+      "slug": "2017_01_king-man-woman-queen-why",
+      "similarity": 0.6273184531262023,
+      "title": "king - man + woman is queen; but why?",
+      "path": "/blog/2017/01/king-man-woman-queen-why",
+      "isExternal": false
+    },
+    {
+      "slug": "2016_02_d3js-icm-kfnrd",
+      "similarity": 0.6114070082840755,
+      "title": "D3.js workshop at ICM for KFnrD",
+      "path": "/blog/2016/02/d3js-icm-kfnrd",
+      "isExternal": false
+    }
+  ]
+}

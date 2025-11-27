@@ -1,0 +1,39 @@
+{
+  "most_similar": [
+    {
+      "slug": "2016_08_quantum-mechanics-for-high-school-students",
+      "similarity": 0.7482117261776766,
+      "title": "Quantum mechanics for high-school students",
+      "path": "/blog/2016/08/quantum-mechanics-for-high-school-students",
+      "isExternal": false
+    },
+    {
+      "slug": "external_2019_08_to-make-cool-game-play-cool-games",
+      "similarity": 0.6900295715544706,
+      "title": "To make a cool game, you first have to play other cool games",
+      "path": "https://medium.com/quantum-photons/to-make-a-cool-game-you-first-have-to-play-other-cool-games-a1a1d45e169b",
+      "isExternal": true
+    },
+    {
+      "slug": "2025_04_vibe-translating-quantum-flytrap",
+      "similarity": 0.6853253078398769,
+      "title": "Making Quantum Flytrap a polyglot with AI vibe translating",
+      "path": "/blog/2025/04/vibe-translating-quantum-flytrap",
+      "isExternal": false
+    },
+    {
+      "slug": "2019_07_there-will-be-the-next-quantum-game-with-photons",
+      "similarity": 0.642762694520703,
+      "title": "There will be the next Quantum Game with Photons",
+      "path": "/blog/2019/07/there-will-be-the-next-quantum-game-with-photons",
+      "isExternal": false
+    },
+    {
+      "slug": "2023_02_ai-artists-information-theory",
+      "similarity": 0.6382727651302005,
+      "title": "AI won’t make artists redundant - thanks to information theory",
+      "path": "/blog/2023/02/ai-artists-information-theory",
+      "isExternal": false
+    }
+  ]
+}

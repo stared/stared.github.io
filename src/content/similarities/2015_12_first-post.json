@@ -1,0 +1,39 @@
+{
+  "most_similar": [
+    {
+      "slug": "2022_12_medium-to-markdown",
+      "similarity": 0.7028594283676235,
+      "title": "New blog - moving from Medium to Gridsome",
+      "path": "/blog/2022/12/medium-to-markdown",
+      "isExternal": false
+    },
+    {
+      "slug": "2025_02_markdown-saves",
+      "similarity": 0.5892182625134216,
+      "title": "If it is worth keeping, save it in Markdown",
+      "path": "/blog/2025/02/markdown-saves",
+      "isExternal": false
+    },
+    {
+      "slug": "2019_07_human-machine-learning-motivation",
+      "similarity": 0.5636571688428886,
+      "title": "Exploring human vs machine learning (one blogpost at a time)",
+      "path": "/blog/2019/07/human-machine-learning-motivation",
+      "isExternal": false
+    },
+    {
+      "slug": "2015_12_sci-to-data-sci",
+      "similarity": 0.5307114830435633,
+      "title": "What I do or: science to data science",
+      "path": "/blog/2015/12/sci-to-data-sci",
+      "isExternal": false
+    },
+    {
+      "slug": "2016_03_data-science-intro-for-math-phys-background",
+      "similarity": 0.513151207345862,
+      "title": "Data science intro for math/phys background",
+      "path": "/blog/2016/03/data-science-intro-for-math-phys-background",
+      "isExternal": false
+    }
+  ]
+}

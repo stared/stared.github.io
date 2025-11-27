@@ -1,0 +1,39 @@
+{
+  "most_similar": [
+    {
+      "slug": "external_2022_10_virtual-lab-updates-oct-2022",
+      "similarity": 0.6551211180764793,
+      "title": "What's new in Virtual Lab by Quantum Flytrap - Oct 2022",
+      "path": "https://quantumflytrap.com/blog/virtual-lab-updates-oct-2022",
+      "isExternal": true
+    },
+    {
+      "slug": "external_2019_08_to-make-cool-game-play-cool-games",
+      "similarity": 0.6531227334438932,
+      "title": "To make a cool game, you first have to play other cool games",
+      "path": "https://medium.com/quantum-photons/to-make-a-cool-game-you-first-have-to-play-other-cool-games-a1a1d45e169b",
+      "isExternal": true
+    },
+    {
+      "slug": "2024_05_science-games-explorable-explanations",
+      "similarity": 0.642762694520703,
+      "title": "Science-based games and explorable explanations",
+      "path": "/blog/2024/05/science-games-explorable-explanations",
+      "isExternal": false
+    },
+    {
+      "slug": "external_2022_07_quantum-flytrap-future-of-computing",
+      "similarity": 0.5925928051800451,
+      "title": "Quantum Flytrap: Shaping the Future of Quantum DevTools",
+      "path": "https://www.future-of-computing.com/quantum-flytrap-shaping-the-future-of-quantum-devtools/",
+      "isExternal": true
+    },
+    {
+      "slug": "2016_08_quantum-mechanics-for-high-school-students",
+      "similarity": 0.5829473265218791,
+      "title": "Quantum mechanics for high-school students",
+      "path": "/blog/2016/08/quantum-mechanics-for-high-school-students",
+      "isExternal": false
+    }
+  ]
+}

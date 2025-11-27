@@ -1,0 +1,39 @@
+{
+  "most_similar": [
+    {
+      "slug": "2023_02_ai-artists-information-theory",
+      "similarity": 0.6972305020106058,
+      "title": "AI won’t make artists redundant - thanks to information theory",
+      "path": "/blog/2023/02/ai-artists-information-theory",
+      "isExternal": false
+    },
+    {
+      "slug": "2019_07_human-machine-learning-motivation",
+      "similarity": 0.6470055429688591,
+      "title": "Exploring human vs machine learning (one blogpost at a time)",
+      "path": "/blog/2019/07/human-machine-learning-motivation",
+      "isExternal": false
+    },
+    {
+      "slug": "2025_01_dont-use-cosine-similarity",
+      "similarity": 0.6183484546696196,
+      "title": "Don't use cosine similarity carelessly",
+      "path": "/blog/2025/01/dont-use-cosine-similarity",
+      "isExternal": false
+    },
+    {
+      "slug": "external_2025_07_building-grafana-dashboards-ai-cli",
+      "similarity": 0.6130317165165824,
+      "title": "Building Grafana dashboards with AI, CLI and a bit of pragmatism",
+      "path": "https://quesma.com/blog/building-grafana-dashboards-ai-cli",
+      "isExternal": true
+    },
+    {
+      "slug": "2025_04_vibe-translating-quantum-flytrap",
+      "similarity": 0.609751350828866,
+      "title": "Making Quantum Flytrap a polyglot with AI vibe translating",
+      "path": "/blog/2025/04/vibe-translating-quantum-flytrap",
+      "isExternal": false
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "most_similar": [
+    {
+      "slug": "2024_05_science-games-explorable-explanations",
+      "similarity": 0.6853253078398769,
+      "title": "Science-based games and explorable explanations",
+      "path": "/blog/2024/05/science-games-explorable-explanations",
+      "isExternal": false
+    },
+    {
+      "slug": "2016_08_quantum-mechanics-for-high-school-students",
+      "similarity": 0.6687391537931364,
+      "title": "Quantum mechanics for high-school students",
+      "path": "/blog/2016/08/quantum-mechanics-for-high-school-students",
+      "isExternal": false
+    },
+    {
+      "slug": "2023_02_ai-artists-information-theory",
+      "similarity": 0.6621848630204845,
+      "title": "AI won’t make artists redundant - thanks to information theory",
+      "path": "/blog/2023/02/ai-artists-information-theory",
+      "isExternal": false
+    },
+    {
+      "slug": "2025_01_dont-use-cosine-similarity",
+      "similarity": 0.637800865998149,
+      "title": "Don't use cosine similarity carelessly",
+      "path": "/blog/2025/01/dont-use-cosine-similarity",
+      "isExternal": false
+    },
+    {
+      "slug": "2023_05_genesis-az-by-gpt",
+      "similarity": 0.6375518096552825,
+      "title": "Genesis 1 but every word begins with 'A' - with GPT4",
+      "path": "/blog/2023/05/genesis-az-by-gpt",
+      "isExternal": false
+    }
+  ]
+}

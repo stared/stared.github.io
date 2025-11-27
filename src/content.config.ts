@@ -24,7 +24,7 @@ const blog = defineCollection({
 });
 
 const similarities = defineCollection({
-  loader: glob({ pattern: '*.json', base: 'src/data/similarities' }),
+  loader: glob({ pattern: '*.json', base: 'src/content/similarities' }),
   schema: z.object({
     stem: z.string().optional(),
     most_similar: z
@@ -34,6 +34,7 @@ const similarities = defineCollection({
           similarity: z.number(),
           title: z.string(),
           path: z.string(),
+          isExternal: z.boolean(),
         })
       )
       .default([]),
