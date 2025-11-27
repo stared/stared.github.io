@@ -19,6 +19,21 @@ export interface ExternalPost {
 // Unified blog post type that works with both internal and external posts
 export type BlogPost = CollectionEntry<'blog'> | ExternalPost;
 
+// Scores computed once at build time - prevents hydration mismatches
+export interface PostScores {
+  readonly popularity: number;
+  readonly mentions: number;
+  readonly age: number;
+  readonly migdalBias: number;
+}
+
+// Post with pre-computed scores attached
+export interface ScoredBlogPost {
+  readonly post: BlogPost;
+  readonly scores: PostScores;
+  readonly initialOrder: number; // Position in default-sorted list
+}
+
 // Default weights for sorting blog posts
 // Used to ensure SSR and CSR render identical initial state
 export const DEFAULT_WEIGHTS = {
@@ -38,8 +53,8 @@ export function isExternalPost(post: BlogPost): post is ExternalPost {
   return 'href' in post;
 }
 
-// Scoring utilities
-export function calculatePostScores(post: BlogPost) {
+// Scoring utilities - referenceDate is REQUIRED to prevent SSR/CSR hydration mismatches
+export function calculatePostScores(post: BlogPost, referenceDate: Date): PostScores {
   const data = 'data' in post ? post.data : post;
   const viewsK = data.views_k || ('view_k' in data ? data.view_k : 0) || 0;
   const popularity = viewsK > 0 ? Math.log2(viewsK) : 0;
@@ -49,26 +64,58 @@ export function calculatePostScores(post: BlogPost) {
   ).length;
   const mentions = Math.sqrt(importantMentions);
   const yearsSince =
-    (Date.now() - new Date(data.date).getTime()) / (1000 * 60 * 60 * 24 * 365.25);
-  const age = Math.log2(yearsSince);
+    (referenceDate.getTime() - new Date(data.date).getTime()) / (1000 * 60 * 60 * 24 * 365.25);
+  const age = Math.log2(Math.max(yearsSince, 0.01)); // Avoid log(0) for very recent posts
 
   return { popularity, mentions, age, migdalBias: data.migdal_score };
 }
 
-export function calculatePostWeight(
-  post: BlogPost,
-  weightPopularity: number,
-  weightMentions: number,
-  weightAge: number,
-  migdalweight: number
-): number {
-  const { popularity, mentions, age, migdalBias } = calculatePostScores(post);
-  return (
-    weightPopularity * popularity +
-    weightMentions * mentions +
-    weightAge * age +
-    migdalweight * migdalBias
-  );
+// Sort ScoredBlogPosts using pre-computed scores (no Date.now() calls)
+export function sortScoredPosts(
+  scoredPosts: readonly ScoredBlogPost[],
+  weights: { popularity: number; mentions: number; age: number; migdalScore: number }
+): ScoredBlogPost[] {
+  return [...scoredPosts].sort((a, b) => {
+    const wa =
+      weights.popularity * a.scores.popularity +
+      weights.mentions * a.scores.mentions +
+      weights.age * a.scores.age +
+      weights.migdalScore * a.scores.migdalBias;
+    const wb =
+      weights.popularity * b.scores.popularity +
+      weights.mentions * b.scores.mentions +
+      weights.age * b.scores.age +
+      weights.migdalScore * b.scores.migdalBias;
+    return wb - wa;
+  });
+}
+
+// Create scored posts with pre-computed scores at build time
+// This is the SINGLE SOURCE OF TRUTH for initial render
+export function createScoredPosts(
+  posts: BlogPost[],
+  weights = DEFAULT_WEIGHTS
+): ScoredBlogPost[] {
+  const referenceDate = new Date(); // Single reference for all posts
+
+  const scored = posts.map((post) => ({
+    post,
+    scores: calculatePostScores(post, referenceDate),
+    initialOrder: 0, // Will be set after sorting
+  }));
+
+  const sorted = sortScoredPosts(scored, weights);
+
+  // Assign initial order indices
+  return sorted.map((sp, index) => ({
+    ...sp,
+    initialOrder: index,
+  }));
+}
+
+// Helper to get post data from ScoredBlogPost
+export function getPostData(sp: ScoredBlogPost) {
+  return 'data' in sp.post ? sp.post.data : sp.post;
 }
 
 // Check if post has Hacker News mention
@@ -86,65 +133,31 @@ export function formatPostDate(post: BlogPost): string {
   });
 }
 
-// Manage collection of blog posts
-export class BlogPostCollection {
-  constructor(public posts: BlogPost[] = []) {}
+// Get all tags with counts from ScoredBlogPosts
+export function getAllTagsWithCounts(scoredPosts: readonly ScoredBlogPost[]) {
+  const counter: Record<string, number> = { all: scoredPosts.length };
 
-  addPosts(...newPosts: BlogPost[]) {
-    this.posts.push(...newPosts);
-    return this;
-  }
-
-  filterByTag(tag: string) {
-    const filtered =
-      tag === 'all'
-        ? [...this.posts]
-        : this.posts.filter((post) => {
-            const data = 'data' in post ? post.data : post;
-            return (data.tags || []).includes(tag);
-          });
-    return new BlogPostCollection(filtered);
-  }
-
-  sortByWeights(
-    weightPopularity: number,
-    weightMentions: number,
-    weightAge: number,
-    migdalWeight: number
-  ) {
-    const sorted = [...this.posts].sort((a, b) => {
-      const weightA = calculatePostWeight(
-        a,
-        weightPopularity,
-        weightMentions,
-        weightAge,
-        migdalWeight
-      );
-      const weightB = calculatePostWeight(
-        b,
-        weightPopularity,
-        weightMentions,
-        weightAge,
-        migdalWeight
-      );
-      return weightB - weightA;
-    });
-    return new BlogPostCollection(sorted);
-  }
-
-  getAllTagsWithCounts() {
-    const counter: Record<string, number> = { all: this.posts.length };
-
-    for (const post of this.posts) {
-      const data = 'data' in post ? post.data : post;
-      const tags = data.tags || [];
-      for (const tag of tags) {
-        counter[tag] = (counter[tag] || 0) + 1;
-      }
+  for (const { post } of scoredPosts) {
+    const data = 'data' in post ? post.data : post;
+    const tags = data.tags || [];
+    for (const tag of tags) {
+      counter[tag] = (counter[tag] || 0) + 1;
     }
-
-    return Object.entries(counter)
-      .map(([name, count]) => ({ name, count }))
-      .sort((a, b) => b.count - a.count);
   }
+
+  return Object.entries(counter)
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count);
+}
+
+// Filter ScoredBlogPosts by tag
+export function filterScoredPostsByTag(
+  scoredPosts: readonly ScoredBlogPost[],
+  tag: string
+): ScoredBlogPost[] {
+  if (tag === 'all') return [...scoredPosts];
+  return scoredPosts.filter(({ post }) => {
+    const data = 'data' in post ? post.data : post;
+    return (data.tags || []).includes(tag);
+  });
 }

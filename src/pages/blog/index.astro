@@ -3,25 +3,19 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import BlogList from '@/components/BlogList.vue';
 import type { ExternalPost } from '@/lib/postData';
-import { BlogPostCollection, DEFAULT_WEIGHTS } from '@/lib/postData';
+import { createScoredPosts } from '@/lib/postData';
 import {Content as BlogIntro} from '@/content/textComponents/blog.md';
 
 const blogPosts = await getCollection('blog');
 const externalArticlesEntries = await getCollection('externalArticles');
 const externalPosts = externalArticlesEntries.map((entry) => entry.data) as ExternalPost[];
 
-// Pre-sort posts with default weights to match BlogList's initial state
-// This ensures SSR and CSR render identical HTML, preventing hydration mismatches
-const collection = new BlogPostCollection([...blogPosts, ...externalPosts]);
-const allPosts = collection.sortByWeights(
-  DEFAULT_WEIGHTS.popularity,
-  DEFAULT_WEIGHTS.mentions,
-  DEFAULT_WEIGHTS.age,
-  DEFAULT_WEIGHTS.migdalScore
-).posts;
+// Create scored posts with pre-computed scores at build time
+// This is the SINGLE SOURCE OF TRUTH - scores frozen at build time prevent hydration mismatches
+const scoredPosts = createScoredPosts([...blogPosts, ...externalPosts]);
 ---
 
 <BaseLayout title="Blog" description="Read blog posts by Piotr Migdał.">
   <BlogIntro />
-  <BlogList client:load posts={allPosts} />
+  <BlogList client:load scoredPosts={scoredPosts} />
 </BaseLayout>

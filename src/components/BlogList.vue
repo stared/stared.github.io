@@ -1,12 +1,20 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import RangeSlider from '@/components/RangeSlider.vue';
-import { BlogPostCollection, DEFAULT_WEIGHTS } from '@/lib/postData';
-import type { BlogPost } from '@/lib/postData';
-import { getPostUrl, isExternalPost, hasHackerNews, formatPostDate } from '@/lib/postData';
+import {
+  DEFAULT_WEIGHTS,
+  sortScoredPosts,
+  getAllTagsWithCounts,
+  filterScoredPostsByTag,
+  getPostUrl,
+  isExternalPost,
+  hasHackerNews,
+  formatPostDate,
+} from '@/lib/postData';
+import type { ScoredBlogPost, BlogPost } from '@/lib/postData';
 
 interface Props {
-  posts: BlogPost[];
+  scoredPosts: ScoredBlogPost[];
 }
 
 const props = defineProps<Props>();
@@ -17,22 +25,45 @@ const weightMentions = ref(DEFAULT_WEIGHTS.mentions);
 const weightAge = ref(DEFAULT_WEIGHTS.age);
 const migdalweight = ref(DEFAULT_WEIGHTS.migdalScore);
 
-const collection = new BlogPostCollection(props.posts);
-const allTagsCounted = collection.getAllTagsWithCounts();
+// Track if user has modified weights - prevents re-sorting during initial hydration
+const hasUserInteracted = ref(false);
 
-const filteredPosts = computed(() =>
-  collection
-    .filterByTag(tagSelected.value)
-    .sortByWeights(
-      weightPopularity.value,
-      weightMentions.value,
-      weightAge.value,
-      migdalweight.value
-    ).posts
-);
+// Watch for any weight changes to set the flag
+watch([weightPopularity, weightMentions, weightAge, migdalweight], () => {
+  hasUserInteracted.value = true;
+});
+
+const allTagsCounted = computed(() => getAllTagsWithCounts(props.scoredPosts));
+
+const filteredPosts = computed(() => {
+  const filtered = filterScoredPostsByTag(props.scoredPosts, tagSelected.value);
+
+  // Initial render - use build-time order (initialOrder) to match SSR exactly
+  if (!hasUserInteracted.value) {
+    return [...filtered].sort((a, b) => a.initialOrder - b.initialOrder);
+  }
+
+  // User has interacted - re-sort using pre-computed scores
+  return sortScoredPosts(filtered, {
+    popularity: weightPopularity.value,
+    mentions: weightMentions.value,
+    age: weightAge.value,
+    migdalScore: migdalweight.value,
+  });
+});
 
 function selectTag(tag: string) {
   tagSelected.value = tag;
+}
+
+// Helper to get the BlogPost from ScoredBlogPost for template helpers
+function getPost(sp: ScoredBlogPost): BlogPost {
+  return sp.post;
+}
+
+// Helper to get post data (handles both internal and external posts)
+function getPostDataField(sp: ScoredBlogPost) {
+  return 'data' in sp.post ? sp.post.data : sp.post;
 }
 </script>
 
@@ -90,15 +121,15 @@ function selectTag(tag: string) {
     </p>
 
     <div class="post-list">
-      <div v-for="post in filteredPosts" :key="getPostUrl(post)" class="post">
-        <span v-if="!isExternalPost(post)" class="title">
-          <a :href="getPostUrl(post)">{{ 'data' in post ? post.data.title : post.title }}</a>
+      <div v-for="sp in filteredPosts" :key="getPostUrl(getPost(sp))" class="post">
+        <span v-if="!isExternalPost(getPost(sp))" class="title">
+          <a :href="getPostUrl(getPost(sp))">{{ getPostDataField(sp).title }}</a>
         </span>
         <span v-else class="title">
-          <a :href="getPostUrl(post)">{{ post.title }}</a>
+          <a :href="getPostUrl(getPost(sp))">{{ getPostDataField(sp).title }}</a>
         </span>
         <span
-          v-for="tagName in ('data' in post ? post.data.tags : post.tags)"
+          v-for="tagName in getPostDataField(sp).tags"
           :key="tagName"
           class="tag"
           :class="{ selected: tagName === tagSelected }"
@@ -106,9 +137,9 @@ function selectTag(tag: string) {
         >
           [{{ tagName }}]
         </span>
-        <span v-if="hasHackerNews(post)" class="hn">[HN]</span>
-        <span class="date">{{ formatPostDate(post) }}</span>
-        <span v-if="isExternalPost(post)" class="source">@ {{ post.source }}</span>
+        <span v-if="hasHackerNews(getPost(sp))" class="hn">[HN]</span>
+        <span class="date">{{ formatPostDate(getPost(sp)) }}</span>
+        <span v-if="isExternalPost(getPost(sp))" class="source">@ {{ getPostDataField(sp).source }}</span>
       </div>
     </div>
   </div>
