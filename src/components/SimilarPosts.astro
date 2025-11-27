@@ -19,7 +19,14 @@ const similarPosts = similarityData?.data.most_similar || [];
       {similarPosts.map((post) => (
         <li>
           <code>{post.similarity.toFixed(3)}</code>
-          <a href={post.path}>{post.title}</a>
+          {post.isExternal ? (
+            <a href={post.path} target="_blank" rel="noopener noreferrer" class="external">
+              {post.title}
+              <span class="external-icon" title="External link">↗</span>
+            </a>
+          ) : (
+            <a href={post.path}>{post.title}</a>
+          )}
         </li>
       ))}
     </ul>
@@ -70,5 +77,15 @@ const similarPosts = similarityData?.data.most_similar || [];
 
   .similar-posts a:hover {
     text-decoration: underline;
+  }
+
+  .similar-posts a.external {
+    color: #28a745;
+  }
+
+  .similar-posts .external-icon {
+    font-size: 0.75em;
+    margin-left: 0.25em;
+    opacity: 0.7;
   }
 </style>
