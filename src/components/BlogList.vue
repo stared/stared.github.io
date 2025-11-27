@@ -1,39 +1,36 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import RangeSlider from '@/components/RangeSlider.vue';
-import { BlogPostCollection, DEFAULT_WEIGHTS } from '@/lib/postData';
-import type { BlogPost } from '@/lib/postData';
-import { getPostUrl, isExternalPost, hasHackerNews, formatPostDate } from '@/lib/postData';
+import { DEFAULT_WEIGHTS, sortPosts, getTagCounts, filterByTag } from '@/lib/postData';
+import type { Post } from '@/lib/postData';
 
-interface Props {
-  posts: BlogPost[];
-}
+const props = defineProps<{ posts: Post[] }>();
 
-const props = defineProps<Props>();
-
-const tagSelected = ref('all');
+const tag = ref('all');
 const weightPopularity = ref(DEFAULT_WEIGHTS.popularity);
 const weightMentions = ref(DEFAULT_WEIGHTS.mentions);
 const weightAge = ref(DEFAULT_WEIGHTS.age);
-const migdalweight = ref(DEFAULT_WEIGHTS.migdalScore);
+const weightMigdal = ref(DEFAULT_WEIGHTS.migdalScore);
+const hasInteracted = ref(false);
 
-const collection = new BlogPostCollection(props.posts);
-const allTagsCounted = collection.getAllTagsWithCounts();
+watch([weightPopularity, weightMentions, weightAge, weightMigdal], () => {
+  hasInteracted.value = true;
+});
 
-const filteredPosts = computed(() =>
-  collection
-    .filterByTag(tagSelected.value)
-    .sortByWeights(
-      weightPopularity.value,
-      weightMentions.value,
-      weightAge.value,
-      migdalweight.value
-    ).posts
-);
+const tagCounts = computed(() => getTagCounts(props.posts));
 
-function selectTag(tag: string) {
-  tagSelected.value = tag;
-}
+const filtered = computed(() => {
+  const byTag = filterByTag(props.posts, tag.value);
+  if (!hasInteracted.value) {
+    return [...byTag].sort((a, b) => a.initialOrder - b.initialOrder);
+  }
+  return sortPosts(byTag, {
+    popularity: weightPopularity.value,
+    mentions: weightMentions.value,
+    age: weightAge.value,
+    migdalScore: weightMigdal.value,
+  });
+});
 </script>
 
 <template>
@@ -41,74 +38,45 @@ function selectTag(tag: string) {
     <div class="slider-flexbox">
       <div class="slider">
         <span class="slider-label">log(popularity)</span>
-        <RangeSlider
-          v-model="weightPopularity"
-          :min="-10"
-          :max="10"
-          width="150px"
-        />
+        <RangeSlider v-model="weightPopularity" :min="-10" :max="10" width="150px" />
       </div>
       <div class="slider">
         <span class="slider-label">sqrt(mentions)</span>
-        <RangeSlider
-          v-model="weightMentions"
-          :min="-5"
-          :max="5"
-          width="150px"
-        />
+        <RangeSlider v-model="weightMentions" :min="-5" :max="5" width="150px" />
       </div>
       <div class="slider">
         <span class="slider-label">log(age)</span>
-        <RangeSlider
-          v-model="weightAge"
-          :min="-20"
-          :max="20"
-          width="150px"
-        />
+        <RangeSlider v-model="weightAge" :min="-20" :max="20" width="150px" />
       </div>
       <div class="slider">
         <span class="slider-label">author's bias</span>
-        <RangeSlider
-          v-model="migdalweight"
-          :min="-5"
-          :max="5"
-          width="150px"
-        />
+        <RangeSlider v-model="weightMigdal" :min="-5" :max="5" width="150px" />
       </div>
     </div>
 
     <p>
       <span
-        v-for="tag in allTagsCounted"
-        :key="tag.name"
+        v-for="t in tagCounts"
+        :key="t.name"
         class="tag"
-        :class="{ selected: tag.name === tagSelected }"
-        @click="selectTag(tag.name)"
-      >
-        [{{ tag.name }}]
-      </span>
+        :class="{ selected: t.name === tag }"
+        @click="tag = t.name"
+      >[{{ t.name }}]</span>
     </p>
 
     <div class="post-list">
-      <div v-for="post in filteredPosts" :key="getPostUrl(post)" class="post">
-        <span v-if="!isExternalPost(post)" class="title">
-          <a :href="getPostUrl(post)">{{ 'data' in post ? post.data.title : post.title }}</a>
-        </span>
-        <span v-else class="title">
-          <a :href="getPostUrl(post)">{{ post.title }}</a>
-        </span>
+      <div v-for="post in filtered" :key="post.url" class="post">
+        <span class="title"><a :href="post.url">{{ post.title }}</a></span>
         <span
-          v-for="tagName in ('data' in post ? post.data.tags : post.tags)"
-          :key="tagName"
+          v-for="t in post.tags"
+          :key="t"
           class="tag"
-          :class="{ selected: tagName === tagSelected }"
-          @click="selectTag(tagName)"
-        >
-          [{{ tagName }}]
-        </span>
-        <span v-if="hasHackerNews(post)" class="hn">[HN]</span>
-        <span class="date">{{ formatPostDate(post) }}</span>
-        <span v-if="isExternalPost(post)" class="source">@ {{ post.source }}</span>
+          :class="{ selected: t === tag }"
+          @click="tag = t"
+        >[{{ t }}]</span>
+        <span v-if="post.hasHN" class="hn">[HN]</span>
+        <span class="date">{{ post.formattedDate }}</span>
+        <span v-if="post.source" class="source">@ {{ post.source }}</span>
       </div>
     </div>
   </div>

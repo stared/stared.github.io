@@ -1,150 +1,130 @@
 import type { CollectionEntry } from 'astro:content';
 
-// External posts come from external-articles.json
-export interface ExternalPost {
+interface Mention { text: string; href: string }
+
+interface PostScores {
+  popularity: number;
+  mentions: number;
+  age: number;
+  migdalBias: number;
+}
+
+export interface Post {
+  id: string;
+  url: string;
+  isExternal: boolean;
+  source?: string;
   title: string;
-  date: string;
+  description: string;
   tags: string[];
-  mentions?: Array<{ text: string; href: string }>;
-  view_k?: number;
-  views_k?: number;
+  image: string;
+  author: string;
+  date: Date;
+  formattedDate: string;
+  mentions: Mention[];
+  hasHN: boolean;
+  views_k: number;
   migdal_score: number;
-  source: string;
-  href: string;
-  description?: string;
-  image?: string;
-  author?: string;
+  scores: PostScores;
+  initialOrder: number;
 }
 
-// Unified blog post type that works with both internal and external posts
-export type BlogPost = CollectionEntry<'blog'> | ExternalPost;
+export const DEFAULT_WEIGHTS = { popularity: 4, mentions: 2, age: -8, migdalScore: 2 } as const;
 
-// Default weights for sorting blog posts
-// Used to ensure SSR and CSR render identical initial state
-export const DEFAULT_WEIGHTS = {
-  popularity: 4,
-  mentions: 2,
-  age: -8,
-  migdalScore: 2,
-} as const;
+type BlogEntry = CollectionEntry<'blog'>;
+type ExternalEntry = CollectionEntry<'externalArticles'>['data'];
 
-// Helper to get URL from a post
-export function getPostUrl(post: BlogPost): string {
-  return 'href' in post ? post.href : `/blog/${post.id.replace(/\/index\.mdx?$/, '')}`;
+function computeScores(date: Date, views_k: number, mentions: Mention[], migdal_score: number, refDate: Date): PostScores {
+  const popularity = views_k > 0 ? Math.log2(views_k) : 0;
+  const importantMentions = mentions.filter(m => !m.href.includes('medium.com')).length;
+  const mentionsScore = Math.sqrt(importantMentions);
+  const years = (refDate.getTime() - date.getTime()) / (365.25 * 24 * 60 * 60 * 1000);
+  const age = Math.log2(Math.max(years, 0.01));
+  return { popularity, mentions: mentionsScore, age, migdalBias: migdal_score };
 }
 
-// Helper to check if post is external
-export function isExternalPost(post: BlogPost): post is ExternalPost {
-  return 'href' in post;
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-us', { year: 'numeric', month: 'short' });
 }
 
-// Scoring utilities
-export function calculatePostScores(post: BlogPost) {
-  const data = 'data' in post ? post.data : post;
-  const viewsK = data.views_k || ('view_k' in data ? data.view_k : 0) || 0;
-  const popularity = viewsK > 0 ? Math.log2(viewsK) : 0;
-  const postMentions = data.mentions || [];
-  const importantMentions = postMentions.filter(
-    (m: { href: string }) => !m.href.includes('medium.com')
-  ).length;
-  const mentions = Math.sqrt(importantMentions);
-  const yearsSince =
-    (Date.now() - new Date(data.date).getTime()) / (1000 * 60 * 60 * 24 * 365.25);
-  const age = Math.log2(yearsSince);
-
-  return { popularity, mentions, age, migdalBias: data.migdal_score };
+function computeScore(scores: PostScores, weights: typeof DEFAULT_WEIGHTS): number {
+  return weights.popularity * scores.popularity +
+         weights.mentions * scores.mentions +
+         weights.age * scores.age +
+         weights.migdalScore * scores.migdalBias;
 }
 
-export function calculatePostWeight(
-  post: BlogPost,
-  weightPopularity: number,
-  weightMentions: number,
-  weightAge: number,
-  migdalweight: number
-): number {
-  const { popularity, mentions, age, migdalBias } = calculatePostScores(post);
-  return (
-    weightPopularity * popularity +
-    weightMentions * mentions +
-    weightAge * age +
-    migdalweight * migdalBias
-  );
+function fromBlogEntry(entry: BlogEntry, refDate: Date): Omit<Post, 'initialOrder'> {
+  const d = entry.data;
+  const date = d.date;
+  return {
+    id: entry.id,
+    url: `/blog/${entry.id.replace(/\/index\.mdx?$/, '')}`,
+    isExternal: false,
+    title: d.title,
+    description: d.description,
+    tags: d.tags,
+    image: d.image,
+    author: d.author,
+    date,
+    formattedDate: formatDate(date),
+    mentions: d.mentions,
+    hasHN: d.mentions.some(m => m.href.includes('news.ycombinator')),
+    views_k: d.views_k,
+    migdal_score: d.migdal_score,
+    scores: computeScores(date, d.views_k, d.mentions, d.migdal_score, refDate),
+  };
 }
 
-// Check if post has Hacker News mention
-export function hasHackerNews(post: BlogPost): boolean {
-  const data = 'data' in post ? post.data : post;
-  return (data.mentions || []).some((m: { href: string }) => m.href.includes('news.ycombinator'));
+function fromExternalEntry(entry: ExternalEntry, refDate: Date): Omit<Post, 'initialOrder'> {
+  const date = new Date(entry.date);
+  return {
+    id: entry.href,
+    url: entry.href,
+    isExternal: true,
+    source: entry.source,
+    title: entry.title,
+    description: entry.description,
+    tags: entry.tags,
+    image: entry.image,
+    author: entry.author,
+    date,
+    formattedDate: formatDate(date),
+    mentions: entry.mentions,
+    hasHN: entry.mentions.some(m => m.href.includes('news.ycombinator')),
+    views_k: entry.views_k,
+    migdal_score: entry.migdal_score,
+    scores: computeScores(date, entry.views_k, entry.mentions, entry.migdal_score, refDate),
+  };
 }
 
-// Format date for display
-export function formatPostDate(post: BlogPost): string {
-  const data = 'data' in post ? post.data : post;
-  return new Date(data.date).toLocaleDateString('en-us', {
-    year: 'numeric',
-    month: 'short',
-  });
+export function createPosts(
+  blogEntries: BlogEntry[],
+  externalEntries: ExternalEntry[],
+  weights = DEFAULT_WEIGHTS
+): Post[] {
+  const refDate = new Date();
+
+  const posts = [
+    ...blogEntries.map(e => fromBlogEntry(e, refDate)),
+    ...externalEntries.map(e => fromExternalEntry(e, refDate)),
+  ];
+
+  posts.sort((a, b) => computeScore(b.scores, weights) - computeScore(a.scores, weights));
+
+  return posts.map((p, i) => ({ ...p, initialOrder: i }));
 }
 
-// Manage collection of blog posts
-export class BlogPostCollection {
-  constructor(public posts: BlogPost[] = []) {}
+export function sortPosts(posts: Post[], weights: typeof DEFAULT_WEIGHTS): Post[] {
+  return [...posts].sort((a, b) => computeScore(b.scores, weights) - computeScore(a.scores, weights));
+}
 
-  addPosts(...newPosts: BlogPost[]) {
-    this.posts.push(...newPosts);
-    return this;
-  }
+export function getTagCounts(posts: Post[]): { name: string; count: number }[] {
+  const counts: Record<string, number> = { all: posts.length };
+  for (const p of posts) for (const t of p.tags) counts[t] = (counts[t] || 0) + 1;
+  return Object.entries(counts).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count);
+}
 
-  filterByTag(tag: string) {
-    const filtered =
-      tag === 'all'
-        ? [...this.posts]
-        : this.posts.filter((post) => {
-            const data = 'data' in post ? post.data : post;
-            return (data.tags || []).includes(tag);
-          });
-    return new BlogPostCollection(filtered);
-  }
-
-  sortByWeights(
-    weightPopularity: number,
-    weightMentions: number,
-    weightAge: number,
-    migdalWeight: number
-  ) {
-    const sorted = [...this.posts].sort((a, b) => {
-      const weightA = calculatePostWeight(
-        a,
-        weightPopularity,
-        weightMentions,
-        weightAge,
-        migdalWeight
-      );
-      const weightB = calculatePostWeight(
-        b,
-        weightPopularity,
-        weightMentions,
-        weightAge,
-        migdalWeight
-      );
-      return weightB - weightA;
-    });
-    return new BlogPostCollection(sorted);
-  }
-
-  getAllTagsWithCounts() {
-    const counter: Record<string, number> = { all: this.posts.length };
-
-    for (const post of this.posts) {
-      const data = 'data' in post ? post.data : post;
-      const tags = data.tags || [];
-      for (const tag of tags) {
-        counter[tag] = (counter[tag] || 0) + 1;
-      }
-    }
-
-    return Object.entries(counter)
-      .map(([name, count]) => ({ name, count }))
-      .sort((a, b) => b.count - a.count);
-  }
+export function filterByTag(posts: Post[], tag: string): Post[] {
+  return tag === 'all' ? posts : posts.filter(p => p.tags.includes(tag));
 }
