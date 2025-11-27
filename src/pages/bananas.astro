@@ -17,12 +17,36 @@ const bananas = Object.entries(bananaImages).map(([path, module]) => ({
 
   <div class="banana-grid">
     {bananas.map(banana => (
-      <div class="banana-card">
+      <div class="banana-card" data-src={banana.src.src}>
         <img src={banana.src.src} alt={banana.slug} loading="lazy" />
       </div>
     ))}
   </div>
+
+  <div class="lightbox" id="lightbox">
+    <img src="" alt="fullscreen" />
+  </div>
 </BaseLayout>
+
+<script>
+  const lightbox = document.getElementById('lightbox')!;
+  const lightboxImg = lightbox.querySelector('img')!;
+
+  document.querySelectorAll('.banana-card').forEach(card => {
+    card.addEventListener('click', () => {
+      lightboxImg.src = (card as HTMLElement).dataset.src!;
+      lightbox.classList.add('active');
+    });
+  });
+
+  lightbox.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') lightbox.classList.remove('active');
+  });
+</script>
 
 <style>
   .banana-grid {
@@ -47,5 +71,27 @@ const bananas = Object.entries(bananaImages).map(([path, module]) => ({
     width: 100%;
     height: auto;
     display: block;
+    cursor: pointer;
+  }
+
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    cursor: pointer;
+  }
+
+  .lightbox.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox img {
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
   }
 </style>
