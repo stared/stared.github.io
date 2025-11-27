@@ -2,13 +2,12 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import { AUTHOR, SITE_URL, SITE_DESCRIPTION } from '@/lib/constants';
 import { normalizePost, getPostUrl } from '@/lib/postData';
-import type { RawExternalPost } from '@/lib/postData';
 import type { APIContext } from 'astro';
 
 export async function GET(context: APIContext) {
   const blogPosts = await getCollection('blog');
   const externalArticlesEntries = await getCollection('externalArticles');
-  const externalPosts = externalArticlesEntries.map((entry) => entry.data) as RawExternalPost[];
+  const externalPosts = externalArticlesEntries.map((entry) => entry.data);
 
   // Normalize all posts using the unified system
   const allUnified = [

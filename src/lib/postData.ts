@@ -1,13 +1,8 @@
 import type { CollectionEntry } from 'astro:content';
 
-// =============================================================================
-// Unified Type System
-// =============================================================================
-
-// Shared fields for all posts (normalized at boundary)
 export interface BasePostData {
   title: string;
-  date: string; // ISO string - normalized at boundary
+  date: string;
   tags: string[];
   description: string;
   image: string;
@@ -17,49 +12,22 @@ export interface BasePostData {
   migdal_score: number;
 }
 
-// External posts have additional source and href
 export interface ExternalPostData extends BasePostData {
   source: string;
   href: string;
 }
 
-// Discriminated union for runtime type safety
 export type UnifiedPost =
   | { type: 'internal'; id: string; data: BasePostData }
   | { type: 'external'; data: ExternalPostData };
 
-// =============================================================================
-// Legacy Types (for Astro collection compatibility)
-// =============================================================================
-
-// Raw external post from JSON (before normalization)
-export interface RawExternalPost {
-  title: string;
-  date: string;
-  tags?: string[];
-  mentions?: Array<{ text: string; href: string }>;
-  views_k?: number;
-  migdal_score?: number;
-  source: string;
-  href: string;
-  description?: string;
-  image?: string;
-  author?: string;
-}
-
-// Union of raw Astro types (before normalization)
+type RawExternalPost = CollectionEntry<'externalArticles'>['data'];
 export type BlogPost = CollectionEntry<'blog'> | RawExternalPost;
 
-// =============================================================================
-// Normalization (SINGLE place for type discrimination)
-// =============================================================================
-
-// Check if raw post is external (used only in normalizePost)
 function isRawExternalPost(post: BlogPost): post is RawExternalPost {
   return 'href' in post && 'source' in post;
 }
 
-// Normalize any post to UnifiedPost - call this ONCE at the boundary
 export function normalizePost(post: BlogPost): UnifiedPost {
   if (isRawExternalPost(post)) {
     return {
@@ -67,20 +35,19 @@ export function normalizePost(post: BlogPost): UnifiedPost {
       data: {
         title: post.title,
         date: post.date,
-        tags: post.tags ?? [],
-        description: post.description ?? '',
-        image: post.image ?? '',
-        author: post.author ?? 'Piotr Migdał',
-        mentions: post.mentions ?? [],
-        views_k: post.views_k ?? 0,
-        migdal_score: post.migdal_score ?? 0,
+        tags: post.tags,
+        description: post.description,
+        image: post.image,
+        author: post.author,
+        mentions: post.mentions,
+        views_k: post.views_k,
+        migdal_score: post.migdal_score,
         source: post.source,
         href: post.href,
       },
     };
   }
 
-  // Internal Astro post
   return {
     type: 'internal',
     id: post.id,
@@ -98,11 +65,6 @@ export function normalizePost(post: BlogPost): UnifiedPost {
   };
 }
 
-// =============================================================================
-// Scoring System
-// =============================================================================
-
-// Scores computed once at build time - prevents hydration mismatches
 export interface PostScores {
   readonly popularity: number;
   readonly mentions: number;
@@ -110,14 +72,12 @@ export interface PostScores {
   readonly migdalBias: number;
 }
 
-// Post with pre-computed scores attached
 export interface ScoredBlogPost {
   readonly post: UnifiedPost;
   readonly scores: PostScores;
   readonly initialOrder: number;
 }
 
-// Default weights for sorting blog posts
 export const DEFAULT_WEIGHTS = {
   popularity: 4,
   mentions: 2,
@@ -125,7 +85,6 @@ export const DEFAULT_WEIGHTS = {
   migdalScore: 2,
 } as const;
 
-// Calculate scores from UnifiedPost (clean - no type discrimination needed)
 export function calculatePostScores(post: UnifiedPost, referenceDate: Date): PostScores {
   const { data } = post;
   const popularity = data.views_k > 0 ? Math.log2(data.views_k) : 0;
@@ -140,7 +99,6 @@ export function calculatePostScores(post: UnifiedPost, referenceDate: Date): Pos
   return { popularity, mentions, age, migdalBias: data.migdal_score };
 }
 
-// Sort ScoredBlogPosts using pre-computed scores
 export function sortScoredPosts(
   scoredPosts: readonly ScoredBlogPost[],
   weights: { popularity: number; mentions: number; age: number; migdalScore: number }
@@ -160,7 +118,6 @@ export function sortScoredPosts(
   });
 }
 
-// Create scored posts from UnifiedPost array
 export function createScoredPosts(
   posts: UnifiedPost[],
   weights = DEFAULT_WEIGHTS
@@ -181,28 +138,20 @@ export function createScoredPosts(
   }));
 }
 
-// =============================================================================
-// Helper Functions (all work with UnifiedPost - no type discrimination)
-// =============================================================================
-
-// Get URL from a UnifiedPost
 export function getPostUrl(post: UnifiedPost): string {
   return post.type === 'external'
     ? post.data.href
     : `/blog/${post.id.replace(/\/index\.mdx?$/, '')}`;
 }
 
-// Check if post is external (for display purposes)
 export function isExternal(post: UnifiedPost): post is UnifiedPost & { type: 'external' } {
   return post.type === 'external';
 }
 
-// Check if post has Hacker News mention
 export function hasHackerNews(post: UnifiedPost): boolean {
   return post.data.mentions.some((m) => m.href.includes('news.ycombinator'));
 }
 
-// Format date for display
 export function formatPostDate(post: UnifiedPost): string {
   return new Date(post.data.date).toLocaleDateString('en-us', {
     year: 'numeric',
@@ -210,7 +159,6 @@ export function formatPostDate(post: UnifiedPost): string {
   });
 }
 
-// Get all tags with counts from ScoredBlogPosts
 export function getAllTagsWithCounts(scoredPosts: readonly ScoredBlogPost[]) {
   const counter: Record<string, number> = { all: scoredPosts.length };
 
@@ -225,7 +173,6 @@ export function getAllTagsWithCounts(scoredPosts: readonly ScoredBlogPost[]) {
     .sort((a, b) => b.count - a.count);
 }
 
-// Filter ScoredBlogPosts by tag
 export function filterScoredPostsByTag(
   scoredPosts: readonly ScoredBlogPost[],
   tag: string
