@@ -8,6 +8,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "generate:embeddings": "tsx scripts/generateEmbeddings.ts && tsx scripts/generateSimilarities.ts",
+    "generate:bananas": "node scripts/generate-bananas.js",
     "build:all": "pnpm generate:embeddings && pnpm build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -24,10 +25,10 @@
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.6.0",
     "@astrojs/vue": "^5.1.1",
+    "@google/genai": "^1.30.0",
     "astro": "^5.14.7",
     "better-sqlite3": "^12.4.1",
     "feed": "^5.1.0",
-    "gray-matter": "^4.0.3",
     "openai": "^6.6.0",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
@@ -38,6 +39,7 @@
     "@types/node": "^24.9.1",
     "eslint": "^9.38.0",
     "eslint-plugin-astro": "^1.3.1",
+    "gray-matter": "^4.0.3",
     "tsx": "^4.20.6"
   }
 }

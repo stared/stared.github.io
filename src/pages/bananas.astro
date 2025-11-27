@@ -1,0 +1,51 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+// Import all banana images from assets
+const bananaImages = import.meta.glob('/src/assets/bananas/*.png', { eager: true });
+
+const bananas = Object.entries(bananaImages).map(([path, module]) => ({
+  path,
+  slug: path.split('/').pop()?.replace('.png', '') || '',
+  src: (module as { default: ImageMetadata }).default,
+}));
+---
+
+<BaseLayout title="Bananas" description="AI-generated infographics for blog posts">
+  <h1>Bananas</h1>
+  <p>AI-generated infographics using <a href="https://quesma.com/blog/nano-banana-pro-intelligence-with-tools/">Nano Banana Pro</a> (gemini-3-pro-image-preview)</p>
+
+  <div class="banana-grid">
+    {bananas.map(banana => (
+      <div class="banana-card">
+        <img src={banana.src.src} alt={banana.slug} loading="lazy" />
+      </div>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .banana-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .banana-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+  }
+
+  .banana-card:hover {
+    transform: scale(1.02);
+  }
+
+  .banana-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>
