@@ -1,6 +1,13 @@
 [
   {
-    "id": "999",
+    "title": "Nano Banana Pro: raw intelligence with tool use",
+    "source": "Quesma",
+    "href": "https://quesma.com/blog/nano-banana-pro-intelligence-with-tools/",
+    "date": "2025-11-24T00:00:00.000Z",
+    "tags": ["ai"],
+    "migdal_score": -1
+  },
+  {
     "title": "AI for coding is still playing Go, not StarCraft",
     "source": "Quesma",
     "href": "https://quesma.com/blog/coding-is-starcraft-not-go/",
@@ -9,8 +16,7 @@
     "migdal_score": 0
   },
   {
-    "id": "0",
-    "title": "Sandboxing AI-Generated Code: Why We Moved from WebR to AWS Lambda",
+    "title": "Sandboxing AI-generated code: why we moved from WebR to AWS Lambda",
     "source": "Quesma",
     "href": "https://quesma.com/blog/sandboxing-ai-generated-code-why-we-moved-from-webr-to-aws-lambda",
     "date": "2025-08-07T00:00:00.000Z",
@@ -18,7 +24,6 @@
     "migdal_score": 0
   },
   {
-    "id": "1",
     "title": "Which chart would you swipe right?",
     "source": "Quesma",
     "href": "https://quesma.com/blog/which-chart-would-you-swipe-right",
@@ -27,16 +32,14 @@
     "migdal_score": 0
   },
   {
-    "id": "2",
     "title": "Building Grafana dashboards with AI, CLI and a bit of pragmatism",
     "source": "Quesma",
     "href": "https://quesma.com/blog/building-grafana-dashboards-ai-cli",
     "date": "2025-07-16T00:00:00.000Z",
     "tags": ["ai", "data viz"],
-    "migdal_score": -1
+    "migdal_score": -2
   },
   {
-    "id": "3",
     "title": "Naturalność nagości - sesja i wywiad",
     "source": "Nude Morning",
     "href": "https://nude-morning.blogspot.com/2024/09/m.html",
@@ -45,7 +48,6 @@
     "migdal_score": 0
   },
   {
-    "id": "4",
     "title": "AI, fizyka kwantowa, relacje, ludzie, przyszłość",
     "source": "99twarzyAI @ Spotify",
     "href": "https://open.spotify.com/episode/13CeoDGEPn1HhkXe6vYtu5?si=e9eb4f0876fa42bb&nd=1&dlsi=5a632c5dbe2c4545",
@@ -54,7 +56,6 @@
     "migdal_score": 0
   },
   {
-    "id": "5",
     "title": "Jak masować osoby autystyczne?",
     "source": "Kwantowy Dotyk @ Facebook",
     "href": "https://www.facebook.com/KwantowyDotyk/posts/pfbid02ESzhVobHBbDdV71uY6qEAs6ZqMyiHnbVtq5KktN2zkXS6TRipFQg5fkfQomwy32Xl",
@@ -63,7 +64,6 @@
     "migdal_score": 1
   },
   {
-    "id": "6",
     "title": "Masuję powięź, by uwolnić napięcia",
     "source": "Kwantowy Dotyk @ Facebook",
     "href": "https://www.facebook.com/KwantowyDotyk/posts/pfbid0utWdC7AnF8FWxux4NguqWxC1Cg8NLk4EMwXU6YfQ6DNvVGfnDpEfKed6DPtRSczWl",
@@ -72,25 +72,22 @@
     "migdal_score": 1
   },
   {
-    "id": "7",
     "title": "Can AI diagnose mental conditions within a single conversation?",
     "source": "Brainhack Warsaw",
     "href": "https://brainhackwarsaw.fuw.edu.pl/",
     "date": "2024-01-30T00:00:00.000Z",
     "tags": ["event", "deep learning", "cognition"],
-    "migdal_score": 1
+    "migdal_score": 0
   },
   {
-    "id": "8",
     "title": "Saunowe ukojenie w lesie",
     "source": "Kamila Tokarska Spotify",
     "href": "https://open.spotify.com/episode/0Xz20gnhpP06gWOmbZsbj0?si=d37cc81e280d4ed1",
     "date": "2023-04-28T00:00:00.000Z",
     "tags": ["personal", "neurodiversity", "body", "interview", "po polsku"],
-    "migdal_score": 1
+    "migdal_score": 2
   },
   {
-    "id": "9",
     "title": "Polacy walczą o „cyfrowego Oskara”",
     "source": "Maciej Kawecki YouTube",
     "href": "https://www.youtube.com/watch?v=7UPBfGWcHLE",
@@ -99,7 +96,6 @@
     "migdal_score": 0
   },
   {
-    "id": "10",
     "title": "What's new in Virtual Lab by Quantum Flytrap - Oct 2022",
     "source": "Quantum Flytrap",
     "href": "https://quantumflytrap.com/blog/virtual-lab-updates-oct-2022",
@@ -108,7 +104,6 @@
     "migdal_score": 3
   },
   {
-    "id": "11",
     "title": "Closing Quantum Flytrap",
     "source": "Quantum Flytrap",
     "href": "https://quantumflytrap.com/blog/closing-quantum-flytrap/",
@@ -117,8 +112,7 @@
     "migdal_score": 0
   },
   {
-    "id": "12",
-    "title": "Quantum Flytrap - Shaping the Future of Quantum DevTools",
+    "title": "Quantum Flytrap - shaping the future of quantum devtools",
     "source": "Startups Shaping the Future of Computing",
     "href": "https://www.future-of-computing.com/quantum-flytrap-shaping-the-future-of-quantum-devtools/",
     "date": "2022-07-01T00:00:00.000Z",
@@ -126,7 +120,6 @@
     "migdal_score": 0
   },
   {
-    "id": "13",
     "title": "Quantum logic gates for a single qubit, interactively",
     "source": "Quantum Flytrap",
     "href": "https://quantumflytrap.com/blog/2021/qubit-interactively/",
@@ -135,7 +128,6 @@
     "migdal_score": 1
   },
   {
-    "id": "14",
     "title": "Support my open-source work and blog posts",
     "source": "GitHub Sponsors",
     "href": "https://github.com/sponsors/stared/",
@@ -144,7 +136,6 @@
     "migdal_score": 0
   },
   {
-    "id": "15",
     "title": "To make a cool game, you first have to play other cool games",
     "source": "Quantum Game Medium",
     "href": "https://medium.com/quantum-photons/to-make-a-cool-game-you-first-have-to-play-other-cool-games-a1a1d45e169b",
@@ -153,7 +144,6 @@
     "migdal_score": 0
   },
   {
-    "id": "16",
     "title": "Does AI have a dirty mind, too?",
     "source": "Medium",
     "href": "https://medium.com/@marekkcichy/does-ai-have-a-dirty-mind-too-6948430e4b2b",
@@ -169,7 +159,6 @@
     "migdal_score": 1
   },
   {
-    "id": "17",
     "title": "Keras vs. PyTorch: Alien vs. Predator recognition with transfer learning",
     "source": "deepsense.ai blog",
     "href": "https://deepsense.ai/keras-vs-pytorch-avp-transfer-learning/",
@@ -178,7 +167,6 @@
     "migdal_score": 0
   },
   {
-    "id": "18",
     "title": "Keras or PyTorch as your first deep learning framework",
     "source": "deepsense.ai blog",
     "href": "https://deepsense.ai/keras-or-pytorch/",
@@ -193,7 +181,6 @@
     "migdal_score": 1
   },
   {
-    "id": "19",
     "title": "Starting deep learning hands-on: image classification on CIFAR-10",
     "source": "deepsense.ai blog",
     "href": "https://blog.deepsense.ai/deep-learning-hands-on-image-classification/",
@@ -202,7 +189,6 @@
     "migdal_score": 0
   },
   {
-    "id": "20",
     "title": "Human log loss for image classification",
     "source": "deepsense.ai blog",
     "href": "https://blog.deepsense.ai/human-log-loss-for-image-classification/",
@@ -211,7 +197,6 @@
     "migdal_score": 1
   },
   {
-    "id": "21",
     "title": "Helping exceptionally gifted children in Poland",
     "source": "Scientia Crastina",
     "href": "http://crastina.se/gifted-children-in-poland-by-piotr-migdal/",
@@ -220,7 +205,6 @@
     "migdal_score": 2
   },
   {
-    "id": "22",
     "title": "Autistic traits, science and the nerd stereotype",
     "source": "Scientia Crastina",
     "href": "http://crastina.se/autistic-traits-science-and-the-nerd-stereotype/",
@@ -229,16 +213,14 @@
     "migdal_score": 1
   },
   {
-    "id": "23",
     "title": "An independent camp for high school geeks",
     "source": "Wakacyjne Warsztaty Wielodyscyplinarne",
     "href": "https://warsztatywww.pl/article/en-indie-camp-for-hs-geeks/",
     "date": "2012-08-31T00:00:00.000Z",
     "tags": ["education"],
-    "migdal_score": 2
+    "migdal_score": 4
   },
   {
-    "id": "24",
     "title": "Open Science and Science 2.0",
     "source": "Offtopicarium",
     "href": "http://offtopicarium.wikidot.com/v1:open-science-2-0",
@@ -247,7 +229,6 @@
     "migdal_score": 1
   },
   {
-    "id": "25",
     "title": "Why are papers without code but with results accepted?",
     "source": "Academia Stack Exchange",
     "href": "http://academia.stackexchange.com/a/23238",
@@ -256,7 +237,6 @@
     "migdal_score": 0
   },
   {
-    "id": "26",
     "title": "How to stop feeling guilty about the unfinished work?",
     "source": "Academia Stack Exchange",
     "href": "http://academia.stackexchange.com/a/18009",
@@ -265,7 +245,6 @@
     "migdal_score": 0
   },
   {
-    "id": "27",
     "title": "What is the role of the logarithm in Shannon entropy?",
     "source": "Cross Validated Stack Exchange",
     "href": "http://stats.stackexchange.com/a/87194",
@@ -275,7 +254,6 @@
     "migdal_score": 0
   },
   {
-    "id": "28",
     "title": "Why use version control systems for writing a paper?",
     "source": "Academia Stack Exchange",
     "href": "http://academia.stackexchange.com/a/5286",
@@ -284,7 +262,6 @@
     "migdal_score": 0
   },
   {
-    "id": "29",
     "title": "How to improve myself as a lecturer?",
     "source": "Academia Stack Exchange",
     "href": "http://academia.stackexchange.com/a/5249",
@@ -293,7 +270,6 @@
     "migdal_score": 0
   },
   {
-    "id": "30",
     "title": "arXiv vs MathOverflow - popularity of disciplines",
     "source": "MathOverflow Meta",
     "href": "http://meta.mathoverflow.net/questions/2363/arxiv-vs-mathoverflow-popularity-of-disciplines",
@@ -302,7 +278,6 @@
     "migdal_score": 0
   },
   {
-    "id": "31",
     "title": "Mafia, zdradziecka parzystość oraz pi",
     "source": "Popularnonaukowy miesięcznika \"Delta\"",
     "href": "https://web.archive.org/web/20160817100338/http://www.mimuw.edu.pl/delta/artykuly/delta2010-07/2010-07-6.pdf",
@@ -311,7 +286,6 @@
     "migdal_score": 0
   },
   {
-    "id": "32",
     "title": "Drogowskaz Pasjonata",
     "source": "Wakacyjne Warsztaty Wielodyscyplinarne",
     "href": "https://warsztatywww.pl/article/drogowskaz/",
@@ -320,7 +294,6 @@
     "migdal_score": 2
   },
   {
-    "id": "33",
     "title": "Two heads are better than one. How about more?",
     "source": "Theory, Evolution, and Games Group",
     "href": "https://egtheory.wordpress.com/2014/01/30/two-heads-are-better-than-one-how-about-more/",
@@ -329,7 +302,6 @@
     "migdal_score": 1
   },
   {
-    "id": "34",
     "title": "Quantum Superposition",
     "source": "Azimuth, John Baez's blog",
     "href": "https://johncarlosbaez.wordpress.com/2015/03/13/quantum-superposition/",
@@ -338,7 +310,6 @@
     "migdal_score": 0
   },
   {
-    "id": "35",
     "title": "Prawdopodobieństwo a informacja",
     "source": "Popularnonaukowy miesięcznika \"Delta\"",
     "href": "http://www.deltami.edu.pl/temat/matematyka/rachunek_prawdopodobienstwa/2015/10/23/Prawdopodobienstwo_a_informacja/",
@@ -347,7 +318,6 @@
     "migdal_score": 0
   },
   {
-    "id": "36",
     "title": "Zapaleńcy i wypaleńcy, czyli o utracie pasji w trakcie studiów",
     "source": "migdal.wikidot.com",
     "href": "http://migdal.wikidot.com/zapalency-i-wypalency",
