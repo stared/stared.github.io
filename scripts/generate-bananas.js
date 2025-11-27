@@ -51,7 +51,7 @@ async function loadBlogPosts() {
       slug: slugify(id),
       title: data.title,
       description: data.description || "",
-      body: body.slice(0, 2000), // First 2000 chars
+      body: body,
       isExternal: false,
     });
   }
@@ -140,7 +140,7 @@ async function main() {
 
     console.log(`\n[${generated + 1}/${toGenerate.length}] ${post.title}`);
 
-    const prompt = `Make an infographic of: ${post.title}\n\n${post.description}\n\n${post.body}`.trim();
+    const prompt = `Make an infographic of: ${post.title}\n\n${post.body}`;
 
     try {
       await generateImage(prompt, outputPath);
