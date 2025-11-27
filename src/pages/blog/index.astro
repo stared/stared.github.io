@@ -2,24 +2,15 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import BlogList from '@/components/BlogList.vue';
-import { normalizePost, createScoredPosts } from '@/lib/postData';
+import { createPosts } from '@/lib/postData';
 import {Content as BlogIntro} from '@/content/textComponents/blog.md';
 
-const blogPosts = await getCollection('blog');
-const externalArticlesEntries = await getCollection('externalArticles');
-const externalPosts = externalArticlesEntries.map((entry) => entry.data);
-
-// Normalize posts ONCE at the boundary - single source of truth
-const allPosts = [
-  ...blogPosts.map(normalizePost),
-  ...externalPosts.map(normalizePost),
-];
-
-// Create scored posts with pre-computed scores at build time
-const scoredPosts = createScoredPosts(allPosts);
+const blogEntries = await getCollection('blog');
+const externalEntries = await getCollection('externalArticles');
+const posts = createPosts(blogEntries, externalEntries.map(e => e.data));
 ---
 
 <BaseLayout title="Blog" description="Read blog posts by Piotr Migdał.">
   <BlogIntro />
-  <BlogList client:load scoredPosts={scoredPosts} />
+  <BlogList client:load posts={posts} />
 </BaseLayout>

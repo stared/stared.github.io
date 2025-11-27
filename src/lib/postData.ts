@@ -1,182 +1,130 @@
 import type { CollectionEntry } from 'astro:content';
 
-export interface BasePostData {
+interface Mention { text: string; href: string }
+
+interface PostScores {
+  popularity: number;
+  mentions: number;
+  age: number;
+  migdalBias: number;
+}
+
+export interface Post {
+  id: string;
+  url: string;
+  isExternal: boolean;
+  source?: string;
   title: string;
-  date: string;
-  tags: string[];
   description: string;
+  tags: string[];
   image: string;
   author: string;
-  mentions: Array<{ text: string; href: string }>;
+  date: Date;
+  formattedDate: string;
+  mentions: Mention[];
+  hasHN: boolean;
   views_k: number;
   migdal_score: number;
+  scores: PostScores;
+  initialOrder: number;
 }
 
-export interface ExternalPostData extends BasePostData {
-  source: string;
-  href: string;
+export const DEFAULT_WEIGHTS = { popularity: 4, mentions: 2, age: -8, migdalScore: 2 } as const;
+
+type BlogEntry = CollectionEntry<'blog'>;
+type ExternalEntry = CollectionEntry<'externalArticles'>['data'];
+
+function computeScores(date: Date, views_k: number, mentions: Mention[], migdal_score: number, refDate: Date): PostScores {
+  const popularity = views_k > 0 ? Math.log2(views_k) : 0;
+  const importantMentions = mentions.filter(m => !m.href.includes('medium.com')).length;
+  const mentionsScore = Math.sqrt(importantMentions);
+  const years = (refDate.getTime() - date.getTime()) / (365.25 * 24 * 60 * 60 * 1000);
+  const age = Math.log2(Math.max(years, 0.01));
+  return { popularity, mentions: mentionsScore, age, migdalBias: migdal_score };
 }
 
-export type UnifiedPost =
-  | { type: 'internal'; id: string; data: BasePostData }
-  | { type: 'external'; data: ExternalPostData };
-
-type RawExternalPost = CollectionEntry<'externalArticles'>['data'];
-export type BlogPost = CollectionEntry<'blog'> | RawExternalPost;
-
-function isRawExternalPost(post: BlogPost): post is RawExternalPost {
-  return 'href' in post && 'source' in post;
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-us', { year: 'numeric', month: 'short' });
 }
 
-export function normalizePost(post: BlogPost): UnifiedPost {
-  if (isRawExternalPost(post)) {
-    return {
-      type: 'external',
-      data: {
-        title: post.title,
-        date: post.date,
-        tags: post.tags,
-        description: post.description,
-        image: post.image,
-        author: post.author,
-        mentions: post.mentions,
-        views_k: post.views_k,
-        migdal_score: post.migdal_score,
-        source: post.source,
-        href: post.href,
-      },
-    };
-  }
+function computeScore(scores: PostScores, weights: typeof DEFAULT_WEIGHTS): number {
+  return weights.popularity * scores.popularity +
+         weights.mentions * scores.mentions +
+         weights.age * scores.age +
+         weights.migdalScore * scores.migdalBias;
+}
 
+function fromBlogEntry(entry: BlogEntry, refDate: Date): Omit<Post, 'initialOrder'> {
+  const d = entry.data;
+  const date = d.date;
   return {
-    type: 'internal',
-    id: post.id,
-    data: {
-      title: post.data.title,
-      date: post.data.date.toISOString(),
-      tags: post.data.tags,
-      description: post.data.description,
-      image: post.data.image,
-      author: post.data.author,
-      mentions: post.data.mentions,
-      views_k: post.data.views_k,
-      migdal_score: post.data.migdal_score,
-    },
+    id: entry.id,
+    url: `/blog/${entry.id.replace(/\/index\.mdx?$/, '')}`,
+    isExternal: false,
+    title: d.title,
+    description: d.description,
+    tags: d.tags,
+    image: d.image,
+    author: d.author,
+    date,
+    formattedDate: formatDate(date),
+    mentions: d.mentions,
+    hasHN: d.mentions.some(m => m.href.includes('news.ycombinator')),
+    views_k: d.views_k,
+    migdal_score: d.migdal_score,
+    scores: computeScores(date, d.views_k, d.mentions, d.migdal_score, refDate),
   };
 }
 
-export interface PostScores {
-  readonly popularity: number;
-  readonly mentions: number;
-  readonly age: number;
-  readonly migdalBias: number;
+function fromExternalEntry(entry: ExternalEntry, refDate: Date): Omit<Post, 'initialOrder'> {
+  const date = new Date(entry.date);
+  return {
+    id: entry.href,
+    url: entry.href,
+    isExternal: true,
+    source: entry.source,
+    title: entry.title,
+    description: entry.description,
+    tags: entry.tags,
+    image: entry.image,
+    author: entry.author,
+    date,
+    formattedDate: formatDate(date),
+    mentions: entry.mentions,
+    hasHN: entry.mentions.some(m => m.href.includes('news.ycombinator')),
+    views_k: entry.views_k,
+    migdal_score: entry.migdal_score,
+    scores: computeScores(date, entry.views_k, entry.mentions, entry.migdal_score, refDate),
+  };
 }
 
-export interface ScoredBlogPost {
-  readonly post: UnifiedPost;
-  readonly scores: PostScores;
-  readonly initialOrder: number;
-}
-
-export const DEFAULT_WEIGHTS = {
-  popularity: 4,
-  mentions: 2,
-  age: -8,
-  migdalScore: 2,
-} as const;
-
-export function calculatePostScores(post: UnifiedPost, referenceDate: Date): PostScores {
-  const { data } = post;
-  const popularity = data.views_k > 0 ? Math.log2(data.views_k) : 0;
-  const importantMentions = data.mentions.filter(
-    (m) => !m.href.includes('medium.com')
-  ).length;
-  const mentions = Math.sqrt(importantMentions);
-  const yearsSince =
-    (referenceDate.getTime() - new Date(data.date).getTime()) / (1000 * 60 * 60 * 24 * 365.25);
-  const age = Math.log2(Math.max(yearsSince, 0.01));
-
-  return { popularity, mentions, age, migdalBias: data.migdal_score };
-}
-
-export function sortScoredPosts(
-  scoredPosts: readonly ScoredBlogPost[],
-  weights: { popularity: number; mentions: number; age: number; migdalScore: number }
-): ScoredBlogPost[] {
-  return [...scoredPosts].sort((a, b) => {
-    const wa =
-      weights.popularity * a.scores.popularity +
-      weights.mentions * a.scores.mentions +
-      weights.age * a.scores.age +
-      weights.migdalScore * a.scores.migdalBias;
-    const wb =
-      weights.popularity * b.scores.popularity +
-      weights.mentions * b.scores.mentions +
-      weights.age * b.scores.age +
-      weights.migdalScore * b.scores.migdalBias;
-    return wb - wa;
-  });
-}
-
-export function createScoredPosts(
-  posts: UnifiedPost[],
+export function createPosts(
+  blogEntries: BlogEntry[],
+  externalEntries: ExternalEntry[],
   weights = DEFAULT_WEIGHTS
-): ScoredBlogPost[] {
-  const referenceDate = new Date();
+): Post[] {
+  const refDate = new Date();
 
-  const scored = posts.map((post) => ({
-    post,
-    scores: calculatePostScores(post, referenceDate),
-    initialOrder: 0,
-  }));
+  const posts = [
+    ...blogEntries.map(e => fromBlogEntry(e, refDate)),
+    ...externalEntries.map(e => fromExternalEntry(e, refDate)),
+  ];
 
-  const sorted = sortScoredPosts(scored, weights);
+  posts.sort((a, b) => computeScore(b.scores, weights) - computeScore(a.scores, weights));
 
-  return sorted.map((sp, index) => ({
-    ...sp,
-    initialOrder: index,
-  }));
+  return posts.map((p, i) => ({ ...p, initialOrder: i }));
 }
 
-export function getPostUrl(post: UnifiedPost): string {
-  return post.type === 'external'
-    ? post.data.href
-    : `/blog/${post.id.replace(/\/index\.mdx?$/, '')}`;
+export function sortPosts(posts: Post[], weights: typeof DEFAULT_WEIGHTS): Post[] {
+  return [...posts].sort((a, b) => computeScore(b.scores, weights) - computeScore(a.scores, weights));
 }
 
-export function isExternal(post: UnifiedPost): post is UnifiedPost & { type: 'external' } {
-  return post.type === 'external';
+export function getTagCounts(posts: Post[]): { name: string; count: number }[] {
+  const counts: Record<string, number> = { all: posts.length };
+  for (const p of posts) for (const t of p.tags) counts[t] = (counts[t] || 0) + 1;
+  return Object.entries(counts).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count);
 }
 
-export function hasHackerNews(post: UnifiedPost): boolean {
-  return post.data.mentions.some((m) => m.href.includes('news.ycombinator'));
-}
-
-export function formatPostDate(post: UnifiedPost): string {
-  return new Date(post.data.date).toLocaleDateString('en-us', {
-    year: 'numeric',
-    month: 'short',
-  });
-}
-
-export function getAllTagsWithCounts(scoredPosts: readonly ScoredBlogPost[]) {
-  const counter: Record<string, number> = { all: scoredPosts.length };
-
-  for (const { post } of scoredPosts) {
-    for (const tag of post.data.tags) {
-      counter[tag] = (counter[tag] || 0) + 1;
-    }
-  }
-
-  return Object.entries(counter)
-    .map(([name, count]) => ({ name, count }))
-    .sort((a, b) => b.count - a.count);
-}
-
-export function filterScoredPostsByTag(
-  scoredPosts: readonly ScoredBlogPost[],
-  tag: string
-): ScoredBlogPost[] {
-  if (tag === 'all') return [...scoredPosts];
-  return scoredPosts.filter(({ post }) => post.data.tags.includes(tag));
+export function filterByTag(posts: Post[], tag: string): Post[] {
+  return tag === 'all' ? posts : posts.filter(p => p.tags.includes(tag));
 }

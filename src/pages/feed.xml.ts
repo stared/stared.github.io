@@ -1,36 +1,29 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import { AUTHOR, SITE_URL, SITE_DESCRIPTION } from '@/lib/constants';
-import { normalizePost, getPostUrl } from '@/lib/postData';
+import { createPosts } from '@/lib/postData';
 import type { APIContext } from 'astro';
 
 export async function GET(context: APIContext) {
-  const blogPosts = await getCollection('blog');
-  const externalArticlesEntries = await getCollection('externalArticles');
-  const externalPosts = externalArticlesEntries.map((entry) => entry.data);
+  const blogEntries = await getCollection('blog');
+  const externalEntries = await getCollection('externalArticles');
+  const posts = createPosts(blogEntries, externalEntries.map(e => e.data));
 
-  // Normalize all posts using the unified system
-  const allUnified = [
-    ...blogPosts.map(normalizePost),
-    ...externalPosts.map(normalizePost),
-  ];
-
-  // Transform to RSS items using unified data access
-  const allPosts = allUnified.map(post => ({
-    title: post.data.title,
-    pubDate: new Date(post.data.date),
-    description: post.data.description,
-    link: post.type === 'external' ? post.data.href : `${SITE_URL}${getPostUrl(post)}`,
-    author: post.data.author,
+  const items = posts.map(post => ({
+    title: post.title,
+    pubDate: post.date,
+    description: post.description,
+    link: post.isExternal ? post.url : `${SITE_URL}${post.url}`,
+    author: post.author,
   }));
 
-  allPosts.sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
+  items.sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
 
   return rss({
     title: `${AUTHOR}'s Blog`,
     description: SITE_DESCRIPTION,
     site: context.site || SITE_URL,
-    items: allPosts,
+    items,
     customData: `<language>en-us</language>`,
   });
 }
