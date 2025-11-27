@@ -1,0 +1,39 @@
+{
+  "most_similar": [
+    {
+      "slug": "2025_04_vibe-translating-quantum-flytrap",
+      "similarity": 0.6375518096552825,
+      "title": "Making Quantum Flytrap a polyglot with AI vibe translating",
+      "path": "/blog/2025/04/vibe-translating-quantum-flytrap",
+      "isExternal": false
+    },
+    {
+      "slug": "2023_02_ai-artists-information-theory",
+      "similarity": 0.6174327272286763,
+      "title": "AI won’t make artists redundant - thanks to information theory",
+      "path": "/blog/2023/02/ai-artists-information-theory",
+      "isExternal": false
+    },
+    {
+      "slug": "2024_10_writing-like-ai",
+      "similarity": 0.6097507885263646,
+      "title": "Overcoming writer's block — lessons from AI",
+      "path": "/blog/2024/10/writing-like-ai",
+      "isExternal": false
+    },
+    {
+      "slug": "2022_07_dall-e-2-and-transcendence",
+      "similarity": 0.5493000931626505,
+      "title": "DALL·E 2 and transcendence - generating esoteric images with AI",
+      "path": "/blog/2022/07/dall-e-2-and-transcendence",
+      "isExternal": false
+    },
+    {
+      "slug": "external_2025_11_nano-banana-pro-intelligence-with-tools",
+      "similarity": 0.5414634467096755,
+      "title": "Nano Banana Pro: raw intelligence with tool use",
+      "path": "https://quesma.com/blog/nano-banana-pro-intelligence-with-tools",
+      "isExternal": true
+    }
+  ]
+}

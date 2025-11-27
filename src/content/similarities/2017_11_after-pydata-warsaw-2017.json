@@ -1,0 +1,39 @@
+{
+  "most_similar": [
+    {
+      "slug": "2016_05_my-impressions-from-pydata-berlin-2016",
+      "similarity": 0.7793070523880253,
+      "title": "My impressions from PyData Berlin 2016",
+      "path": "/blog/2016/05/my-impressions-from-pydata-berlin-2016",
+      "isExternal": false
+    },
+    {
+      "slug": "2016_02_d3js-icm-kfnrd",
+      "similarity": 0.6007540710962409,
+      "title": "D3.js workshop at ICM for KFnrD",
+      "path": "/blog/2016/02/d3js-icm-kfnrd",
+      "isExternal": false
+    },
+    {
+      "slug": "2017_08_bangbangcon",
+      "similarity": 0.5578433528702313,
+      "title": "!!con or doing inclusivity well",
+      "path": "/blog/2017/08/bangbangcon",
+      "isExternal": false
+    },
+    {
+      "slug": "2015_12_sci-to-data-sci",
+      "similarity": 0.5260275589229833,
+      "title": "What I do or: science to data science",
+      "path": "/blog/2015/12/sci-to-data-sci",
+      "isExternal": false
+    },
+    {
+      "slug": "2019_06_cloak-dagger-creativity-camp",
+      "similarity": 0.5219377754758548,
+      "title": "Cloak & dagger creativity camp",
+      "path": "/blog/2019/06/cloak-dagger-creativity-camp",
+      "isExternal": false
+    }
+  ]
+}

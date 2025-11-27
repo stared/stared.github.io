@@ -1,0 +1,39 @@
+{
+  "most_similar": [
+    {
+      "slug": "2019_04_tinder-anecdata-and-sankey-diagrams",
+      "similarity": 0.719593916137604,
+      "title": "Tinder anecdata and Sankey diagrams",
+      "path": "/blog/2019/04/tinder-anecdata-and-sankey-diagrams",
+      "isExternal": false
+    },
+    {
+      "slug": "2017_07_dating-for-nerds",
+      "similarity": 0.7174068897887647,
+      "title": "Dating for nerds (part 1): problem diagnosis",
+      "path": "/blog/2017/07/dating-for-nerds",
+      "isExternal": false
+    },
+    {
+      "slug": "2017_09_dating-for-nerds-gender-differences",
+      "similarity": 0.7010151630275782,
+      "title": "Dating for nerds (part 2): gender differences",
+      "path": "/blog/2017/09/dating-for-nerds-gender-differences",
+      "isExternal": false
+    },
+    {
+      "slug": "external_2025_07_which-chart-would-you-swipe-right",
+      "similarity": 0.6528849836391521,
+      "title": "Which chart would you swipe right?",
+      "path": "https://quesma.com/blog/which-chart-would-you-swipe-right",
+      "isExternal": true
+    },
+    {
+      "slug": "2017_01_king-man-woman-queen-why",
+      "similarity": 0.6032274383688656,
+      "title": "king - man + woman is queen; but why?",
+      "path": "/blog/2017/01/king-man-woman-queen-why",
+      "isExternal": false
+    }
+  ]
+}

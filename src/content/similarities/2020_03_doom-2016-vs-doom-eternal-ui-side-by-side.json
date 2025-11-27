@@ -1,0 +1,39 @@
+{
+  "most_similar": [
+    {
+      "slug": "2019_06_games-in-which-you-walk-and-get-immersed",
+      "similarity": 0.5161822754548964,
+      "title": "Games in which you walk (and get immersed)",
+      "path": "/blog/2019/06/games-in-which-you-walk-and-get-immersed",
+      "isExternal": false
+    },
+    {
+      "slug": "external_2019_08_to-make-cool-game-play-cool-games",
+      "similarity": 0.4998020772257547,
+      "title": "To make a cool game, you first have to play other cool games",
+      "path": "https://medium.com/quantum-photons/to-make-a-cool-game-you-first-have-to-play-other-cool-games-a1a1d45e169b",
+      "isExternal": true
+    },
+    {
+      "slug": "2023_02_ai-artists-information-theory",
+      "similarity": 0.48066549871774716,
+      "title": "AI won’t make artists redundant - thanks to information theory",
+      "path": "/blog/2023/02/ai-artists-information-theory",
+      "isExternal": false
+    },
+    {
+      "slug": "2020_05_adhd-tech-stack-auto-time-tracking",
+      "similarity": 0.46202250577220466,
+      "title": "ADHD tech stack: auto time tracking",
+      "path": "/blog/2020/05/adhd-tech-stack-auto-time-tracking",
+      "isExternal": false
+    },
+    {
+      "slug": "2024_05_science-games-explorable-explanations",
+      "similarity": 0.46039788540378346,
+      "title": "Science-based games and explorable explanations",
+      "path": "/blog/2024/05/science-games-explorable-explanations",
+      "isExternal": false
+    }
+  ]
+}
