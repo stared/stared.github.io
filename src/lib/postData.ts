@@ -1,14 +1,45 @@
 import type { CollectionEntry } from 'astro:content';
 
-// External posts come from external-articles.json
-export interface ExternalPost {
+// =============================================================================
+// Unified Type System
+// =============================================================================
+
+// Shared fields for all posts (normalized at boundary)
+export interface BasePostData {
+  title: string;
+  date: string; // ISO string - normalized at boundary
+  tags: string[];
+  description: string;
+  image: string;
+  author: string;
+  mentions: Array<{ text: string; href: string }>;
+  views_k: number;
+  migdal_score: number;
+}
+
+// External posts have additional source and href
+export interface ExternalPostData extends BasePostData {
+  source: string;
+  href: string;
+}
+
+// Discriminated union for runtime type safety
+export type UnifiedPost =
+  | { type: 'internal'; id: string; data: BasePostData }
+  | { type: 'external'; data: ExternalPostData };
+
+// =============================================================================
+// Legacy Types (for Astro collection compatibility)
+// =============================================================================
+
+// Raw external post from JSON (before normalization)
+export interface RawExternalPost {
   title: string;
   date: string;
-  tags: string[];
+  tags?: string[];
   mentions?: Array<{ text: string; href: string }>;
-  view_k?: number;
   views_k?: number;
-  migdal_score: number;
+  migdal_score?: number;
   source: string;
   href: string;
   description?: string;
@@ -16,8 +47,60 @@ export interface ExternalPost {
   author?: string;
 }
 
-// Unified blog post type that works with both internal and external posts
-export type BlogPost = CollectionEntry<'blog'> | ExternalPost;
+// Union of raw Astro types (before normalization)
+export type BlogPost = CollectionEntry<'blog'> | RawExternalPost;
+
+// =============================================================================
+// Normalization (SINGLE place for type discrimination)
+// =============================================================================
+
+// Check if raw post is external (used only in normalizePost)
+function isRawExternalPost(post: BlogPost): post is RawExternalPost {
+  return 'href' in post && 'source' in post;
+}
+
+// Normalize any post to UnifiedPost - call this ONCE at the boundary
+export function normalizePost(post: BlogPost): UnifiedPost {
+  if (isRawExternalPost(post)) {
+    return {
+      type: 'external',
+      data: {
+        title: post.title,
+        date: post.date,
+        tags: post.tags ?? [],
+        description: post.description ?? '',
+        image: post.image ?? '',
+        author: post.author ?? 'Piotr Migdał',
+        mentions: post.mentions ?? [],
+        views_k: post.views_k ?? 0,
+        migdal_score: post.migdal_score ?? 0,
+        source: post.source,
+        href: post.href,
+      },
+    };
+  }
+
+  // Internal Astro post
+  return {
+    type: 'internal',
+    id: post.id,
+    data: {
+      title: post.data.title,
+      date: post.data.date.toISOString(),
+      tags: post.data.tags,
+      description: post.data.description,
+      image: post.data.image,
+      author: post.data.author,
+      mentions: post.data.mentions,
+      views_k: post.data.views_k,
+      migdal_score: post.data.migdal_score,
+    },
+  };
+}
+
+// =============================================================================
+// Scoring System
+// =============================================================================
 
 // Scores computed once at build time - prevents hydration mismatches
 export interface PostScores {
@@ -29,13 +112,12 @@ export interface PostScores {
 
 // Post with pre-computed scores attached
 export interface ScoredBlogPost {
-  readonly post: BlogPost;
+  readonly post: UnifiedPost;
   readonly scores: PostScores;
-  readonly initialOrder: number; // Position in default-sorted list
+  readonly initialOrder: number;
 }
 
 // Default weights for sorting blog posts
-// Used to ensure SSR and CSR render identical initial state
 export const DEFAULT_WEIGHTS = {
   popularity: 4,
   mentions: 2,
@@ -43,34 +125,22 @@ export const DEFAULT_WEIGHTS = {
   migdalScore: 2,
 } as const;
 
-// Helper to get URL from a post
-export function getPostUrl(post: BlogPost): string {
-  return 'href' in post ? post.href : `/blog/${post.id.replace(/\/index\.mdx?$/, '')}`;
-}
-
-// Helper to check if post is external
-export function isExternalPost(post: BlogPost): post is ExternalPost {
-  return 'href' in post;
-}
-
-// Scoring utilities - referenceDate is REQUIRED to prevent SSR/CSR hydration mismatches
-export function calculatePostScores(post: BlogPost, referenceDate: Date): PostScores {
-  const data = 'data' in post ? post.data : post;
-  const viewsK = data.views_k || ('view_k' in data ? data.view_k : 0) || 0;
-  const popularity = viewsK > 0 ? Math.log2(viewsK) : 0;
-  const postMentions = data.mentions || [];
-  const importantMentions = postMentions.filter(
-    (m: { href: string }) => !m.href.includes('medium.com')
+// Calculate scores from UnifiedPost (clean - no type discrimination needed)
+export function calculatePostScores(post: UnifiedPost, referenceDate: Date): PostScores {
+  const { data } = post;
+  const popularity = data.views_k > 0 ? Math.log2(data.views_k) : 0;
+  const importantMentions = data.mentions.filter(
+    (m) => !m.href.includes('medium.com')
   ).length;
   const mentions = Math.sqrt(importantMentions);
   const yearsSince =
     (referenceDate.getTime() - new Date(data.date).getTime()) / (1000 * 60 * 60 * 24 * 365.25);
-  const age = Math.log2(Math.max(yearsSince, 0.01)); // Avoid log(0) for very recent posts
+  const age = Math.log2(Math.max(yearsSince, 0.01));
 
   return { popularity, mentions, age, migdalBias: data.migdal_score };
 }
 
-// Sort ScoredBlogPosts using pre-computed scores (no Date.now() calls)
+// Sort ScoredBlogPosts using pre-computed scores
 export function sortScoredPosts(
   scoredPosts: readonly ScoredBlogPost[],
   weights: { popularity: number; mentions: number; age: number; migdalScore: number }
@@ -90,44 +160,51 @@ export function sortScoredPosts(
   });
 }
 
-// Create scored posts with pre-computed scores at build time
-// This is the SINGLE SOURCE OF TRUTH for initial render
+// Create scored posts from UnifiedPost array
 export function createScoredPosts(
-  posts: BlogPost[],
+  posts: UnifiedPost[],
   weights = DEFAULT_WEIGHTS
 ): ScoredBlogPost[] {
-  const referenceDate = new Date(); // Single reference for all posts
+  const referenceDate = new Date();
 
   const scored = posts.map((post) => ({
     post,
     scores: calculatePostScores(post, referenceDate),
-    initialOrder: 0, // Will be set after sorting
+    initialOrder: 0,
   }));
 
   const sorted = sortScoredPosts(scored, weights);
 
-  // Assign initial order indices
   return sorted.map((sp, index) => ({
     ...sp,
     initialOrder: index,
   }));
 }
 
-// Helper to get post data from ScoredBlogPost
-export function getPostData(sp: ScoredBlogPost) {
-  return 'data' in sp.post ? sp.post.data : sp.post;
+// =============================================================================
+// Helper Functions (all work with UnifiedPost - no type discrimination)
+// =============================================================================
+
+// Get URL from a UnifiedPost
+export function getPostUrl(post: UnifiedPost): string {
+  return post.type === 'external'
+    ? post.data.href
+    : `/blog/${post.id.replace(/\/index\.mdx?$/, '')}`;
+}
+
+// Check if post is external (for display purposes)
+export function isExternal(post: UnifiedPost): post is UnifiedPost & { type: 'external' } {
+  return post.type === 'external';
 }
 
 // Check if post has Hacker News mention
-export function hasHackerNews(post: BlogPost): boolean {
-  const data = 'data' in post ? post.data : post;
-  return (data.mentions || []).some((m: { href: string }) => m.href.includes('news.ycombinator'));
+export function hasHackerNews(post: UnifiedPost): boolean {
+  return post.data.mentions.some((m) => m.href.includes('news.ycombinator'));
 }
 
 // Format date for display
-export function formatPostDate(post: BlogPost): string {
-  const data = 'data' in post ? post.data : post;
-  return new Date(data.date).toLocaleDateString('en-us', {
+export function formatPostDate(post: UnifiedPost): string {
+  return new Date(post.data.date).toLocaleDateString('en-us', {
     year: 'numeric',
     month: 'short',
   });
@@ -138,9 +215,7 @@ export function getAllTagsWithCounts(scoredPosts: readonly ScoredBlogPost[]) {
   const counter: Record<string, number> = { all: scoredPosts.length };
 
   for (const { post } of scoredPosts) {
-    const data = 'data' in post ? post.data : post;
-    const tags = data.tags || [];
-    for (const tag of tags) {
+    for (const tag of post.data.tags) {
       counter[tag] = (counter[tag] || 0) + 1;
     }
   }
@@ -156,8 +231,5 @@ export function filterScoredPostsByTag(
   tag: string
 ): ScoredBlogPost[] {
   if (tag === 'all') return [...scoredPosts];
-  return scoredPosts.filter(({ post }) => {
-    const data = 'data' in post ? post.data : post;
-    return (data.tags || []).includes(tag);
-  });
+  return scoredPosts.filter(({ post }) => post.data.tags.includes(tag));
 }

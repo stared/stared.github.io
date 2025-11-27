@@ -2,17 +2,22 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import BlogList from '@/components/BlogList.vue';
-import type { ExternalPost } from '@/lib/postData';
-import { createScoredPosts } from '@/lib/postData';
+import { normalizePost, createScoredPosts } from '@/lib/postData';
+import type { RawExternalPost } from '@/lib/postData';
 import {Content as BlogIntro} from '@/content/textComponents/blog.md';
 
 const blogPosts = await getCollection('blog');
 const externalArticlesEntries = await getCollection('externalArticles');
-const externalPosts = externalArticlesEntries.map((entry) => entry.data) as ExternalPost[];
+const externalPosts = externalArticlesEntries.map((entry) => entry.data) as RawExternalPost[];
+
+// Normalize posts ONCE at the boundary - single source of truth
+const allPosts = [
+  ...blogPosts.map(normalizePost),
+  ...externalPosts.map(normalizePost),
+];
 
 // Create scored posts with pre-computed scores at build time
-// This is the SINGLE SOURCE OF TRUTH - scores frozen at build time prevent hydration mismatches
-const scoredPosts = createScoredPosts([...blogPosts, ...externalPosts]);
+const scoredPosts = createScoredPosts(allPosts);
 ---
 
 <BaseLayout title="Blog" description="Read blog posts by Piotr Migdał.">

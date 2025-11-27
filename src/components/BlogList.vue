@@ -7,11 +7,10 @@ import {
   getAllTagsWithCounts,
   filterScoredPostsByTag,
   getPostUrl,
-  isExternalPost,
   hasHackerNews,
   formatPostDate,
 } from '@/lib/postData';
-import type { ScoredBlogPost, BlogPost } from '@/lib/postData';
+import type { ScoredBlogPost, UnifiedPost, ExternalPostData } from '@/lib/postData';
 
 interface Props {
   scoredPosts: ScoredBlogPost[];
@@ -56,14 +55,9 @@ function selectTag(tag: string) {
   tagSelected.value = tag;
 }
 
-// Helper to get the BlogPost from ScoredBlogPost for template helpers
-function getPost(sp: ScoredBlogPost): BlogPost {
-  return sp.post;
-}
-
-// Helper to get post data (handles both internal and external posts)
-function getPostDataField(sp: ScoredBlogPost) {
-  return 'data' in sp.post ? sp.post.data : sp.post;
+// Type guard for external posts (for accessing source field in template)
+function isExternal(post: UnifiedPost): post is UnifiedPost & { type: 'external'; data: ExternalPostData } {
+  return post.type === 'external';
 }
 </script>
 
@@ -121,15 +115,12 @@ function getPostDataField(sp: ScoredBlogPost) {
     </p>
 
     <div class="post-list">
-      <div v-for="sp in filteredPosts" :key="getPostUrl(getPost(sp))" class="post">
-        <span v-if="!isExternalPost(getPost(sp))" class="title">
-          <a :href="getPostUrl(getPost(sp))">{{ getPostDataField(sp).title }}</a>
-        </span>
-        <span v-else class="title">
-          <a :href="getPostUrl(getPost(sp))">{{ getPostDataField(sp).title }}</a>
+      <div v-for="sp in filteredPosts" :key="getPostUrl(sp.post)" class="post">
+        <span class="title">
+          <a :href="getPostUrl(sp.post)">{{ sp.post.data.title }}</a>
         </span>
         <span
-          v-for="tagName in getPostDataField(sp).tags"
+          v-for="tagName in sp.post.data.tags"
           :key="tagName"
           class="tag"
           :class="{ selected: tagName === tagSelected }"
@@ -137,9 +128,9 @@ function getPostDataField(sp: ScoredBlogPost) {
         >
           [{{ tagName }}]
         </span>
-        <span v-if="hasHackerNews(getPost(sp))" class="hn">[HN]</span>
-        <span class="date">{{ formatPostDate(getPost(sp)) }}</span>
-        <span v-if="isExternalPost(getPost(sp))" class="source">@ {{ getPostDataField(sp).source }}</span>
+        <span v-if="hasHackerNews(sp.post)" class="hn">[HN]</span>
+        <span class="date">{{ formatPostDate(sp.post) }}</span>
+        <span v-if="isExternal(sp.post)" class="source">@ {{ sp.post.data.source }}</span>
       </div>
     </div>
   </div>
