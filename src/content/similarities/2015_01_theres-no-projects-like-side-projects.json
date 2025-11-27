@@ -8,6 +8,13 @@
       "isExternal": false
     },
     {
+      "slug": "external_2012_08_en-indie-camp-for-hs-geeks",
+      "similarity": 0.5928163262198378,
+      "title": "An independent camp for high school geeks",
+      "path": "https://warsztatywww.pl/article/en-indie-camp-for-hs-geeks/",
+      "isExternal": true
+    },
+    {
       "slug": "external_2019_08_to-make-cool-game-play-cool-games",
       "similarity": 0.5653922682616136,
       "title": "To make a cool game, you first have to play other cool games",
@@ -26,13 +33,6 @@
       "similarity": 0.5375989141992439,
       "title": "Cloak & dagger creativity camp",
       "path": "/blog/2019/06/cloak-dagger-creativity-camp",
-      "isExternal": false
-    },
-    {
-      "slug": "2023_02_ai-artists-information-theory",
-      "similarity": 0.5372255573379118,
-      "title": "AI won’t make artists redundant - thanks to information theory",
-      "path": "/blog/2023/02/ai-artists-information-theory",
       "isExternal": false
     }
   ]

@@ -1,6 +1,13 @@
 {
   "most_similar": [
     {
+      "slug": "external_2012_08_en-indie-camp-for-hs-geeks",
+      "similarity": 0.684247360354223,
+      "title": "An independent camp for high school geeks",
+      "path": "https://warsztatywww.pl/article/en-indie-camp-for-hs-geeks/",
+      "isExternal": true
+    },
+    {
       "slug": "2021_09_embodiment-for-nerds",
       "similarity": 0.6165247668519465,
       "title": "Embodiment for nerds",
@@ -26,13 +33,6 @@
       "similarity": 0.5568332982534314,
       "title": "My impressions from PyData Berlin 2016",
       "path": "/blog/2016/05/my-impressions-from-pydata-berlin-2016",
-      "isExternal": false
-    },
-    {
-      "slug": "2019_07_dreams-drugs-convnets",
-      "similarity": 0.5408497498439948,
-      "title": "Dreams, Drugs & ConvNets",
-      "path": "/blog/2019/07/dreams-drugs-convnets",
       "isExternal": false
     }
   ]
