@@ -8,7 +8,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "generate:embeddings": "tsx scripts/generateEmbeddings.ts && tsx scripts/generateSimilarities.ts",
-    "generate:bananas": "node scripts/generate-bananas.js",
+    "generate:bananas": "tsx scripts/generate-bananas.ts",
     "build:all": "pnpm generate:embeddings && pnpm build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
