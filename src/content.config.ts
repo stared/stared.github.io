@@ -89,7 +89,9 @@ const experiences = defineCollection({
 });
 
 const externalArticles = defineCollection({
-  loader: file('src/data/external-articles.json'),
+  loader: file('src/data/external-articles.json', {
+    parser: (text) => JSON.parse(text).map((item: unknown, index: number) => ({ ...(item as object), id: String(index) })),
+  }),
   schema: z.object({
     title: z.string(),
     source: z.string(),
