@@ -1,5 +1,19 @@
 [
   {
+    "id": "-2",
+    "title": "15 Years of StarCraft II Balance Changes Visualized",
+    "desc": "A D3.js visualization of all unit changed, parsed with LLMs",
+    "href": "https://p.migdal.pl/sc2-balance-timeline/",
+    "dateStart": "2025-12-31T00:00:00.000Z",
+    "tags": [
+      "data viz",
+      "typescript",
+      "ai",
+      "gamedev",
+      "d3.js"
+    ]
+  },
+  {
     "id": "-1",
     "title": "Equations Explained Colorfully",
     "desc": "Use Markdown and LaTeX to create interactive equations",
