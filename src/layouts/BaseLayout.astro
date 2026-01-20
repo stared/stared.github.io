@@ -130,16 +130,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     max-width: 380px;
   }
 
-  p:has(> mjx-container:only-child) {
+  /* Block math (multi-line $$ ... $$) renders as .katex-display */
+  .katex-display {
+    display: block;
+    margin: 1em 0;
     text-align: center;
-  }
-
-  mjx-container {
-    margin: 1em auto;
-  }
-
-  p:not(:has(> mjx-container:only-child)) mjx-container {
-    display: inline-block;
-    margin: 0;
   }
 </style>

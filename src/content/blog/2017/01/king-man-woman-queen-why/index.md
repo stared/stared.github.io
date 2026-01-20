@@ -54,7 +54,9 @@ If we want to teach it to a computer, the simplest, approximated approach is mak
 Let _P(a|b)_ be the conditional probability that given a word _b_ there is a word _a_ within a short distance (let's say - being spaced by no more than 2 words).
 Then we claim that two words _a_ and _b_ are similar if
 
-$$ P(w|a) = P(w|b) $$
+$$
+P(w|a) = P(w|b) 
+$$
 
 for every word _w_.
 In other words, if we have this equality, no matter if there is a word _a_ or _b_, all other words occur with the same frequency.
@@ -76,13 +78,17 @@ But even with a small dictionary of 100k words (bear in mind that we need to kee
 
 Often instead of working with conditional probabilities, we use the [pointwise mutual information](https://en.wikipedia.org/wiki/Pointwise_mutual_information) (PMI), defined as:
 
-$$ PMI(a, b) = \log \left[ \frac{P(a,b)}{P(a)P(b)} \right] = \log \left[ \frac{P(a|b)}{P(a)} \right].$$
+$$
+PMI(a, b) = \log \left[ \frac{P(a,b)}{P(a)P(b)} \right] = \log \left[ \frac{P(a|b)}{P(a)} \right].
+$$
 
 Its direct interpretation is how much more likely we get a pair than if it were [at random](<https://en.wikipedia.org/wiki/Independence_(probability_theory)>).
 The logarithm makes it easier to work with [words appearing at frequencies](https://en.wiktionary.org/wiki/Wiktionary:Frequency_lists/) of different orders of magnitude.
 We can approximate PMI as a scalar product:
 
-$$ PMI(a, b) = \vec{v}_a \cdot \vec{v}_b, $$
+$$
+PMI(a, b) = \vec{v}_a \cdot \vec{v}_b, 
+$$
 
 where $$\vec{v}_i$$ are vectors, typically of 50-300 dimensions.
 
@@ -98,18 +104,26 @@ For example, in recommendation systems for movie ratings, each rating is approxi
 Let us start with the simple stuff - showing word similarity in a vector space.
 The condition that $$P(w \vert a)=P(w \vert b)$$ is equivalent to
 
-$$ PMI(w, a) = PMI(w, b), $$
+$$
+PMI(w, a) = PMI(w, b), 
+$$
 
 by dividing both sides by _P(w)_ and taking their logarithms.
 After expressing PMI with vector products, we get
 
-$$ \vec{v}_w \cdot \vec{v}_a = \vec{v}_w \cdot \vec{v}_b $$
+$$
+\vec{v}_w \cdot \vec{v}_a = \vec{v}_w \cdot \vec{v}_b 
+$$
 
-$$ \vec{v}_w \cdot \left( \vec{v}_a - \vec{v}_b \right) = 0 $$
+$$
+\vec{v}_w \cdot \left( \vec{v}_a - \vec{v}_b \right) = 0 
+$$
 
 If it needs to work for every $\vec{v}_w$, then
 
-$$ \vec{v}_a = \vec{v}_b. $$
+$$
+\vec{v}_a = \vec{v}_b. 
+$$
 
 Of course, in every practical case we won't get an exact equality, just words being close to each other. Words close in this space are often synonyms (e.g. _happy_ and _delighted_), antonyms (e.g. _good_ and _evil_) or other easily interchangeable words (e.g. _yellow_ and _blue_).
 In particular, most [opposing ideas](https://en.wikipedia.org/wiki/Horseshoe_theory) (e.g. _religion_ and _atheism_) will have similar contexts. If you want to play with that, look at this [word2sense phrase search](https://demos.explosion.ai/sense2vec/?word=machine%20learning&sense=auto).
@@ -118,7 +132,9 @@ What I find much more interesting is that words form a linear space. In particul
 
 It is one of the reasons why for vector similarity people often use cosine distance, i.e.
 
-$$ \frac{\vec{v}_a \cdot \vec{v}_b}{\vert \vec{v}_a \vert \vert \vec{v}_b \vert}. $$
+$$
+\frac{\vec{v}_a \cdot \vec{v}_b}{\vert \vec{v}_a \vert \vert \vec{v}_b \vert}. 
+$$
 
 That is, it puts emphasis on the direction in which a given word co-occurs with other words, rather than the strength of this effect.
 
@@ -126,7 +142,9 @@ That is, it puts emphasis on the direction in which a given word co-occurs with 
 
 If we want to make word analogies (_a is to b is as A is to B_), one may argue that it can be expressed as an equality of conditional probability ratios
 
-$$ \frac{P(w|a)}{P(w|b)} = \frac{P(w|A)}{P(w|B)} $$
+$$
+\frac{P(w|a)}{P(w|b)} = \frac{P(w|A)}{P(w|B)} 
+$$
 
 for every word _w_. Sure, it looks (and is!) a questionable assumption, but it is still the best thing we can do with conditional probability. I will not try defending this formulation - I will show its equivalent formulations.
 
@@ -135,23 +153,37 @@ It appears it is true, with the factor of two favoring the cubs - compare [pairs
 
 By proposing ratios for word analogies we implicitly assume that the probabilities of words can be factorized with respect to different dimensions of a word. For the discussed case it would be:
 
-$$P(w\vert dog) = f(w\vert species=dog) \times f(w\vert age=adult) \times P(w\vert is\_a\_pet)$$
-$$P(w\vert puppy) = f(w\vert species=dog) \times f(w\vert age=cub) \times P(w\vert is\_a\_pet)$$
-$$P(w\vert cat) = f(w\vert species=cat) \times f(w\vert age=adult) \times P(w\vert is\_a\_pet)$$
-$$P(w\vert kitten) = f(w\vert species=cat) \times f(w\vert age=cub) \times P(w\vert is\_a\_pet)$$
+$$
+P(w\vert dog) = f(w\vert species=dog) \times f(w\vert age=adult) \times P(w\vert is\_a\_pet)
+$$
+$$
+P(w\vert puppy) = f(w\vert species=dog) \times f(w\vert age=cub) \times P(w\vert is\_a\_pet)
+$$
+$$
+P(w\vert cat) = f(w\vert species=cat) \times f(w\vert age=adult) \times P(w\vert is\_a\_pet)
+$$
+$$
+P(w\vert kitten) = f(w\vert species=cat) \times f(w\vert age=cub) \times P(w\vert is\_a\_pet)
+$$
 
 So, in particular:
 
-$$ \frac{P(w|dog)}{P(w|puppy)} = \frac{f(w\vert age=adult)}{f(w\vert age=cub)} = \frac{P(w|cat)}{P(w|kitten)}. $$
+$$
+\frac{P(w|dog)}{P(w|puppy)} = \frac{f(w\vert age=adult)}{f(w\vert age=cub)} = \frac{P(w|cat)}{P(w|kitten)}. 
+$$
 
 How does the equality of conditional probability ratios translate to the word vectors?
 If we express it as mutual information (again, _P(w)_ and logarithms) we get
 
-$$ \vec{v}_w \cdot \vec{v}_a - \vec{v}_w \cdot \vec{v}_b = \vec{v}_w \cdot \vec{v}_A - \vec{v}_w \cdot \vec{v}_B, $$
+$$
+\vec{v}_w \cdot \vec{v}_a - \vec{v}_w \cdot \vec{v}_b = \vec{v}_w \cdot \vec{v}_A - \vec{v}_w \cdot \vec{v}_B, 
+$$
 
 which is the same as
 
-$$ \vec{v}_w \cdot \left( \vec{v}_a - \vec{v}_b - \vec{v}_A + \vec{v}_B \right) = 0.$$
+$$
+\vec{v}_w \cdot \left( \vec{v}_a - \vec{v}_b - \vec{v}_A + \vec{v}_B \right) = 0.
+$$
 
 Again, if we want it to hold for any word _w_, this vector difference needs to be zero.
 
@@ -169,13 +201,17 @@ It seems that analogies are not only a computational trick - we may actually use
 
 Difference of words vectors, like
 
-$$ \vec{v}_{she} - \vec{v}_{he} $$
+$$
+\vec{v}_{she} - \vec{v}_{he} 
+$$
 
 are not word vectors by themselves.
 However, it is interesting to project a word on this axis.
 We can see that the projection
 
-$$ \vec{v}_w \cdot \left( \vec{v}_a - \vec{v}_b \right)= \log\left[ P(w|a) \right] - \log\left[ P(w|b) \right]$$
+$$
+\vec{v}_w \cdot \left( \vec{v}_a - \vec{v}_b \right)= \log\left[ P(w|a) \right] - \log\left[ P(w|b) \right]
+$$
 
 is exactly a relative occurrence of a word within different contexts.
 
