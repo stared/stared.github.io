@@ -96,7 +96,7 @@ I did it four times:
 
 4. May 2016, Serock, Poland, [Wielodyscyplinarny Obóz Naukowy](http://fundusz.org/program/warsztaty-i-obozy/321-oboz-w-serocku) of [Krajowy Fundusz na rzecz Dzieci](http://fundusz.org/english)
 
-- more on the program: [Helping exceptionally gifted children in Poland](http://crastina.se/gifted-children-in-poland-by-piotr-migdal/) at Scientia Crastina
+- more on the program: [Helping exceptionally gifted children in Poland](/blog/2016/08/gifted-children-in-poland) at Scientia Crastina
 
 Since there is a lot of redundancy, I will describe only 1. (3. was similar) and 2. (4. was similar), mentioning some modifications.
 

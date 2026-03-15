@@ -23,7 +23,7 @@ views_k: 63
 migdal_score: 2
 ---
 
-I teach deep learning both for a living (as the main [deepsense.ai instructor](http://deepsense.ai/), in a Kaggle-winning team[^deepsense]) and as a part of my volunteering with the [Polish Children's Fund](http://crastina.se/gifted-children-in-poland-by-piotr-migdal/) giving workshops to gifted high-school students[^trypophobia]. I want to share a few things I've learnt about teaching (and learning) deep learning.
+I teach deep learning both for a living (as the main [deepsense.ai instructor](http://deepsense.ai/), in a Kaggle-winning team[^deepsense]) and as a part of my volunteering with the [Polish Children's Fund](/blog/2016/08/gifted-children-in-poland) giving workshops to gifted high-school students[^trypophobia]. I want to share a few things I've learnt about teaching (and learning) deep learning.
 
 Whether you want to start learning deep learning for you career, to have a nice adventure (e.g. with [detecting huggable objects](https://www.reddit.com/r/MachineLearning/comments/4casci/can_i_hug_that_i_trained_a_classifier_to_tell_you/)) or to get insight into machines before they take over[^webcomics], this post is for you! Its goal is not to teach neural networks by itself, but to provide an overview and to point to didactically useful resources.
 

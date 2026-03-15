@@ -71,7 +71,7 @@ At the same time, perpetrators of unintended transgressions were not shamed or b
 
 - [How One Stupid Tweet Blew Up Justine Sacco’s Life](https://mobile.nytimes.com/2015/02/15/magazine/how-one-stupid-tweet-ruined-justine-saccos-life.html) by Jon Ronson
 
-While being a geek-nerd I am kind of mainstream on most physics and programming conferences (except for ones dominated by suits, or by people who are there only out of obligation, or for alcohol), in this case I felt as really myself. The difference is somewhat subtle (in the last years I feel generally well and accepted) - but it is about dropping one more layer/mask and just doing what I want to. This is a distinct state of mind that I experience at [Offtopicaria](http://offtopicarium.wikidot.com/en:about), [Summer Scientific School ](https://warsztatywww.pl/article/en-indie-camp-for-hs-geeks/) or some camps of [Polish Children's Fund](http://crastina.se/gifted-children-in-poland-by-piotr-migdal/). And notably, the first time I ever had that feeling was during the Polish Physics Olympiad finals :).
+While being a geek-nerd I am kind of mainstream on most physics and programming conferences (except for ones dominated by suits, or by people who are there only out of obligation, or for alcohol), in this case I felt as really myself. The difference is somewhat subtle (in the last years I feel generally well and accepted) - but it is about dropping one more layer/mask and just doing what I want to. This is a distinct state of mind that I experience at [Offtopicaria](http://offtopicarium.wikidot.com/en:about), [Summer Scientific School ](https://warsztatywww.pl/article/en-indie-camp-for-hs-geeks/) or some camps of [Polish Children's Fund](/blog/2016/08/gifted-children-in-poland). And notably, the first time I ever had that feeling was during the Polish Physics Olympiad finals :).
 
 ![Piotr Migdał in Depths of Absurd t-shirt](./geeky-me.jpg)
 
@@ -84,7 +84,7 @@ One of key problems I find in supposedly meritocratic communities is that there 
 It means that this kind of meritocracy is often steeped with typical a-meritocratic tribalism (knowledge of trivia, some kind of local religion, getting in-jokes). Moreover, even in its naked form, meritocracy (understood as judging people by their skills) depends on how we measure skill and our _subjective opinion_ of what to value. It is not necessarily the same thing as providing a fertile and welcoming environment for growth.
 A lot of new things stem for unexpected ideas, atypical combinations of skills, and questions often asked by novices with fresh minds.
 
-- [There are no projects like side projects](http://crastina.se/theres-no-projects-like-side-projects/) by me
+- [There are no projects like side projects](/blog/2015/01/theres-no-projects-like-side-projects) by me
 
 Sure, for job openings with very concrete tasks it's reasonable to expect some well-defined skills. Things are different for conferences, which are all about dissemination of knowledge, exchange, cross-pollination of ideas, and serendipitous meetings.
 

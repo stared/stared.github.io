@@ -284,7 +284,7 @@ I got interested in word2vec and related techniques since it combines quite a fe
 
 I had a motivation to learn more on the subject as I was tutoring Julia Bazińska during a two-week summer internship at [DELab, University of Warsaw](http://www.delab.uw.edu.pl/), supported by the Polish Children's Fund. See also my blog posts:
 
-- [Helping exceptionally gifted children in Poland](http://crastina.se/gifted-children-in-poland-by-piotr-migdal/) - on the Polish Children's Fund
+- [Helping exceptionally gifted children in Poland](/blog/2016/08/gifted-children-in-poland) - on the Polish Children's Fund
 - [D3.js workshop at ICM for KFnrD](http://p.migdal.pl/2016/02/09/d3js-icm-kfnrd.html) in Jan 2016, where it all started
 
 ## Thanks

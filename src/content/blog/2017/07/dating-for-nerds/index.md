@@ -90,7 +90,7 @@ If you really want to dive into this topic:
 
 - [Geeks vs Nerds - Geek Studies](http://web.archive.org/web/20110829164446/http://www.geekstudies.org/2007/06/geeks-vs-nerds) by Jason Tocci (his [PhD thesis on this topic](http://repository.upenn.edu/edissertations/953/)) and links therein
 - [On “Geek” Versus “Nerd”](https://slackprop.wordpress.com/2013/06/03/on-geek-versus-nerd/) by Burr Settles, with a data-driven approach (using [word co-occurrences I posted about](http://p.migdal.pl/2017/01/06/king-man-woman-queen-why.html)).
-- [Autistic traits, science and the nerd stereotype](http://crastina.se/autistic-traits-science-and-the-nerd-stereotype/) by me
+- [Autistic traits, science and the nerd stereotype](/blog/2016/02/autistic-traits-science-nerd-stereotype) by me
 
 ### Social and sex life of nerds
 
