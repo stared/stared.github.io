@@ -18,6 +18,8 @@ There is a belief that talented children do not need any help. On the contrary, 
 
 Polish Children's Fund (pl: Krajowy Fundusz na rzecz Dzieci) is an NGO addressing this need. It offers yearly scholarships for gifted pre-university students, around 500 each year. However, instead of giving money it provides an opportunity to take part in scientific and artistic camps, free of charge. Most of the camps are specialistic (e.g. algorithmics or experimental physics), involving participation in research projects led by scientists. There is also one main, multidisciplinary camp, mixing high-school students with interests ranging from mathematics, through chemistry, to history and literature. It gives opportunity to taste other disciplines, participate in discussions on topics of general interest, and interact with peers.
 
+![After "complex networks are simple" workshop on the multidisciplinary camp in 2015. Participants hold their graph visualization of Facebook networks, in Gephi.](./complex-networks-workshop.jpg)
+
 I was a fellow during my two last years of high-school, and it was a wonderful, life-changing experience. I remember what I said to my mother after going back from my first camp "There are so many people like me!". Now, it's been 10 years during which I've been volunteering as a tutor. Partly because I consider it an important mission for society. But mostly because I really love it – as it takes a spark to ignite their curiosity for a long time. And I like questions I have never anticipated!
 
 Or, as Maria Mach, KFnrD director, likes to put it: students are like plants in a garden, with development being a gradual process. We should provide a fertile environment, but we cannot grow for them.

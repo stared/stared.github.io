@@ -24,6 +24,8 @@ So, the autistic cognitive style may be aligned with doing science. It may be no
 
 But does data support it? A research at the Cambridge University have shown that students in mathematics, physics and computer science have higher number of autistic traits that those studying "softer" sciences (and the general population). So-called Autism Quotient was particularly high for the winners of the UK Mathematics Olympiad. In fact, some of them met diagnostic criteria for autism; yet, they consider their lives happy and fruitful.
 
+![A real photo from an enjoyable party of undergraduate students – MISMaP, University of Warsaw.](./mismap-party.jpg)
+
 Academic environment seem to implicitly accommodate for these traits. Where I did my undergraduate studies (in physics and mathematics), maintaining eye contact was not a necessary condition of showing interest. Also, it was acceptable to enter a party and search the host's book shelf before greeting anyone!
 
 If you ever ask yourself "Am I autistic?", please remember that it is a spectrum, a continuous parameter like height. All of us lie somewhere on it! Does one need to be autistic (or at least: nerdy) to excel at science and engineering? Not at all! In science there was extremely reclusive Dirac and extremely social Feynman.
