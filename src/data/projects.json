@@ -1,5 +1,18 @@
 [
   {
+    "id": "-3",
+    "title": "Rusted Doom Launcher",
+    "desc": "Steam-like experience for Doom mods and WADs — browse, install, and launch with GZDoom and UZDoom source ports.",
+    "href": "https://github.com/stared/rusted-doom-launcher",
+    "dateStart": "2025-11-25T00:00:00.000Z",
+    "tags": [
+      "gamedev",
+      "rust",
+      "tauri",
+      "typescript"
+    ]
+  },
+  {
     "id": "-2",
     "title": "15 Years of StarCraft II Balance Changes Visualized",
     "desc": "A D3.js visualization of all unit changed, parsed with LLMs",
