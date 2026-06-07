@@ -24,7 +24,7 @@ const formattedDate = date.toLocaleDateString('en-UK', {
 });
 ---
 
-<BaseLayout title={title} description={description} image={image}>
+<BaseLayout title={title} description={description} image={image?.src}>
   <article>
     <div class="markdown-header">
       <h1>{title}</h1>

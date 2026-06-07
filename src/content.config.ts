@@ -9,24 +9,27 @@ const blog = defineCollection({
     // `2022/10/slug/index.md`) so existing `/\/index\.mdx?$/` slug handling keeps working.
     generateId: ({ entry }) => entry,
   }),
-  schema: z.object({
-    title: z.string(),
-    date: z.coerce.date(),
-    tags: z.array(z.string()).default([]),
-    description: z.string().default(''),
-    author: z.string().default('Piotr Migdał'),
-    image: z.string().default(''),
-    mentions: z
-      .array(
-        z.object({
-          text: z.string(),
-          href: z.string(),
-        })
-      )
-      .default([]),
-    views_k: z.number().default(0),
-    migdal_score: z.number().default(0),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      date: z.coerce.date(),
+      tags: z.array(z.string()).default([]),
+      description: z.string().default(''),
+      author: z.string().default('Piotr Migdał'),
+      // Use the asset helper so the cover image is optimized and resolves to a
+      // hashed `/_astro/...` path (instead of a raw relative `./foo.png` string).
+      image: image().optional(),
+      mentions: z
+        .array(
+          z.object({
+            text: z.string(),
+            href: z.string(),
+          })
+        )
+        .default([]),
+      views_k: z.number().default(0),
+      migdal_score: z.number().default(0),
+    }),
 });
 
 const similarities = defineCollection({

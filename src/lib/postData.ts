@@ -64,7 +64,7 @@ function fromBlogEntry(entry: BlogEntry, refDate: Date): Omit<Post, 'initialOrde
     title: d.title,
     description: d.description,
     tags: d.tags,
-    image: d.image,
+    image: d.image?.src ?? '',
     author: d.author,
     date,
     formattedDate: formatDate(date),
