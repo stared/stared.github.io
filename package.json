@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "generate:embeddings": "tsx scripts/generateEmbeddings.ts && tsx scripts/generateSimilarities.ts",
+    "generate:embeddings": "node scripts/generateEmbeddings.ts && node scripts/generateSimilarities.ts",
     "build:all": "pnpm generate:embeddings && pnpm build",
     "lint": "eslint . && pnpm lint:math",
     "lint:fix": "eslint . --fix",
@@ -44,7 +44,6 @@
     "eslint": "^10.4.1",
     "eslint-plugin-astro": "^1.7.0",
     "gray-matter": "^4.0.3",
-    "openai": "^6.42.0",
-    "tsx": "^4.22.4"
+    "openai": "^6.42.0"
   }
 }
