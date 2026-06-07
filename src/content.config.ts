@@ -2,7 +2,13 @@ import { defineCollection, z } from 'astro:content';
 import { file, glob } from 'astro/loaders';
 
 const blog = defineCollection({
-  type: 'content',
+  loader: glob({
+    pattern: '**/*.{md,mdx}',
+    base: 'src/content/blog',
+    // Preserve the legacy content-collection id (path including extension, e.g.
+    // `2022/10/slug/index.md`) so existing `/\/index\.mdx?$/` slug handling keeps working.
+    generateId: ({ entry }) => entry,
+  }),
   schema: z.object({
     title: z.string(),
     date: z.coerce.date(),

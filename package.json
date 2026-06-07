@@ -19,27 +19,33 @@
     "check:links:nocache": "lychee --verbose --user-agent 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' 'src/content/blog/**/*.md' 'src/content/blog/**/*.mdx'",
     "check:links:install": "echo 'Install lychee via: brew install lychee (macOS) or cargo install lychee (Rust) or see https://lychee.cli.rs/#/installation'"
   },
+  "packageManager": "pnpm@11.5.2",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "dependencies": {
-    "@astro-community/astro-embed-youtube": "^0.5.7",
-    "@astrojs/check": "^0.9.5",
-    "@astrojs/mdx": "^4.3.7",
-    "@astrojs/rss": "^4.0.12",
-    "@astrojs/sitemap": "^3.6.0",
-    "@astrojs/vue": "^5.1.1",
-    "astro": "^5.14.7",
-    "better-sqlite3": "^12.4.1",
-    "feed": "^5.1.0",
+    "@astro-community/astro-embed-youtube": "^0.5.10",
+    "@astrojs/check": "^0.9.9",
+    "@astrojs/mdx": "^6.0.2",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/vue": "^6.0.1",
+    "astro": "^6.4.4",
+    "better-sqlite3": "^12.10.0",
+    "feed": "^5.2.1",
     "gray-matter": "^4.0.3",
-    "openai": "^6.6.0",
+    "openai": "^6.42.0",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
-    "typescript": "^5.9.3",
-    "vue": "^3.5.22"
+    "sharp": "^0.34.5",
+    "typescript": "^6.0.3",
+    "vue": "^3.5.35"
   },
   "devDependencies": {
-    "@types/node": "^24.9.1",
-    "eslint": "^9.38.0",
-    "eslint-plugin-astro": "^1.3.1",
-    "tsx": "^4.20.6"
+    "@types/node": "^25.9.2",
+    "@typescript-eslint/parser": "^8.60.1",
+    "eslint": "^10.4.1",
+    "eslint-plugin-astro": "^1.7.0",
+    "tsx": "^4.22.4"
   }
 }
