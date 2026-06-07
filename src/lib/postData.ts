@@ -59,7 +59,7 @@ function fromBlogEntry(entry: BlogEntry, refDate: Date): Omit<Post, 'initialOrde
   const date = d.date;
   return {
     id: entry.id,
-    url: `/blog/${entry.id.replace(/\/index\.mdx?$/, '')}`,
+    url: `/blog/${entry.id}`,
     isExternal: false,
     title: d.title,
     description: d.description,

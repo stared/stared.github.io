@@ -8,7 +8,7 @@ import {Content as Footer} from '@/content/textComponents/footer.md';
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
   return blogEntries.map(entry => ({
-    params: { slug: entry.id.replace(/\/index\.mdx?$/, '') },
+    params: { slug: entry.id },
     props: { entry },
   }));
 }
@@ -40,7 +40,7 @@ const formattedDate = date.toLocaleDateString('en-UK', {
       )}
     </div>
     <Content />
-    <SimilarPosts slug={entry.id.replace(/\/index\.mdx?$/, '')} />
+    <SimilarPosts slug={entry.id} />
     <footer>
       <Footer />
     </footer>

@@ -5,9 +5,9 @@ const blog = defineCollection({
   loader: glob({
     pattern: '**/*.{md,mdx}',
     base: 'src/content/blog',
-    // Preserve the legacy content-collection id (path including extension, e.g.
-    // `2022/10/slug/index.md`) so existing `/\/index\.mdx?$/` slug handling keeps working.
-    generateId: ({ entry }) => entry,
+    // Each post is `<slug>/index.md(x)`; use the directory as the canonical id
+    // (e.g. `2022/10/slug`) so it doubles as the URL slug with no extra munging.
+    generateId: ({ entry }) => entry.replace(/\/index\.mdx?$/, ''),
   }),
   schema: ({ image }) =>
     z.object({
