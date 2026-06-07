@@ -14,6 +14,9 @@ importers:
       '@astrojs/check':
         specifier: ^0.9.9
         version: 0.9.9(prettier@3.8.3)(typescript@6.0.3)
+      '@astrojs/markdown-remark':
+        specifier: ^7.2.0
+        version: 7.2.0
       '@astrojs/mdx':
         specifier: ^6.0.2
         version: 6.0.2(astro@6.4.4(@types/node@25.9.2)(rollup@4.61.1)(tsx@4.22.4)(yaml@2.9.0))

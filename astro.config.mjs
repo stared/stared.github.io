@@ -2,26 +2,23 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import vue from '@astrojs/vue';
+import { unified } from '@astrojs/markdown-remark';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://p.migdal.pl',
-  integrations: [
-    mdx({
-      remarkPlugins: [remarkMath],
-      rehypePlugins: [rehypeKatex],
-    }),
-    sitemap(),
-    vue(),
-  ],
+  // MDX inherits the markdown processor below, so plugins live in one place.
+  integrations: [mdx(), sitemap(), vue()],
   image: {
     remotePatterns: [{ protocol: 'https' }],
   },
   markdown: {
-    remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeKatex],
+    processor: unified({
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [rehypeKatex],
+    }),
     shikiConfig: {
       theme: 'github-light',
       wrap: true,
