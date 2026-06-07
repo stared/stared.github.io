@@ -6,12 +6,7 @@ For previous versions of the website, see:
 - [stared/old-blog-gridsome-pre-2024](https://github.com/stared/old-blog-gridsome-pre-2024) - Gridsome (Vue 2)
 - Nuxt 3 Content (2024-2025) - Vue 3 + TypeScript
 
-I migrated to Astro for a few reasons:
-
-- Better performance with static site generation and modern optimizations
-- Excellent content collections with built-in type safety via Zod schemas
-- Great support for MDX, Vue components (when needed), and modern web standards
-- Active maintenance and vibrant ecosystem
+Built with [Astro](https://astro.build/): static site generation, content collections with Zod-typed schemas, MDX, and Vue islands where needed.
 
 ## License
 
