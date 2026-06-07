@@ -29,12 +29,6 @@ importers:
       astro:
         specifier: ^6.4.4
         version: 6.4.4(@types/node@25.9.2)(rollup@4.61.1)(tsx@4.22.4)(yaml@2.9.0)
-      gray-matter:
-        specifier: ^4.0.3
-        version: 4.0.3
-      openai:
-        specifier: ^6.42.0
-        version: 6.42.0(zod@4.4.3)
       rehype-katex:
         specifier: ^7.0.1
         version: 7.0.1
@@ -63,6 +57,12 @@ importers:
       eslint-plugin-astro:
         specifier: ^1.7.0
         version: 1.7.0(eslint@10.4.1)
+      gray-matter:
+        specifier: ^4.0.3
+        version: 4.0.3
+      openai:
+        specifier: ^6.42.0
+        version: 6.42.0(zod@4.4.3)
       tsx:
         specifier: ^4.22.4
         version: 4.22.4
