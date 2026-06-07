@@ -12,6 +12,8 @@ interface Props {
 const { title, description = SITE_DESCRIPTION, image } = Astro.props;
 const fullTitle = `${title} - ${AUTHOR}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+// Social cards need an absolute URL; resolve site-relative image paths against the site origin.
+const ogImage = image ? new URL(image, Astro.site).href : undefined;
 ---
 
 <!doctype html>
@@ -37,13 +39,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    {image && <meta property="og:image" content={image} />}
+    {ogImage && <meta property="og:image" content={ogImage} />}
     <meta property="og:url" content={canonicalURL} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
-    {image && <meta name="twitter:image" content={image} />}
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
 
     <ClientRouter />
     <PlausibleAnalytics />

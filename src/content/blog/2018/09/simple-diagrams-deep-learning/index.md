@@ -8,7 +8,7 @@ tags:
   - data viz
 description: >-
   A good diagram is worth a thousand equations - let's create more of these!
-image: feature_visualization.png
+image: ./feature_visualization.png
 mentions:
   - text: originally published on Medium
     href: https://medium.com/inbrowserai/simple-diagrams-of-convoluted-neural-networks-39c097d2925b

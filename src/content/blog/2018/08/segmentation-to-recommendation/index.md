@@ -7,7 +7,7 @@ tags:
   - data science
 description: >-
   AI Customer Targeting Levels – From Customer Segmentation to Recommendation Systems
-image: 3.png
+image: ./3.png
 mentions:
   - text: "AI Trends as in Internet Archive Wayback Machine"
     href: "https://web.archive.org/web/20211025015411/https://www.aitrends.com/machine-learning/ai-customer-targeting-levels/"
