@@ -1,5 +1,17 @@
 [
   {
+    "id": "-4",
+    "title": "The Tree of 'tree'",
+    "desc": "An explorable explanation in Proto-Indo-European etymology.",
+    "href": "https://p.migdal.pl/tree-of-tree/",
+    "dateStart": "2026-05-24T00:00:00.000Z",
+    "dateEnd": "2026-06-23T00:00:00.000Z",
+    "tags": [
+      "data viz",
+      "typescript"
+    ]
+  },
+  {
     "id": "-3",
     "title": "Rusted Doom Launcher",
     "desc": "Steam-like experience for Doom mods and WADs — browse, install, and launch with GZDoom and UZDoom source ports.",
