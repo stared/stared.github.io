@@ -4,7 +4,10 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import {Content as PublicationsIntro} from '@/content/textComponents/publications.md';
 
 const publicationsEntries = await getCollection('publications');
-const publications = publicationsEntries.map((entry) => entry.data);
+// Sort newest-first by year; `getCollection` doesn't guarantee source order.
+const publications = publicationsEntries
+  .map((entry) => entry.data)
+  .sort((a, b) => b.year - a.year);
 
 // The `misc` field may contain inline markdown links (`[text](url)`). Render
 // them as real anchors, escaping any other HTML-significant characters first.
