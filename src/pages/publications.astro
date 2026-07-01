@@ -5,6 +5,21 @@ import {Content as PublicationsIntro} from '@/content/textComponents/publication
 
 const publicationsEntries = await getCollection('publications');
 const publications = publicationsEntries.map((entry) => entry.data);
+
+// The `misc` field may contain inline markdown links (`[text](url)`). Render
+// them as real anchors, escaping any other HTML-significant characters first.
+// Full markdown processing is avoided because it would wrap the text in `<p>`.
+const escapeHtml = (text: string) =>
+  text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+
+const renderInlineMarkdown = (text: string) =>
+  escapeHtml(text).replace(
+    /\[([^\]]+)\]\(([^)\s]+)\)/g,
+    (_match, label, href) => `<a href="${href}">${label}</a>`
+  );
 ---
 
 <BaseLayout title="Publications" description="Publications by Piotr Migdał.">
@@ -43,7 +58,7 @@ const publications = publicationsEntries.map((entry) => entry.data);
             ))}
           </>
         )}
-        {pub.misc && <><br />{pub.misc}</>}
+        {pub.misc && <><br /><span set:html={renderInlineMarkdown(pub.misc)} /></>}
       </li>
     ))}
   </ul>
