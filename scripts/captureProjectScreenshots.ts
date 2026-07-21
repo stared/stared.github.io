@@ -9,7 +9,7 @@
 //   pnpm generate:screenshots tagoverflow  # redo named slugs
 //   pnpm generate:screenshots --probe <url>  # list clippable elements
 
-import { readFileSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { readFileSync, existsSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
 import { Browser, sleep, type Rect } from './lib/cdp.ts';
@@ -48,16 +48,46 @@ const AUTO_CLIP = `
   })()
 `;
 
-async function normalise(input: Buffer, fit: 'cover' | 'contain'): Promise<Buffer> {
-  return sharp(input, { animated: false })
-    .resize(OUT_WIDTH, OUT_HEIGHT, {
+async function normalise(input: Buffer, shot: Shot): Promise<Buffer> {
+  const fit = shot.fit ?? 'cover';
+  const meta = await sharp(input).metadata();
+
+  // An animated demo's first frame is its empty starting state — a training
+  // plot before any epoch has run. The last frame is the finished result.
+  const pages = meta.pages ?? 1;
+  const page = shot.frame === 'first' || pages < 2 ? 0 : pages - 1;
+
+  // Letterbox colour: white suits most artefacts, but a dark visualisation
+  // needs a dark surround or the tile reads as broken.
+  const hex = (shot.background ?? '#ffffff').replace('#', '');
+  const bg = {
+    r: parseInt(hex.slice(0, 2), 16),
+    g: parseInt(hex.slice(2, 4), 16),
+    b: parseInt(hex.slice(4, 6), 16),
+  };
+
+  let pipeline = sharp(input, { page });
+  // Trim slack so the artefact is centred on its true bounds rather than on
+  // whatever whitespace the page included. Only safe when letterboxing:
+  // trimming changes the aspect ratio, and `cover` would then crop into the
+  // content to get back to 16:10.
+  const shouldTrim = shot.trim ?? fit === 'contain';
+  if (shouldTrim) pipeline = pipeline.trim({ threshold: 12 });
+
+  // Letterboxed art is trimmed to its exact ink, so give it a margin instead of
+  // running edge to edge.
+  const m = fit === 'contain' ? (shot.margin ?? 28) : 0;
+
+  return pipeline
+    .resize(OUT_WIDTH - 2 * m, OUT_HEIGHT - 2 * m, {
       fit,
       // Cropping keeps the top, where a screenshot's subject usually is.
-      // Letterboxing centres, so a wide artefact sits in the middle of the tile
-      // rather than hard against its top edge.
+      // Letterboxing centres, so the artefact sits in the middle of the tile.
       position: fit === 'contain' ? 'center' : 'top',
-      background: { r: 255, g: 255, b: 255, alpha: 1 },
+      background: { ...bg, alpha: 1 },
     })
+    .extend({ top: m, bottom: m, left: m, right: m, background: bg })
+    .flatten({ background: bg })
     .png()
     .toBuffer();
 }
@@ -113,6 +143,10 @@ async function capture(browser: Browser, project: Project, shot: Shot): Promise<
     const pad = shot.pad ?? 0;
     const measure = async (): Promise<Rect | null> => {
       let rect: Rect | null = shot.clip ?? null;
+      if (!rect && shot.pickRect) {
+        rect = await page.evaluate<Rect | null>(shot.pickRect);
+        if (!rect) throw new Error('pickRect matched nothing');
+      }
       if (!rect && shot.selector) {
         rect = await page.rectOf(shot.selector);
         if (!rect) throw new Error(`selector not found: ${shot.selector}`);
@@ -167,12 +201,15 @@ try {
 
       const shot = SHOTS[slug] ?? {};
       if (shot.skip) {
+        // Remove a previously generated file, so flipping a project to `skip`
+        // actually clears its tile.
+        if (existsSync(outPath)) rmSync(outPath);
         console.log(`--   ${slug} (no meaningful visual)`);
         continue;
       }
       try {
         const raw = await capture(browser, project, shot);
-        writeFileSync(outPath, await normalise(raw, shot.fit ?? 'cover'));
+        writeFileSync(outPath, await normalise(raw, shot));
         console.log(`ok   ${slug}`);
       } catch (err) {
         failures.push(`${slug}: ${(err as Error).message}`);

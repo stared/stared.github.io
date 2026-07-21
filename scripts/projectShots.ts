@@ -33,6 +33,16 @@ export interface Shot {
   prepare?: string;
   /** Settle time after `prepare`, when it kicks off a render. */
   prepareWait?: number;
+  /** Which frame of an animation to use. Defaults to the last. */
+  frame?: 'first' | 'last';
+  /** Set false to keep surrounding whitespace instead of trimming to content. */
+  trim?: boolean;
+  /** Letterbox colour, for artefacts that are not on white. */
+  background?: string;
+  /** Inset around letterboxed art, in output pixels. */
+  margin?: number;
+  /** JS expression returning {x,y,width,height} — for regions no selector fits. */
+  pickRect?: string;
   /** No sensible image exists; render a blank tile. */
   skip?: boolean;
 }
@@ -75,6 +85,7 @@ export const SHOTS: Record<string, Shot> = {
     // still links to at the root now lives under old_sankey/.
     image:
       'https://raw.githubusercontent.com/tmikolajczyk/7kadencji/master/old_sankey/screenshot.png',
+    fit: 'contain',
   },
   'analiza-i-wizualizacja-danych-maturalnych-delab-uw': {
     image:
@@ -93,9 +104,12 @@ export const SHOTS: Record<string, Shot> = {
   '256-tags-of-stack-overflow-stack-exchange-network': {
     image:
       'https://raw.githubusercontent.com/stared/tag-graph-map-of-stackexchange/master/images/so_256tags_map_rc2_mid_res.png',
+    fit: 'contain',
   },
   'trypophobia-image-detector-browser-plugin-using-deep-learning': {
+    // The demo GIF ends mid-scroll; its opening frame shows the plugin at work.
     image: 'https://raw.githubusercontent.com/cytadela8/trypophobia/master/resources/poc.gif',
+    frame: 'first',
   },
 
   // --- Live pages, clipped to the artefact -------------------------------
@@ -118,7 +132,8 @@ export const SHOTS: Record<string, Shot> = {
     fit: 'contain',
   },
   'quesma-charts': {
-    clip: { x: 15, y: 344, width: 690, height: 431 },
+    selector: '.gallery-card',
+    fit: 'contain',
   },
   'virtual-lab-by-quantum-flytrap': {
     clip: { x: 280, y: 153, width: 880, height: 550 },
@@ -145,9 +160,12 @@ export const SHOTS: Record<string, Shot> = {
     // The project's gh-pages is TypeDoc API docs, and its browser-test.html
     // needs an uncommitted build; render the published bundle instead.
     url: 'fixture:tensor-diagrams.html',
+    // The formula label is a positioned div inside #diagram; trimming crops
+    // into it, so frame the element directly and leave the whitespace alone.
     selector: '#diagram',
-    fit: 'contain',
     pad: 40,
+    fit: 'contain',
+    trim: false,
   },
   'tree-of-reddit-sex-life': {
     // The Observable notebook does not render its chart headlessly; use the
@@ -157,20 +175,26 @@ export const SHOTS: Record<string, Shot> = {
   },
   'interactive-machine-learning-list': {
     selector: '.illustration',
+    fit: 'contain',
   },
   'map-of-polish-composers': {
-    clip: { x: 0, y: 74, width: 1280, height: 800 },
-    prepare: `document.querySelectorAll('.c-onboard__screen, .c-onboard').forEach(el => el.remove())`,
-    wait: 6000,
+    // A white-on-black timeline of a few hundred faint marks. At thumbnail size
+    // any crop reads as an empty black rectangle, so show nothing instead.
+    skip: true,
   },
   'quantum-game-with-photons': {
     clip: { x: 80, y: 0, width: 1280, height: 800 },
   },
   'matrix-factorization-viz': {
-    clip: { x: 8, y: 27, width: 1440, height: 900 },
+    // The SVG is 1600x1200 but the matrices occupy a band near the top, with a
+    // control panel to their left. Needs a wide viewport or they wrap.
+    viewport: { width: 1800, height: 1400 },
+    clip: { x: 300, y: 70, width: 1115, height: 365 },
+    fit: 'contain',
   },
   '3dflu-cent-university-of-warsaw': {
-    clip: { x: 700, y: 55, width: 600, height: 375 },
+    selector: '#serograph svg',
+    fit: 'contain',
   },
   'ritu-blah-blau-global-game-jam': {
     selector: '.field--name-field-game-screenshot img',
@@ -197,9 +221,17 @@ export const SHOTS: Record<string, Shot> = {
     fit: 'contain',
   },
   'qubism-in-qutip': {
-    // A colourful self-similar qubism plot. Picked by position rather than by
-    // size — the largest output in this notebook is a drab scatter grid.
-    clip: { x: 219, y: 10366, width: 425, height: 424 },
+    // The qubism plots are the square outputs; the notebook's biggest image is
+    // a drab scatter grid, so pick by shape rather than size or position.
+    pickRect: `
+      (() => {
+        const square = Array.from(document.querySelectorAll('img'))
+          .map((el) => el.getBoundingClientRect())
+          .filter((r) => r.width > 300 && Math.abs(r.width - r.height) / r.width < 0.15);
+        const r = square[square.length - 1];
+        return r && {x: r.x + scrollX, y: r.y + scrollY, width: r.width, height: r.height};
+      })()
+    `,
     fit: 'contain',
   },
   'thinking-in-tensors-writing-in-pytorch': {
@@ -207,7 +239,7 @@ export const SHOTS: Record<string, Shot> = {
     // an embedded joke. Use the maths itself: the derivative worked through in
     // the gradient-descent notebook.
     url: 'https://nbviewer.org/github/stared/thinking-in-tensors-writing-in-pytorch/blob/master/2%20Gradient%20Descent.ipynb',
-    clip: { x: 224, y: 900, width: 1041, height: 650 },
+    clip: { x: 190, y: 900, width: 1090, height: 681 },
   },
   offtopicarium: {
     selector: '#page-content img.image',
@@ -223,7 +255,10 @@ export const SHOTS: Record<string, Shot> = {
       document.querySelector('#go').click();
     `,
     selector: 'svg',
-    wait: 6000,
+    fit: 'contain',
+    wait: 8000,
+    // The chart is drawn from a fetched dataset, so give it room.
+    prepareWait: 8000,
   },
   'pulser-studio': {
     selector: 'img.wp-block-cover__image-background',
