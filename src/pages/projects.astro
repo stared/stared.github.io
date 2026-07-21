@@ -13,14 +13,6 @@ const screenshots = import.meta.glob<{ default: ImageMetadata }>(
 
 const year = (date: string) => new Date(date).getUTCFullYear();
 
-// "2019–2022" for a span, "2019" for a single year, "2019–" for still-running.
-function years(start: string, end?: string | null): string {
-  const from = year(start);
-  if (!end) return `${from}–`;
-  const to = year(end);
-  return to === from ? `${from}` : `${from}–${to}`;
-}
-
 function iconKind(href: string): 'github' | 'hn' | 'arxiv' | null {
   if (/^https?:\/\/github\.com\//.test(href)) return 'github';
   if (/^https?:\/\/news\.ycombinator\.com\//.test(href)) return 'hn';
@@ -41,11 +33,11 @@ const projects = (await getCollection('projects'))
       const kind = iconKind(project.href);
       return (
         <li class="project">
-          <a class:list={['shot', kind === 'github' && 'shot--card']} href={project.href}>
+          <a class="shot" href={project.href}>
             {image ? (
               <Image src={image} alt={project.title} widths={[360, 720]} sizes="(max-width: 640px) 100vw, 360px" />
             ) : (
-              <span class="shot--missing" />
+              <span class="shot--empty" />
             )}
           </a>
           <h2 class="title">
@@ -53,7 +45,7 @@ const projects = (await getCollection('projects'))
             {kind && <LinkIcon kind={kind} />}
           </h2>
           <p class="meta">
-            <span class="years">{years(project.dateStart, project.dateEnd)}</span>
+            <span class="years">{year(project.dateStart)}</span>
             {project.desc}
           </p>
           {project.mentions && (
@@ -89,21 +81,14 @@ const projects = (await getCollection('projects'))
     display: block;
   }
 
+  /* Every thumbnail is generated at 16:10, so no per-image fitting is needed. */
   .shot :global(img),
-  .shot--missing {
+  .shot--empty {
     display: block;
     width: 100%;
     aspect-ratio: 16 / 10;
-    object-fit: cover;
-    object-position: top center;
     border: 1px solid #e5e5e5;
     background: #fafafa;
-  }
-
-  /* GitHub's OpenGraph cards are 2:1; letterbox them so the repo name survives. */
-  .shot--card :global(img) {
-    object-fit: contain;
-    background: #fff;
   }
 
   .shot:hover :global(img) {

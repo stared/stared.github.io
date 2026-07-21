@@ -1,0 +1,46 @@
+<!doctype html>
+<!--
+  Renders a Penrose tensor diagram for the projects-page thumbnail.
+  The repo's own browser-test.html needs a build output that isn't committed,
+  so this loads the published npm bundle instead.
+  Used by scripts/projectShots.ts via `fixture:tensor-diagrams.html`.
+-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/tensor-diagrams@0.3.0/dist/esbuild/tensor-diagrams.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tensor-diagrams@0.3.0/src/diagram.css" />
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: #fff;
+        font-family: -apple-system, system-ui, sans-serif;
+      }
+      #diagram {
+        transform: scale(1.6);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="diagram" class="equation"></div>
+    <script>
+      TensorDiagram.new()
+        .addTensor('x', 'start', [], ['i'], [], [], { labelPos: 'down' })
+        .addTensor('A', 'right', ['i'], ['j'], [], [], { showLabel: false, size: 40 })
+        .addTensor('B', 'right', ['j'], ['k'], [], [], { shape: 'triangleLeft', color: 'white' })
+        .addContraction(0, 1, 'i')
+        .addContraction(1, 2, 'j')
+        .setSize(260, 130)
+        .draw('#diagram', true, [
+          { name: '', label: '= ∑_ij' },
+          { name: 'x', label: 'x_i' },
+          { name: 'A', label: 'A_ij' },
+          { name: 'B', label: 'B_jk' },
+        ]);
+    </script>
+  </body>
+</html>
