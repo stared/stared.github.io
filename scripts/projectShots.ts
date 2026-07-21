@@ -242,7 +242,9 @@ export const SHOTS: Record<string, Shot> = {
     clip: { x: 190, y: 900, width: 1090, height: 681 },
   },
   offtopicarium: {
+    // A wide banner: crop-filling slices the lettering off both edges.
     selector: '#page-content img.image',
+    fit: 'contain',
   },
   'wakacyjne-warsztaty-wielodyscyplinarne': {
     selector: 'main.container img',
