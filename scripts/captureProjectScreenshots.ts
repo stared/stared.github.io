@@ -53,9 +53,15 @@ async function normalise(input: Buffer, shot: Shot): Promise<Buffer> {
   const meta = await sharp(input).metadata();
 
   // An animated demo's first frame is its empty starting state — a training
-  // plot before any epoch has run. The last frame is the finished result.
+  // plot before any epoch has run. The last frame is usually the finished
+  // result; a numeric frame picks a specific moment mid-demo.
   const pages = meta.pages ?? 1;
-  const page = shot.frame === 'first' || pages < 2 ? 0 : pages - 1;
+  const page =
+    typeof shot.frame === 'number'
+      ? Math.min(shot.frame, pages - 1)
+      : shot.frame === 'first' || pages < 2
+        ? 0
+        : pages - 1;
 
   // Letterbox colour: white suits most artefacts, but a dark visualisation
   // needs a dark surround or the tile reads as broken.
@@ -66,7 +72,19 @@ async function normalise(input: Buffer, shot: Shot): Promise<Buffer> {
     b: parseInt(hex.slice(4, 6), 16),
   };
 
-  let pipeline = sharp(input, { page });
+  // sharp sequences trim before extract within one pipeline, so a crop has to
+  // be materialised in its own pass first.
+  let source = input;
+  let sourcePage = page;
+  if (shot.imageCrop) {
+    const c = shot.imageCrop;
+    source = await sharp(input, { page })
+      .extract({ left: c.x, top: c.y, width: c.width, height: c.height })
+      .png()
+      .toBuffer();
+    sourcePage = 0;
+  }
+  let pipeline = sharp(source, { page: sourcePage });
   // Trim slack so the artefact is centred on its true bounds rather than on
   // whatever whitespace the page included. Only safe when letterboxing:
   // trimming changes the aspect ratio, and `cover` would then crop into the

@@ -33,8 +33,10 @@ export interface Shot {
   prepare?: string;
   /** Settle time after `prepare`, when it kicks off a render. */
   prepareWait?: number;
-  /** Which frame of an animation to use. Defaults to the last. */
-  frame?: 'first' | 'last';
+  /** Which frame of an animation to use: an index, or first/last. Defaults to the last. */
+  frame?: 'first' | 'last' | number;
+  /** Crop applied to a downloaded image, in source pixels. */
+  imageCrop?: { x: number; y: number; width: number; height: number };
   /** Set false to keep surrounding whitespace instead of trimming to content. */
   trim?: boolean;
   /** Letterbox colour, for artefacts that are not on white. */
@@ -68,9 +70,12 @@ export const SHOTS: Record<string, Shot> = {
     fit: 'contain',
   },
   'quantum-game-2': {
+    // Actual gameplay: a photon puzzle mid-solve, from the repo's own
+    // social-media screenshot. Letterboxed in the board's background purple.
     image:
-      'https://raw.githubusercontent.com/Quantum-Game/quantum-game-2/master/public/img/qg2_logo.png',
+      'https://raw.githubusercontent.com/Quantum-Game/quantum-game-2/master/public/img/qg2_social_media_screenshot.png',
     fit: 'contain',
+    background: '#260637',
   },
   'which-machine-learning-algorithm-are-you': {
     image:
@@ -107,9 +112,14 @@ export const SHOTS: Record<string, Shot> = {
     fit: 'contain',
   },
   'trypophobia-image-detector-browser-plugin-using-deep-learning': {
-    // The demo GIF ends mid-scroll; its opening frame shows the plugin at work.
+    // The frame where the point is visible: blurred trypophobia posts sitting
+    // between untouched ones. Early frames show loading spinners, late ones an
+    // unblurred stretch of feed.
     image: 'https://raw.githubusercontent.com/cytadela8/trypophobia/master/resources/poc.gif',
-    frame: 'first',
+    frame: 130,
+    // The frame catches the feed mid-scroll; cut the sliced row at its top.
+    imageCrop: { x: 0, y: 46, width: 498, height: 242 },
+    fit: 'contain',
   },
 
   // --- Live pages, clipped to the artefact -------------------------------
@@ -117,7 +127,9 @@ export const SHOTS: Record<string, Shot> = {
     selector: '.tree-wrap',
   },
   '15-years-of-starcraft-ii-balance-changes-visualized': {
-    clip: { x: 24, y: 210, width: 1392, height: 870 },
+    // Title plus the top of the patch grid — the grid alone reads as a sparse
+    // black field at thumbnail size.
+    clip: { x: 20, y: 14, width: 1400, height: 861 },
   },
   'equations-explained-colorfully': {
     // The rendered equation itself. No padding: the markdown editor starts
@@ -132,7 +144,10 @@ export const SHOTS: Record<string, Shot> = {
     fit: 'contain',
   },
   'quesma-charts': {
-    selector: '.gallery-card',
+    // The generated chart itself, not the whole gallery card around it.
+    selector: '.gallery-card img',
+    prepare: `document.querySelectorAll('.nav-button').forEach((el) => el.remove())`,
+    prepareWait: 500,
     fit: 'contain',
   },
   'virtual-lab-by-quantum-flytrap': {
@@ -263,16 +278,12 @@ export const SHOTS: Record<string, Shot> = {
     prepareWait: 8000,
   },
   'pulser-studio': {
-    selector: 'img.wp-block-cover__image-background',
-    // The consent notice lives in a shadow root, so it survives the generic
-    // overlay sweep; drop its host outright.
-    prepare: `
-      Array.from(document.querySelectorAll('*'))
-        .filter((el) => el.shadowRoot && /cookie/i.test(el.shadowRoot.textContent || ''))
-        .forEach((el) => el.remove())
-    `,
+    // The product page is a text banner with no product imagery. This is the
+    // Studio UI itself, from my Medium review of it (via the Wayback Machine,
+    // since Medium sits behind Cloudflare).
+    image: 'https://miro.medium.com/v2/resize:fit:1400/1*XdpIcruQzlHVVN0jK5dH2w.png',
     fit: 'contain',
-    wait: 6000,
+    background: '#2e2e2e',
   },
 
   // --- No meaningful visual ----------------------------------------------
