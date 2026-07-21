@@ -8,6 +8,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "generate:embeddings": "node scripts/generateEmbeddings.ts && node scripts/generateSimilarities.ts",
+    "generate:screenshots": "node scripts/captureProjectScreenshots.ts",
     "build:all": "pnpm generate:embeddings && pnpm build",
     "lint": "eslint . && pnpm lint:math",
     "lint:fix": "eslint . --fix",
