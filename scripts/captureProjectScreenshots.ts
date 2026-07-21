@@ -52,7 +52,10 @@ async function normalise(input: Buffer, fit: 'cover' | 'contain'): Promise<Buffe
   return sharp(input, { animated: false })
     .resize(OUT_WIDTH, OUT_HEIGHT, {
       fit,
-      position: 'top',
+      // Cropping keeps the top, where a screenshot's subject usually is.
+      // Letterboxing centres, so a wide artefact sits in the middle of the tile
+      // rather than hard against its top edge.
+      position: fit === 'contain' ? 'center' : 'top',
       background: { r: 255, g: 255, b: 255, alpha: 1 },
     })
     .png()

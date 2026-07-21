@@ -106,9 +106,9 @@ export const SHOTS: Record<string, Shot> = {
     clip: { x: 24, y: 210, width: 1392, height: 870 },
   },
   'equations-explained-colorfully': {
-    // The rendered equation itself, not the markdown pane beside it.
+    // The rendered equation itself. No padding: the markdown editor starts
+    // three pixels to its right and the caption sits just above it.
     selector: '#equation-container',
-    pad: 40,
     fit: 'contain',
   },
   'webr-ggplot2-playground': {
@@ -176,9 +176,21 @@ export const SHOTS: Record<string, Shot> = {
     selector: '.field--name-field-game-screenshot img',
   },
   tagoverflow: {
-    // Just the tag graph — the control panel and side boxes sit outside this box.
-    clip: { x: 370, y: 130, width: 600, height: 375 },
-    wait: 5000,
+    // The force layout settles somewhere different on every run, so measure the
+    // graph group's rendered extent rather than guessing a fixed box.
+    selector: 'g.graph',
+    // The settings panel floats over the top-left of the graph area.
+    prepare: `
+      (() => {
+        const panel = document.querySelector('#hideable');
+        const box = panel && (panel.parentElement || panel);
+        if (box) box.style.visibility = 'hidden';
+      })()
+    `,
+    prepareWait: 500,
+    pad: 24,
+    fit: 'contain',
+    wait: 6000,
   },
   "fellows-and-alumni-of-the-polish-children-s-fund": {
     selector: 'svg',
