@@ -1,5 +1,24 @@
 [
   {
+    "id": "-5",
+    "title": "PIE Roots",
+    "desc": "Explorable etymologies of Proto-Indo-European roots.",
+    "href": "https://p.migdal.pl/pie-roots/",
+    "dateStart": "2026-07-16T00:00:00.000Z",
+    "tags": [
+      "data viz",
+      "typescript",
+      "etymology"
+    ],
+    "github": "https://github.com/stared/pie-roots",
+    "mentions": [
+      {
+        "text": "r/etymology",
+        "href": "https://www.reddit.com/r/etymology/comments/1uya2eh/druid_wizard_providence_ayurveda_visualization/"
+      }
+    ]
+  },
+  {
     "id": "-4",
     "title": "The Tree of 'tree'",
     "desc": "An explorable explanation in Proto-Indo-European etymology.",
@@ -9,6 +28,13 @@
     "tags": [
       "data viz",
       "typescript"
+    ],
+    "github": "https://github.com/stared/tree-of-tree",
+    "mentions": [
+      {
+        "text": "r/dataisbeautiful",
+        "href": "https://www.reddit.com/r/dataisbeautiful/comments/1uf8tqa/oc_tree_truth_druid_dryad_tar_and_dendrite_grew/"
+      }
     ]
   },
   {
@@ -22,6 +48,12 @@
       "rust",
       "tauri",
       "typescript"
+    ],
+    "mentions": [
+      {
+        "text": "r/macgaming",
+        "href": "https://www.reddit.com/r/macgaming/comments/1qfpc5s/doom_launcher_for_macos_bringing_steam_experience/"
+      }
     ]
   },
   {
@@ -36,6 +68,13 @@
       "ai",
       "gamedev",
       "d3.js"
+    ],
+    "github": "https://github.com/stared/sc2-balance-timeline",
+    "mentions": [
+      {
+        "text": "r/starcraft",
+        "href": "https://www.reddit.com/r/starcraft/comments/1q2bk7j/15_years_of_starcraft_ii_balance_changes/"
+      }
     ]
   },
   {
@@ -48,7 +87,8 @@
       "data viz",
       "typescript",
       "latex"
-    ]
+    ],
+    "github": "https://github.com/stared/equations-explained-colorfully"
   },
   {
     "id": "0",
@@ -61,7 +101,8 @@
       "typescript",
       "wasm",
       "r"
-    ]
+    ],
+    "github": "https://github.com/quesmaorg/webr-ggplot-playground"
   },
   {
     "id": "1",
@@ -72,6 +113,12 @@
     "tags": [
       "data viz",
       "typescript"
+    ],
+    "mentions": [
+      {
+        "text": "r/dataisbeautiful",
+        "href": "https://www.reddit.com/r/dataisbeautiful/comments/1m8ubx0/oc_how_couples_meet_but_in_the_visual_style_of/"
+      }
     ]
   },
   {
@@ -114,12 +161,16 @@
     ],
     "mentions": [
       {
+        "text": "arXiv",
+        "href": "https://arxiv.org/abs/2203.13300"
+      },
+      {
         "text": "HN",
         "href": "https://news.ycombinator.com/item?id=31968280"
       },
       {
         "text": "r/Physics",
-        "href": "https://www.reddit.com/r/Physics/comments/tqicf5/visualizing_quantum_mechanics_in_an_interactive/"
+        "href": "https://www.reddit.com/r/Physics/comments/vqi1sm/visualizing_quantum_mechanics_in_an_interactive/"
       },
       {
         "text": "Hossenfelder",
@@ -159,13 +210,19 @@
       "tensor",
       "npm"
     ],
-    "status": "done, maintained a bit"
+    "status": "done, maintained a bit",
+    "mentions": [
+      {
+        "text": "arXiv",
+        "href": "https://arxiv.org/abs/2203.13300"
+      }
+    ]
   },
   {
     "id": "6",
     "title": "AI development policy for Poland",
     "desc": "Coauthor. Approved by the Polish Government.",
-    "href": "https://www.gov.pl/web/govtech/polityka-rozwoju-ai-w-polsce-przyjeta-przez-rade-ministrow--co-dalej",
+    "href": "https://web.archive.org/web/20230606055615/https://www.gov.pl/web/govtech/polityka-rozwoju-ai-w-polsce-przyjeta-przez-rade-ministrow--co-dalej",
     "dateStart": "2019-03-01T00:00:00.000Z",
     "dateEnd": "2020-12-28T00:00:00.000Z",
     "tags": [
@@ -185,7 +242,13 @@
       "quantum",
       "game"
     ],
-    "status": "done"
+    "status": "done",
+    "mentions": [
+      {
+        "text": "arXiv",
+        "href": "https://arxiv.org/abs/2203.13300"
+      }
+    ]
   },
   {
     "id": "8",
@@ -287,7 +350,8 @@
         "href": "https://news.ycombinator.com/item?id=17826188"
       }
     ],
-    "status": "done"
+    "status": "done",
+    "github": "https://github.com/stared/weltschmerz"
   },
   {
     "id": "14",
@@ -301,7 +365,8 @@
       "deep-learning",
       "list"
     ],
-    "status": "done"
+    "status": "done",
+    "github": "https://github.com/stared/interactive-machine-learning-list"
   },
   {
     "id": "15",
@@ -365,7 +430,8 @@
         "href": "https://scottaaronson.blog/?p=3597"
       }
     ],
-    "status": "done"
+    "status": "done",
+    "github": "https://github.com/stared/quantum-game"
   },
   {
     "id": "18",
@@ -377,7 +443,8 @@
     "tags": [
       "visualization"
     ],
-    "status": "as it is"
+    "status": "as it is",
+    "github": "https://github.com/stared/matrix-decomposition-viz"
   },
   {
     "id": "19",
@@ -488,7 +555,8 @@
         "href": "https://news.ycombinator.com/item?id=10243873"
       }
     ],
-    "status": "done"
+    "status": "done",
+    "github": "https://github.com/stared/tagoverflow"
   },
   {
     "id": "27",
@@ -500,13 +568,14 @@
     "tags": [
       "visualization"
     ],
-    "status": "done"
+    "status": "done",
+    "github": "https://github.com/stared/kfnrd_viz"
   },
   {
     "id": "28",
     "title": "Qubism in QuTiP",
     "desc": "Self-similar visualization of many-body wavefunctions in a quantum Python package.",
-    "href": "http://nbviewer.jupyter.org/github/qutip/qutip-notebooks/blob/master/examples/example-qubism-and-schmidt-plots.ipynb",
+    "href": "https://nbviewer.org/github/qutip/qutip-notebooks/blob/master/examples/qubism-and-schmidt-plots.ipynb",
     "dateStart": "2014-03-01T00:00:00.000Z",
     "dateEnd": "2014-04-01T00:00:00.000Z",
     "tags": [

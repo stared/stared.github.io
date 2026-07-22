@@ -1,50 +1,135 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import {Content as ProjectsIntro} from '@/content/textComponents/projects.md';
+import LinkIcon from '@/components/LinkIcon.astro';
+import { projectImageFile } from '@/lib/projectSlug';
+import { Content as ProjectsIntro } from '@/content/textComponents/projects.md';
 
-const projectsEntries = await getCollection('projects');
-const projects = projectsEntries.map((entry) => entry.data);
+const screenshots = import.meta.glob<{ default: ImageMetadata }>(
+  '@/assets/projects/*.png',
+  { eager: true }
+);
+
+const year = (date: string) => new Date(date).getUTCFullYear();
+
+function iconKind(href: string): 'github' | null {
+  return /^https?:\/\/github\.com\//.test(href) ? 'github' : null;
+}
+
+const projects = (await getCollection('projects'))
+  .map((entry) => entry.data)
+  .sort((a, b) => b.dateStart.localeCompare(a.dateStart));
 ---
 
 <BaseLayout title="Projects" description="Numerous projects by Piotr Migdał.">
   <ProjectsIntro />
   <ul class="projects">
-    {projects.map((project) => (
-      <li class="project">
-        <a class="title" href={project.href}>{project.title}</a>
-        {' '}
-        <span class="status">
-          {project.dateStart ? new Date(project.dateStart).getFullYear() : ''}-
-          {project.dateEnd ? new Date(project.dateEnd).getFullYear() : ''}
-        </span>
-        {' '}
-        <span class="status">({project.status})</span>
-        <br />
-        <span class="description">{project.desc}</span>
-        {project.mentions && (
-          <span class="mentions">
-            {project.mentions.map((mention) => (
-              <a href={mention.href} class="mention">[{mention.text}]</a>
-            ))}
-          </span>
-        )}
-      </li>
-    ))}
+    {projects.map((project) => {
+      const image = screenshots[`/src/assets/projects/${projectImageFile(project.title)}`]?.default;
+      // A GitHub link joins the mentions row: the explicit `github` field, or
+      // the project's own href when the project lives on GitHub.
+      const github =
+        project.github ?? (iconKind(project.href) === 'github' ? project.href : undefined);
+      const links = [
+        ...(github ? [{ text: 'GitHub', href: github }] : []),
+        ...(project.mentions ?? []),
+      ];
+      return (
+        <li class="project">
+          <a class="shot" href={project.href}>
+            {image ? (
+              <Image src={image} alt={project.title} widths={[360, 720]} sizes="(max-width: 640px) 100vw, 360px" />
+            ) : (
+              <span class="shot--empty" />
+            )}
+          </a>
+          <h2 class="title">
+            <a href={project.href}>{project.title}</a>
+          </h2>
+          <p class="meta">
+            <span class="years">{year(project.dateStart)}</span>
+            {project.desc}
+          </p>
+          {links.length > 0 && (
+            <p class="mentions">
+              {links.map((link) => {
+                const linkKind = iconKind(link.href);
+                return (
+                  <a href={link.href}>
+                    {linkKind ? <LinkIcon kind={linkKind} /> : null}
+                    {link.text}
+                  </a>
+                );
+              })}
+            </p>
+          )}
+        </li>
+      );
+    })}
   </ul>
 </BaseLayout>
 
 <style>
-  li.project {
-    color: #828282;
-    font-size: 0.9rem;
+  .projects {
     list-style: none;
-    padding-bottom: 1rem;
+    padding: 0;
+    margin: 2rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2.5rem 2rem;
   }
 
-  a.mention {
-    font-size: 0.8em;
+  .shot {
+    display: block;
+  }
+
+  /* Every thumbnail is generated at 16:10, so no per-image fitting is needed. */
+  .shot :global(img),
+  .shot--empty {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border: 1px solid #e5e5e5;
+    background: #fafafa;
+  }
+
+  .shot:hover :global(img) {
+    border-color: #2a7ae2;
+  }
+
+  .title {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0.6rem 0 0;
+  }
+
+  .meta {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0.25rem 0 0;
+  }
+
+  .years {
+    color: #999;
+    font-variant-numeric: tabular-nums;
+    margin-right: 0.5em;
+  }
+
+  .mentions {
+    font-size: 0.8rem;
+    margin: 0.35rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.9em;
+  }
+
+  .mentions a {
     color: #ff6600;
-    padding: 0 0.2em;
+  }
+
+  .mentions :global(.link-icon) {
+    margin-right: 0.25em;
   }
 </style>
