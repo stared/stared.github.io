@@ -9,7 +9,8 @@
     "tags": [
       "data viz",
       "typescript"
-    ]
+    ],
+    "github": "https://github.com/stared/tree-of-tree"
   },
   {
     "id": "-3",
@@ -36,7 +37,8 @@
       "ai",
       "gamedev",
       "d3.js"
-    ]
+    ],
+    "github": "https://github.com/stared/sc2-balance-timeline"
   },
   {
     "id": "-1",
@@ -48,7 +50,8 @@
       "data viz",
       "typescript",
       "latex"
-    ]
+    ],
+    "github": "https://github.com/stared/equations-explained-colorfully"
   },
   {
     "id": "0",
@@ -61,7 +64,8 @@
       "typescript",
       "wasm",
       "r"
-    ]
+    ],
+    "github": "https://github.com/quesmaorg/webr-ggplot-playground"
   },
   {
     "id": "1",
@@ -165,7 +169,7 @@
     "id": "6",
     "title": "AI development policy for Poland",
     "desc": "Coauthor. Approved by the Polish Government.",
-    "href": "https://www.gov.pl/web/govtech/polityka-rozwoju-ai-w-polsce-przyjeta-przez-rade-ministrow--co-dalej",
+    "href": "https://web.archive.org/web/20230606055615/https://www.gov.pl/web/govtech/polityka-rozwoju-ai-w-polsce-przyjeta-przez-rade-ministrow--co-dalej",
     "dateStart": "2019-03-01T00:00:00.000Z",
     "dateEnd": "2020-12-28T00:00:00.000Z",
     "tags": [
@@ -287,7 +291,8 @@
         "href": "https://news.ycombinator.com/item?id=17826188"
       }
     ],
-    "status": "done"
+    "status": "done",
+    "github": "https://github.com/stared/weltschmerz"
   },
   {
     "id": "14",
@@ -301,7 +306,8 @@
       "deep-learning",
       "list"
     ],
-    "status": "done"
+    "status": "done",
+    "github": "https://github.com/stared/interactive-machine-learning-list"
   },
   {
     "id": "15",
@@ -365,7 +371,8 @@
         "href": "https://scottaaronson.blog/?p=3597"
       }
     ],
-    "status": "done"
+    "status": "done",
+    "github": "https://github.com/stared/quantum-game"
   },
   {
     "id": "18",
@@ -377,7 +384,8 @@
     "tags": [
       "visualization"
     ],
-    "status": "as it is"
+    "status": "as it is",
+    "github": "https://github.com/stared/matrix-decomposition-viz"
   },
   {
     "id": "19",
@@ -488,7 +496,8 @@
         "href": "https://news.ycombinator.com/item?id=10243873"
       }
     ],
-    "status": "done"
+    "status": "done",
+    "github": "https://github.com/stared/tagoverflow"
   },
   {
     "id": "27",
@@ -500,7 +509,8 @@
     "tags": [
       "visualization"
     ],
-    "status": "done"
+    "status": "done",
+    "github": "https://github.com/stared/kfnrd_viz"
   },
   {
     "id": "28",

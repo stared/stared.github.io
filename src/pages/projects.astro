@@ -30,7 +30,14 @@ const projects = (await getCollection('projects'))
   <ul class="projects">
     {projects.map((project) => {
       const image = screenshots[`/src/assets/projects/${projectSlug(project.title)}.png`]?.default;
-      const kind = iconKind(project.href);
+      // A GitHub link joins the mentions row: the explicit `github` field, or
+      // the project's own href when the project lives on GitHub.
+      const github =
+        project.github ?? (iconKind(project.href) === 'github' ? project.href : undefined);
+      const links = [
+        ...(github ? [{ text: 'GitHub', href: github }] : []),
+        ...(project.mentions ?? []),
+      ];
       return (
         <li class="project">
           <a class="shot" href={project.href}>
@@ -42,20 +49,19 @@ const projects = (await getCollection('projects'))
           </a>
           <h2 class="title">
             <a href={project.href}>{project.title}</a>
-            {kind && <LinkIcon kind={kind} />}
           </h2>
           <p class="meta">
             <span class="years">{year(project.dateStart)}</span>
             {project.desc}
           </p>
-          {project.mentions && (
+          {links.length > 0 && (
             <p class="mentions">
-              {project.mentions.map((mention) => {
-                const mentionKind = iconKind(mention.href);
+              {links.map((link) => {
+                const linkKind = iconKind(link.href);
                 return (
-                  <a href={mention.href}>
-                    {mentionKind ? <LinkIcon kind={mentionKind} /> : null}
-                    {mention.text}
+                  <a href={link.href}>
+                    {linkKind ? <LinkIcon kind={linkKind} /> : null}
+                    {link.text}
                   </a>
                 );
               })}
@@ -100,11 +106,6 @@ const projects = (await getCollection('projects'))
     font-weight: 600;
     line-height: 1.3;
     margin: 0.6rem 0 0;
-  }
-
-  .title :global(.link-icon) {
-    color: #828282;
-    margin-left: 0.35em;
   }
 
   .meta {

@@ -43,6 +43,8 @@ export interface Shot {
   background?: string;
   /** Inset around letterboxed art, in output pixels. */
   margin?: number;
+  /** Multiply pixel brightness in post — for pages that render too dim. */
+  postBrightness?: number;
   /** JS expression returning {x,y,width,height} — for regions no selector fits. */
   pickRect?: string;
   /** No sensible image exists; render a blank tile. */
@@ -189,13 +191,24 @@ export const SHOTS: Record<string, Shot> = {
       'https://static.observableusercontent.com/thumbnail/0a5ee493057171b1f4697db0fb2e4644390d5c32b90562a5143003552b03c6c1.jpg',
   },
   'interactive-machine-learning-list': {
-    selector: '.illustration',
+    // The grid of actual entry cards, not the decorative brain illustration.
+    clip: { x: 16, y: 735, width: 1408, height: 766 },
     fit: 'contain',
+    wait: 8000,
   },
   'map-of-polish-composers': {
-    // A white-on-black timeline of a few hundred faint marks. At thumbnail size
-    // any crop reads as an empty black rectangle, so show nothing instead.
-    skip: true,
+    // The terms-and-groups map: named clusters are legible where the main
+    // timeline's individual composers are not. Slow to draw its constellation.
+    url: 'https://mapofcomposers.pl/en/terminy',
+    clip: { x: 0, y: 130, width: 1440, height: 700 },
+    // The site renders its constellation intentionally faint (and a CSS
+    // brightness filter on the container is dimmed right back by an overlay),
+    // so lift the levels in post instead.
+    prepare: `document.querySelectorAll('.c-onboard__screen, .c-onboard').forEach((el) => el.remove())`,
+    prepareWait: 4000,
+    postBrightness: 4,
+    background: '#000000',
+    wait: 12000,
   },
   'quantum-game-with-photons': {
     clip: { x: 80, y: 0, width: 1280, height: 800 },
@@ -286,7 +299,24 @@ export const SHOTS: Record<string, Shot> = {
     background: '#2e2e2e',
   },
 
-  // --- No meaningful visual ----------------------------------------------
-  'ai-development-policy-for-poland': { skip: true },
-  'science-based-games': { skip: true },
+  'ai-development-policy-for-poland': {
+    // Title block of the policy document's cover page (the live gov.pl page
+    // was replaced; both link and PDF come from the Wayback Machine).
+    image:
+      'https://web.archive.org/web/20230606055615/https://www.gov.pl/attachment/94aaea00-b9cb-4371-b52b-8790ec089dc0',
+    imageCrop: { x: 0, y: 30, width: 1131, height: 790 },
+    fit: 'contain',
+  },
+  'science-based-games': {
+    // The top of the README — the list is the project.
+    pad: 20,
+    pickRect: `
+      (() => {
+        const el = document.querySelector('article');
+        if (!el) return null;
+        const r = el.getBoundingClientRect();
+        return { x: r.x + scrollX, y: r.y + scrollY, width: r.width, height: Math.min(r.height, 620) };
+      })()
+    `,
+  },
 };

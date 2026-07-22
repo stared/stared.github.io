@@ -81,6 +81,11 @@ export class Page {
   /** Navigate and settle. Never rejects on a slow page — screenshots what loaded. */
   async goto(url: string, settleMs = 3500) {
     await this.send('Page.enable');
+    // Headless Chrome defaults to dark prefers-color-scheme; the tiles sit on
+    // a light page, so render sites in their light theme.
+    await this.send('Emulation.setEmulatedMedia', {
+      features: [{ name: 'prefers-color-scheme', value: 'light' }],
+    });
     await this.send('Page.navigate', { url });
     const loaded = new Promise<void>((resolve) => {
       const onMessage = (event: MessageEvent) => {

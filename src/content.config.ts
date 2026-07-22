@@ -63,6 +63,7 @@ const projects = defineCollection({
     href: z.string(),
     dateStart: z.string(),
     dateEnd: z.string().nullable().optional(),
+    github: z.string().optional(),
     tags: z.array(z.string()).default([]),
     mentions: z.array(mentionSchema).optional(),
     status: z.string().optional(),

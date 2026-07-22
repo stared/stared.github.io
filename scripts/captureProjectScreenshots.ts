@@ -10,6 +10,9 @@
 //   pnpm generate:screenshots --probe <url>  # list clippable elements
 
 import { readFileSync, existsSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { mkdtempSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import path from 'node:path';
 import sharp from 'sharp';
 import { Browser, sleep, type Rect } from './lib/cdp.ts';
@@ -91,6 +94,7 @@ async function normalise(input: Buffer, shot: Shot): Promise<Buffer> {
   // content to get back to 16:10.
   const shouldTrim = shot.trim ?? fit === 'contain';
   if (shouldTrim) pipeline = pipeline.trim({ threshold: 12 });
+  if (shot.postBrightness) pipeline = pipeline.modulate({ brightness: shot.postBrightness });
 
   // Letterboxed art is trimmed to its exact ink, so give it a margin instead of
   // running edge to edge.
@@ -135,11 +139,23 @@ async function probe(browser: Browser, url: string) {
   await page.close();
 }
 
+/** Render a PDF's first page to PNG via Quick Look. */
+function pdfFirstPage(pdf: Buffer): Buffer {
+  const dir = mkdtempSync(path.join(tmpdir(), 'shotpdf-'));
+  const pdfPath = path.join(dir, 'doc.pdf');
+  writeFileSync(pdfPath, pdf);
+  execFileSync('qlmanage', ['-t', '-s', '2000', '-o', dir, pdfPath], { stdio: 'pipe' });
+  const png = readFileSync(path.join(dir, 'doc.pdf.png'));
+  rmSync(dir, { recursive: true, force: true });
+  return png;
+}
+
 async function capture(browser: Browser, project: Project, shot: Shot): Promise<Buffer> {
   if (shot.image) {
     const res = await fetch(shot.image);
     if (!res.ok) throw new Error(`fetch ${res.status} for ${shot.image}`);
-    return Buffer.from(await res.arrayBuffer());
+    const buf = Buffer.from(await res.arrayBuffer());
+    return buf.subarray(0, 4).toString() === '%PDF' ? pdfFirstPage(buf) : buf;
   }
 
   const page = await browser.newPage();
