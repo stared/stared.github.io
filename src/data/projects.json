@@ -1,5 +1,24 @@
 [
   {
+    "id": "-5",
+    "title": "PIE Roots",
+    "desc": "Explorable etymologies of Proto-Indo-European roots — how single prehistoric words fan out into the modern vocabulary.",
+    "href": "https://p.migdal.pl/pie-roots/",
+    "dateStart": "2026-07-16T00:00:00.000Z",
+    "tags": [
+      "data viz",
+      "typescript",
+      "etymology"
+    ],
+    "github": "https://github.com/stared/pie-roots",
+    "mentions": [
+      {
+        "text": "r/etymology",
+        "href": "https://www.reddit.com/r/etymology/comments/1uya2eh/druid_wizard_providence_ayurveda_visualization/"
+      }
+    ]
+  },
+  {
     "id": "-4",
     "title": "The Tree of 'tree'",
     "desc": "An explorable explanation in Proto-Indo-European etymology.",
@@ -44,7 +63,13 @@
       "gamedev",
       "d3.js"
     ],
-    "github": "https://github.com/stared/sc2-balance-timeline"
+    "github": "https://github.com/stared/sc2-balance-timeline",
+    "mentions": [
+      {
+        "text": "r/starcraft",
+        "href": "https://www.reddit.com/r/starcraft/comments/1q2bk7j/15_years_of_starcraft_ii_balance_changes/"
+      }
+    ]
   },
   {
     "id": "-1",
