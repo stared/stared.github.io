@@ -13,11 +13,8 @@ const screenshots = import.meta.glob<{ default: ImageMetadata }>(
 
 const year = (date: string) => new Date(date).getUTCFullYear();
 
-function iconKind(href: string): 'github' | 'hn' | 'arxiv' | null {
-  if (/^https?:\/\/github\.com\//.test(href)) return 'github';
-  if (/^https?:\/\/news\.ycombinator\.com\//.test(href)) return 'hn';
-  if (/^https?:\/\/arxiv\.org\//.test(href)) return 'arxiv';
-  return null;
+function iconKind(href: string): 'github' | null {
+  return /^https?:\/\/github\.com\//.test(href) ? 'github' : null;
 }
 
 const projects = (await getCollection('projects'))
