@@ -10,7 +10,13 @@
       "data viz",
       "typescript"
     ],
-    "github": "https://github.com/stared/tree-of-tree"
+    "github": "https://github.com/stared/tree-of-tree",
+    "mentions": [
+      {
+        "text": "r/dataisbeautiful",
+        "href": "https://www.reddit.com/r/dataisbeautiful/comments/1uf8tqa/oc_tree_truth_druid_dryad_tar_and_dendrite_grew/"
+      }
+    ]
   },
   {
     "id": "-3",
@@ -118,6 +124,10 @@
     ],
     "mentions": [
       {
+        "text": "arXiv",
+        "href": "https://arxiv.org/abs/2203.13300"
+      },
+      {
         "text": "HN",
         "href": "https://news.ycombinator.com/item?id=31968280"
       },
@@ -163,7 +173,13 @@
       "tensor",
       "npm"
     ],
-    "status": "done, maintained a bit"
+    "status": "done, maintained a bit",
+    "mentions": [
+      {
+        "text": "arXiv",
+        "href": "https://arxiv.org/abs/2203.13300"
+      }
+    ]
   },
   {
     "id": "6",
@@ -189,7 +205,13 @@
       "quantum",
       "game"
     ],
-    "status": "done"
+    "status": "done",
+    "mentions": [
+      {
+        "text": "arXiv",
+        "href": "https://arxiv.org/abs/2203.13300"
+      }
+    ]
   },
   {
     "id": "8",
