@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import LinkIcon from '@/components/LinkIcon.astro';
-import { projectSlug } from '@/lib/projectSlug';
+import { projectImageFile } from '@/lib/projectSlug';
 import { Content as ProjectsIntro } from '@/content/textComponents/projects.md';
 
 const screenshots = import.meta.glob<{ default: ImageMetadata }>(
@@ -29,7 +29,7 @@ const projects = (await getCollection('projects'))
   <ProjectsIntro />
   <ul class="projects">
     {projects.map((project) => {
-      const image = screenshots[`/src/assets/projects/${projectSlug(project.title)}.png`]?.default;
+      const image = screenshots[`/src/assets/projects/${projectImageFile(project.title)}`]?.default;
       // A GitHub link joins the mentions row: the explicit `github` field, or
       // the project's own href when the project lives on GitHub.
       const github =

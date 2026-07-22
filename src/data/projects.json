@@ -48,6 +48,12 @@
       "rust",
       "tauri",
       "typescript"
+    ],
+    "mentions": [
+      {
+        "text": "r/macgaming",
+        "href": "https://www.reddit.com/r/macgaming/comments/1qfpc5s/doom_launcher_for_macos_bringing_steam_experience/"
+      }
     ]
   },
   {
@@ -107,6 +113,12 @@
     "tags": [
       "data viz",
       "typescript"
+    ],
+    "mentions": [
+      {
+        "text": "r/dataisbeautiful",
+        "href": "https://www.reddit.com/r/dataisbeautiful/comments/1m8ubx0/oc_how_couples_meet_but_in_the_visual_style_of/"
+      }
     ]
   },
   {
@@ -158,7 +170,7 @@
       },
       {
         "text": "r/Physics",
-        "href": "https://www.reddit.com/r/Physics/comments/tqicf5/visualizing_quantum_mechanics_in_an_interactive/"
+        "href": "https://www.reddit.com/r/Physics/comments/vqi1sm/visualizing_quantum_mechanics_in_an_interactive/"
       },
       {
         "text": "Hossenfelder",

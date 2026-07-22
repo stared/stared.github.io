@@ -17,7 +17,7 @@ import path from 'node:path';
 import sharp from 'sharp';
 import { Browser, sleep, type Rect } from './lib/cdp.ts';
 import { SHOTS, type Shot } from './projectShots.ts';
-import { projectSlug } from '../src/lib/projectSlug.ts';
+import { projectSlug, projectImageFile } from '../src/lib/projectSlug.ts';
 
 const OUT_DIR = path.join(import.meta.dirname, '../src/assets/projects');
 const OUT_WIDTH = 1200;
@@ -229,7 +229,7 @@ try {
     const failures: string[] = [];
     for (const project of projects) {
       const slug = projectSlug(project.title);
-      const outPath = path.join(OUT_DIR, `${slug}.png`);
+      const outPath = path.join(OUT_DIR, projectImageFile(project.title));
       if (only.size > 0 && !only.has(slug)) continue;
       if (!force && only.size === 0 && existsSync(outPath)) continue;
 

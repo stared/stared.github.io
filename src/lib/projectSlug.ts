@@ -9,3 +9,14 @@ export function projectSlug(title: string): string {
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 }
+
+// Cache-busting aliases: when a tile's subject changes completely, a new
+// filename guarantees no browser, dev server, or CDN can serve the old image.
+const IMAGE_ALIASES: Record<string, string> = {
+  'interactive-machine-learning-list': 'interactive-machine-learning-list-cards',
+};
+
+export function projectImageFile(title: string): string {
+  const slug = projectSlug(title);
+  return `${IMAGE_ALIASES[slug] ?? slug}.png`;
+}

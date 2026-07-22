@@ -52,6 +52,16 @@ export interface Shot {
 }
 
 export const SHOTS: Record<string, Shot> = {
+  'pie-roots': {
+    // The *weyd- occult-side poster (wizard, clairvoyant, Providence,
+    // Ayurveda) — the same artefact as the r/etymology thread.
+    url: 'https://p.migdal.pl/pie-roots/weyd-magic/',
+    selector: 'figure',
+    fit: 'contain',
+    background: '#0b0d13',
+    wait: 6000,
+  },
+
   // --- Ships its own artwork ---------------------------------------------
   'rusted-doom-launcher': {
     image:
