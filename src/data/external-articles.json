@@ -1,5 +1,21 @@
 [
   {
+    "title": "Mushroom hunting with LLMs: what can go wrong?",
+    "source": "Quesma",
+    "href": "https://quesma.com/blog/mushroom-llm-vision/",
+    "date": "2026-09-02T00:00:00.000Z",
+    "tags": ["ai"],
+    "migdal_score": 0
+  },
+  {
+    "title": "Benchmarking Qwen3.8 27B quantizations: 4-bit holds up, 1-bit collapses",
+    "source": "Quesma",
+    "href": "https://quesma.com/blog/qwen38-27b-quantizations-benchmarked/",
+    "date": "2026-08-26T00:00:00.000Z",
+    "tags": ["ai"],
+    "migdal_score": 0
+  },
+  {
     "title": "Qwen 3.6 27B is the sweet spot for local development",
     "source": "Quesma",
     "href": "https://quesma.com/blog/qwen-36-is-awesome/",
