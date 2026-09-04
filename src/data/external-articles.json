@@ -92,7 +92,7 @@
     "source": "Nude Morning",
     "href": "https://nude-morning.blogspot.com/2024/09/m.html",
     "date": "2024-09-01T00:00:00.000Z",
-    "tags": ["personal", "body", "po polsku"],
+    "tags": ["personal", "body", "interview", "po polsku"],
     "migdal_score": 2
   },
   {
@@ -172,7 +172,7 @@
     "source": "Quantum Flytrap",
     "href": "https://quantumflytrap.com/blog/2021/qubit-interactively/",
     "date": "2021-04-10T00:00:00.000Z",
-    "tags": ["quantum", "maths", "data viz", "tech"],
+    "tags": ["quantum", "data viz", "tech"],
     "migdal_score": 1
   },
   {
@@ -338,7 +338,7 @@
     "source": "Azimuth, John Baez's blog",
     "href": "https://johncarlosbaez.wordpress.com/2015/03/13/quantum-superposition/",
     "date": "2015-03-13T00:00:00.000Z",
-    "tags": ["quantum", "maths", "tech"],
+    "tags": ["quantum", "tech"],
     "migdal_score": 0
   },
   {

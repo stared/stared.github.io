@@ -3,6 +3,7 @@ title: D3.js workshop at ICM for KFnrD
 date: 2016-02-09
 author: Piotr Migdał
 tags:
+  - data viz
   - education
   - event
   - tech

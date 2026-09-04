@@ -3,6 +3,7 @@ title: "king - man + woman is queen; but why?"
 date: 2017-01-06
 author: Piotr Migdał
 tags:
+  - deep learning
   - tech
   - data science
   - cognition

@@ -5,6 +5,7 @@ description: >-
   by Artur Ekert to CQT in Singapore.
 date: "2019-07-20T12:03:03.627Z"
 tags:
+  - quantum
   - games
   - personal
 image: ./03.jpg

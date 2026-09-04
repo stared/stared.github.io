@@ -4,6 +4,8 @@ description: >-
   Mantra Gajatri tłumaczona na polski w poetyce "Ciebie Boga Wysławiamy" - przez GPT 4.5.
 date: "2025-03-09T00:00:00.030Z"
 tags:
+  - arts
+  - ai
   - spirituality
   - translation
   - po polsku

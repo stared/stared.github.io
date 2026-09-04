@@ -5,6 +5,7 @@ description: >-
   experience.” — Seth
 date: "2019-06-19T23:31:52.811Z"
 tags:
+  - body
   - event
   - personal
   - soft skills

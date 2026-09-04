@@ -3,6 +3,7 @@ title: "What I do or: science to data science"
 date: 2015-12-14
 author: Piotr Migdał
 tags:
+  - academia
   - data science
   - personal
 description: "Data science freelancing (vs academia): freedom, impact, meritocracy, fast pace, money."
