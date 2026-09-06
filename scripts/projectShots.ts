@@ -52,6 +52,14 @@ export interface Shot {
 }
 
 export const SHOTS: Record<string, Shot> = {
+  'genetic-distance-map': {
+    // The map is empty until a population is picked; the site's own OG image
+    // is the rendered view for "Polish" on the regional scale.
+    image: 'https://p.migdal.pl/genetic-distance-map/og.png',
+    // Crop to a 16:10 region that keeps Poland centred and leaves out the
+    // legend, which a cover-crop would otherwise cut mid-word.
+    imageCrop: { x: 0, y: 30, width: 880, height: 550 },
+  },
   'pie-roots': {
     // The *weyd- occult-side poster (wizard, clairvoyant, Providence,
     // Ayurveda) — the same artefact as the r/etymology thread.

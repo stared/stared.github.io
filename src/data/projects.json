@@ -1,5 +1,24 @@
 [
   {
+    "id": "-6",
+    "title": "Genetic Distance Map",
+    "desc": "Pick a present-day or ancient population and see which present-day populations are genetically closest, on a map. Based on Global25 data.",
+    "href": "https://p.migdal.pl/genetic-distance-map/",
+    "dateStart": "2026-09-05T00:00:00.000Z",
+    "tags": [
+      "data viz",
+      "typescript",
+      "genetics"
+    ],
+    "github": "https://github.com/stared/genetic-distance-map",
+    "mentions": [
+      {
+        "text": "r/dataisbeautiful",
+        "href": "https://www.reddit.com/r/dataisbeautiful/comments/1w8w1px/oc_genetic_distance_map_who_is_closest_to_ancient/"
+      }
+    ]
+  },
+  {
     "id": "-5",
     "title": "PIE Roots",
     "desc": "Explorable etymologies of Proto-Indo-European roots.",
