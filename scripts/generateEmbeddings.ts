@@ -17,7 +17,7 @@ const openai = new OpenAI({ apiKey: OPENAI_API_KEY })
 
 const POSTS_DIR = path.join(__dirname, '../src/content/blog')
 const EXTERNAL_CONTENT_DIR = path.join(__dirname, '../src/data/external-content')
-const EMBEDDINGS_DIR = path.join(__dirname, '../public/embeddings')
+const EMBEDDINGS_DIR = path.join(__dirname, '../src/data/embeddings')
 
 interface ContentSource {
   file: string

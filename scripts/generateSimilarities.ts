@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url'
 import matter from 'gray-matter'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const EMBEDDINGS_DIR = path.join(__dirname, '../public/embeddings')
+const EMBEDDINGS_DIR = path.join(__dirname, '../src/data/embeddings')
 const SIMILARITIES_DIR = path.join(__dirname, '../src/content/similarities')
 const BLOG_DIR = path.join(__dirname, '../src/content/blog')
 const EXTERNAL_CONTENT_DIR = path.join(__dirname, '../src/data/external-content')

@@ -48,7 +48,7 @@ const projects = (await getCollection('projects'))
             <a href={project.href}>{project.title}</a>
           </h2>
           <p class="meta">
-            <span class="years">{year(project.dateStart)}</span>
+            <span class="years">{year(project.dateStart)}</span>{' '}
             {project.desc}
           </p>
           {links.length > 0 && (

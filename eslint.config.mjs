@@ -2,16 +2,7 @@ import eslintPluginAstro from 'eslint-plugin-astro';
 
 export default [
   {
-    ignores: [
-      'dist/**',
-      '.astro/**',
-      'node_modules/**',
-      '.nuxt/**',
-      '.nitro/**',
-      '.output/**',
-      'public/embeddings/**',
-      'public/similarities/**',
-    ],
+    ignores: ['dist/**', '.astro/**', 'node_modules/**', 'src/data/embeddings/**'],
   },
   ...eslintPluginAstro.configs.recommended,
   {

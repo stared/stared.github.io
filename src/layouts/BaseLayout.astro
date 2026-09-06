@@ -2,6 +2,8 @@
 import { ClientRouter } from 'astro:transitions';
 import { AUTHOR, SITE_DESCRIPTION } from '@/lib/constants';
 import PlausibleAnalytics from '@/components/PlausibleAnalytics.astro';
+// Same KaTeX release that rehype-katex renders with; Vite bundles the CSS and fonts.
+import 'katex/dist/katex.min.css';
 
 interface Props {
   title: string;
@@ -32,11 +34,6 @@ const ogImage = image ? new URL(image, Astro.site).href : undefined;
       title={`RSS Feed for ${AUTHOR}'s Blog`}
       href="/feed.xml"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
-    />
-
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     {ogImage && <meta property="og:image" content={ogImage} />}
@@ -91,8 +88,9 @@ const ogImage = image ? new URL(image, Astro.site).href : undefined;
     height: 80px;
   }
 
-  .nav__link {
-    margin-left: 20px;
+  .nav {
+    display: flex;
+    gap: 20px;
   }
 
   a {
