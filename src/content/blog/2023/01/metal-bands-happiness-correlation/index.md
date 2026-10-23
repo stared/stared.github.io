@@ -58,7 +58,7 @@ Also, **all** surveys measuring happiness have their shortcomings. The answer mi
 
 Generated in [ggplot2](https://ggplot2.tidyverse.org/). Since quite a few people asked about the code, I share it here to
 
-```r}
+```r
 library(ggplot2)
 library(ggrepel)
 

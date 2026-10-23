@@ -26,26 +26,26 @@
   },
   "dependencies": {
     "@astro-community/astro-embed-youtube": "^0.5.10",
-    "@astrojs/check": "^0.9.10",
-    "@astrojs/markdown-remark": "^7.3.0",
-    "@astrojs/mdx": "^8.0.0",
+    "@astrojs/check": "^0.9.11",
+    "@astrojs/markdown-remark": "^7.3.3",
+    "@astrojs/mdx": "^8.1.0",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
-    "@astrojs/vue": "^7.0.2",
-    "astro": "^7.3.1",
+    "@astrojs/vue": "^7.1.1",
+    "astro": "^7.4.1",
     "katex": "^0.16.47",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
-    "sharp": "^0.35.4",
+    "sharp": "^0.35.5",
     "typescript": "^6.0.3",
-    "vue": "^3.5.42"
+    "vue": "^3.5.44"
   },
   "devDependencies": {
-    "@types/node": "^25.9.2",
-    "@typescript-eslint/parser": "^8.60.1",
-    "eslint": "^10.4.1",
-    "eslint-plugin-astro": "^1.7.0",
+    "@types/node": "^26.6.5",
+    "@typescript-eslint/parser": "^8.72.0",
+    "eslint": "^10.13.0",
+    "eslint-plugin-astro": "^3.2.1",
     "gray-matter": "^4.0.3",
-    "openai": "^6.42.0"
+    "openai": "^7.39.0"
   }
 }

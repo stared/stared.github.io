@@ -194,7 +194,7 @@ Continuous integration makes it easy to check against cases when the code:
 
 Sounds too good to be easy? Well — to my surprise, I set it with a few clicks at [Travis CI](https://travis-ci.com/Quantum-Game/quantum-tensors), and by creating a [.travis.yml](https://github.com/Quantum-Game/quantum-tensors/blob/master/.travis.yml) file in the repo:
 
-```yaml}
+```yaml
 language: node_js
 node_js: node
 
