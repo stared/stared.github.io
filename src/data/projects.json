@@ -1,5 +1,38 @@
 [
   {
+    "id": "-8",
+    "title": "Warsaw Vibe Voxel",
+    "desc": "Voxel art of central Warsaw, 1 m per voxel.",
+    "href": "https://p.migdal.pl/warsaw-vibe-voxel/",
+    "dateStart": "2026-10-13T00:00:00.000Z",
+    "tags": [
+      "data viz",
+      "typescript",
+      "three.js",
+      "ai"
+    ],
+    "github": "https://github.com/stared/warsaw-vibe-voxel"
+  },
+  {
+    "id": "-7",
+    "title": "Baba Is Bench",
+    "desc": "An LLM agent benchmark on the puzzle game Baba Is You: agents rewrite the rules to win, scored on pass rate, speed and cost.",
+    "href": "https://quesma.com/benchmarks/babaisbench/",
+    "dateStart": "2026-06-15T00:00:00.000Z",
+    "tags": [
+      "ai",
+      "gamedev",
+      "benchmark"
+    ],
+    "github": "https://github.com/stared/baba-is-harbor",
+    "mentions": [
+      {
+        "text": "Cited by OpenAI in their ARC-AGI-3 results",
+        "href": "https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores/"
+      }
+    ]
+  },
+  {
     "id": "-6",
     "title": "Genetic Distance Map",
     "desc": "Pick a present-day or ancient population and see which present-day populations are genetically closest, on a map. Based on Global25 data.",

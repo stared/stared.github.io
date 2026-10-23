@@ -1,10 +1,38 @@
 [
   {
+    "title": "I gave Opus 5.5 one prompt and six hours to visualize Invisible Cities",
+    "source": "Quesma",
+    "href": "https://quesma.com/blog/invisible-cities-one-shot/",
+    "date": "2026-10-07T00:00:00.000Z",
+    "tags": ["ai", "data viz"],
+    "mentions": [
+      {
+        "text": "Hacker News, 418 points",
+        "href": "https://news.ycombinator.com/item?id=50004790"
+      }
+    ],
+    "migdal_score": 0
+  },
+  {
+    "title": "Knowledge vs wisdom: asking AI \"What mushroom is that?\"",
+    "source": "Quesma",
+    "href": "https://quesma.com/blog/mushroom-llm-just-ask/",
+    "date": "2026-09-06T00:00:00.000Z",
+    "tags": ["ai"],
+    "migdal_score": 0
+  },
+  {
     "title": "Mushroom hunting with LLMs: what can go wrong?",
     "source": "Quesma",
     "href": "https://quesma.com/blog/mushroom-llm-vision/",
     "date": "2026-09-02T00:00:00.000Z",
     "tags": ["ai"],
+    "mentions": [
+      {
+        "text": "Hacker News, 56 points",
+        "href": "https://news.ycombinator.com/item?id=49539152"
+      }
+    ],
     "migdal_score": 0
   },
   {
@@ -13,6 +41,12 @@
     "href": "https://quesma.com/blog/qwen38-27b-quantizations-benchmarked/",
     "date": "2026-08-26T00:00:00.000Z",
     "tags": ["ai"],
+    "mentions": [
+      {
+        "text": "Hacker News, 286 points",
+        "href": "https://news.ycombinator.com/item?id=49611128"
+      }
+    ],
     "migdal_score": 0
   },
   {
@@ -21,6 +55,12 @@
     "href": "https://quesma.com/blog/qwen-36-is-awesome/",
     "date": "2026-06-29T00:00:00.000Z",
     "tags": ["ai"],
+    "mentions": [
+      {
+        "text": "Hacker News, 1192 points",
+        "href": "https://news.ycombinator.com/item?id=48721903"
+      }
+    ],
     "migdal_score": 0
   },
   {
@@ -37,6 +77,20 @@
     "href": "https://quesma.com/blog/chromatron-recompiled/",
     "date": "2026-03-04T00:00:00.000Z",
     "tags": ["ai", "games"],
+    "migdal_score": 0
+  },
+  {
+    "title": "We hid backdoors in ~40 MB binaries and asked AI + Ghidra to find them",
+    "source": "Quesma",
+    "href": "https://quesma.com/blog/introducing-binaryaudit/",
+    "date": "2026-02-10T00:00:00.000Z",
+    "tags": ["ai"],
+    "mentions": [
+      {
+        "text": "Hacker News, 245 points",
+        "href": "https://news.ycombinator.com/item?id=47111440"
+      }
+    ],
     "migdal_score": 0
   },
   {
