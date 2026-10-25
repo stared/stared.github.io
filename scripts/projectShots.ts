@@ -49,6 +49,7 @@ export interface Shot {
   pickRect?: string;
   /** No sensible image exists; render a blank tile. */
   skip?: boolean;
+  gpu?: boolean;
 }
 
 export const SHOTS: Record<string, Shot> = {
@@ -68,6 +69,20 @@ export const SHOTS: Record<string, Shot> = {
     fit: 'contain',
     background: '#0b0d13',
     wait: 6000,
+  },
+
+  'warsaw-vibe-voxel': {
+    prepare:
+      "document.head.insertAdjacentHTML('beforeend', '<style>#hud, #credits, #bar, #loading, #labels { visibility: hidden !important; }</style>')",
+    wait: 45000,
+    prepareWait: 1000,
+    clip: { x: 0, y: 0, width: 1440, height: 900 },
+    gpu: true,
+  },
+  'baba-is-bench': {
+    image: 'https://quesma.com/_astro/thumbnail.C4EiuE17.png',
+    fit: 'contain',
+    background: '#0b0b0e',
   },
 
   // --- Ships its own artwork ---------------------------------------------

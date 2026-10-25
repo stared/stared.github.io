@@ -218,6 +218,7 @@ const projects: Project[] = JSON.parse(
 
 mkdirSync(OUT_DIR, { recursive: true });
 const browser = await Browser.launch();
+let gpuBrowser: Browser | undefined;
 
 try {
   const probeIndex = args.indexOf('--probe');
@@ -242,7 +243,8 @@ try {
         continue;
       }
       try {
-        const raw = await capture(browser, project, shot);
+        if (shot.gpu) gpuBrowser ??= await Browser.launch({ gpu: true });
+        const raw = await capture(shot.gpu ? gpuBrowser! : browser, project, shot);
         writeFileSync(outPath, await normalise(raw, shot));
         console.log(`ok   ${slug}`);
       } catch (err) {
@@ -257,4 +259,5 @@ try {
   }
 } finally {
   await browser.close();
+  await gpuBrowser?.close();
 }

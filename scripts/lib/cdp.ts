@@ -180,8 +180,8 @@ export class Browser {
     this.profileDir = profileDir;
   }
 
-  static async launch(): Promise<Browser> {
-    const port = 9500 + Math.floor(process.pid % 400);
+  static async launch({ gpu = false } = {}): Promise<Browser> {
+    const port = 9500 + Math.floor(process.pid % 400) * 2 + (gpu ? 1 : 0);
     const profileDir = mkdtempSync(path.join(tmpdir(), 'shots-'));
     const proc = spawn(
       CHROME,
@@ -189,7 +189,7 @@ export class Browser {
         '--headless=new',
         `--remote-debugging-port=${port}`,
         `--user-data-dir=${profileDir}`,
-        '--disable-gpu',
+        ...(gpu ? [] : ['--disable-gpu']),
         '--hide-scrollbars',
         '--no-first-run',
         '--no-default-browser-check',
