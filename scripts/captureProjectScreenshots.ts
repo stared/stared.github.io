@@ -9,9 +9,8 @@
 //   pnpm generate:screenshots tagoverflow  # redo named slugs
 //   pnpm generate:screenshots --probe <url>  # list clippable elements
 
-import { readFileSync, existsSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
+import { readFileSync, existsSync, mkdirSync, mkdtempSync, writeFileSync, rmSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import sharp from 'sharp';

@@ -10,8 +10,8 @@
     "generate:embeddings": "node scripts/generateEmbeddings.ts && node scripts/generateSimilarities.ts",
     "generate:screenshots": "node scripts/captureProjectScreenshots.ts",
     "build:all": "pnpm generate:embeddings && pnpm build",
-    "lint": "eslint . && pnpm lint:math",
-    "lint:fix": "eslint . --fix",
+    "lint": "oxlint --type-aware && pnpm lint:math",
+    "lint:fix": "oxlint --type-aware --fix",
     "lint:math": "! rg -n '^\\$\\$\\s*.+\\s*\\$\\$$' src/content && echo '✓ No single-line block math found'",
     "lint:math:fix": "fd -e md -e mdx . src/content -x sed -i '' -E 's/^\\$\\$[[:space:]]*(.+)[[:space:]]*\\$\\$$/$$\\n\\1\\n$$/g' {}",
     "astro": "astro",
@@ -42,10 +42,9 @@
   },
   "devDependencies": {
     "@types/node": "^26.6.5",
-    "@typescript-eslint/parser": "^8.72.0",
-    "eslint": "^10.13.0",
-    "eslint-plugin-astro": "^3.2.1",
     "gray-matter": "^4.0.3",
-    "openai": "^7.39.0"
+    "openai": "^7.39.0",
+    "oxlint": "^1.89.0",
+    "oxlint-tsgolint": "^7.0.2004"
   }
 }
