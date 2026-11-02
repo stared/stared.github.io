@@ -11,7 +11,13 @@
       "three.js",
       "ai"
     ],
-    "github": "https://github.com/stared/warsaw-vibe-voxel"
+    "github": "https://github.com/stared/warsaw-vibe-voxel",
+    "mentions": [
+      {
+        "text": "HN",
+        "href": "https://news.ycombinator.com/item?id=50339221"
+      }
+    ]
   },
   {
     "id": "-7",
